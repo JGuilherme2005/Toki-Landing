@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Toki e um app desktop para foco profundo, Pomodoro, tarefas diarias e bloqueio de distracoes.">
+  <title>Toki | Foco para desktop</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f4f0e8;
+      --muted: #afa99c;
+      --dim: #746f65;
+      --line: rgba(244, 240, 232, 0.13);
+      --line-strong: rgba(244, 240, 232, 0.26);
+      --bg: #0b0d0a;
+      --panel: #12150f;
+      --panel-soft: #191d15;
+      --lime: #c8f135;
+      --sky: #83baf4;
+      --coral: #f06f58;
+      --paper: #e9dfca;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(circle at 78% 8%, rgba(200, 241, 53, 0.16), transparent 28rem),
+        radial-gradient(circle at 8% 42%, rgba(131, 186, 244, 0.10), transparent 34rem),
+        var(--bg);
+      color: var(--ink);
+      font-family: "Aptos Display", "Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif;
+      letter-spacing: 0;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 5;
+      pointer-events: none;
+      opacity: 0.22;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.34'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 18px;
+      z-index: 4;
+      display: flex;
+      justify-content: center;
+      padding: 18px 0 0;
+    }
+
+    .nav-inner {
+      width: min(980px, calc(100% - 28px));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 8px 8px 8px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(11, 13, 10, 0.78);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 16px 70px rgba(0, 0, 0, 0.28);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-width: max-content;
+      font-weight: 760;
+    }
+
+    .brand img {
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+      background: var(--lime);
+      box-shadow: 0 0 26px rgba(200, 241, 53, 0.22);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      padding: 9px 12px;
+      border-radius: 999px;
+      transition: color 500ms var(--ease), background 500ms var(--ease);
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+      background: rgba(244, 240, 232, 0.07);
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      border: 0;
+      border-radius: 999px;
+      padding: 7px 7px 7px 18px;
+      background: var(--lime);
+      color: #171a12;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 760;
+      cursor: pointer;
+      transition: transform 500ms var(--ease), box-shadow 500ms var(--ease);
+      box-shadow: 0 16px 42px rgba(200, 241, 53, 0.18);
+    }
+
+    .cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 56px rgba(200, 241, 53, 0.25);
+    }
+
+    .cta:active {
+      transform: scale(0.985);
+    }
+
+    .cta span:last-child {
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(23, 26, 18, 0.12);
+      transition: transform 500ms var(--ease);
+    }
+
+    .cta:hover span:last-child {
+      transform: translateX(2px) translateY(-1px);
+    }
+
+    .hero {
+      min-height: 92dvh;
+      display: grid;
+      align-items: end;
+      padding: 82px 0 70px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(340px, 1.08fr);
+      gap: clamp(34px, 7vw, 86px);
+      align-items: end;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      width: max-content;
+      max-width: 100%;
+      padding: 8px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 720;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      background: rgba(244, 240, 232, 0.04);
+    }
+
+    .pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 18px rgba(200, 241, 53, 0.8);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      max-width: 790px;
+      margin-top: 28px;
+      font-size: clamp(58px, 9.2vw, 126px);
+      line-height: 0.87;
+      font-weight: 760;
+      letter-spacing: -0.035em;
+    }
+
+    .hero-copy {
+      max-width: 620px;
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.5;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .ghost-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 720;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line-strong);
+      transition: color 400ms var(--ease), border-color 400ms var(--ease);
+    }
+
+    .ghost-link:hover {
+      color: var(--lime);
+      border-color: rgba(200, 241, 53, 0.6);
+    }
+
+    .product-stage {
+      position: relative;
+      isolation: isolate;
+      min-height: 600px;
+    }
+
+    .orbit-note {
+      position: absolute;
+      right: 2%;
+      top: 0;
+      z-index: 2;
+      width: 182px;
+      padding: 15px;
+      border: 1px solid rgba(200, 241, 53, 0.28);
+      border-radius: 18px;
+      background: rgba(200, 241, 53, 0.11);
+      color: var(--paper);
+      transform: rotate(3deg);
+    }
+
+    .orbit-note strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 13px;
+    }
+
+    .orbit-note small {
+      display: block;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .window-shell {
+      position: absolute;
+      inset: 70px 4% auto auto;
+      width: min(100%, 620px);
+      padding: 8px;
+      border: 1px solid rgba(244, 240, 232, 0.14);
+      border-radius: 32px;
+      background: rgba(244, 240, 232, 0.06);
+      box-shadow: 0 42px 120px rgba(0, 0, 0, 0.42);
+      transform: rotate(-2.2deg);
+    }
+
+    .window {
+      overflow: hidden;
+      min-height: 456px;
+      border: 1px solid rgba(244, 240, 232, 0.11);
+      border-radius: 25px;
+      background: #0e100d;
+      box-shadow: inset 0 1px 0 rgba(244, 240, 232, 0.12);
+    }
+
+    .window-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(244, 240, 232, 0.09);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .dots {
+      display: flex;
+      gap: 7px;
+    }
+
+    .dots i {
+      display: block;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: rgba(244, 240, 232, 0.22);
+    }
+
+    .app-ui {
+      display: grid;
+      grid-template-columns: 150px 1fr 150px;
+      min-height: 405px;
+    }
+
+    .rail,
+    .side {
+      padding: 18px;
+      background: rgba(244, 240, 232, 0.025);
+    }
+
+    .rail {
+      border-right: 1px solid rgba(244, 240, 232, 0.08);
+    }
+
+    .side {
+      border-left: 1px solid rgba(244, 240, 232, 0.08);
+    }
+
+    .rail-line,
+    .task-line {
+      height: 10px;
+      border-radius: 99px;
+      background: rgba(244, 240, 232, 0.12);
+    }
+
+    .rail-line {
+      margin-bottom: 12px;
+    }
+
+    .rail-line:nth-child(2) {
+      width: 70%;
+      background: rgba(200, 241, 53, 0.32);
+    }
+
+    .rail-line:nth-child(3) {
+      width: 46%;
+    }
+
+    .center {
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .timer {
+      position: relative;
+      width: min(260px, 100%);
+      aspect-ratio: 1;
+      border: 1px solid rgba(200, 241, 53, 0.32);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle, rgba(200, 241, 53, 0.12), transparent 58%),
+        conic-gradient(from -40deg, var(--lime) 0 74%, rgba(244, 240, 232, 0.08) 74% 100%);
+    }
+
+    .timer::after {
+      content: "";
+      position: absolute;
+      inset: 16px;
+      border-radius: 50%;
+      background: #0e100d;
+      border: 1px solid rgba(244, 240, 232, 0.10);
+    }
+
+    .timer-text {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .timer-text strong {
+      display: block;
+      font-size: clamp(42px, 6vw, 60px);
+      letter-spacing: -0.04em;
+    }
+
+    .timer-text span {
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .task-stack {
+      display: grid;
+      gap: 13px;
+      width: 100%;
+    }
+
+    .task {
+      padding: 12px;
+      border: 1px solid rgba(244, 240, 232, 0.09);
+      border-radius: 14px;
+      background: rgba(244, 240, 232, 0.04);
+    }
+
+    .task-line {
+      width: 84%;
+      margin-bottom: 9px;
+    }
+
+    .task small {
+      color: var(--dim);
+    }
+
+    section {
+      padding: clamp(82px, 12vw, 150px) 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 0.72fr 1fr;
+      gap: clamp(28px, 6vw, 78px);
+      align-items: end;
+      margin-bottom: 42px;
+    }
+
+    .kicker {
+      color: var(--lime);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(38px, 5.8vw, 78px);
+      line-height: 0.96;
+      font-weight: 760;
+      letter-spacing: -0.032em;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.55;
+      max-width: 610px;
+    }
+
+    .proof-strip {
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr 0.9fr;
+      gap: 12px;
+    }
+
+    .proof {
+      min-height: 174px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(244, 240, 232, 0.045);
+    }
+
+    .proof strong {
+      display: block;
+      font-size: clamp(30px, 5vw, 62px);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+
+    .proof span {
+      display: block;
+      margin-top: 14px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 14px;
+    }
+
+    .feature-large,
+    .feature-small {
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: rgba(244, 240, 232, 0.045);
+      overflow: hidden;
+    }
+
+    .feature-large {
+      min-height: 520px;
+      display: grid;
+      grid-template-rows: 1fr auto;
+    }
+
+    .focus-map {
+      position: relative;
+      min-height: 340px;
+      background:
+        linear-gradient(rgba(244, 240, 232, 0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(244, 240, 232, 0.055) 1px, transparent 1px);
+      background-size: 38px 38px;
+    }
+
+    .focus-map::before {
+      content: "25";
+      position: absolute;
+      left: clamp(22px, 6vw, 66px);
+      top: 36px;
+      color: rgba(200, 241, 53, 0.82);
+      font-size: clamp(98px, 17vw, 188px);
+      line-height: 0.78;
+      font-weight: 760;
+      letter-spacing: -0.08em;
+    }
+
+    .focus-map::after {
+      content: "";
+      position: absolute;
+      right: 38px;
+      bottom: 40px;
+      width: 160px;
+      height: 160px;
+      border: 1px solid rgba(131, 186, 244, 0.34);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(131, 186, 244, 0.22), transparent 63%);
+    }
+
+    .feature-copy {
+      padding: 26px;
+    }
+
+    .feature-copy h3,
+    .feature-small h3 {
+      font-size: 28px;
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+    }
+
+    .feature-copy p,
+    .feature-small p {
+      margin-top: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .feature-column {
+      display: grid;
+      gap: 14px;
+    }
+
+    .feature-small {
+      min-height: 253px;
+      padding: 24px;
+      display: grid;
+      align-content: space-between;
+    }
+
+    .mini-icon {
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--line-strong);
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      color: var(--lime);
+      background: rgba(200, 241, 53, 0.08);
+    }
+
+    .mini-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .showcase {
+      display: grid;
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: clamp(24px, 5vw, 70px);
+      align-items: center;
+    }
+
+    .panel-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .panel-item {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 15px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(244, 240, 232, 0.04);
+    }
+
+    .panel-item b {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .panel-item span {
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .num {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      color: #171a12;
+      background: var(--paper);
+      font-weight: 850;
+    }
+
+    .desktop-card {
+      padding: 8px;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: rgba(244, 240, 232, 0.05);
+      transform: rotate(1.2deg);
+    }
+
+    .desktop-inner {
+      min-height: 520px;
+      border-radius: 23px;
+      border: 1px solid rgba(244, 240, 232, 0.10);
+      background:
+        radial-gradient(circle at 82% 24%, rgba(240, 111, 88, 0.19), transparent 16rem),
+        radial-gradient(circle at 22% 76%, rgba(200, 241, 53, 0.15), transparent 18rem),
+        #10130d;
+      padding: clamp(20px, 4vw, 34px);
+      display: grid;
+      align-content: space-between;
+    }
+
+    .desktop-inner h3 {
+      max-width: 390px;
+      font-size: clamp(34px, 5vw, 64px);
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+    }
+
+    .block-board {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      align-items: end;
+    }
+
+    .block-tile {
+      min-height: 150px;
+      border: 1px solid rgba(244, 240, 232, 0.13);
+      border-radius: 18px;
+      padding: 14px;
+      display: grid;
+      align-content: space-between;
+      background: rgba(244, 240, 232, 0.06);
+    }
+
+    .block-tile:nth-child(2) {
+      min-height: 210px;
+      background: rgba(200, 241, 53, 0.10);
+    }
+
+    .block-tile:nth-child(3) {
+      min-height: 180px;
+    }
+
+    .block-tile span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .block-tile b {
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .quote-band {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: clamp(56px, 9vw, 92px) 0;
+      background:
+        linear-gradient(90deg, rgba(200, 241, 53, 0.08), transparent 35%),
+        rgba(244, 240, 232, 0.025);
+    }
+
+    .quote {
+      display: grid;
+      grid-template-columns: 0.42fr 1fr;
+      gap: clamp(24px, 6vw, 78px);
+      align-items: start;
+    }
+
+    .quote mark {
+      display: inline-grid;
+      place-items: center;
+      width: 88px;
+      height: 88px;
+      border-radius: 24px;
+      background: var(--lime);
+      color: #171a12;
+      font-size: 58px;
+      font-weight: 760;
+      letter-spacing: -0.08em;
+    }
+
+    .quote blockquote {
+      margin: 0;
+      max-width: 920px;
+      font-size: clamp(34px, 5.6vw, 78px);
+      line-height: 1;
+      letter-spacing: -0.038em;
+      font-weight: 720;
+    }
+
+    .quote cite {
+      display: block;
+      margin-top: 24px;
+      color: var(--muted);
+      font-style: normal;
+      line-height: 1.5;
+    }
+
+    .pricing {
+      display: grid;
+      grid-template-columns: 0.88fr 1.12fr;
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .price-card {
+      padding: clamp(26px, 4vw, 42px);
+      border: 1px solid rgba(200, 241, 53, 0.26);
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 82% 18%, rgba(200, 241, 53, 0.18), transparent 16rem),
+        rgba(244, 240, 232, 0.045);
+    }
+
+    .price-card h3 {
+      font-size: clamp(36px, 5vw, 72px);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+
+    .price {
+      margin: 30px 0;
+      font-size: clamp(58px, 9vw, 120px);
+      line-height: 0.82;
+      letter-spacing: -0.07em;
+      font-weight: 760;
+    }
+
+    .price small {
+      color: var(--muted);
+      font-size: 18px;
+      letter-spacing: 0;
+      font-weight: 500;
+    }
+
+    .checklist {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      color: var(--muted);
+    }
+
+    .checklist li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .checklist li::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      margin-top: 8px;
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 14px rgba(200, 241, 53, 0.5);
+      flex: 0 0 auto;
+    }
+
+    .faq {
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: rgba(244, 240, 232, 0.035);
+      overflow: hidden;
+    }
+
+    .faq details {
+      border-bottom: 1px solid var(--line);
+      padding: 22px 24px;
+    }
+
+    .faq details:last-child {
+      border-bottom: 0;
+    }
+
+    .faq summary {
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      font-weight: 760;
+    }
+
+    .faq summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq summary::after {
+      content: "+";
+      color: var(--lime);
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .faq details[open] summary::after {
+      content: "-";
+    }
+
+    .faq p {
+      margin-top: 14px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .final {
+      min-height: 76dvh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding-bottom: 54px;
+    }
+
+    .final h2 {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .final p {
+      max-width: 590px;
+      margin: 24px auto 32px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.55;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 26px 0 38px;
+      border-top: 1px solid var(--line);
+      color: var(--dim);
+      font-size: 13px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 900ms var(--ease), transform 900ms var(--ease);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .shell {
+        width: min(100% - 32px, 680px);
+      }
+
+      .nav-inner {
+        border-radius: 26px;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 72px;
+      }
+
+      .hero-grid,
+      .section-head,
+      .showcase,
+      .quote,
+      .pricing {
+        grid-template-columns: 1fr;
+      }
+
+      .product-stage {
+        min-height: 560px;
+        margin-top: 10px;
+      }
+
+      .window-shell {
+        inset: 84px 0 auto 0;
+        width: 100%;
+      }
+
+      .app-ui {
+        grid-template-columns: 1fr;
+      }
+
+      .rail,
+      .side {
+        display: none;
+      }
+
+      .proof-strip,
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .block-board {
+        grid-template-columns: 1fr;
+      }
+
+      .block-tile,
+      .block-tile:nth-child(2),
+      .block-tile:nth-child(3) {
+        min-height: 138px;
+      }
+
+      .desktop-card {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .nav {
+        top: 10px;
+      }
+
+      .nav-inner {
+        width: calc(100% - 20px);
+      }
+
+      .brand span {
+        display: none;
+      }
+
+      .cta {
+        padding-left: 14px;
+        font-size: 13px;
+      }
+
+      h1 {
+        font-size: clamp(50px, 16vw, 74px);
+      }
+
+      .hero-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .hero-actions .cta,
+      .final .cta {
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      .orbit-note {
+        right: 0;
+        width: 150px;
+      }
+
+      .window-shell {
+        transform: none;
+      }
+
+      .timer {
+        width: min(228px, 100%);
+      }
+
+      .proof,
+      .feature-copy,
+      .feature-small,
+      .panel-item,
+      .price-card,
+      .faq details {
+        padding: 20px;
+      }
+
+      .footer {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav" aria-label="Navegacao principal">
+      <div class="nav-inner">
+        <a class="brand" href="#top" aria-label="Toki">
+          <img src="../src/assets/icon.png" alt="">
+          <span>Toki</span>
+        </a>
+        <div class="nav-links" aria-label="Secoes">
+          <a href="#recursos">Recursos</a>
+          <a href="#desktop">Desktop</a>
+          <a href="#preco">Preco</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <a class="cta" href="#preco"><span>Entrar em foco</span><span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </nav>
+
+    <header class="hero shell" id="top">
+      <div class="hero-grid">
+        <div class="reveal">
+          <div class="eyebrow"><i class="pulse" aria-hidden="true"></i> App desktop de foco</div>
+          <h1>Seu dia em modo trabalho.</h1>
+          <p class="hero-copy">Toki junta Pomodoro, tarefas diarias e bloqueio de distracoes em uma janela discreta para Windows. Menos abas abertas. Mais ciclos fechados.</p>
+          <div class="hero-actions">
+            <a class="cta" href="#preco"><span>Baixar Toki</span><span aria-hidden="true">&nearr;</span></a>
+            <a class="ghost-link" href="#desktop">Ver como funciona <span aria-hidden="true">&darr;</span></a>
+          </div>
+        </div>
+
+        <div class="product-stage reveal" aria-label="Preview visual do Toki">
+          <div class="orbit-note">
+            <strong>Foco ativo</strong>
+            <small>Sites e apps que roubam atencao ficam fora do caminho.</small>
+          </div>
+          <div class="window-shell">
+            <div class="window">
+              <div class="window-top">
+                <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+                <span>Toki / sessao de foco</span>
+              </div>
+              <div class="app-ui">
+                <aside class="rail" aria-hidden="true">
+                  <div class="rail-line"></div>
+                  <div class="rail-line"></div>
+                  <div class="rail-line"></div>
+                  <div class="rail-line" style="width: 58%;"></div>
+                </aside>
+                <main class="center">
+                  <div class="timer">
+                    <div class="timer-text">
+                      <strong>18:42</strong>
+                      <span>Foco</span>
+                    </div>
+                  </div>
+                </main>
+                <aside class="side">
+                  <div class="task-stack" aria-hidden="true">
+                    <div class="task"><div class="task-line"></div><small>Rascunho</small></div>
+                    <div class="task"><div class="task-line" style="width: 62%;"></div><small>Revisao</small></div>
+                    <div class="task"><div class="task-line" style="width: 76%;"></div><small>Enviar</small></div>
+                  </div>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="shell reveal" aria-labelledby="prova-title">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Rotina sem teatro</p>
+            <h2 id="prova-title">Uma central pequena para decisoes grandes.</h2>
+          </div>
+          <p>O Toki nao tenta administrar sua vida inteira. Ele protege o proximo bloco de trabalho, registra o que voce terminou e reduz o atrito antes de comecar.</p>
+        </div>
+        <div class="proof-strip">
+          <div class="proof">
+            <strong>25 min</strong>
+            <span>Ciclos de foco configuraveis para trabalho, pausas curtas e pausas longas.</span>
+          </div>
+          <div class="proof">
+            <strong>1 lista</strong>
+            <span>Tarefas comuns e diarias no mesmo fluxo, sem trocar de ferramenta.</span>
+          </div>
+          <div class="proof">
+            <strong>0 ruido</strong>
+            <span>Bloqueio local para sites e aplicativos durante a sessao.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="shell reveal" id="recursos" aria-labelledby="recursos-title">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Recursos</p>
+            <h2 id="recursos-title">Feito para ficar aberto, nao para chamar atencao.</h2>
+          </div>
+          <p>A interface trabalha em segundo plano: timer claro, tarefas visiveis, historico diario e controles diretos quando voce precisa ajustar o plano.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-large">
+            <div class="focus-map" aria-hidden="true"></div>
+            <div class="feature-copy">
+              <h3>Pomodoro com presenca visual.</h3>
+              <p>O contador deixa o tempo legivel sem ocupar a sua cabeca. Voce sabe onde esta no ciclo e volta para o trabalho.</p>
+            </div>
+          </article>
+          <div class="feature-column">
+            <article class="feature-small">
+              <div class="mini-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"></path><path d="M4 20h16"></path></svg>
+              </div>
+              <div>
+                <h3>Tarefas que voltam.</h3>
+                <p>Marque tarefas diarias para reaparecerem no dia seguinte, sem recriar a mesma lista.</p>
+              </div>
+            </article>
+            <article class="feature-small">
+              <div class="mini-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 3l7 4v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V7l7-4z"></path><path d="M9.5 12.5l1.8 1.8 3.8-4.4"></path></svg>
+              </div>
+              <div>
+                <h3>Bloqueio local.</h3>
+                <p>Escolha sites e apps para segurar durante o foco. A sessao fica protegida no proprio desktop.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="shell reveal" id="desktop" aria-labelledby="desktop-title">
+        <div class="showcase">
+          <div>
+            <p class="kicker">Desktop primeiro</p>
+            <h2 id="desktop-title">Uma ferramenta para o lugar onde voce trabalha.</h2>
+          </div>
+          <div class="panel-list">
+            <div class="panel-item">
+              <div class="num">1</div>
+              <div><b>Escolha a tarefa do ciclo.</b><span>O foco comeca com uma intencao simples, visivel no timer.</span></div>
+            </div>
+            <div class="panel-item">
+              <div class="num">2</div>
+              <div><b>Ative o bloqueio.</b><span>Apps e sites configurados saem da rota enquanto o tempo corre.</span></div>
+            </div>
+            <div class="panel-item">
+              <div class="num">3</div>
+              <div><b>Feche o bloco.</b><span>Registre progresso, mantenha a sequencia e ajuste o proximo ciclo.</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="desktop-card" style="margin-top: 18px;">
+          <div class="desktop-inner">
+            <h3>Controle de foco com cara de instrumento, nao de feed.</h3>
+            <div class="block-board">
+              <div class="block-tile"><span>Sites</span><b>twitter.com</b></div>
+              <div class="block-tile"><span>Apps</span><b>YouTube, TikTok</b></div>
+              <div class="block-tile"><span>Estado</span><b>Protegido</b></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="quote-band reveal" aria-labelledby="quote-title">
+        <div class="quote shell">
+          <mark aria-hidden="true">25</mark>
+          <div>
+            <blockquote id="quote-title">O melhor sistema de produtividade e aquele que some depois de iniciar o trabalho.</blockquote>
+            <cite>Toki foi desenhado para a janela ficar util, silenciosa e facil de confiar durante o dia inteiro.</cite>
+          </div>
+        </div>
+      </section>
+
+      <section class="shell reveal" id="preco" aria-labelledby="preco-title">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Oferta simples</p>
+            <h2 id="preco-title">Comece com uma versao direta para Windows.</h2>
+          </div>
+          <p>Landing pronta para divulgar o app, captar interessados ou substituir o texto por link de download quando seu build final estiver empacotado.</p>
+        </div>
+        <div class="pricing">
+          <article class="price-card">
+            <h3>Toki Desktop</h3>
+            <div class="price">R$ 0 <small>/ beta</small></div>
+            <a class="cta" href="../dist/"><span>Ver builds locais</span><span aria-hidden="true">&rarr;</span></a>
+          </article>
+          <div class="faq" id="faq">
+            <details open>
+              <summary>O Toki funciona offline?</summary>
+              <p>Sim. A proposta da landing apresenta um app desktop local, com dados e bloqueios pensados para rodar no Windows.</p>
+            </details>
+            <details>
+              <summary>Posso trocar os tempos do Pomodoro?</summary>
+              <p>Sim. O app ja trabalha com tempos customizados para foco, pausa curta e pausa longa.</p>
+            </details>
+            <details>
+              <summary>Esta pagina altera meu app?</summary>
+              <p>Nao. Ela e um arquivo separado em uma pasta nova, feito para marketing e apresentacao.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="final shell reveal" aria-labelledby="final-title">
+        <div>
+          <p class="kicker">Toki</p>
+          <h2 id="final-title">Abra, escolha uma tarefa, proteja o bloco.</h2>
+          <p>Uma pagina de SaaS para vender a ideia do seu app desktop sem depender do codigo principal do produto.</p>
+          <a class="cta" href="#top"><span>Voltar ao topo</span><span aria-hidden="true">&uarr;</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer shell">
+      <span>Toki, Pomodoro & Productivity App</span>
+      <span>Landing isolada em /landing</span>
+    </footer>
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+  </script>
+</body>
+</html>

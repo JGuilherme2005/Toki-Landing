@@ -3,8 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Toki e um app desktop para foco profundo, Pomodoro, tarefas diarias e bloqueio de distracoes.">
-  <title>Toki | Foco para desktop</title>
+  <meta name="description" content="Toki é um app desktop para Windows com Pomodoro, tarefas diárias e bloqueio local de distrações. Escolha uma tarefa, inicie o timer e proteja o bloco de foco.">
+  <meta property="og:title" content="Toki | Foco para Windows">
+  <meta property="og:description" content="Pomodoro, tarefas diárias e bloqueio local em uma janela discreta para Windows.">
+  <meta property="og:image" content="assets/toki-poster.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Toki | Foco para Windows">
+  <meta name="twitter:description" content="Escolha uma tarefa, inicie o timer e bloqueie distrações até o ciclo acabar.">
+  <meta name="twitter:image" content="assets/toki-poster.png">
+  <link rel="icon" href="../src/assets/icon.ico">
+  <title>Toki | Foco para Windows</title>
   <style>
     :root {
       color-scheme: dark;
@@ -21,6 +30,7 @@
       --coral: #f06f58;
       --paper: #e9dfca;
       --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
     }
 
     * {
@@ -65,9 +75,35 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+    a:focus-visible,
+    button:focus-visible,
+    summary:focus-visible,
+    video:focus-visible {
+      outline: 2px solid var(--lime);
+      outline-offset: 4px;
+    }
+
     .page {
       position: relative;
       z-index: 1;
+    }
+
+    .skip-link {
+      position: fixed;
+      left: 16px;
+      top: 16px;
+      z-index: 10;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: var(--lime);
+      color: #171a12;
+      font-weight: 760;
+      transform: translateY(-150%);
+      transition: transform 180ms var(--ease-out);
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
     }
 
     .shell {
@@ -146,7 +182,7 @@
       font-size: 14px;
       font-weight: 760;
       cursor: pointer;
-      transition: transform 500ms var(--ease), box-shadow 500ms var(--ease);
+      transition: transform 180ms var(--ease-out), box-shadow 220ms var(--ease-out), background 220ms var(--ease-out);
       box-shadow: 0 16px 42px rgba(200, 241, 53, 0.18);
     }
 
@@ -156,7 +192,7 @@
     }
 
     .cta:active {
-      transform: scale(0.985);
+      transform: scale(0.97);
     }
 
     .cta span:last-child {
@@ -174,16 +210,16 @@
     }
 
     .hero {
-      min-height: 92dvh;
+      min-height: 88dvh;
       display: grid;
       align-items: end;
-      padding: 82px 0 70px;
+      padding: 76px 0 54px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 0.92fr) minmax(340px, 1.08fr);
-      gap: clamp(34px, 7vw, 86px);
+      grid-template-columns: minmax(0, 0.86fr) minmax(360px, 1.14fr);
+      gap: clamp(34px, 6vw, 78px);
       align-items: end;
     }
 
@@ -220,12 +256,13 @@
     }
 
     h1 {
-      max-width: 790px;
+      max-width: 760px;
       margin-top: 28px;
-      font-size: clamp(58px, 9.2vw, 126px);
-      line-height: 0.87;
+      font-size: clamp(52px, 7.6vw, 104px);
+      line-height: 0.9;
       font-weight: 760;
       letter-spacing: -0.035em;
+      text-wrap: balance;
     }
 
     .hero-copy {
@@ -242,6 +279,24 @@
       flex-wrap: wrap;
       gap: 14px;
       margin-top: 34px;
+    }
+
+    .hero-trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin: 24px 0 0;
+      padding: 0;
+      list-style: none;
+      color: var(--paper);
+      font-size: 13px;
+    }
+
+    .hero-trust li {
+      padding: 8px 10px;
+      border: 1px solid rgba(244, 240, 232, 0.12);
+      border-radius: 11px;
+      background: rgba(244, 240, 232, 0.045);
     }
 
     .ghost-link {
@@ -265,6 +320,62 @@
       position: relative;
       isolation: isolate;
       min-height: 600px;
+    }
+
+    .hero-media {
+      display: grid;
+      gap: 14px;
+      align-self: end;
+    }
+
+    .hero-video-frame {
+      position: relative;
+      overflow: hidden;
+      padding: 8px;
+      border: 1px solid rgba(244, 240, 232, 0.15);
+      border-radius: 30px;
+      background: rgba(244, 240, 232, 0.055);
+      box-shadow: 0 44px 120px rgba(0, 0, 0, 0.46);
+      transform: rotate(-1.4deg);
+    }
+
+    .hero-video-frame::after {
+      content: "45 segundos do app em uso";
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: rgba(11, 13, 10, 0.76);
+      color: var(--paper);
+      font-size: 12px;
+      font-weight: 760;
+      pointer-events: none;
+    }
+
+    .hero-video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 1px solid rgba(244, 240, 232, 0.10);
+      border-radius: 22px;
+      background: #0d100b;
+      object-fit: cover;
+    }
+
+    .media-proof {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .media-proof span {
+      padding: 10px;
+      border: 1px solid rgba(244, 240, 232, 0.10);
+      border-radius: 13px;
+      background: rgba(244, 240, 232, 0.035);
     }
 
     .orbit-note {
@@ -480,6 +591,58 @@
       max-width: 610px;
     }
 
+    .video-section {
+      padding-top: 24px;
+    }
+
+    .video-frame {
+      position: relative;
+      overflow: hidden;
+      padding: 8px;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: rgba(244, 240, 232, 0.05);
+      box-shadow: 0 34px 100px rgba(0, 0, 0, 0.32);
+    }
+
+    .demo-video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 1px solid rgba(244, 240, 232, 0.10);
+      border-radius: 23px;
+      background: #050604;
+      object-fit: cover;
+    }
+
+    .proof-media-grid {
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr 0.88fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .proof-shot {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(244, 240, 232, 0.04);
+    }
+
+    .proof-shot img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      transition: transform 700ms var(--ease-out);
+    }
+
+    .proof-shot figcaption {
+      padding: 14px 16px 16px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
     .proof-strip {
       display: grid;
       grid-template-columns: 1.35fr 0.9fr 0.9fr;
@@ -531,34 +694,44 @@
     .focus-map {
       position: relative;
       min-height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px clamp(24px, 6vw, 60px);
       background:
         linear-gradient(rgba(244, 240, 232, 0.055) 1px, transparent 1px),
         linear-gradient(90deg, rgba(244, 240, 232, 0.055) 1px, transparent 1px);
       background-size: 38px 38px;
     }
 
-    .focus-map::before {
-      content: "25";
-      position: absolute;
-      left: clamp(22px, 6vw, 66px);
-      top: 36px;
-      color: rgba(200, 241, 53, 0.82);
+    .fm-number {
+      color: rgba(200, 241, 53, 0.88);
       font-size: clamp(98px, 17vw, 188px);
-      line-height: 0.78;
       font-weight: 760;
+      line-height: 0.78;
       letter-spacing: -0.08em;
     }
 
-    .focus-map::after {
+    .fm-ring {
+      position: relative;
+      flex: 0 0 auto;
+      width: clamp(130px, 16vw, 200px);
+      height: clamp(130px, 16vw, 200px);
+      border-radius: 50%;
+      border: 1px solid rgba(200, 241, 53, 0.32);
+      background:
+        radial-gradient(circle, rgba(200, 241, 53, 0.10), transparent 56%),
+        conic-gradient(from -40deg, var(--lime) 0 74%, rgba(244, 240, 232, 0.08) 74% 100%);
+      box-shadow: 0 0 40px rgba(200, 241, 53, 0.07);
+    }
+
+    .fm-ring::after {
       content: "";
       position: absolute;
-      right: 38px;
-      bottom: 40px;
-      width: 160px;
-      height: 160px;
-      border: 1px solid rgba(131, 186, 244, 0.34);
+      inset: 14px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(131, 186, 244, 0.22), transparent 63%);
+      background: #0e100d;
+      border: 1px solid rgba(244, 240, 232, 0.09);
     }
 
     .feature-copy {
@@ -828,6 +1001,17 @@
       flex: 0 0 auto;
     }
 
+    .download-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .price-card .cta {
+      margin-top: 24px;
+    }
+
     .faq {
       border: 1px solid var(--line);
       border-radius: 28px;
@@ -896,6 +1080,37 @@
       line-height: 1.55;
     }
 
+    .legal {
+      padding-top: 30px;
+      padding-bottom: 30px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .legal-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .legal-item {
+      padding: 18px;
+      border: 1px solid rgba(244, 240, 232, 0.10);
+      border-radius: 18px;
+      background: rgba(244, 240, 232, 0.035);
+    }
+
+    .legal-item h3 {
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .legal-item p,
+    .legal-item a {
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
     .footer {
       display: flex;
       justify-content: space-between;
@@ -904,6 +1119,21 @@
       border-top: 1px solid var(--line);
       color: var(--dim);
       font-size: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      transition: color 180ms var(--ease-out);
+    }
+
+    .footer-links a:hover {
+      color: var(--ink);
     }
 
     .reveal {
@@ -940,8 +1170,18 @@
       .section-head,
       .showcase,
       .quote,
-      .pricing {
+      .pricing,
+      .proof-media-grid,
+      .legal-grid {
         grid-template-columns: 1fr;
+      }
+
+      .hero-media {
+        margin-top: 10px;
+      }
+
+      .hero-video-frame {
+        transform: none;
       }
 
       .product-stage {
@@ -1041,10 +1281,39 @@
       .footer {
         flex-direction: column;
       }
+
+      .media-proof {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .proof-shot:hover img {
+        transform: scale(1.035);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 1ms !important;
+        transition-duration: 1ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
     }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Pular para o conteúdo</a>
   <div class="page">
     <nav class="nav" aria-label="Navegacao principal">
       <div class="nav-inner">
@@ -1053,89 +1322,100 @@
           <span>Toki</span>
         </a>
         <div class="nav-links" aria-label="Secoes">
+          <a href="#demo">Demo</a>
           <a href="#recursos">Recursos</a>
           <a href="#desktop">Desktop</a>
-          <a href="#preco">Preco</a>
+          <a href="#preco">Preço</a>
           <a href="#faq">FAQ</a>
         </div>
-        <a class="cta" href="#preco"><span>Entrar em foco</span><span aria-hidden="true">&rarr;</span></a>
+        <a class="cta" href="../dist/toki%20Setup%201.0.0.exe" download><span>Baixar para Windows</span><span aria-hidden="true">&rarr;</span></a>
       </div>
     </nav>
 
     <header class="hero shell" id="top">
       <div class="hero-grid">
         <div class="reveal">
-          <div class="eyebrow"><i class="pulse" aria-hidden="true"></i> App desktop de foco</div>
-          <h1>Seu dia em modo trabalho.</h1>
-          <p class="hero-copy">Toki junta Pomodoro, tarefas diarias e bloqueio de distracoes em uma janela discreta para Windows. Menos abas abertas. Mais ciclos fechados.</p>
+          <div class="eyebrow"><i class="pulse" aria-hidden="true"></i> Beta para Windows</div>
+          <h1>Escolha a tarefa. O Toki segura o resto.</h1>
+          <p class="hero-copy">Inicie um ciclo de foco, deixe a tarefa visível e bloqueie sites ou apps que tiram você do trabalho. Tudo em uma janela local para Windows.</p>
           <div class="hero-actions">
-            <a class="cta" href="#preco"><span>Baixar Toki</span><span aria-hidden="true">&nearr;</span></a>
-            <a class="ghost-link" href="#desktop">Ver como funciona <span aria-hidden="true">&darr;</span></a>
+            <a class="cta" href="../dist/toki%20Setup%201.0.0.exe" download><span>Baixar para Windows</span><span aria-hidden="true">&darr;</span></a>
+            <a class="ghost-link" href="#demo">Assistir demo <span aria-hidden="true">&darr;</span></a>
           </div>
+          <ul class="hero-trust" aria-label="Pontos de confiança">
+            <li>App desktop local</li>
+            <li>Sem conta no beta</li>
+            <li>Bloqueio de sites e apps</li>
+          </ul>
         </div>
 
-        <div class="product-stage reveal" aria-label="Preview visual do Toki">
-          <div class="orbit-note">
-            <strong>Foco ativo</strong>
-            <small>Sites e apps que roubam atencao ficam fora do caminho.</small>
+        <div class="hero-media reveal" aria-label="Vídeo de apresentação do Toki">
+          <div class="hero-video-frame">
+            <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/toki-poster.png">
+              <source src="assets/toki-improved.mp4" type="video/mp4">
+            </video>
           </div>
-          <div class="window-shell">
-            <div class="window">
-              <div class="window-top">
-                <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
-                <span>Toki / sessao de foco</span>
-              </div>
-              <div class="app-ui">
-                <aside class="rail" aria-hidden="true">
-                  <div class="rail-line"></div>
-                  <div class="rail-line"></div>
-                  <div class="rail-line"></div>
-                  <div class="rail-line" style="width: 58%;"></div>
-                </aside>
-                <main class="center">
-                  <div class="timer">
-                    <div class="timer-text">
-                      <strong>18:42</strong>
-                      <span>Foco</span>
-                    </div>
-                  </div>
-                </main>
-                <aside class="side">
-                  <div class="task-stack" aria-hidden="true">
-                    <div class="task"><div class="task-line"></div><small>Rascunho</small></div>
-                    <div class="task"><div class="task-line" style="width: 62%;"></div><small>Revisao</small></div>
-                    <div class="task"><div class="task-line" style="width: 76%;"></div><small>Enviar</small></div>
-                  </div>
-                </aside>
-              </div>
-            </div>
+          <div class="media-proof" aria-label="Resumo do fluxo do app">
+            <span>1. Escolha o bloco</span>
+            <span>2. Ative o foco</span>
+            <span>3. Termine sem feed aberto</span>
           </div>
         </div>
       </div>
     </header>
 
-    <main>
+    <main id="main">
+      <section class="shell reveal video-section" id="demo" aria-labelledby="demo-title">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Apresentação</p>
+            <h2 id="demo-title">Veja o Toki em movimento.</h2>
+          </div>
+          <p>45 segundos do app em uso: timer, tarefa atual e bloqueio local aparecendo como parte do fluxo de trabalho.</p>
+        </div>
+        <div class="video-frame">
+          <video class="demo-video" controls preload="metadata" poster="assets/toki-poster.png">
+            <source src="assets/toki-improved.mp4" type="video/mp4">
+            Seu navegador não conseguiu carregar o vídeo de apresentação do Toki.
+          </video>
+        </div>
+      </section>
+
       <section class="shell reveal" aria-labelledby="prova-title">
         <div class="section-head">
           <div>
-            <p class="kicker">Rotina sem teatro</p>
-            <h2 id="prova-title">Uma central pequena para decisoes grandes.</h2>
+            <p class="kicker">Prova concreta</p>
+            <h2 id="prova-title">O foco começa antes da força de vontade.</h2>
           </div>
-          <p>O Toki nao tenta administrar sua vida inteira. Ele protege o proximo bloco de trabalho, registra o que voce terminou e reduz o atrito antes de comecar.</p>
+          <p>Escolha uma tarefa, inicie o timer e deixe o Toki bloquear distrações até o ciclo acabar. O app existe para proteger o próximo bloco, não para virar mais um sistema para administrar.</p>
         </div>
         <div class="proof-strip">
           <div class="proof">
             <strong>25 min</strong>
-            <span>Ciclos de foco configuraveis para trabalho, pausas curtas e pausas longas.</span>
+            <span>Ciclos configuráveis para foco, pausa curta e pausa longa.</span>
           </div>
           <div class="proof">
-            <strong>1 lista</strong>
-            <span>Tarefas comuns e diarias no mesmo fluxo, sem trocar de ferramenta.</span>
+            <strong>Local</strong>
+            <span>Um app para Windows, feito para rodar na máquina onde você trabalha.</span>
           </div>
           <div class="proof">
-            <strong>0 ruido</strong>
-            <span>Bloqueio local para sites e aplicativos durante a sessao.</span>
+            <strong>Sem conta</strong>
+            <span>O beta não precisa de cadastro para testar o fluxo principal.</span>
           </div>
+        </div>
+        <div class="proof-media-grid" aria-label="Frames reais da apresentação do Toki">
+          <figure class="proof-shot">
+            <img src="assets/toki-shot-setup.png" alt="Tela do Toki mostrando a preparação de um bloco de foco.">
+            <figcaption>Prepare a tarefa antes de iniciar o ciclo.</figcaption>
+          </figure>
+          <figure class="proof-shot">
+            <img src="assets/toki-shot-focus.png" alt="Tela do Toki com timer de foco em destaque.">
+            <figcaption>O timer fica legível sem ocupar a cabeça.</figcaption>
+          </figure>
+          <figure class="proof-shot">
+            <img src="assets/toki-shot-block.png" alt="Tela do Toki mostrando bloqueio de distrações.">
+            <figcaption>Sites e apps configurados saem do caminho.</figcaption>
+          </figure>
         </div>
       </section>
 
@@ -1143,16 +1423,19 @@
         <div class="section-head">
           <div>
             <p class="kicker">Recursos</p>
-            <h2 id="recursos-title">Feito para ficar aberto, nao para chamar atencao.</h2>
+            <h2 id="recursos-title">Feito para ficar aberto, não para chamar atenção.</h2>
           </div>
-          <p>A interface trabalha em segundo plano: timer claro, tarefas visiveis, historico diario e controles diretos quando voce precisa ajustar o plano.</p>
+          <p>A interface trabalha em segundo plano: timer claro, tarefa visível, histórico diário e controles diretos quando você precisa ajustar o plano.</p>
         </div>
         <div class="feature-grid">
           <article class="feature-large">
-            <div class="focus-map" aria-hidden="true"></div>
+            <div class="focus-map" aria-hidden="true">
+              <span class="fm-number">25</span>
+              <div class="fm-ring"></div>
+            </div>
             <div class="feature-copy">
-              <h3>Pomodoro com presenca visual.</h3>
-              <p>O contador deixa o tempo legivel sem ocupar a sua cabeca. Voce sabe onde esta no ciclo e volta para o trabalho.</p>
+              <h3>Pomodoro com presença visual.</h3>
+              <p>O contador deixa o tempo legível sem ocupar a sua cabeça. Você sabe onde está no ciclo e volta para o trabalho.</p>
             </div>
           </article>
           <div class="feature-column">
@@ -1162,7 +1445,7 @@
               </div>
               <div>
                 <h3>Tarefas que voltam.</h3>
-                <p>Marque tarefas diarias para reaparecerem no dia seguinte, sem recriar a mesma lista.</p>
+                <p>Marque tarefas diárias para reaparecerem no dia seguinte, sem recriar a mesma lista.</p>
               </div>
             </article>
             <article class="feature-small">
@@ -1171,7 +1454,7 @@
               </div>
               <div>
                 <h3>Bloqueio local.</h3>
-                <p>Escolha sites e apps para segurar durante o foco. A sessao fica protegida no proprio desktop.</p>
+                <p>Escolha sites e apps para segurar durante o foco. A sessão fica protegida no próprio desktop.</p>
               </div>
             </article>
           </div>
@@ -1182,12 +1465,12 @@
         <div class="showcase">
           <div>
             <p class="kicker">Desktop primeiro</p>
-            <h2 id="desktop-title">Uma ferramenta para o lugar onde voce trabalha.</h2>
+            <h2 id="desktop-title">Uma ferramenta para o lugar onde você trabalha.</h2>
           </div>
           <div class="panel-list">
             <div class="panel-item">
               <div class="num">1</div>
-              <div><b>Escolha a tarefa do ciclo.</b><span>O foco comeca com uma intencao simples, visivel no timer.</span></div>
+              <div><b>Escolha a tarefa do ciclo.</b><span>O foco começa com uma intenção simples, visível no timer.</span></div>
             </div>
             <div class="panel-item">
               <div class="num">2</div>
@@ -1195,13 +1478,13 @@
             </div>
             <div class="panel-item">
               <div class="num">3</div>
-              <div><b>Feche o bloco.</b><span>Registre progresso, mantenha a sequencia e ajuste o proximo ciclo.</span></div>
+              <div><b>Feche o bloco.</b><span>Registre progresso, mantenha a sequência e ajuste o próximo ciclo.</span></div>
             </div>
           </div>
         </div>
         <div class="desktop-card" style="margin-top: 18px;">
           <div class="desktop-inner">
-            <h3>Controle de foco com cara de instrumento, nao de feed.</h3>
+            <h3>Controle de foco com cara de instrumento, não de feed.</h3>
             <div class="block-board">
               <div class="block-tile"><span>Sites</span><b>twitter.com</b></div>
               <div class="block-tile"><span>Apps</span><b>YouTube, TikTok</b></div>
@@ -1215,8 +1498,8 @@
         <div class="quote shell">
           <mark aria-hidden="true">25</mark>
           <div>
-            <blockquote id="quote-title">O melhor sistema de produtividade e aquele que some depois de iniciar o trabalho.</blockquote>
-            <cite>Toki foi desenhado para a janela ficar util, silenciosa e facil de confiar durante o dia inteiro.</cite>
+            <blockquote id="quote-title">O melhor sistema de produtividade é aquele que some depois de iniciar o trabalho.</blockquote>
+            <cite>Toki foi desenhado para a janela ficar útil, silenciosa e fácil de confiar durante o dia inteiro.</cite>
           </div>
         </div>
       </section>
@@ -1224,29 +1507,35 @@
       <section class="shell reveal" id="preco" aria-labelledby="preco-title">
         <div class="section-head">
           <div>
-            <p class="kicker">Oferta simples</p>
-            <h2 id="preco-title">Comece com uma versao direta para Windows.</h2>
+            <p class="kicker">Download</p>
+            <h2 id="preco-title">Comece com a versão beta para Windows.</h2>
           </div>
-          <p>Landing pronta para divulgar o app, captar interessados ou substituir o texto por link de download quando seu build final estiver empacotado.</p>
+          <p>Baixe o instalador local, abra o Toki e teste um ciclo completo de foco sem criar conta.</p>
         </div>
         <div class="pricing">
           <article class="price-card">
             <h3>Toki Desktop</h3>
             <div class="price">R$ 0 <small>/ beta</small></div>
-            <a class="cta" href="../dist/"><span>Ver builds locais</span><span aria-hidden="true">&rarr;</span></a>
+            <ul class="checklist">
+              <li>Instalador para Windows</li>
+              <li>Pomodoro, tarefas e bloqueio local</li>
+              <li>Sem conta obrigatória no beta</li>
+            </ul>
+            <p class="download-note">Arquivo local: toki Setup 1.0.0.exe</p>
+            <a class="cta" href="../dist/toki%20Setup%201.0.0.exe" download><span>Baixar instalador</span><span aria-hidden="true">&rarr;</span></a>
           </article>
           <div class="faq" id="faq">
             <details open>
               <summary>O Toki funciona offline?</summary>
-              <p>Sim. A proposta da landing apresenta um app desktop local, com dados e bloqueios pensados para rodar no Windows.</p>
+              <p>Sim. O app é desktop e foi pensado para rodar localmente no Windows.</p>
             </details>
             <details>
               <summary>Posso trocar os tempos do Pomodoro?</summary>
-              <p>Sim. O app ja trabalha com tempos customizados para foco, pausa curta e pausa longa.</p>
+              <p>Sim. O app já trabalha com tempos customizados para foco, pausa curta e pausa longa.</p>
             </details>
             <details>
-              <summary>Esta pagina altera meu app?</summary>
-              <p>Nao. Ela e um arquivo separado em uma pasta nova, feito para marketing e apresentacao.</p>
+              <summary>Preciso criar conta?</summary>
+              <p>Não para testar o beta local. A proposta é abrir o app e iniciar um ciclo de foco direto.</p>
             </details>
           </div>
         </div>
@@ -1256,15 +1545,37 @@
         <div>
           <p class="kicker">Toki</p>
           <h2 id="final-title">Abra, escolha uma tarefa, proteja o bloco.</h2>
-          <p>Uma pagina de SaaS para vender a ideia do seu app desktop sem depender do codigo principal do produto.</p>
-          <a class="cta" href="#top"><span>Voltar ao topo</span><span aria-hidden="true">&uarr;</span></a>
+          <p>O beta já tem o essencial: timer, tarefas diárias e bloqueio local para você testar um bloco de trabalho real.</p>
+          <a class="cta" href="../dist/toki%20Setup%201.0.0.exe" download><span>Baixar para Windows</span><span aria-hidden="true">&darr;</span></a>
+        </div>
+      </section>
+
+      <section class="legal shell" id="legal" aria-label="Informações legais e contato">
+        <div class="legal-grid">
+          <article class="legal-item" id="privacidade">
+            <h3>Privacidade</h3>
+            <p>O beta apresentado aqui roda como app local. Revise permissões de bloqueio antes de usar em sessões longas.</p>
+          </article>
+          <article class="legal-item" id="termos">
+            <h3>Termos</h3>
+            <p>Versão beta gratuita, distribuída para teste local. Use por sua conta e mantenha seu instalador atualizado.</p>
+          </article>
+          <article class="legal-item" id="contato">
+            <h3>Contato</h3>
+            <p>Defina o email público antes de publicar. Por enquanto, use o repositório/local do projeto.</p>
+          </article>
         </div>
       </section>
     </main>
 
     <footer class="footer shell">
       <span>Toki, Pomodoro & Productivity App</span>
-      <span>Landing isolada em /landing</span>
+      <nav class="footer-links" aria-label="Links de rodapé">
+        <a href="#privacidade">Privacidade</a>
+        <a href="#termos">Termos</a>
+        <a href="#contato">Contato</a>
+        <a href="../dist/toki%20Setup%201.0.0.exe" download>Download</a>
+      </nav>
     </footer>
   </div>
 

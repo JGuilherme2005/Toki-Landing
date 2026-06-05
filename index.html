@@ -1,36 +1,38 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Toki é um app desktop para Windows com Pomodoro, tarefas diárias e bloqueio local de distrações. Escolha uma tarefa, inicie o timer e proteja o bloco de foco.">
-  <meta property="og:title" content="Toki | Foco para Windows">
-  <meta property="og:description" content="Pomodoro, tarefas diárias e bloqueio local em uma janela discreta para Windows.">
+  <meta name="description" content="TOKI is a desktop focus and deep work app. A calm place to choose a task, start the cycle, and block distractions.">
+  <meta property="og:title" content="TOKI | Your place to do the work.">
+  <meta property="og:description" content="Everything else was built to keep you scrolling. TOKI was built to help you finally start.">
   <meta property="og:image" content="assets/toki-poster.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Toki | Foco para Windows">
-  <meta name="twitter:description" content="Escolha uma tarefa, inicie o timer e bloqueie distrações até o ciclo acabar.">
+  <meta name="twitter:title" content="TOKI | Your place to do the work.">
+  <meta name="twitter:description" content="An emotional focus environment for desktop, with timer, tasks, and local blocking.">
   <meta name="twitter:image" content="assets/toki-poster.png">
   <link rel="icon" href="../src/assets/icon.ico">
-  <title>Toki | Foco para Windows</title>
+  <title>TOKI | Your place to do the work.</title>
   <style>
     :root {
-      color-scheme: dark;
-      --ink: #f4f0e8;
-      --muted: #afa99c;
-      --dim: #746f65;
-      --line: rgba(244, 240, 232, 0.13);
-      --line-strong: rgba(244, 240, 232, 0.26);
-      --bg: #0b0d0a;
-      --panel: #12150f;
-      --panel-soft: #191d15;
-      --lime: #c8f135;
-      --sky: #83baf4;
-      --coral: #f06f58;
-      --paper: #e9dfca;
+      color-scheme: light;
+      --toki-green: #2d6a4f;
+      --toki-green-mid: #40916c;
+      --toki-green-light: #b7e4c7;
+      --toki-cream: #f8f4ec;
+      --toki-yellow: #f4d35e;
+      --toki-dark: #1b3a2d;
+      --toki-gray: #6b8f71;
+      --obsidian: #6f5bd8;
+      --obsidian-soft: #eee9ff;
+      --ink: #183428;
+      --muted: #5f7c65;
+      --soft: #ecf3e4;
+      --paper: #fffaf0;
+      --line: rgba(27, 58, 45, 0.16);
+      --shadow: rgba(30, 69, 50, 0.16);
       --ease: cubic-bezier(0.16, 1, 0.3, 1);
-      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
     }
 
     * {
@@ -45,9 +47,9 @@
       margin: 0;
       min-width: 320px;
       background:
-        radial-gradient(circle at 78% 8%, rgba(200, 241, 53, 0.16), transparent 28rem),
-        radial-gradient(circle at 8% 42%, rgba(131, 186, 244, 0.10), transparent 34rem),
-        var(--bg);
+        radial-gradient(circle at 10% 8%, rgba(244, 211, 94, 0.28), transparent 24rem),
+        radial-gradient(circle at 82% 12%, rgba(183, 228, 199, 0.5), transparent 32rem),
+        linear-gradient(180deg, var(--toki-cream), #edf5e7 46%, #f7efe2);
       color: var(--ink);
       font-family: "Aptos Display", "Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif;
       letter-spacing: 0;
@@ -60,9 +62,9 @@
       inset: 0;
       z-index: 5;
       pointer-events: none;
-      opacity: 0.22;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.34'/%3E%3C/svg%3E");
-      mix-blend-mode: soft-light;
+      opacity: 0.16;
+      mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.34'/%3E%3C/svg%3E");
     }
 
     a {
@@ -70,16 +72,16 @@
       text-decoration: none;
     }
 
-    button,
-    a {
-      -webkit-tap-highlight-color: transparent;
+    img,
+    video {
+      max-width: 100%;
     }
 
     a:focus-visible,
     button:focus-visible,
     summary:focus-visible,
     video:focus-visible {
-      outline: 2px solid var(--lime);
+      outline: 2px solid var(--toki-green);
       outline-offset: 4px;
     }
 
@@ -93,13 +95,13 @@
       left: 16px;
       top: 16px;
       z-index: 10;
-      padding: 10px 12px;
-      border-radius: 10px;
-      background: var(--lime);
-      color: #171a12;
-      font-weight: 760;
+      padding: 10px 13px;
+      border-radius: 999px;
+      background: var(--toki-dark);
+      color: var(--paper);
+      font-weight: 800;
       transform: translateY(-150%);
-      transition: transform 180ms var(--ease-out);
+      transition: transform 180ms var(--ease);
     }
 
     .skip-link:focus {
@@ -107,31 +109,29 @@
     }
 
     .shell {
-      width: min(1180px, calc(100% - 48px));
+      width: min(1160px, calc(100% - 44px));
       margin: 0 auto;
     }
 
     .nav {
       position: sticky;
-      top: 18px;
+      top: 16px;
       z-index: 4;
-      display: flex;
-      justify-content: center;
-      padding: 18px 0 0;
+      padding-top: 16px;
     }
 
     .nav-inner {
-      width: min(980px, calc(100% - 28px));
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 18px;
-      padding: 8px 8px 8px 14px;
-      border: 1px solid var(--line);
+      min-height: 62px;
+      padding: 8px 8px 8px 16px;
+      border: 1px solid rgba(45, 106, 79, 0.18);
       border-radius: 999px;
-      background: rgba(11, 13, 10, 0.78);
-      backdrop-filter: blur(18px);
-      box-shadow: 0 16px 70px rgba(0, 0, 0, 0.28);
+      background: rgba(248, 244, 236, 0.82);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 18px 54px rgba(45, 106, 79, 0.14);
     }
 
     .brand {
@@ -139,986 +139,1020 @@
       align-items: center;
       gap: 10px;
       min-width: max-content;
-      font-weight: 760;
+      color: var(--toki-dark);
+      font-weight: 900;
+      letter-spacing: 0.02em;
     }
 
     .brand img {
-      width: 30px;
-      height: 30px;
-      border-radius: 9px;
-      background: var(--lime);
-      box-shadow: 0 0 26px rgba(200, 241, 53, 0.22);
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(45, 106, 79, 0.2);
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 14px;
+      font-weight: 700;
     }
 
     .nav-links a {
-      padding: 9px 12px;
+      padding: 10px 12px;
       border-radius: 999px;
-      transition: color 500ms var(--ease), background 500ms var(--ease);
+      transition: color 220ms var(--ease), background 220ms var(--ease);
     }
 
     .nav-links a:hover {
-      color: var(--ink);
-      background: rgba(244, 240, 232, 0.07);
+      color: var(--toki-dark);
+      background: rgba(45, 106, 79, 0.08);
     }
 
     .cta {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      border: 0;
+      justify-content: center;
+      gap: 10px;
+      min-height: 44px;
+      padding: 0 18px;
+      border: 1px solid rgba(27, 58, 45, 0.15);
       border-radius: 999px;
-      padding: 7px 7px 7px 18px;
-      background: var(--lime);
-      color: #171a12;
-      font: inherit;
-      font-size: 14px;
-      font-weight: 760;
-      cursor: pointer;
-      transition: transform 180ms var(--ease-out), box-shadow 220ms var(--ease-out), background 220ms var(--ease-out);
-      box-shadow: 0 16px 42px rgba(200, 241, 53, 0.18);
+      background: var(--toki-yellow);
+      color: #173323;
+      font-weight: 900;
+      box-shadow: 0 15px 34px rgba(137, 115, 21, 0.18);
+      transition: transform 180ms var(--ease), box-shadow 180ms var(--ease), background 180ms var(--ease);
     }
 
     .cta:hover {
       transform: translateY(-2px);
-      box-shadow: 0 22px 56px rgba(200, 241, 53, 0.25);
+      box-shadow: 0 22px 42px rgba(137, 115, 21, 0.23);
+      background: #f6d969;
     }
 
     .cta:active {
-      transform: scale(0.97);
+      transform: scale(0.98);
     }
 
-    .cta span:last-child {
+    .cta .arrow {
       display: grid;
       place-items: center;
-      width: 30px;
-      height: 30px;
+      width: 25px;
+      height: 25px;
       border-radius: 50%;
-      background: rgba(23, 26, 18, 0.12);
-      transition: transform 500ms var(--ease);
+      background: rgba(27, 58, 45, 0.1);
+      line-height: 1;
     }
 
-    .cta:hover span:last-child {
-      transform: translateX(2px) translateY(-1px);
+    .ghost-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--toki-dark);
+      font-weight: 850;
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(27, 58, 45, 0.28);
+      transition: color 180ms var(--ease), border-color 180ms var(--ease), transform 180ms var(--ease);
+    }
+
+    .ghost-link:hover {
+      color: var(--toki-green-mid);
+      border-color: var(--toki-green-mid);
+      transform: translateY(-1px);
     }
 
     .hero {
-      min-height: 88dvh;
+      position: relative;
+      min-height: 0;
       display: grid;
-      align-items: end;
-      padding: 76px 0 54px;
+      align-items: center;
+      padding: 74px 0 38px;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(45, 106, 79, 0.32), transparent);
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 0.86fr) minmax(360px, 1.14fr);
-      gap: clamp(34px, 6vw, 78px);
-      align-items: end;
+      grid-template-columns: minmax(0, 0.82fr) minmax(380px, 1.18fr);
+      gap: clamp(30px, 6vw, 76px);
+      align-items: center;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
+      gap: 10px;
       width: max-content;
       max-width: 100%;
-      padding: 8px 11px;
-      border: 1px solid var(--line);
+      padding: 9px 12px;
+      border: 1px solid rgba(45, 106, 79, 0.2);
       border-radius: 999px;
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 720;
-      letter-spacing: 0.13em;
+      background: rgba(255, 250, 240, 0.64);
+      color: var(--toki-green);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      background: rgba(244, 240, 232, 0.04);
     }
 
     .pulse {
-      width: 7px;
-      height: 7px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      background: var(--lime);
-      box-shadow: 0 0 18px rgba(200, 241, 53, 0.8);
+      background: var(--toki-yellow);
+      box-shadow: 0 0 0 6px rgba(244, 211, 94, 0.22);
     }
 
     h1,
     h2,
     h3,
-    p {
+    p,
+    blockquote {
       margin: 0;
     }
 
     h1 {
-      max-width: 760px;
-      margin-top: 28px;
-      font-size: clamp(52px, 7.6vw, 104px);
-      line-height: 0.9;
-      font-weight: 760;
-      letter-spacing: -0.035em;
+      max-width: 720px;
+      margin-top: 24px;
+      color: var(--toki-dark);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(58px, 8.4vw, 118px);
+      line-height: 0.88;
+      font-weight: 700;
+      letter-spacing: 0;
       text-wrap: balance;
     }
 
     .hero-copy {
-      max-width: 620px;
-      margin-top: 28px;
+      max-width: 660px;
+      margin-top: 26px;
       color: var(--muted);
-      font-size: clamp(18px, 2vw, 22px);
-      line-height: 1.5;
+      font-size: clamp(18px, 2.1vw, 23px);
+      line-height: 1.48;
     }
 
     .hero-actions {
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 16px;
       margin-top: 34px;
     }
 
     .hero-trust {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-      margin: 24px 0 0;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin: 30px 0 0;
       padding: 0;
       list-style: none;
-      color: var(--paper);
-      font-size: 13px;
     }
 
     .hero-trust li {
-      padding: 8px 10px;
-      border: 1px solid rgba(244, 240, 232, 0.12);
-      border-radius: 11px;
-      background: rgba(244, 240, 232, 0.045);
+      min-height: 82px;
+      padding: 15px;
+      border: 1px solid rgba(45, 106, 79, 0.16);
+      border-radius: 18px;
+      background: rgba(255, 250, 240, 0.55);
+      color: var(--toki-dark);
+      box-shadow: 0 12px 30px rgba(45, 106, 79, 0.08);
     }
 
-    .ghost-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--ink);
+    .hero-trust b {
+      display: block;
       font-size: 14px;
-      font-weight: 720;
-      padding: 12px 0;
-      border-bottom: 1px solid var(--line-strong);
-      transition: color 400ms var(--ease), border-color 400ms var(--ease);
+      margin-bottom: 5px;
     }
 
-    .ghost-link:hover {
-      color: var(--lime);
-      border-color: rgba(200, 241, 53, 0.6);
-    }
-
-    .product-stage {
-      position: relative;
-      isolation: isolate;
-      min-height: 600px;
+    .hero-trust span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
     }
 
     .hero-media {
-      display: grid;
-      gap: 14px;
-      align-self: end;
-    }
-
-    .hero-video-frame {
       position: relative;
-      overflow: hidden;
-      padding: 8px;
-      border: 1px solid rgba(244, 240, 232, 0.15);
-      border-radius: 30px;
-      background: rgba(244, 240, 232, 0.055);
-      box-shadow: 0 44px 120px rgba(0, 0, 0, 0.46);
-      transform: rotate(-1.4deg);
+      min-height: 540px;
     }
 
-    .hero-video-frame::after {
-      content: "45 segundos do app em uso";
+    .ambient-window {
       position: absolute;
-      left: 18px;
-      bottom: 18px;
-      padding: 8px 10px;
-      border-radius: 10px;
-      background: rgba(11, 13, 10, 0.76);
-      color: var(--paper);
-      font-size: 12px;
-      font-weight: 760;
-      pointer-events: none;
+      inset: 0 0 auto auto;
+      width: min(100%, 760px);
+      overflow: hidden;
+      padding: 10px;
+      border: 1px solid rgba(45, 106, 79, 0.18);
+      border-radius: 34px;
+      background: rgba(255, 250, 240, 0.7);
+      box-shadow: 0 42px 90px rgba(45, 106, 79, 0.2);
+      transform: rotate(-1.5deg);
+    }
+
+    .ambient-window::before {
+      content: "";
+      display: block;
+      height: 28px;
+      border-radius: 24px 24px 0 0;
+      background:
+        radial-gradient(circle at 20px 50%, #e76f51 0 4px, transparent 5px),
+        radial-gradient(circle at 38px 50%, #f4d35e 0 4px, transparent 5px),
+        radial-gradient(circle at 56px 50%, #40916c 0 4px, transparent 5px),
+        rgba(27, 58, 45, 0.08);
     }
 
     .hero-video {
       display: block;
       width: 100%;
       aspect-ratio: 16 / 9;
-      border: 1px solid rgba(244, 240, 232, 0.10);
-      border-radius: 22px;
-      background: #0d100b;
       object-fit: cover;
+      border: 1px solid rgba(27, 58, 45, 0.12);
+      border-radius: 0 0 25px 25px;
+      background: var(--toki-dark);
     }
 
-    .media-proof {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .media-proof span {
-      padding: 10px;
-      border: 1px solid rgba(244, 240, 232, 0.10);
-      border-radius: 13px;
-      background: rgba(244, 240, 232, 0.035);
-    }
-
-    .orbit-note {
+    .floating-note {
       position: absolute;
-      right: 2%;
-      top: 0;
       z-index: 2;
-      width: 182px;
-      padding: 15px;
-      border: 1px solid rgba(200, 241, 53, 0.28);
+      width: 210px;
+      padding: 16px;
+      border: 1px solid rgba(27, 58, 45, 0.18);
       border-radius: 18px;
-      background: rgba(200, 241, 53, 0.11);
-      color: var(--paper);
+      background: rgba(255, 250, 240, 0.86);
+      color: var(--toki-dark);
+      box-shadow: 0 20px 48px rgba(45, 106, 79, 0.16);
+      backdrop-filter: blur(14px);
+    }
+
+    .floating-note strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    .floating-note span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .note-top {
+      right: -2px;
+      top: 22px;
+      transform: rotate(2.4deg);
+    }
+
+    .note-bottom {
+      left: -18px;
+      bottom: 18px;
+      transform: rotate(-3deg);
+    }
+
+    .mascot {
+      position: absolute;
+      right: 46px;
+      bottom: -12px;
+      z-index: 2;
+      width: 118px;
+      height: 90px;
       transform: rotate(3deg);
     }
 
-    .orbit-note strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 13px;
-    }
-
-    .orbit-note small {
-      display: block;
-      color: var(--muted);
-      line-height: 1.45;
-    }
-
-    .window-shell {
+    .mascot::before {
+      content: "";
       position: absolute;
-      inset: 70px 4% auto auto;
-      width: min(100%, 620px);
-      padding: 8px;
-      border: 1px solid rgba(244, 240, 232, 0.14);
-      border-radius: 32px;
-      background: rgba(244, 240, 232, 0.06);
-      box-shadow: 0 42px 120px rgba(0, 0, 0, 0.42);
-      transform: rotate(-2.2deg);
+      left: 8px;
+      right: 8px;
+      bottom: 0;
+      height: 62px;
+      border-radius: 42px 42px 32px 32px;
+      background: #33543b;
+      box-shadow: inset 0 -10px 0 rgba(27, 58, 45, 0.18), 0 16px 30px rgba(45, 106, 79, 0.18);
     }
 
-    .window {
-      overflow: hidden;
-      min-height: 456px;
-      border: 1px solid rgba(244, 240, 232, 0.11);
-      border-radius: 25px;
-      background: #0e100d;
-      box-shadow: inset 0 1px 0 rgba(244, 240, 232, 0.12);
+    .mascot::after {
+      content: "";
+      position: absolute;
+      left: 32px;
+      top: 12px;
+      width: 54px;
+      height: 54px;
+      border-radius: 50% 50% 42% 42%;
+      background:
+        radial-gradient(circle at 20px 24px, #f8f4ec 0 3px, transparent 4px),
+        radial-gradient(circle at 36px 24px, #f8f4ec 0 3px, transparent 4px),
+        #3f6848;
+      clip-path: polygon(0 18%, 15% 0, 32% 16%, 68% 16%, 85% 0, 100% 18%, 100% 100%, 0 100%);
     }
 
-    .window-top {
+    .social-proof {
+      padding: 24px 0 54px;
+    }
+
+    .proof-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 18px;
-      border-bottom: 1px solid rgba(244, 240, 232, 0.09);
+      gap: 18px;
+      padding: 16px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
       color: var(--muted);
-      font-size: 12px;
+      font-weight: 750;
     }
 
-    .dots {
-      display: flex;
-      gap: 7px;
+    .proof-bar span {
+      color: var(--toki-dark);
     }
 
-    .dots i {
-      display: block;
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: rgba(244, 240, 232, 0.22);
+    .workspace-preview {
+      padding-top: 26px;
     }
 
-    .app-ui {
+    .workspace-grid {
       display: grid;
-      grid-template-columns: 150px 1fr 150px;
-      min-height: 405px;
+      grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.98fr);
+      gap: 14px;
+      align-items: stretch;
     }
 
-    .rail,
-    .side {
-      padding: 18px;
-      background: rgba(244, 240, 232, 0.025);
+    .workspace-canvas,
+    .workspace-side {
+      border: 1px solid rgba(45, 106, 79, 0.15);
+      border-radius: 30px;
+      background: rgba(255, 250, 240, 0.66);
+      box-shadow: 0 22px 56px rgba(45, 106, 79, 0.1);
     }
 
-    .rail {
-      border-right: 1px solid rgba(244, 240, 232, 0.08);
-    }
-
-    .side {
-      border-left: 1px solid rgba(244, 240, 232, 0.08);
-    }
-
-    .rail-line,
-    .task-line {
-      height: 10px;
-      border-radius: 99px;
-      background: rgba(244, 240, 232, 0.12);
-    }
-
-    .rail-line {
-      margin-bottom: 12px;
-    }
-
-    .rail-line:nth-child(2) {
-      width: 70%;
-      background: rgba(200, 241, 53, 0.32);
-    }
-
-    .rail-line:nth-child(3) {
-      width: 46%;
-    }
-
-    .center {
-      display: grid;
-      place-items: center;
-      padding: 24px;
-    }
-
-    .timer {
+    .workspace-canvas {
       position: relative;
-      width: min(260px, 100%);
-      aspect-ratio: 1;
-      border: 1px solid rgba(200, 241, 53, 0.32);
-      border-radius: 50%;
+      overflow: hidden;
+      min-height: 430px;
       display: grid;
-      place-items: center;
+      grid-template-columns: minmax(0, 0.96fr) minmax(240px, 0.76fr);
+      gap: clamp(20px, 4vw, 40px);
+      align-items: end;
+      padding: clamp(24px, 4vw, 42px);
       background:
-        radial-gradient(circle, rgba(200, 241, 53, 0.12), transparent 58%),
-        conic-gradient(from -40deg, var(--lime) 0 74%, rgba(244, 240, 232, 0.08) 74% 100%);
+        linear-gradient(rgba(27, 58, 45, 0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27, 58, 45, 0.055) 1px, transparent 1px),
+        radial-gradient(circle at 72% 22%, rgba(111, 91, 216, 0.14), transparent 18rem),
+        rgba(255, 250, 240, 0.74);
+      background-size: 34px 34px, 34px 34px, auto, auto;
     }
 
-    .timer::after {
-      content: "";
-      position: absolute;
-      inset: 16px;
-      border-radius: 50%;
-      background: #0e100d;
-      border: 1px solid rgba(244, 240, 232, 0.10);
+    .workspace-title {
+      max-width: 510px;
     }
 
-    .timer-text {
+    .workspace-title h2 {
+      margin-top: 10px;
+      font-size: clamp(34px, 4.2vw, 58px);
+    }
+
+    .workspace-title p {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.56;
+    }
+
+    .node-card {
       position: relative;
       z-index: 1;
-      text-align: center;
+      width: 100%;
+      padding: 16px;
+      border: 1px solid rgba(27, 58, 45, 0.16);
+      border-radius: 20px;
+      background: rgba(255, 250, 240, 0.88);
+      color: var(--toki-dark);
+      box-shadow: 0 18px 42px rgba(45, 106, 79, 0.12);
     }
 
-    .timer-text strong {
+    .node-card b {
       display: block;
-      font-size: clamp(42px, 6vw, 60px);
-      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+      font-size: 15px;
     }
 
-    .timer-text span {
+    .node-card span {
+      display: block;
       color: var(--muted);
+      font-size: 13px;
+      line-height: 1.38;
+    }
+
+    .node-one {
+      margin-left: 12px;
+      transform: rotate(1.6deg);
+    }
+
+    .node-two {
+      margin: 12px 44px 0 0;
+      transform: rotate(-2deg);
+    }
+
+    .node-three {
+      border-color: rgba(111, 91, 216, 0.24);
+      background: rgba(238, 233, 255, 0.84);
+      margin: 12px 16px 0 26px;
+      transform: rotate(2.4deg);
+    }
+
+    .workspace-nodes {
+      position: relative;
+      display: grid;
+      align-content: end;
+      min-height: 310px;
+    }
+
+    .graph-line {
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: 116px;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(45, 106, 79, 0.22), rgba(111, 91, 216, 0.34));
+      transform: rotate(-9deg);
+      transform-origin: center;
+    }
+
+    .graph-line::before,
+    .graph-line::after {
+      content: "";
+      position: absolute;
+      top: -5px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--obsidian);
+      box-shadow: 0 0 0 6px rgba(111, 91, 216, 0.1);
+    }
+
+    .graph-line::before {
+      left: 0;
+    }
+
+    .graph-line::after {
+      right: 0;
+      background: var(--toki-green-mid);
+    }
+
+    .workspace-side {
+      display: grid;
+      gap: 12px;
+      padding: 14px;
+      background: rgba(255, 250, 240, 0.52);
+    }
+
+    .workspace-tile {
+      min-height: 132px;
+      padding: 22px;
+      border: 1px solid rgba(45, 106, 79, 0.13);
+      border-radius: 22px;
+      background: rgba(255, 250, 240, 0.7);
+    }
+
+    .workspace-tile:nth-child(2) {
+      background: linear-gradient(135deg, rgba(238, 233, 255, 0.82), rgba(255, 250, 240, 0.72));
+    }
+
+    .workspace-tile small {
+      display: block;
+      margin-bottom: 22px;
+      color: var(--toki-green);
       font-size: 12px;
-      letter-spacing: 0.16em;
+      font-weight: 950;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
-    .task-stack {
+    .workspace-tile h3 {
+      color: var(--toki-dark);
+      font-size: 24px;
+      line-height: 1.08;
+    }
+
+    .workspace-tile p {
+      margin-top: 10px;
+      color: var(--muted);
+      line-height: 1.48;
+    }
+
+    .enemy-band {
+      padding-top: 24px;
+    }
+
+    .enemy-panel {
       display: grid;
-      gap: 13px;
-      width: 100%;
+      grid-template-columns: minmax(0, 0.9fr) minmax(280px, 0.62fr);
+      gap: clamp(24px, 5vw, 64px);
+      align-items: end;
+      padding: clamp(28px, 5vw, 54px);
+      border: 1px solid rgba(27, 58, 45, 0.17);
+      border-radius: 34px;
+      background:
+        radial-gradient(circle at 82% 10%, rgba(244, 211, 94, 0.26), transparent 17rem),
+        linear-gradient(135deg, rgba(27, 58, 45, 0.96), rgba(45, 106, 79, 0.9));
+      color: var(--paper);
+      box-shadow: 0 30px 78px rgba(45, 106, 79, 0.2);
     }
 
-    .task {
-      padding: 12px;
-      border: 1px solid rgba(244, 240, 232, 0.09);
-      border-radius: 14px;
-      background: rgba(244, 240, 232, 0.04);
+    .enemy-panel .kicker {
+      color: var(--toki-yellow);
     }
 
-    .task-line {
-      width: 84%;
-      margin-bottom: 9px;
+    .enemy-panel h2 {
+      max-width: 760px;
+      color: var(--paper);
     }
 
-    .task small {
-      color: var(--dim);
+    .enemy-panel p {
+      margin-top: 18px;
+      color: rgba(255, 250, 240, 0.76);
+      font-size: 18px;
+      line-height: 1.58;
+    }
+
+    .enemy-stack {
+      display: grid;
+      gap: 10px;
+    }
+
+    .enemy-chip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 16px;
+      border: 1px solid rgba(255, 250, 240, 0.14);
+      border-radius: 16px;
+      background: rgba(255, 250, 240, 0.08);
+      color: rgba(255, 250, 240, 0.84);
+      font-weight: 850;
+    }
+
+    .enemy-chip span {
+      color: var(--toki-yellow);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     section {
-      padding: clamp(82px, 12vw, 150px) 0;
+      padding: clamp(78px, 11vw, 138px) 0;
     }
 
     .section-head {
       display: grid;
-      grid-template-columns: 0.72fr 1fr;
-      gap: clamp(28px, 6vw, 78px);
+      grid-template-columns: minmax(0, 0.78fr) minmax(320px, 1fr);
       align-items: end;
-      margin-bottom: 42px;
+      gap: clamp(26px, 6vw, 78px);
+      margin-bottom: 44px;
     }
 
     .kicker {
-      color: var(--lime);
+      color: var(--toki-green);
       font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.16em;
+      font-weight: 950;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
     }
 
     h2 {
-      font-size: clamp(38px, 5.8vw, 78px);
+      margin-top: 12px;
+      color: var(--toki-dark);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(38px, 5.8vw, 76px);
       line-height: 0.96;
-      font-weight: 760;
-      letter-spacing: -0.032em;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-wrap: balance;
     }
 
-    .section-head p {
+    .section-head p,
+    .lead {
+      max-width: 680px;
       color: var(--muted);
       font-size: 18px;
+      line-height: 1.58;
+    }
+
+    .problem-layout {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.86fr) minmax(0, 1.14fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .problem-letter {
+      min-height: 520px;
+      display: grid;
+      align-content: end;
+      padding: clamp(26px, 4vw, 42px);
+      border: 1px solid rgba(45, 106, 79, 0.17);
+      border-radius: 28px;
+      background:
+        linear-gradient(180deg, rgba(255, 250, 240, 0.92), rgba(236, 243, 228, 0.86)),
+        var(--paper);
+      box-shadow: 0 28px 70px rgba(45, 106, 79, 0.12);
+    }
+
+    .problem-letter p {
+      color: var(--muted);
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 1.18;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .problem-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .problem-item {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 20px;
+      padding: 24px;
+      border: 1px solid rgba(45, 106, 79, 0.15);
+      border-radius: 24px;
+      background: rgba(255, 250, 240, 0.55);
+      box-shadow: 0 18px 38px rgba(45, 106, 79, 0.08);
+    }
+
+    .problem-item mark {
+      display: grid;
+      place-items: center;
+      width: 54px;
+      height: 54px;
+      border-radius: 17px;
+      background: var(--toki-green);
+      color: var(--paper);
+      font-weight: 950;
+    }
+
+    .problem-item h3 {
+      color: var(--toki-dark);
+      font-size: 22px;
+      line-height: 1.15;
+    }
+
+    .problem-item p {
+      margin-top: 8px;
+      color: var(--muted);
       line-height: 1.55;
-      max-width: 610px;
     }
 
-    .video-section {
-      padding-top: 24px;
+    .how-grid {
+      display: grid;
+      grid-template-columns: 1.06fr 0.94fr;
+      gap: 18px;
+      align-items: stretch;
     }
 
-    .video-frame {
-      position: relative;
-      overflow: hidden;
-      padding: 8px;
-      border: 1px solid var(--line);
+    .feature-panel,
+    .companion-panel {
+      border: 1px solid rgba(45, 106, 79, 0.16);
       border-radius: 30px;
-      background: rgba(244, 240, 232, 0.05);
-      box-shadow: 0 34px 100px rgba(0, 0, 0, 0.32);
+      background: rgba(255, 250, 240, 0.58);
+      box-shadow: 0 26px 62px rgba(45, 106, 79, 0.1);
+    }
+
+    .feature-panel {
+      overflow: hidden;
+    }
+
+    .feature-shot {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-bottom: 1px solid rgba(45, 106, 79, 0.13);
+    }
+
+    .feature-copy {
+      padding: clamp(24px, 4vw, 42px);
+    }
+
+    .feature-copy h3,
+    .companion-panel h3,
+    .doc-card h3,
+    .price-card h3 {
+      color: var(--toki-dark);
+      font-size: clamp(26px, 3vw, 38px);
+      line-height: 1.04;
+      letter-spacing: -0.01em;
+    }
+
+    .feature-copy p,
+    .companion-panel p,
+    .doc-card p,
+    .price-card p {
+      margin-top: 12px;
+      color: var(--muted);
+      line-height: 1.58;
+    }
+
+    .companion-panel {
+      display: grid;
+      align-content: space-between;
+      gap: 28px;
+      padding: clamp(24px, 4vw, 42px);
+      background:
+        radial-gradient(circle at 78% 18%, rgba(244, 211, 94, 0.3), transparent 13rem),
+        rgba(255, 250, 240, 0.6);
+    }
+
+    .cat-scene {
+      position: relative;
+      min-height: 230px;
+      border-radius: 28px;
+      background:
+        linear-gradient(180deg, rgba(183, 228, 199, 0.44), rgba(45, 106, 79, 0.1)),
+        var(--soft);
+      overflow: hidden;
+    }
+
+    .cat-scene::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 42px;
+      width: 210px;
+      height: 18px;
+      border-radius: 99px;
+      background: rgba(27, 58, 45, 0.22);
+      transform: translateX(-50%);
+    }
+
+    .cat-figure {
+      position: absolute;
+      left: 50%;
+      bottom: 48px;
+      width: 152px;
+      height: 116px;
+      transform: translateX(-50%);
+    }
+
+    .cat-figure::before {
+      content: "";
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 0;
+      height: 82px;
+      border-radius: 58px 58px 42px 42px;
+      background: #385d42;
+    }
+
+    .cat-figure::after {
+      content: "";
+      position: absolute;
+      left: 46px;
+      top: 0;
+      width: 62px;
+      height: 62px;
+      border-radius: 50% 50% 44% 44%;
+      background:
+        radial-gradient(circle at 22px 28px, var(--paper) 0 3px, transparent 4px),
+        radial-gradient(circle at 40px 28px, var(--paper) 0 3px, transparent 4px),
+        #416b4c;
+      clip-path: polygon(0 20%, 15% 0, 33% 16%, 68% 16%, 86% 0, 100% 20%, 100% 100%, 0 100%);
+    }
+
+    .step-list {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .step {
+      padding: 22px;
+      border: 1px solid rgba(45, 106, 79, 0.15);
+      border-radius: 23px;
+      background: rgba(255, 250, 240, 0.52);
+    }
+
+    .step span {
+      display: block;
+      color: var(--toki-green);
+      font-weight: 950;
+      margin-bottom: 30px;
+    }
+
+    .step h3 {
+      color: var(--toki-dark);
+      font-size: 20px;
+      line-height: 1.14;
+    }
+
+    .step p {
+      margin-top: 10px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .demo-frame {
+      overflow: hidden;
+      padding: 10px;
+      border: 1px solid rgba(45, 106, 79, 0.18);
+      border-radius: 34px;
+      background: rgba(255, 250, 240, 0.66);
+      box-shadow: 0 34px 86px rgba(45, 106, 79, 0.14);
     }
 
     .demo-video {
       display: block;
       width: 100%;
       aspect-ratio: 16 / 9;
-      border: 1px solid rgba(244, 240, 232, 0.10);
-      border-radius: 23px;
-      background: #050604;
       object-fit: cover;
+      border: 1px solid rgba(27, 58, 45, 0.12);
+      border-radius: 25px;
+      background: var(--toki-dark);
     }
 
-    .proof-media-grid {
+    .shots-grid {
       display: grid;
-      grid-template-columns: 1.12fr 0.88fr 0.88fr;
+      grid-template-columns: 1.16fr 0.84fr 0.84fr;
       gap: 12px;
       margin-top: 12px;
     }
 
-    .proof-shot {
+    .shot {
       overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      background: rgba(244, 240, 232, 0.04);
+      border: 1px solid rgba(45, 106, 79, 0.16);
+      border-radius: 24px;
+      background: rgba(255, 250, 240, 0.6);
     }
 
-    .proof-shot img {
+    .shot img {
       display: block;
       width: 100%;
       aspect-ratio: 16 / 10;
       object-fit: cover;
-      transition: transform 700ms var(--ease-out);
+      transition: transform 600ms var(--ease);
     }
 
-    .proof-shot figcaption {
-      padding: 14px 16px 16px;
+    .shot figcaption {
+      padding: 15px 16px 17px;
       color: var(--muted);
-      line-height: 1.4;
-    }
-
-    .proof-strip {
-      display: grid;
-      grid-template-columns: 1.35fr 0.9fr 0.9fr;
-      gap: 12px;
-    }
-
-    .proof {
-      min-height: 174px;
-      padding: 24px;
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      background: rgba(244, 240, 232, 0.045);
-    }
-
-    .proof strong {
-      display: block;
-      font-size: clamp(30px, 5vw, 62px);
-      line-height: 0.95;
-      letter-spacing: -0.04em;
-    }
-
-    .proof span {
-      display: block;
-      margin-top: 14px;
-      color: var(--muted);
-      line-height: 1.45;
-    }
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 14px;
-    }
-
-    .feature-large,
-    .feature-small {
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      background: rgba(244, 240, 232, 0.045);
-      overflow: hidden;
-    }
-
-    .feature-large {
-      min-height: 520px;
-      display: grid;
-      grid-template-rows: 1fr auto;
-    }
-
-    .focus-map {
-      position: relative;
-      min-height: 340px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 24px clamp(24px, 6vw, 60px);
-      background:
-        linear-gradient(rgba(244, 240, 232, 0.055) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(244, 240, 232, 0.055) 1px, transparent 1px);
-      background-size: 38px 38px;
-    }
-
-    .fm-number {
-      color: rgba(200, 241, 53, 0.88);
-      font-size: clamp(98px, 17vw, 188px);
-      font-weight: 760;
-      line-height: 0.78;
-      letter-spacing: -0.08em;
-    }
-
-    .fm-ring {
-      position: relative;
-      flex: 0 0 auto;
-      width: clamp(130px, 16vw, 200px);
-      height: clamp(130px, 16vw, 200px);
-      border-radius: 50%;
-      border: 1px solid rgba(200, 241, 53, 0.32);
-      background:
-        radial-gradient(circle, rgba(200, 241, 53, 0.10), transparent 56%),
-        conic-gradient(from -40deg, var(--lime) 0 74%, rgba(244, 240, 232, 0.08) 74% 100%);
-      box-shadow: 0 0 40px rgba(200, 241, 53, 0.07);
-    }
-
-    .fm-ring::after {
-      content: "";
-      position: absolute;
-      inset: 14px;
-      border-radius: 50%;
-      background: #0e100d;
-      border: 1px solid rgba(244, 240, 232, 0.09);
-    }
-
-    .feature-copy {
-      padding: 26px;
-    }
-
-    .feature-copy h3,
-    .feature-small h3 {
-      font-size: 28px;
-      line-height: 1.05;
-      letter-spacing: -0.025em;
-    }
-
-    .feature-copy p,
-    .feature-small p {
-      margin-top: 12px;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    .feature-column {
-      display: grid;
-      gap: 14px;
-    }
-
-    .feature-small {
-      min-height: 253px;
-      padding: 24px;
-      display: grid;
-      align-content: space-between;
-    }
-
-    .mini-icon {
-      width: 48px;
-      height: 48px;
-      border: 1px solid var(--line-strong);
-      border-radius: 15px;
-      display: grid;
-      place-items: center;
-      color: var(--lime);
-      background: rgba(200, 241, 53, 0.08);
-    }
-
-    .mini-icon svg {
-      width: 24px;
-      height: 24px;
-      stroke: currentColor;
-      stroke-width: 1.7;
-      fill: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .showcase {
-      display: grid;
-      grid-template-columns: 0.82fr 1.18fr;
-      gap: clamp(24px, 5vw, 70px);
-      align-items: center;
-    }
-
-    .panel-list {
-      display: grid;
-      gap: 12px;
-    }
-
-    .panel-item {
-      display: grid;
-      grid-template-columns: 44px 1fr;
-      gap: 15px;
-      padding: 18px;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: rgba(244, 240, 232, 0.04);
-    }
-
-    .panel-item b {
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    .panel-item span {
-      color: var(--muted);
-      line-height: 1.45;
-    }
-
-    .num {
-      width: 38px;
-      height: 38px;
-      display: grid;
-      place-items: center;
-      border-radius: 12px;
-      color: #171a12;
-      background: var(--paper);
-      font-weight: 850;
-    }
-
-    .desktop-card {
-      padding: 8px;
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      background: rgba(244, 240, 232, 0.05);
-      transform: rotate(1.2deg);
-    }
-
-    .desktop-inner {
-      min-height: 520px;
-      border-radius: 23px;
-      border: 1px solid rgba(244, 240, 232, 0.10);
-      background:
-        radial-gradient(circle at 82% 24%, rgba(240, 111, 88, 0.19), transparent 16rem),
-        radial-gradient(circle at 22% 76%, rgba(200, 241, 53, 0.15), transparent 18rem),
-        #10130d;
-      padding: clamp(20px, 4vw, 34px);
-      display: grid;
-      align-content: space-between;
-    }
-
-    .desktop-inner h3 {
-      max-width: 390px;
-      font-size: clamp(34px, 5vw, 64px);
-      line-height: 0.96;
-      letter-spacing: -0.04em;
-    }
-
-    .block-board {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      align-items: end;
-    }
-
-    .block-tile {
-      min-height: 150px;
-      border: 1px solid rgba(244, 240, 232, 0.13);
-      border-radius: 18px;
-      padding: 14px;
-      display: grid;
-      align-content: space-between;
-      background: rgba(244, 240, 232, 0.06);
-    }
-
-    .block-tile:nth-child(2) {
-      min-height: 210px;
-      background: rgba(200, 241, 53, 0.10);
-    }
-
-    .block-tile:nth-child(3) {
-      min-height: 180px;
-    }
-
-    .block-tile span {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .block-tile b {
-      font-size: 20px;
-      letter-spacing: -0.02em;
-    }
-
-    .quote-band {
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      padding: clamp(56px, 9vw, 92px) 0;
-      background:
-        linear-gradient(90deg, rgba(200, 241, 53, 0.08), transparent 35%),
-        rgba(244, 240, 232, 0.025);
-    }
-
-    .quote {
-      display: grid;
-      grid-template-columns: 0.42fr 1fr;
-      gap: clamp(24px, 6vw, 78px);
-      align-items: start;
-    }
-
-    .quote mark {
-      display: inline-grid;
-      place-items: center;
-      width: 88px;
-      height: 88px;
-      border-radius: 24px;
-      background: var(--lime);
-      color: #171a12;
-      font-size: 58px;
-      font-weight: 760;
-      letter-spacing: -0.08em;
-    }
-
-    .quote blockquote {
-      margin: 0;
-      max-width: 920px;
-      font-size: clamp(34px, 5.6vw, 78px);
-      line-height: 1;
-      letter-spacing: -0.038em;
-      font-weight: 720;
-    }
-
-    .quote cite {
-      display: block;
-      margin-top: 24px;
-      color: var(--muted);
-      font-style: normal;
-      line-height: 1.5;
+      line-height: 1.42;
     }
 
     .pricing {
       display: grid;
-      grid-template-columns: 0.88fr 1.12fr;
-      gap: 14px;
+      grid-template-columns: minmax(300px, 0.86fr) minmax(0, 1.14fr);
+      gap: 18px;
       align-items: stretch;
     }
 
     .price-card {
       padding: clamp(26px, 4vw, 42px);
-      border: 1px solid rgba(200, 241, 53, 0.26);
-      border-radius: 28px;
+      border: 1px solid rgba(27, 58, 45, 0.18);
+      border-radius: 30px;
       background:
-        radial-gradient(circle at 82% 18%, rgba(200, 241, 53, 0.18), transparent 16rem),
-        rgba(244, 240, 232, 0.045);
-    }
-
-    .price-card h3 {
-      font-size: clamp(36px, 5vw, 72px);
-      line-height: 0.95;
-      letter-spacing: -0.04em;
+        radial-gradient(circle at 85% 18%, rgba(244, 211, 94, 0.36), transparent 13rem),
+        var(--paper);
+      box-shadow: 0 28px 72px rgba(45, 106, 79, 0.14);
     }
 
     .price {
-      margin: 30px 0;
-      font-size: clamp(58px, 9vw, 120px);
-      line-height: 0.82;
-      letter-spacing: -0.07em;
-      font-weight: 760;
+      margin-top: 28px;
+      color: var(--toki-dark);
+      font-family: "Aptos Display", "Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif;
+      font-size: clamp(54px, 8vw, 92px);
+      font-weight: 950;
+      letter-spacing: -0.04em;
+      line-height: 0.9;
     }
 
     .price small {
       color: var(--muted);
       font-size: 18px;
       letter-spacing: 0;
-      font-weight: 500;
     }
 
     .checklist {
-      margin: 0;
-      padding: 0;
-      list-style: none;
       display: grid;
       gap: 12px;
-      color: var(--muted);
+      margin: 28px 0;
+      padding: 0;
+      color: var(--toki-dark);
+      list-style: none;
     }
 
     .checklist li {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
+      position: relative;
+      padding-left: 24px;
+      line-height: 1.42;
     }
 
     .checklist li::before {
       content: "";
+      position: absolute;
+      left: 0;
+      top: 0.46em;
       width: 9px;
       height: 9px;
-      margin-top: 8px;
       border-radius: 50%;
-      background: var(--lime);
-      box-shadow: 0 0 14px rgba(200, 241, 53, 0.5);
-      flex: 0 0 auto;
+      background: var(--toki-green-mid);
     }
 
     .download-note {
-      margin-top: 18px;
+      margin-bottom: 18px;
       color: var(--muted);
-      font-size: 13px;
-      line-height: 1.45;
-    }
-
-    .price-card .cta {
-      margin-top: 24px;
+      font-size: 14px;
     }
 
     .faq {
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      background: rgba(244, 240, 232, 0.035);
-      overflow: hidden;
+      display: grid;
+      gap: 10px;
     }
 
-    .faq details {
-      border-bottom: 1px solid var(--line);
-      padding: 22px 24px;
+    details {
+      padding: 20px 22px;
+      border: 1px solid rgba(45, 106, 79, 0.15);
+      border-radius: 22px;
+      background: rgba(255, 250, 240, 0.58);
     }
 
-    .faq details:last-child {
-      border-bottom: 0;
-    }
-
-    .faq summary {
+    summary {
       cursor: pointer;
-      list-style: none;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      font-weight: 760;
+      color: var(--toki-dark);
+      font-weight: 900;
     }
 
-    .faq summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .faq summary::after {
-      content: "+";
-      color: var(--lime);
-      font-size: 24px;
-      line-height: 1;
-    }
-
-    .faq details[open] summary::after {
-      content: "-";
-    }
-
-    .faq p {
-      margin-top: 14px;
+    details p {
+      margin-top: 10px;
       color: var(--muted);
       line-height: 1.55;
+    }
+
+    .docs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .doc-card {
+      padding: clamp(24px, 4vw, 38px);
+      border: 1px solid rgba(45, 106, 79, 0.16);
+      border-radius: 28px;
+      background: rgba(255, 250, 240, 0.58);
+      box-shadow: 0 18px 44px rgba(45, 106, 79, 0.08);
     }
 
     .final {
-      min-height: 76dvh;
+      padding: clamp(70px, 9vw, 112px) 0;
+    }
+
+    .final-panel {
       display: grid;
-      place-items: center;
-      text-align: center;
-      padding-bottom: 54px;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 28px;
+      align-items: end;
+      padding: clamp(30px, 6vw, 62px);
+      border-radius: 36px;
+      background:
+        radial-gradient(circle at 82% 10%, rgba(244, 211, 94, 0.3), transparent 18rem),
+        var(--toki-green);
+      color: var(--paper);
+      box-shadow: 0 34px 82px rgba(45, 106, 79, 0.22);
     }
 
-    .final h2 {
-      max-width: 900px;
-      margin: 0 auto;
+    .final-panel h2 {
+      color: var(--paper);
     }
 
-    .final p {
-      max-width: 590px;
-      margin: 24px auto 32px;
-      color: var(--muted);
+    .final-panel p {
+      max-width: 650px;
+      margin-top: 18px;
+      color: rgba(255, 250, 240, 0.78);
       font-size: 18px;
       line-height: 1.55;
-    }
-
-    .legal {
-      padding-top: 30px;
-      padding-bottom: 30px;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .legal-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-
-    .legal-item {
-      padding: 18px;
-      border: 1px solid rgba(244, 240, 232, 0.10);
-      border-radius: 18px;
-      background: rgba(244, 240, 232, 0.035);
-    }
-
-    .legal-item h3 {
-      margin-bottom: 8px;
-      font-size: 18px;
-    }
-
-    .legal-item p,
-    .legal-item a {
-      color: var(--muted);
-      line-height: 1.45;
     }
 
     .footer {
       display: flex;
+      align-items: center;
       justify-content: space-between;
       gap: 18px;
-      padding: 26px 0 38px;
-      border-top: 1px solid var(--line);
-      color: var(--dim);
-      font-size: 13px;
+      padding: 28px 0 38px;
+      color: var(--muted);
+      font-size: 14px;
     }
 
     .footer-links {
@@ -1127,19 +1161,15 @@
       gap: 14px;
     }
 
-    .footer-links a {
-      color: var(--muted);
-      transition: color 180ms var(--ease-out);
-    }
-
-    .footer-links a:hover {
-      color: var(--ink);
+    .footer a {
+      color: var(--toki-dark);
+      font-weight: 800;
     }
 
     .reveal {
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 900ms var(--ease), transform 900ms var(--ease);
+      transform: translateY(22px);
+      transition: opacity 700ms var(--ease), transform 700ms var(--ease);
     }
 
     .reveal.visible {
@@ -1147,149 +1177,157 @@
       transform: translateY(0);
     }
 
-    @media (max-width: 900px) {
-      .shell {
-        width: min(100% - 32px, 680px);
+    @media (hover: hover) and (pointer: fine) {
+      .shot:hover img {
+        transform: scale(1.035);
       }
+    }
 
+    @media (max-width: 960px) {
       .nav-inner {
         border-radius: 26px;
         align-items: flex-start;
+        flex-wrap: wrap;
       }
 
       .nav-links {
-        display: none;
+        order: 3;
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 2px;
       }
 
       .hero {
         min-height: auto;
-        padding-top: 72px;
+        padding-top: 54px;
       }
 
       .hero-grid,
       .section-head,
-      .showcase,
-      .quote,
+      .workspace-grid,
+      .enemy-panel,
+      .problem-layout,
+      .how-grid,
       .pricing,
-      .proof-media-grid,
-      .legal-grid {
+      .final-panel {
         grid-template-columns: 1fr;
       }
 
       .hero-media {
-        margin-top: 10px;
+        min-height: 470px;
       }
 
-      .hero-video-frame {
-        transform: none;
-      }
-
-      .product-stage {
-        min-height: 560px;
-        margin-top: 10px;
-      }
-
-      .window-shell {
-        inset: 84px 0 auto 0;
+      .ambient-window {
+        position: relative;
         width: 100%;
       }
 
-      .app-ui {
+      .note-top {
+        right: 8px;
+        top: -16px;
+      }
+
+      .note-bottom {
+        left: 8px;
+        bottom: 0;
+      }
+
+      .mascot {
+        right: 28px;
+        bottom: 0;
+      }
+
+      .hero-trust,
+      .step-list,
+      .shots-grid,
+      .docs-grid {
         grid-template-columns: 1fr;
       }
 
-      .rail,
-      .side {
+      .problem-letter {
+        min-height: 340px;
+      }
+
+      .workspace-canvas {
+        grid-template-columns: 1fr;
+        min-height: 560px;
+      }
+
+      .node-one,
+      .node-two,
+      .node-three {
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      .graph-line {
         display: none;
-      }
-
-      .proof-strip,
-      .feature-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .block-board {
-        grid-template-columns: 1fr;
-      }
-
-      .block-tile,
-      .block-tile:nth-child(2),
-      .block-tile:nth-child(3) {
-        min-height: 138px;
-      }
-
-      .desktop-card {
-        transform: none;
       }
     }
 
-    @media (max-width: 560px) {
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100% - 28px, 1160px);
+      }
+
       .nav {
-        top: 10px;
+        top: 8px;
+        padding-top: 8px;
       }
 
       .nav-inner {
-        width: calc(100% - 20px);
+        padding: 10px;
       }
 
-      .brand span {
-        display: none;
-      }
-
-      .cta {
-        padding-left: 14px;
-        font-size: 13px;
+      .nav .cta {
+        width: 100%;
       }
 
       h1 {
-        font-size: clamp(50px, 16vw, 74px);
+        font-size: clamp(50px, 17vw, 78px);
       }
 
-      .hero-actions {
+      .hero-actions,
+      .proof-bar,
+      .footer {
         align-items: stretch;
         flex-direction: column;
       }
 
       .hero-actions .cta,
-      .final .cta {
-        justify-content: space-between;
+      .hero-actions .ghost-link {
         width: 100%;
       }
 
-      .orbit-note {
-        right: 0;
-        width: 150px;
+      .hero-trust {
+        display: none;
       }
 
-      .window-shell {
-        transform: none;
+      .ghost-link {
+        justify-content: center;
+        border: 1px solid rgba(27, 58, 45, 0.18);
+        border-radius: 999px;
       }
 
-      .timer {
-        width: min(228px, 100%);
+      .floating-note {
+        display: none;
       }
 
-      .proof,
-      .feature-copy,
-      .feature-small,
-      .panel-item,
-      .price-card,
-      .faq details {
-        padding: 20px;
+      .hero-media {
+        display: block;
+        min-height: 0;
       }
 
-      .footer {
-        flex-direction: column;
+      .mascot {
+        display: none;
       }
 
-      .media-proof {
+      .problem-item {
         grid-template-columns: 1fr;
       }
-    }
 
-    @media (hover: hover) and (pointer: fine) {
-      .proof-shot:hover img {
-        transform: scale(1.035);
+      .final-panel .cta {
+        width: 100%;
       }
     }
 
@@ -1313,268 +1351,369 @@
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Pular para o conteúdo</a>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="page">
-    <nav class="nav" aria-label="Navegacao principal">
+    <nav class="nav shell" aria-label="Main navigation">
       <div class="nav-inner">
-        <a class="brand" href="#top" aria-label="Toki">
+        <a class="brand" href="#top" aria-label="TOKI">
           <img src="../src/assets/icon.png" alt="">
-          <span>Toki</span>
+          <span>TOKI</span>
         </a>
-        <div class="nav-links" aria-label="Secoes">
-          <a href="#demo">Demo</a>
-          <a href="#recursos">Recursos</a>
-          <a href="#desktop">Desktop</a>
-          <a href="#preco">Preço</a>
-          <a href="#faq">FAQ</a>
+        <div class="nav-links" aria-label="Sections">
+          <a href="#features">Features</a>
+          <a href="#how-it-works">How it works</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#docs">Docs</a>
         </div>
-        <a class="cta" href="../dist/toki%20Setup%201.0.0.exe" download><span>Baixar para Windows</span><span aria-hidden="true">&rarr;</span></a>
+        <a class="cta" href="../dist/toki%20Setup%201.0.0.exe" download="toki-setup-1.0.0.exe"><span>Download free</span><span class="arrow" aria-hidden="true">&darr;</span></a>
       </div>
     </nav>
 
     <header class="hero shell" id="top">
       <div class="hero-grid">
         <div class="reveal">
-          <div class="eyebrow"><i class="pulse" aria-hidden="true"></i> Beta para Windows</div>
-          <h1>Escolha a tarefa. O Toki segura o resto.</h1>
-          <p class="hero-copy">Inicie um ciclo de foco, deixe a tarefa visível e bloqueie sites ou apps que tiram você do trabalho. Tudo em uma janela local para Windows.</p>
+          <div class="eyebrow"><i class="pulse" aria-hidden="true"></i> Desktop-first · Windows beta</div>
+          <h1>Your place to do the work.</h1>
+          <p class="hero-copy">The biggest platforms are built to keep your attention moving. TOKI was built to help it land.</p>
           <div class="hero-actions">
-            <a class="cta" href="../dist/toki%20Setup%201.0.0.exe" download><span>Baixar para Windows</span><span aria-hidden="true">&darr;</span></a>
-            <a class="ghost-link" href="#demo">Assistir demo <span aria-hidden="true">&darr;</span></a>
+            <a class="cta" href="../dist/toki%20Setup%201.0.0.exe" download="toki-setup-1.0.0.exe"><span>Download for Windows</span><span class="arrow" aria-hidden="true">&darr;</span></a>
+            <a class="ghost-link" href="#how-it-works">See how it works <span aria-hidden="true">&darr;</span></a>
           </div>
-          <ul class="hero-trust" aria-label="Pontos de confiança">
-            <li>App desktop local</li>
-            <li>Sem conta no beta</li>
-            <li>Bloqueio de sites e apps</li>
+          <ul class="hero-trust" aria-label="Trust points">
+            <li><b>No account in beta</b><span>Open the app and run a real block.</span></li>
+            <li><b>Local blocking</b><span>Sites and apps get out of the way.</span></li>
+            <li><b>Focus environment</b><span>Timer, task, and presence in one window.</span></li>
           </ul>
         </div>
 
-        <div class="hero-media reveal" aria-label="Vídeo de apresentação do Toki">
-          <div class="hero-video-frame">
+        <div class="hero-media reveal" aria-label="TOKI app mockup in use">
+          <div class="ambient-window">
             <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/toki-poster.png">
               <source src="assets/toki-improved.mp4" type="video/mp4">
             </video>
           </div>
-          <div class="media-proof" aria-label="Resumo do fluxo do app">
-            <span>1. Escolha o bloco</span>
-            <span>2. Ative o foco</span>
-            <span>3. Termine sem feed aberto</span>
+          <div class="floating-note note-top">
+            <strong>A place, not a dashboard.</strong>
+            <span>TOKI stays open as a calm companion during your block.</span>
           </div>
+          <div class="floating-note note-bottom">
+            <strong>Start small.</strong>
+            <span>Pick a task, protect the time, get back to doing.</span>
+          </div>
+          <div class="mascot" aria-hidden="true"></div>
         </div>
       </div>
     </header>
 
     <main id="main">
-      <section class="shell reveal video-section" id="demo" aria-labelledby="demo-title">
+      <section class="social-proof shell reveal" aria-label="Product proof">
+        <div class="proof-bar">
+          <span>Windows beta</span>
+          <span>Pomodoro, blocking, tasks</span>
+          <span>Built for solo deep work</span>
+        </div>
+      </section>
+
+      <section class="workspace-preview shell reveal" aria-labelledby="workspace-title">
+        <div class="workspace-grid">
+          <div class="workspace-canvas">
+            <div class="workspace-title">
+              <p class="kicker">A quieter workspace</p>
+              <h2 id="workspace-title">Organized like a workspace. Felt like a place.</h2>
+              <p>TOKI borrows the calm structure of modern workspaces and the private, local feeling of a personal knowledge base, then points both toward one thing: doing the next block.</p>
+            </div>
+            <div class="workspace-nodes">
+              <div class="graph-line" aria-hidden="true"></div>
+              <div class="node-card node-one">
+                <b>Today's block</b>
+                <span>One visible task, one timer, one protected boundary.</span>
+              </div>
+              <div class="node-card node-two">
+                <b>Distractions list</b>
+                <span>The places that usually steal the start are kept outside the room.</span>
+              </div>
+              <div class="node-card node-three">
+                <b>Trail</b>
+                <span>Your work leaves a trace without turning into a public scoreboard.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="workspace-side">
+            <article class="workspace-tile">
+              <small>Notion-like clarity</small>
+              <h3>Blocks that make the next action obvious.</h3>
+              <p>No maze of settings before you can start.</p>
+            </article>
+            <article class="workspace-tile">
+              <small>Obsidian-like ownership</small>
+              <h3>A local-first feeling for serious solo work.</h3>
+              <p>Your focus space should feel like it belongs to you.</p>
+            </article>
+            <article class="workspace-tile">
+              <small>TOKI's difference</small>
+              <h3>Planning is optional. Starting is the product.</h3>
+              <p>The whole interface is biased toward entering the block.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="enemy-band shell reveal" aria-labelledby="enemy-title">
+        <div class="enemy-panel">
+          <div>
+            <p class="kicker">The common enemy</p>
+            <h2 id="enemy-title">Your attention is not broken. It is being hunted.</h2>
+            <p>Big Tech wins when your next minute becomes another scroll. TOKI gives that minute back a place to go: one task, one protected block, one quiet window that is on your side.</p>
+          </div>
+          <div class="enemy-stack" aria-label="Attention traps TOKI pushes back against">
+            <div class="enemy-chip">Infinite feeds <span>Scroll</span></div>
+            <div class="enemy-chip">Algorithmic urgency <span>React</span></div>
+            <div class="enemy-chip">Context switching <span>Fragment</span></div>
+            <div class="enemy-chip">TOKI work block <span>Return</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="shell reveal" id="why-toki" aria-labelledby="why-title">
         <div class="section-head">
           <div>
-            <p class="kicker">Apresentação</p>
-            <h2 id="demo-title">Veja o Toki em movimento.</h2>
+            <p class="kicker">Why TOKI</p>
+            <h2 id="why-title">You know what you need to do. You just can't start.</h2>
           </div>
-          <p>45 segundos do app em uso: timer, tarefa atual e bloqueio local aparecendo como parte do fluxo de trabalho.</p>
+          <p>Productivity doesn't fail from lack of method. It fails when the products around you are better at capturing attention than your workspace is at protecting it.</p>
         </div>
-        <div class="video-frame">
+
+        <div class="problem-layout">
+          <aside class="problem-letter">
+            <p>TOKI lives in the <em>Ma</em>: the pause between wanting to do and actually doing. A simple, quiet, present space.</p>
+          </aside>
+          <div class="problem-list">
+            <article class="problem-item">
+              <mark>01</mark>
+              <div>
+                <h3>Cognitive loneliness</h3>
+                <p>Working alone creates an environmental void. TOKI offers presence without demanding, interrupting, or infantilizing.</p>
+              </div>
+            </article>
+            <article class="problem-item">
+              <mark>02</mark>
+              <div>
+                <h3>Distraction by design</h3>
+                <p>Feeds were engineered to keep you available to them. TOKI protects the block you chose for yourself.</p>
+              </div>
+            </article>
+            <article class="problem-item">
+              <mark>03</mark>
+              <div>
+                <h3>The planning-to-execution gap</h3>
+                <p>Notion, Todoist, and notebooks help you plan. TOKI is where the plan becomes action.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="shell reveal" id="features" aria-labelledby="features-title">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Features</p>
+            <h2 id="features-title">An environment that breathes with you.</h2>
+          </div>
+          <p>Less dashboard, more place. The interface shows what matters for the current block, and leaves the rest quiet.</p>
+        </div>
+
+        <div class="how-grid">
+          <article class="feature-panel">
+            <img class="feature-shot" src="assets/toki-shot-focus.png" alt="TOKI's focus screen with visual presence and calm feedback.">
+            <div class="feature-copy">
+              <h3>The environment</h3>
+              <p>Light, rhythm, and visual state help you feel like you've entered a different mode without turning into a screen full of goals.</p>
+            </div>
+          </article>
+          <article class="companion-panel">
+            <div class="cat-scene" aria-hidden="true">
+              <div class="cat-figure"></div>
+            </div>
+            <div>
+              <h3>Presence without weight</h3>
+              <p>A silent companion exists beside your work. No talking, no pushing, no turning focus into a noisy game.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="step-list" aria-label="Main features">
+          <article class="step">
+            <span>01</span>
+            <h3>The Environment</h3>
+            <p>A calm window to enter your work block.</p>
+          </article>
+          <article class="step">
+            <span>02</span>
+            <h3>The Cat</h3>
+            <p>Visual presence without notifications, urgency, or judgment.</p>
+          </article>
+          <article class="step">
+            <span>03</span>
+            <h3>Blocking</h3>
+            <p>Chosen sites and apps are kept out of reach during your session.</p>
+          </article>
+          <article class="step">
+            <span>04</span>
+            <h3>The Trail</h3>
+            <p>Your effort shows up in your history without becoming aggressive accountability.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="shell reveal" id="how-it-works" aria-labelledby="how-title">
+        <div class="section-head">
+          <div>
+            <p class="kicker">How it works</p>
+            <h2 id="how-title">Choose. Protect. Finish.</h2>
+          </div>
+          <p>The flow is short on purpose. TOKI exists to remove friction from starting and preserve the session once it begins.</p>
+        </div>
+
+        <div class="step-list">
+          <article class="step">
+            <span>Step 1</span>
+            <h3>Choose your task</h3>
+            <p>Define what gets done right now, not your entire life.</p>
+          </article>
+          <article class="step">
+            <span>Step 2</span>
+            <h3>Start the cycle</h3>
+            <p>The timer puts your work inside a clear boundary.</p>
+          </article>
+          <article class="step">
+            <span>Step 3</span>
+            <h3>Block distractions</h3>
+            <p>Your chosen apps and sites stay out of the way.</p>
+          </article>
+          <article class="step">
+            <span>Step 4</span>
+            <h3>See your trail</h3>
+            <p>Progress stays visible without turning your day into a ranking.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="shell reveal" id="demo" aria-labelledby="demo-title">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Demo</p>
+            <h2 id="demo-title">The real thing.</h2>
+          </div>
+          <p>See TOKI in use: focus, blocking, visual feedback, and the feel of a window built to stay open.</p>
+        </div>
+        <div class="demo-frame">
           <video class="demo-video" controls preload="metadata" poster="assets/toki-poster.png">
             <source src="assets/toki-improved.mp4" type="video/mp4">
-            Seu navegador não conseguiu carregar o vídeo de apresentação do Toki.
+            Your browser couldn't load the TOKI presentation video.
           </video>
         </div>
-      </section>
-
-      <section class="shell reveal" aria-labelledby="prova-title">
-        <div class="section-head">
-          <div>
-            <p class="kicker">Prova concreta</p>
-            <h2 id="prova-title">O foco começa antes da força de vontade.</h2>
-          </div>
-          <p>Escolha uma tarefa, inicie o timer e deixe o Toki bloquear distrações até o ciclo acabar. O app existe para proteger o próximo bloco, não para virar mais um sistema para administrar.</p>
-        </div>
-        <div class="proof-strip">
-          <div class="proof">
-            <strong>25 min</strong>
-            <span>Ciclos configuráveis para foco, pausa curta e pausa longa.</span>
-          </div>
-          <div class="proof">
-            <strong>Local</strong>
-            <span>Um app para Windows, feito para rodar na máquina onde você trabalha.</span>
-          </div>
-          <div class="proof">
-            <strong>Sem conta</strong>
-            <span>O beta não precisa de cadastro para testar o fluxo principal.</span>
-          </div>
-        </div>
-        <div class="proof-media-grid" aria-label="Frames reais da apresentação do Toki">
-          <figure class="proof-shot">
-            <img src="assets/toki-shot-setup.png" alt="Tela do Toki mostrando a preparação de um bloco de foco.">
-            <figcaption>Prepare a tarefa antes de iniciar o ciclo.</figcaption>
+        <div class="shots-grid" aria-label="Real product frames">
+          <figure class="shot">
+            <img src="assets/toki-shot-setup.png" alt="TOKI's preparation screen before starting focus.">
+            <figcaption>Set up the block before pressing start.</figcaption>
           </figure>
-          <figure class="proof-shot">
-            <img src="assets/toki-shot-focus.png" alt="Tela do Toki com timer de foco em destaque.">
-            <figcaption>O timer fica legível sem ocupar a cabeça.</figcaption>
+          <figure class="shot">
+            <img src="assets/toki-shot-focus.png" alt="TOKI's focus screen with visual presence.">
+            <figcaption>Focus gains visual weight without the noise.</figcaption>
           </figure>
-          <figure class="proof-shot">
-            <img src="assets/toki-shot-block.png" alt="Tela do Toki mostrando bloqueio de distrações.">
-            <figcaption>Sites e apps configurados saem do caminho.</figcaption>
+          <figure class="shot">
+            <img src="assets/toki-shot-block.png" alt="TOKI's download screen.">
+            <figcaption>Blocking shows up as protection, not punishment.</figcaption>
           </figure>
         </div>
       </section>
 
-      <section class="shell reveal" id="recursos" aria-labelledby="recursos-title">
+      <section class="shell reveal" id="pricing" aria-labelledby="pricing-title">
         <div class="section-head">
           <div>
-            <p class="kicker">Recursos</p>
-            <h2 id="recursos-title">Feito para ficar aberto, não para chamar atenção.</h2>
+            <p class="kicker">Pricing</p>
+            <h2 id="pricing-title">Start with the free beta.</h2>
           </div>
-          <p>A interface trabalha em segundo plano: timer claro, tarefa visível, histórico diário e controles diretos quando você precisa ajustar o plano.</p>
+          <p>Download the local Windows installer and run a real cycle, no account needed.</p>
         </div>
-        <div class="feature-grid">
-          <article class="feature-large">
-            <div class="focus-map" aria-hidden="true">
-              <span class="fm-number">25</span>
-              <div class="fm-ring"></div>
-            </div>
-            <div class="feature-copy">
-              <h3>Pomodoro com presença visual.</h3>
-              <p>O contador deixa o tempo legível sem ocupar a sua cabeça. Você sabe onde está no ciclo e volta para o trabalho.</p>
-            </div>
-          </article>
-          <div class="feature-column">
-            <article class="feature-small">
-              <div class="mini-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"></path><path d="M4 20h16"></path></svg>
-              </div>
-              <div>
-                <h3>Tarefas que voltam.</h3>
-                <p>Marque tarefas diárias para reaparecerem no dia seguinte, sem recriar a mesma lista.</p>
-              </div>
-            </article>
-            <article class="feature-small">
-              <div class="mini-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M12 3l7 4v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V7l7-4z"></path><path d="M9.5 12.5l1.8 1.8 3.8-4.4"></path></svg>
-              </div>
-              <div>
-                <h3>Bloqueio local.</h3>
-                <p>Escolha sites e apps para segurar durante o foco. A sessão fica protegida no próprio desktop.</p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
 
-      <section class="shell reveal" id="desktop" aria-labelledby="desktop-title">
-        <div class="showcase">
-          <div>
-            <p class="kicker">Desktop primeiro</p>
-            <h2 id="desktop-title">Uma ferramenta para o lugar onde você trabalha.</h2>
-          </div>
-          <div class="panel-list">
-            <div class="panel-item">
-              <div class="num">1</div>
-              <div><b>Escolha a tarefa do ciclo.</b><span>O foco começa com uma intenção simples, visível no timer.</span></div>
-            </div>
-            <div class="panel-item">
-              <div class="num">2</div>
-              <div><b>Ative o bloqueio.</b><span>Apps e sites configurados saem da rota enquanto o tempo corre.</span></div>
-            </div>
-            <div class="panel-item">
-              <div class="num">3</div>
-              <div><b>Feche o bloco.</b><span>Registre progresso, mantenha a sequência e ajuste o próximo ciclo.</span></div>
-            </div>
-          </div>
-        </div>
-        <div class="desktop-card" style="margin-top: 18px;">
-          <div class="desktop-inner">
-            <h3>Controle de foco com cara de instrumento, não de feed.</h3>
-            <div class="block-board">
-              <div class="block-tile"><span>Sites</span><b>twitter.com</b></div>
-              <div class="block-tile"><span>Apps</span><b>YouTube, TikTok</b></div>
-              <div class="block-tile"><span>Estado</span><b>Protegido</b></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="quote-band reveal" aria-labelledby="quote-title">
-        <div class="quote shell">
-          <mark aria-hidden="true">25</mark>
-          <div>
-            <blockquote id="quote-title">O melhor sistema de produtividade é aquele que some depois de iniciar o trabalho.</blockquote>
-            <cite>Toki foi desenhado para a janela ficar útil, silenciosa e fácil de confiar durante o dia inteiro.</cite>
-          </div>
-        </div>
-      </section>
-
-      <section class="shell reveal" id="preco" aria-labelledby="preco-title">
-        <div class="section-head">
-          <div>
-            <p class="kicker">Download</p>
-            <h2 id="preco-title">Comece com a versão beta para Windows.</h2>
-          </div>
-          <p>Baixe o instalador local, abra o Toki e teste um ciclo completo de foco sem criar conta.</p>
-        </div>
         <div class="pricing">
           <article class="price-card">
-            <h3>Toki Desktop</h3>
-            <div class="price">R$ 0 <small>/ beta</small></div>
+            <h3>TOKI Desktop</h3>
+            <div class="price">$0 <small>/ beta</small></div>
             <ul class="checklist">
-              <li>Instalador para Windows</li>
-              <li>Pomodoro, tarefas e bloqueio local</li>
-              <li>Sem conta obrigatória no beta</li>
+              <li>Windows installer</li>
+              <li>Pomodoro and configurable cycles</li>
+              <li>Daily tasks and progress history</li>
+              <li>Local site and app blocking</li>
             </ul>
-            <p class="download-note">Arquivo local: toki Setup 1.0.0.exe</p>
-            <a class="cta" href="../dist/toki%20Setup%201.0.0.exe" download><span>Baixar instalador</span><span aria-hidden="true">&rarr;</span></a>
+            <a class="cta" href="../dist/toki%20Setup%201.0.0.exe" download="toki-setup-1.0.0.exe"><span>Download free</span><span class="arrow" aria-hidden="true">&darr;</span></a>
+            <p class="download-note">File: toki-setup-1.0.0.exe</p>
           </article>
-          <div class="faq" id="faq">
+
+          <div class="faq">
             <details open>
-              <summary>O Toki funciona offline?</summary>
-              <p>Sim. O app é desktop e foi pensado para rodar localmente no Windows.</p>
+              <summary>Is TOKI a Pomodoro timer?</summary>
+              <p>It has Pomodoro, but the product is bigger than that: an emotional focus environment for starting and protecting work blocks.</p>
             </details>
             <details>
-              <summary>Posso trocar os tempos do Pomodoro?</summary>
-              <p>Sim. O app já trabalha com tempos customizados para foco, pausa curta e pausa longa.</p>
+              <summary>Does it work offline?</summary>
+              <p>Yes. The current beta runs as a local desktop app on Windows.</p>
             </details>
             <details>
-              <summary>Preciso criar conta?</summary>
-              <p>Não para testar o beta local. A proposta é abrir o app e iniciar um ciclo de foco direto.</p>
+              <summary>Do I need an account?</summary>
+              <p>No. Download, open, and start a block. That's it.</p>
+            </details>
+            <details>
+              <summary>Will it integrate with Notion or Todoist?</summary>
+              <p>Yes, that's planned. Import your tasks directly into TOKI so you pick up where planning left off.</p>
             </details>
           </div>
+        </div>
+      </section>
+
+      <section class="shell reveal" id="docs" aria-labelledby="docs-title">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Docs</p>
+            <h2 id="docs-title">A simple philosophy.</h2>
+          </div>
+          <p>Planning can happen somewhere else. Doing happens in TOKI.</p>
+        </div>
+
+        <div class="docs-grid">
+          <article class="doc-card">
+            <h3>The Digital Third Place</h3>
+            <p>TOKI is designed to be a space users return to because they genuinely want to be there, not because they received another push notification.</p>
+          </article>
+          <article class="doc-card">
+            <h3>Desktop-first</h3>
+            <p>The desktop decision is strategic. Serious work happens on the same machine where distractions live. TOKI meets you there.</p>
+          </article>
         </div>
       </section>
 
       <section class="final shell reveal" aria-labelledby="final-title">
-        <div>
-          <p class="kicker">Toki</p>
-          <h2 id="final-title">Abra, escolha uma tarefa, proteja o bloco.</h2>
-          <p>O beta já tem o essencial: timer, tarefas diárias e bloqueio local para você testar um bloco de trabalho real.</p>
-          <a class="cta" href="../dist/toki%20Setup%201.0.0.exe" download><span>Baixar para Windows</span><span aria-hidden="true">&darr;</span></a>
-        </div>
-      </section>
-
-      <section class="legal shell" id="legal" aria-label="Informações legais e contato">
-        <div class="legal-grid">
-          <article class="legal-item" id="privacidade">
-            <h3>Privacidade</h3>
-            <p>O beta apresentado aqui roda como app local. Revise permissões de bloqueio antes de usar em sessões longas.</p>
-          </article>
-          <article class="legal-item" id="termos">
-            <h3>Termos</h3>
-            <p>Versão beta gratuita, distribuída para teste local. Use por sua conta e mantenha seu instalador atualizado.</p>
-          </article>
-          <article class="legal-item" id="contato">
-            <h3>Contato</h3>
-            <p>Defina o email público antes de publicar. Por enquanto, use o repositório/local do projeto.</p>
-          </article>
+        <div class="final-panel">
+          <div>
+            <p class="kicker">TOKI</p>
+            <h2 id="final-title">Stop preparing to focus. Just enter it.</h2>
+            <p>Download the beta, open a task, and let the environment protect your next block.</p>
+          </div>
+          <a class="cta" href="../dist/toki%20Setup%201.0.0.exe" download="toki-setup-1.0.0.exe"><span>Download for Windows</span><span class="arrow" aria-hidden="true">&darr;</span></a>
         </div>
       </section>
     </main>
 
     <footer class="footer shell">
-      <span>Toki, Pomodoro & Productivity App</span>
-      <nav class="footer-links" aria-label="Links de rodapé">
-        <a href="#privacidade">Privacidade</a>
-        <a href="#termos">Termos</a>
-        <a href="#contato">Contato</a>
-        <a href="../dist/toki%20Setup%201.0.0.exe" download>Download</a>
+      <span>&copy; 2026 TOKI · &#26178;</span>
+      <nav class="footer-links" aria-label="Footer links">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#docs">Docs</a>
+        <a href="../dist/toki%20Setup%201.0.0.exe" download="toki-setup-1.0.0.exe">Download</a>
       </nav>
     </footer>
   </div>

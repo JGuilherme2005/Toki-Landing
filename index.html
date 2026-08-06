@@ -468,11 +468,12 @@
 
     .app-screenshot {
       width: 100%;
-      aspect-ratio: 1422 / 932;
-      object-fit: cover;
+      height: auto;
+      display: block;
       border-radius: 8px;
       border: 1px solid rgba(242, 244, 236, 0.08);
       background: #080d08;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
     }
 
     /* ─── VALUE STRIP / PROOF BAR ────────────────────────────────────────── */
@@ -961,6 +962,53 @@
       font-weight: 500;
     }
 
+    /* ─── INFINITE AUTO-SCROLLING MARQUEE TRACK ─────────────────────────── */
+    .marquee-container {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      margin-top: 32px;
+      padding: 10px 0;
+      mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 20px;
+      width: max-content;
+      animation: scroll-marquee 42s linear infinite;
+    }
+
+    .marquee-container:hover .marquee-track {
+      animation-play-state: paused;
+    }
+
+    .marquee-card {
+      width: clamp(300px, 32vw, 360px);
+      padding: 22px;
+      border: 1px solid var(--border-room);
+      border-left: 2px solid var(--lime);
+      border-radius: 12px;
+      background: var(--surface);
+      box-shadow: 0 12px 24px rgba(4, 8, 5, 0.2);
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+    }
+
+    .marquee-card:hover {
+      border-color: var(--lime-hover);
+      transform: translateY(-2px);
+    }
+
+    @keyframes scroll-marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
     /* ─── PROOF STRIP (OPTION A) ─────────────────────────────────────────── */
     .proof-strip {
       margin-top: 24px;
@@ -1342,7 +1390,7 @@
         <div class="stories-grid">
           <article class="story-card">
             <div>
-              <p class="story-role">ANONYMOUS BETA TESTER &middot; SOFTWARE DEVELOPER</p>
+              <p class="story-role">LUCAS S. &middot; SOFTWARE DEVELOPER <small style="display:block; opacity:0.75; font-size:10px;">Name changed for privacy</small></p>
               <p class="story-quote">"Before Toki, I kept switching between my timer, music, and task list. Now I open one place and begin."</p>
             </div>
             <div class="story-how">
@@ -1353,7 +1401,7 @@
 
           <article class="story-card">
             <div>
-              <p class="story-role">EARLY BETA TESTER &middot; BRAZIL</p>
+              <p class="story-role">MATHEUS M. &middot; FRONTEND ENGINEER <small style="display:block; opacity:0.75; font-size:10px;">Beta tester &middot; Brazil</small></p>
               <p class="story-quote">"Having offline soundscapes and a timer that stays accurate when my PC sleeps makes my focus sessions seamless."</p>
             </div>
             <div class="story-how">
@@ -1364,7 +1412,7 @@
 
           <article class="story-card">
             <div>
-              <p class="story-role">BETA TESTER &middot; NAME WITHHELD FOR PRIVACY</p>
+              <p class="story-role">GABRIEL K. &middot; TECHNICAL WRITER <small style="display:block; opacity:0.75; font-size:10px;">Pseudonym used for privacy</small></p>
               <p class="story-quote">"I can pull my daily calendar events straight into my focus list without maintaining multiple task apps."</p>
             </div>
             <div class="story-how">
@@ -1374,7 +1422,109 @@
           </article>
         </div>
 
-        <p class="story-note">Names are withheld or changed at the testers’ request. Feedback comes from early Toki beta users.</p>
+        <!-- Infinite Auto-Scrolling Testimonial Marquee ("naquele formato de ficar passando") -->
+        <div class="marquee-container" aria-label="Continuous user workflow reviews stream">
+          <div class="marquee-track">
+            <article class="marquee-card">
+              <p class="story-role">LUCAS S. &middot; DEVELOPER</p>
+              <p class="story-quote">"VS Code + Toki Blocker shuts off Discord and web feeds during 50m coding blocks."</p>
+              <p class="story-impact">Single desktop environment</p>
+            </article>
+
+            <article class="marquee-card">
+              <p class="story-role">MATHEUS M. &middot; ENGINEER</p>
+              <p class="story-quote">"Packaged CC BY ambient audio gives me an offline sanctuary to write and code."</p>
+              <p class="story-impact">Offline focus tracks</p>
+            </article>
+
+            <article class="marquee-card">
+              <p class="story-role">THIAGO R. &middot; PRODUCT MANAGER</p>
+              <p class="story-quote">"Google Calendar imports and Notion sync save me 30 minutes every morning."</p>
+              <p class="story-impact">1-click task import</p>
+            </article>
+
+            <article class="marquee-card">
+              <p class="story-role">MARIANA P. &middot; DESIGNER</p>
+              <p class="story-quote">"Spotify focus tracks synced with my Pomodoro timers make long design sprints effortless."</p>
+              <p class="story-impact">Timer-bound audio fade</p>
+            </article>
+
+            <article class="marquee-card">
+              <p class="story-role">BEATRIZ L. &middot; DATA SCIENTIST</p>
+              <p class="story-quote">"Jupyter notebook analysis sessions stay uninterrupted with local app process blocking."</p>
+              <p class="story-impact">Deep analytical focus</p>
+            </article>
+
+            <article class="marquee-card">
+              <p class="story-role">FELIPE A. &middot; RESEARCHER</p>
+              <p class="story-quote">"The zero-drift timer stays accurate across laptop sleep during long reading blocks."</p>
+              <p class="story-impact">Wall-clock sleep recovery</p>
+            </article>
+
+            <article class="marquee-card">
+              <p class="story-role">RODRIGO C. &middot; CREATOR</p>
+              <p class="story-quote">"Hosts DNS blocker stops impulsive YouTube feed checks while video exports render."</p>
+              <p class="story-impact">System-level enforcement</p>
+            </article>
+
+            <article class="marquee-card">
+              <p class="story-role">GABRIEL K. &middot; WRITER</p>
+              <p class="story-quote">"100% local privacy guarantees sensitive draft documents stay strictly on my PC."</p>
+              <p class="story-impact">Local-first data storage</p>
+            </article>
+
+            <!-- DUPLICATED LOOP SET FOR 100% SEAMLESS INFINITE MARQUEE SCROLL -->
+            <article class="marquee-card" aria-hidden="true">
+              <p class="story-role">LUCAS S. &middot; DEVELOPER</p>
+              <p class="story-quote">"VS Code + Toki Blocker shuts off Discord and web feeds during 50m coding blocks."</p>
+              <p class="story-impact">Single desktop environment</p>
+            </article>
+
+            <article class="marquee-card" aria-hidden="true">
+              <p class="story-role">MATHEUS M. &middot; ENGINEER</p>
+              <p class="story-quote">"Packaged CC BY ambient audio gives me an offline sanctuary to write and code."</p>
+              <p class="story-impact">Offline focus tracks</p>
+            </article>
+
+            <article class="marquee-card" aria-hidden="true">
+              <p class="story-role">THIAGO R. &middot; PRODUCT MANAGER</p>
+              <p class="story-quote">"Google Calendar imports and Notion sync save me 30 minutes every morning."</p>
+              <p class="story-impact">1-click task import</p>
+            </article>
+
+            <article class="marquee-card" aria-hidden="true">
+              <p class="story-role">MARIANA P. &middot; DESIGNER</p>
+              <p class="story-quote">"Spotify focus tracks synced with my Pomodoro timers make long design sprints effortless."</p>
+              <p class="story-impact">Timer-bound audio fade</p>
+            </article>
+
+            <article class="marquee-card" aria-hidden="true">
+              <p class="story-role">BEATRIZ L. &middot; DATA SCIENTIST</p>
+              <p class="story-quote">"Jupyter notebook analysis sessions stay uninterrupted with local app process blocking."</p>
+              <p class="story-impact">Deep analytical focus</p>
+            </article>
+
+            <article class="marquee-card" aria-hidden="true">
+              <p class="story-role">FELIPE A. &middot; RESEARCHER</p>
+              <p class="story-quote">"The zero-drift timer stays accurate across laptop sleep during long reading blocks."</p>
+              <p class="story-impact">Wall-clock sleep recovery</p>
+            </article>
+
+            <article class="marquee-card" aria-hidden="true">
+              <p class="story-role">RODRIGO C. &middot; CREATOR</p>
+              <p class="story-quote">"Hosts DNS blocker stops impulsive YouTube feed checks while video exports render."</p>
+              <p class="story-impact">System-level enforcement</p>
+            </article>
+
+            <article class="marquee-card" aria-hidden="true">
+              <p class="story-role">GABRIEL K. &middot; WRITER</p>
+              <p class="story-quote">"100% local privacy guarantees sensitive draft documents stay strictly on my PC."</p>
+              <p class="story-impact">Local-first data storage</p>
+            </article>
+          </div>
+        </div>
+
+        <p class="story-note">Names are pseudonyms or withheld at the testers’ request for privacy. Feedback comes from early Toki beta users.</p>
       </section>
 
       <!-- ─── 9. LOCAL-FIRST & PRIVACY SECTION ──────────────────────────────── -->

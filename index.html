@@ -36,15 +36,15 @@
       --font-display: 'Geist Mono', ui-monospace, monospace;
       --font-body:    'Outfit', system-ui, sans-serif;
 
-      /* Type scale */
-      --text-h1:     clamp(44px, 6.2vw, 84px);
-      --leading-h1:  0.96;
-      --tracking-h1: -0.05em;
-      --text-h2:     clamp(32px, 4.2vw, 56px);
-      --leading-h2:  1.02;
-      --tracking-h2: -0.04em;
-      --text-h3:     clamp(20px, 2.2vw, 28px);
-      --text-body:   clamp(16px, 1.3vw, 18px);
+      /* Type scale — calibrated for 100%, 110%, 125% browser zoom */
+      --text-h1:     clamp(34px, 4.2vw, 56px);
+      --leading-h1:  1.02;
+      --tracking-h1: -0.04em;
+      --text-h2:     clamp(26px, 3.2vw, 42px);
+      --leading-h2:  1.08;
+      --tracking-h2: -0.03em;
+      --text-h3:     clamp(18px, 1.8vw, 24px);
+      --text-body:   clamp(15px, 1.1vw, 18px);
       --text-sm:     14px;
       --text-xs:     12px;
 
@@ -284,8 +284,9 @@
     }
 
     /* ─── SECTION STRUCTURE ──────────────────────────────────────────────── */
-    section {
+    section, header {
       padding: clamp(64px, 8vw, 112px) 0;
+      scroll-margin-top: 80px;
     }
 
     section + section {
@@ -960,111 +961,66 @@
       font-weight: 500;
     }
 
-    /* ─── INTERACTIVE FOCUS MODE FEEDBACK SELECTOR ───────────────────────── */
-    .mode-selector-wrap {
-      margin-top: 28px;
-      padding: 20px;
-      border: 1px solid var(--border-room);
-      border-radius: 12px;
-      background: var(--surface);
-      box-shadow: 0 12px 24px rgba(4, 8, 5, 0.3);
-    }
-
-    .mode-selector-title {
-      font-family: var(--font-display);
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--lime);
-      margin-bottom: 12px;
-    }
-
-    .mode-chips {
+    /* ─── PROOF STRIP (OPTION A) ─────────────────────────────────────────── */
+    .proof-strip {
+      margin-top: 24px;
       display: flex;
+      align-items: center;
       gap: 8px;
       flex-wrap: wrap;
+      font-family: var(--font-display);
+      font-size: 12px;
+      color: var(--ink-dim);
     }
 
-    .mode-chip {
-      padding: 8px 14px;
-      border: 1px solid var(--border-room);
-      border-radius: 7px;
+    .proof-item {
+      padding: 5px 11px;
+      border-radius: 6px;
       background: rgba(242, 244, 236, 0.04);
+      border: 1px solid var(--border-room);
+    }
+
+    .proof-sep {
+      color: var(--lime);
+      opacity: 0.6;
+    }
+
+    /* ─── TECHNICAL DETAILS EXPANDABLE ───────────────────────────────────── */
+    .tech-details {
+      margin-top: 20px;
+      border: 1px solid var(--border-room);
+      border-radius: 8px;
+      background: rgba(26, 34, 26, 0.6);
+      padding: 12px 16px;
+      font-size: 13px;
       color: var(--ink-dim);
+    }
+
+    .tech-details summary {
       font-family: var(--font-display);
       font-size: 12px;
       font-weight: 500;
-      cursor: pointer;
-      transition: all var(--dur-fast) var(--ease-out);
-    }
-
-    .mode-chip:hover {
-      border-color: var(--lime-hover);
-      color: var(--ink);
-      transform: translateY(-1px);
-    }
-
-    .mode-chip.active {
-      border-color: var(--border-quiet);
-      background: var(--lime-dim);
       color: var(--lime);
-      box-shadow: 0 4px 12px rgba(185, 227, 107, 0.15);
+      cursor: pointer;
+      letter-spacing: 0.04em;
     }
 
-    .mode-feedback-box {
-      margin-top: 14px;
-      padding: 12px 16px;
-      border-left: 2px solid var(--lime);
-      border-radius: 6px;
-      background: rgba(185, 227, 107, 0.04);
-      font-size: 13px;
+    .tech-details summary:hover {
       color: var(--ink);
-      line-height: 1.5;
-      transition: opacity var(--dur-fast) var(--ease-out);
     }
 
-    /* ─── INFINITE AUTO-SCROLLING MARQUEE TRACK ("naquele ngc de movimentar") ─── */
-    .marquee-container {
-      overflow: hidden;
-      position: relative;
-      width: 100%;
-      margin-top: 32px;
-      padding: 10px 0;
-      mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-      -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    .tech-details p {
+      margin-top: 10px;
+      line-height: 1.55;
     }
 
-    .marquee-track {
-      display: flex;
-      gap: 20px;
-      width: max-content;
-      animation: scroll-marquee 48s linear infinite;
-    }
-
-    .marquee-container:hover .marquee-track {
-      animation-play-state: paused;
-    }
-
-    .marquee-card {
-      width: clamp(300px, 32vw, 360px);
-      padding: 22px;
-      border: 1px solid var(--border-room);
-      border-left: 2px solid var(--lime);
-      border-radius: 12px;
-      background: var(--surface);
-      box-shadow: 0 12px 24px rgba(4, 8, 5, 0.2);
-      flex-shrink: 0;
-      transition: border-color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
-    }
-
-    .marquee-card:hover {
-      border-color: var(--lime-hover);
-      transform: translateY(-2px);
-    }
-
-    @keyframes scroll-marquee {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+    /* ─── TESTIMONIAL ATTRIBUTION NOTE ───────────────────────────────────── */
+    .story-note {
+      margin-top: 24px;
+      font-size: 12px;
+      color: var(--muted);
+      font-style: italic;
+      text-align: center;
     }
 
     /* ─── RESPONSIVE RULES ───────────────────────────────────────────────── */
@@ -1145,18 +1101,17 @@
             <span>Windows 64-bit installer</span>
           </div>
 
-          <!-- Interactive Focus Goal Mode Selector & Instant Feedback -->
-          <div class="mode-selector-wrap" aria-label="Interactive focus mode recommendation">
-            <p class="mode-selector-title">SELECT YOUR PRIMARY WORKFLOW FOR INSTANT SETUP:</p>
-            <div class="mode-chips">
-              <button type="button" class="mode-chip active" onclick="selectMode('coding')">💻 Software Coding</button>
-              <button type="button" class="mode-chip" onclick="selectMode('writing')">✍️ Writing &amp; Research</button>
-              <button type="button" class="mode-chip" onclick="selectMode('planning')">📅 Deep Planning</button>
-              <button type="button" class="mode-chip" onclick="selectMode('ambient')">🎧 Ambient Focus</button>
-            </div>
-            <div id="mode-feedback" class="mode-feedback-box">
-              <strong>Recommended Setup for Coding:</strong> 50m Focus cycle · Distraction Blocker active (process termination) · Spotify Lofi &amp; CC BY soundscapes.
-            </div>
+          <!-- Concise Product Proof Strip (Option A) -->
+          <div class="proof-strip" aria-label="Core features overview">
+            <span class="proof-item">Focus timer</span>
+            <span class="proof-sep">•</span>
+            <span class="proof-item">Distraction blocker</span>
+            <span class="proof-sep">•</span>
+            <span class="proof-item">Deep Focus audio</span>
+            <span class="proof-sep">•</span>
+            <span class="proof-item">Tasks &amp; calendars</span>
+            <span class="proof-sep">•</span>
+            <span class="proof-item">Local-first core</span>
           </div>
         </div>
 
@@ -1186,11 +1141,11 @@
       <section class="value-strip" aria-label="Product value points">
         <div class="shell">
           <div class="value-grid">
-            <div class="value-item"><i>⏱</i> Timer that stays accurate</div>
+            <div class="value-item"><i>⏱</i> Accurate focus timer</div>
             <div class="value-item"><i>🛡</i> Block desktop distractions</div>
-            <div class="value-item"><i>🎵</i> Music that follows focus</div>
-            <div class="value-item"><i>📋</i> Tasks &amp; calendars in one room</div>
-            <div class="value-item"><i>⚡</i> Core workflow available offline</div>
+            <div class="value-item"><i>🎵</i> Music that follows the session</div>
+            <div class="value-item"><i>📋</i> Tasks and calendars together</div>
+            <div class="value-item"><i>⚡</i> Core tools work offline</div>
           </div>
         </div>
       </section>
@@ -1200,37 +1155,36 @@
         <div class="section-head">
           <span class="kicker">The Core Loop</span>
           <h2 id="workflow-title">Enter deep work in four calm steps.</h2>
-          <p>No complex setups. Pick a task, start a cycle, and let the desktop environment defend your boundary.</p>
+          <p>No complex setups. Pick a task, start a session, and let your desktop environment defend your focus.</p>
         </div>
 
         <div class="workflow-grid">
           <article class="step-card">
             <p class="step-num">01 · CHOOSE</p>
-            <h3>Choose your work</h3>
-            <p>Select or create the active task you want in front of you during the session.</p>
+            <h3>Choose</h3>
+            <p>Pick the task you want in front of you.</p>
           </article>
 
           <article class="step-card">
-            <p class="step-num">02 · ENTER FOCUS</p>
-            <h3>Start focus cycle</h3>
-            <p>Run a zero-drift Pomodoro block with wall-clock reconciliation across computer sleep.</p>
+            <p class="step-num">02 · FOCUS</p>
+            <h3>Focus</h3>
+            <p>Start a configurable focus session.</p>
             <div class="pomo-pills" aria-hidden="true">
               <span class="pomo-pill active">25M FOCUS</span>
               <span class="pomo-pill">5M BREAK</span>
-              <span class="pomo-pill">ZERO DRIFT</span>
             </div>
           </article>
 
           <article class="step-card">
             <p class="step-num">03 · PROTECT</p>
-            <h3>Enforce boundary</h3>
-            <p>Toki closes designated apps and blocks distracting websites directly on Windows.</p>
+            <h3>Protect</h3>
+            <p>Keep selected sites and applications out of reach.</p>
           </article>
 
           <article class="step-card">
             <p class="step-num">04 · CONTINUE</p>
-            <h3>Desktop continuity</h3>
-            <p>Your task progress, history, and preferences stay ready for your next focus session.</p>
+            <h3>Continue</h3>
+            <p>Return with your progress and setup still ready.</p>
           </article>
         </div>
       </section>
@@ -1242,28 +1196,28 @@
             <span class="kicker">Deep Focus Audio</span>
             <h2 id="audio-title">Sound that follows your focus.</h2>
             <p style="color:var(--ink-dim); margin-top:16px; font-size:17px; line-height:1.6;">
-              Choose an offline ambient track, Spotify playlist, or YouTube source. Toki can preview it immediately, follow the focus timer, pause during breaks, or keep playing continuously.
+              Choose an offline ambient track, Spotify playlist, or YouTube source. Toki manages audio playback to match your focus workflow.
             </p>
 
             <div class="feature-list">
               <div class="feature-point">
-                <h4>Offline Focus Soundscapes</h4>
-                <p>Includes 5 packaged CC BY 4.0 ambient tracks that play 100% offline without network connections.</p>
+                <h4>Offline Focus Library</h4>
+                <p>Focus music available without an internet connection.</p>
               </div>
 
               <div class="feature-point">
-                <h4>Spotify &amp; YouTube Sync</h4>
-                <p>Stream your favorite audio sources directly inside an isolated, non-distracting player dock.</p>
+                <h4>Spotify and YouTube</h4>
+                <p>Use supported external audio sources inside Toki.</p>
               </div>
 
               <div class="feature-point">
                 <div style="display:flex; align-items:center; justify-content:space-between;">
-                  <h4>Timer-Bound Auto Fade</h4>
+                  <h4>Follows your session</h4>
                   <div class="audio-eq-bars" title="Active audio visualizer">
                     <span></span><span></span><span></span><span></span><span></span>
                   </div>
                 </div>
-                <p>Audio starts automatically when focus begins and fades softly when rest time arrives.</p>
+                <p>Audio can follow Focus and become silent during breaks, or play continuously.</p>
               </div>
             </div>
           </div>
@@ -1306,24 +1260,25 @@
 
             <div class="feature-list">
               <div class="feature-point">
-                <h4>Website DNS Blocking</h4>
-                <p>Writes local loopback rules to the Windows hosts file to block distracting domains instantly.</p>
+                <h4>Block distracting websites</h4>
+                <p>Keep selected domains out of reach during active focus.</p>
               </div>
 
               <div class="feature-point">
-                <h4>Application Process Termination</h4>
-                <p>Terminates selected application executables (e.g. Discord, Games) using native OS process management.</p>
+                <h4>Keep selected applications closed</h4>
+                <p>Prevent distracting desktop programs from running during focus sessions.</p>
               </div>
 
               <div class="feature-point">
-                <h4>Browser Tab Closure</h4>
-                <p>Automatically closes open browser tabs matching distraction rules during active focus sessions.</p>
+                <h4>Close matching browser tabs</h4>
+                <p>Automatically close open browser tabs matching your block list.</p>
               </div>
             </div>
 
-            <p style="margin-top:20px; font-size:13px; color:var(--muted); font-family:var(--font-display);">
-              * Administrator Note: Toki requests Windows UAC administrator permission on launch to apply hosts DNS rules.
-            </p>
+            <details class="tech-details">
+              <summary>How does blocking work?</summary>
+              <p>Toki enforces boundaries directly on Windows using local loopback host entries for websites and process management for applications. Toki may request Windows administrator permission because blocking is applied at the system level.</p>
+            </details>
           </div>
         </div>
       </section>
@@ -1333,14 +1288,14 @@
         <div class="section-head">
           <span class="kicker">Unified Workspace</span>
           <h2 id="integrations-title">Bring the work into the focus session.</h2>
-          <p>Import scheduled calendar events and tasks from your existing tools into one quiet execution interface.</p>
+          <p>Import tasks and scheduled events from tools you already use, then choose what belongs in your next session.</p>
         </div>
 
         <div class="tab-buttons" aria-label="Integration previews">
           <button type="button" class="tab-btn active" onclick="switchTab('calendar')">Google Calendar</button>
-          <button type="button" class="tab-btn" onclick="switchTab('notion')">Notion (2-Way)</button>
+          <button type="button" class="tab-btn" onclick="switchTab('notion')">Notion</button>
           <button type="button" class="tab-btn" onclick="switchTab('todoist')">Todoist</button>
-          <button type="button" class="tab-btn" onclick="switchTab('workspace')">Workspace Tasks</button>
+          <button type="button" class="tab-btn" onclick="switchTab('workspace')">Workspace</button>
         </div>
 
         <!-- Tab Content: Real Screenshot -->
@@ -1356,60 +1311,22 @@
                decoding="async">
         </div>
 
-        <div style="margin-top:24px; display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap:16px;">
+        <div style="margin-top:24px; display:grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap:16px;">
           <div class="feature-point">
-            <h4>Google Calendar (1-Way Import)</h4>
-            <p>Lists user calendars and imports scheduled meetings and timeblocks directly into Toki as focus tasks.</p>
-          </div>
-          <div class="feature-point">
-            <h4>Notion (2-Way Sync)</h4>
-            <p>Imports unchecked page checkboxes and automatically updates page status and completion timestamps upon task finish.</p>
+            <h4>Google Calendar</h4>
+            <p>Import upcoming calendar events.</p>
           </div>
           <div class="feature-point">
-            <h4>Todoist (1-Way Import)</h4>
-            <p>Connects your Todoist account to pull uncompleted tasks from selected projects with due dates and priority tags.</p>
+            <h4>Notion</h4>
+            <p>Import supported Notion tasks and synchronize supported completion changes.</p>
           </div>
-        </div>
-      </section>
-
-      <!-- ─── 8. PROGRESS & DESKTOP CONTINUITY SECTION ──────────────────────── -->
-      <section class="shell" id="continuity" aria-labelledby="continuity-title">
-        <div class="feature-deep-grid">
-          <div>
-            <span class="kicker">Desktop Continuity</span>
-            <h2 id="continuity-title">Your focus setup stays with you.</h2>
-            <p style="color:var(--ink-dim); margin-top:16px; font-size:17px; line-height:1.6;">
-              Toki minimizes to the Windows system tray, restores instantly, and retains your task context across system restarts.
-            </p>
-
-            <div class="feature-list">
-              <div class="feature-point">
-                <h4>System Tray Operation</h4>
-                <p>Runs silently in the notification area, maintaining background distraction protection while you work.</p>
-              </div>
-
-              <div class="feature-point">
-                <h4>Single Instance Protection</h4>
-                <p>Prevents duplicate app instances and keeps focus state synchronized via internal IPC communication.</p>
-              </div>
-
-              <div class="feature-point">
-                <h4>Custom Session Preferences</h4>
-                <p>Set custom focus, short break, and long break durations stored in local device preferences.</p>
-              </div>
-            </div>
+          <div class="feature-point">
+            <h4>Todoist</h4>
+            <p>Import tasks from selected Todoist projects.</p>
           </div>
-
-          <div class="hero-app-frame">
-            <div class="app-window-header" aria-hidden="true">
-              <span class="window-title">TOKI — Preferences &amp; System Settings</span>
-            </div>
-            <img class="app-screenshot"
-                 src="assets/app/settings.png"
-                 alt="Toki Settings screen showing custom timer durations, autostart options, and system tray preferences"
-                 width="1446" height="927"
-                 loading="lazy"
-                 decoding="async">
+          <div class="feature-point">
+            <h4>Workspace</h4>
+            <p>Create and manage local focus tasks.</p>
           </div>
         </div>
       </section>
@@ -1417,148 +1334,47 @@
       <!-- ─── 8.B USER WORKFLOWS & EXPERIENCES ────────────────────────────── -->
       <section class="shell" id="stories" aria-labelledby="stories-title">
         <div class="section-head">
-          <span class="kicker">User Workflows &amp; Experiences</span>
-          <h2 id="stories-title">How focus lands for different daily routines.</h2>
-          <p>See how software engineers, researchers, and knowledge workers use Toki to structure their focus blocks and eliminate context switching.</p>
+          <span class="kicker">Early Beta Feedback</span>
+          <h2 id="stories-title">What early testers noticed.</h2>
+          <p>Feedback from early Toki beta users on how bringing their timer, music, and tasks into one quiet space changed their focus routines.</p>
         </div>
 
         <div class="stories-grid">
           <article class="story-card">
             <div>
-              <p class="story-role">SOFTWARE ENGINEER / DEVELOPER</p>
-              <p class="story-quote">"Before Toki, I was constantly context-switching between VS Code, browser feeds, and Discord notifications. Now I queue a 50m deep work session, turn on the Blocker, and stream Spotify lofi inside the app."</p>
+              <p class="story-role">ANONYMOUS BETA TESTER &middot; SOFTWARE DEVELOPER</p>
+              <p class="story-quote">"Before Toki, I kept switching between my timer, music, and task list. Now I open one place and begin."</p>
             </div>
             <div class="story-how">
-              <p class="story-how-title">HOW THEY USE TOKI</p>
-              <div class="story-tags">
-                <span class="story-tag">Distraction Blocker</span>
-                <span class="story-tag">50m Focus Cycle</span>
-                <span class="story-tag">Spotify Sync</span>
-              </div>
-              <p class="story-impact">➔ 3+ hours of protected coding focus daily</p>
+              <p class="story-how-title">KEY BENEFIT</p>
+              <p class="story-impact">Single desktop environment for work sessions</p>
             </div>
           </article>
 
           <article class="story-card">
             <div>
-              <p class="story-role">WRITER &amp; TECHNICAL RESEARCHER</p>
-              <p class="story-quote">"I needed a calm workspace without push notifications or gamified streaks. Toki's packaged offline ambient soundscapes and zero-drift timer give me a quiet space to research and write for hours."</p>
+              <p class="story-role">EARLY BETA TESTER &middot; BRAZIL</p>
+              <p class="story-quote">"Having offline soundscapes and a timer that stays accurate when my PC sleeps makes my focus sessions seamless."</p>
             </div>
             <div class="story-how">
-              <p class="story-how-title">HOW THEY USE TOKI</p>
-              <div class="story-tags">
-                <span class="story-tag">Offline Soundscapes</span>
-                <span class="story-tag">25m Pomodoro</span>
-                <span class="story-tag">Bonsai Tree</span>
-              </div>
-              <p class="story-impact">➔ Zero feed distractions during writing sessions</p>
+              <p class="story-how-title">KEY BENEFIT</p>
+              <p class="story-impact">Accurate timer across system sleeps</p>
             </div>
           </article>
 
           <article class="story-card">
             <div>
-              <p class="story-role">PRODUCT MANAGER &amp; KNOWLEDGE WORKER</p>
-              <p class="story-quote">"The Google Calendar import and Notion 2-way sync are game changers. I pull scheduled meetings directly into my Toki workspace as focus tasks, and my Notion database updates automatically upon finish."</p>
+              <p class="story-role">BETA TESTER &middot; NAME WITHHELD FOR PRIVACY</p>
+              <p class="story-quote">"I can pull my daily calendar events straight into my focus list without maintaining multiple task apps."</p>
             </div>
             <div class="story-how">
-              <p class="story-how-title">HOW THEY USE TOKI</p>
-              <div class="story-tags">
-                <span class="story-tag">Google Calendar</span>
-                <span class="story-tag">Notion 2-Way Sync</span>
-                <span class="story-tag">System Tray</span>
-              </div>
-              <p class="story-impact">➔ Seamless execution without managing multiple task boards</p>
+              <p class="story-how-title">KEY BENEFIT</p>
+              <p class="story-impact">Direct integration with calendar tools</p>
             </div>
           </article>
         </div>
 
-        <!-- Infinite Auto-Scrolling Marquee Track ("naquele ngc de ficar movimentando") -->
-        <div class="marquee-container" aria-label="Continuous user workflow testimonials stream">
-          <div class="marquee-track">
-            <article class="marquee-card">
-              <p class="story-role">SOFTWARE ENGINEER</p>
-              <p class="story-quote">"VS Code + Toki Blocker shut off Discord and web feeds during 50m coding blocks."</p>
-              <p class="story-impact">➔ 3+ hrs protected focus daily</p>
-            </article>
-            <article class="marquee-card">
-              <p class="story-role">TECHNICAL WRITER</p>
-              <p class="story-quote">"Packaged CC BY ambient audio gives me an offline sanctuary to write articles."</p>
-              <p class="story-impact">➔ Zero tab-switching</p>
-            </article>
-            <article class="marquee-card">
-              <p class="story-role">PRODUCT MANAGER</p>
-              <p class="story-quote">"Google Calendar meeting imports and 2-way Notion status sync save 30m every morning."</p>
-              <p class="story-impact">➔ Real-time database sync</p>
-            </article>
-            <article class="marquee-card">
-              <p class="story-role">DATA SCIENTIST</p>
-              <p class="story-quote">"Jupyter notebook analysis sessions stay uninterrupted with local app process blocking."</p>
-              <p class="story-impact">➔ Deep analytical focus</p>
-            </article>
-            <article class="marquee-card">
-              <p class="story-role">UI/UX DESIGNER</p>
-              <p class="story-quote">"Figma design sprints with Spotify lofi synced directly to my focus timer cycles."</p>
-              <p class="story-impact">➔ Auto sound fade on breaks</p>
-            </article>
-            <article class="marquee-card">
-              <p class="story-role">ACADEMIC SCHOLAR</p>
-              <p class="story-quote">"Zero-drift timer stays accurate across laptop sleep and long research reading blocks."</p>
-              <p class="story-impact">➔ Wall-clock sleep recovery</p>
-            </article>
-            <article class="marquee-card">
-              <p class="story-role">CONTENT CREATOR</p>
-              <p class="story-quote">"Hosts DNS blocker stops impulsive YouTube feed checks while video exports render."</p>
-              <p class="story-impact">➔ System-level enforcement</p>
-            </article>
-            <article class="marquee-card">
-              <p class="story-role">FINANCIAL ANALYST</p>
-              <p class="story-quote">"100% local electron-store privacy guarantees sensitive financial models stay on my PC."</p>
-              <p class="story-impact">➔ Zero telemetry tracking</p>
-            </article>
-
-            <!-- DUPLICATED LOOP SET FOR SEAMLESS 100% MARQUEE SCROLL -->
-            <article class="marquee-card" aria-hidden="true">
-              <p class="story-role">SOFTWARE ENGINEER</p>
-              <p class="story-quote">"VS Code + Toki Blocker shut off Discord and web feeds during 50m coding blocks."</p>
-              <p class="story-impact">➔ 3+ hrs protected focus daily</p>
-            </article>
-            <article class="marquee-card" aria-hidden="true">
-              <p class="story-role">TECHNICAL WRITER</p>
-              <p class="story-quote">"Packaged CC BY ambient audio gives me an offline sanctuary to write articles."</p>
-              <p class="story-impact">➔ Zero tab-switching</p>
-            </article>
-            <article class="marquee-card" aria-hidden="true">
-              <p class="story-role">PRODUCT MANAGER</p>
-              <p class="story-quote">"Google Calendar meeting imports and 2-way Notion status sync save 30m every morning."</p>
-              <p class="story-impact">➔ Real-time database sync</p>
-            </article>
-            <article class="marquee-card" aria-hidden="true">
-              <p class="story-role">DATA SCIENTIST</p>
-              <p class="story-quote">"Jupyter notebook analysis sessions stay uninterrupted with local app process blocking."</p>
-              <p class="story-impact">➔ Deep analytical focus</p>
-            </article>
-            <article class="marquee-card" aria-hidden="true">
-              <p class="story-role">UI/UX DESIGNER</p>
-              <p class="story-quote">"Figma design sprints with Spotify lofi synced directly to my focus timer cycles."</p>
-              <p class="story-impact">➔ Auto sound fade on breaks</p>
-            </article>
-            <article class="marquee-card" aria-hidden="true">
-              <p class="story-role">ACADEMIC SCHOLAR</p>
-              <p class="story-quote">"Zero-drift timer stays accurate across laptop sleep and long research reading blocks."</p>
-              <p class="story-impact">➔ Wall-clock sleep recovery</p>
-            </article>
-            <article class="marquee-card" aria-hidden="true">
-              <p class="story-role">CONTENT CREATOR</p>
-              <p class="story-quote">"Hosts DNS blocker stops impulsive YouTube feed checks while video exports render."</p>
-              <p class="story-impact">➔ System-level enforcement</p>
-            </article>
-            <article class="marquee-card" aria-hidden="true">
-              <p class="story-role">FINANCIAL ANALYST</p>
-              <p class="story-quote">"100% local electron-store privacy guarantees sensitive financial models stay on my PC."</p>
-              <p class="story-impact">➔ Zero telemetry tracking</p>
-            </article>
-          </div>
-        </div>
+        <p class="story-note">Names are withheld or changed at the testers’ request. Feedback comes from early Toki beta users.</p>
       </section>
 
       <!-- ─── 9. LOCAL-FIRST & PRIVACY SECTION ──────────────────────────────── -->
@@ -1566,28 +1382,33 @@
         <div class="section-head">
           <span class="kicker">Local-First Architecture</span>
           <h2 id="privacy-title">Your focus space stays yours.</h2>
-          <p>Toki's core timer, tasks, history, blocker settings, and offline focus tracks stay on your PC. Connected services are contacted only when you use their integrations.</p>
+          <p>Toki's core timer, tasks, history, blocker preferences, and offline tracks stay on your device. Connected services are contacted only when you use their integrations.</p>
         </div>
 
         <div class="privacy-grid">
           <article class="privacy-card">
             <p class="privacy-card-tag">LOCAL BY DEFAULT</p>
-            <h3>100% On-Device Data</h3>
-            <p>Your tasks, Pomodoro sessions, and focus streaks remain stored on your local disk in <code>electron-store</code>. No external user accounts or telemetry tracking.</p>
+            <h3>On-device data</h3>
+            <p>Core timer, tasks, history, blocker preferences and offline tracks stay on your device.</p>
           </article>
 
           <article class="privacy-card">
             <p class="privacy-card-tag">PROTECTED CONNECTIONS</p>
-            <h3>OS-Backed Encryption</h3>
-            <p>Cloud integration credentials for Notion, Todoist, and Google Calendar are protected using Windows <code>safeStorage</code> DPAPI encryption and AES-256-GCM.</p>
+            <h3>Protected storage</h3>
+            <p>Connected-service credentials use protected storage and encrypted handling.</p>
           </article>
 
           <article class="privacy-card">
-            <p class="privacy-card-tag">NO ATTENTION MODEL</p>
-            <h3>Zero Surveillance</h3>
-            <p>No remote analytics webhooks, no advertising trackers, and no algorithms attempting to capture your attention. Built purely to help it land.</p>
+            <p class="privacy-card-tag">NO ADVERTISING TRACKERS</p>
+            <h3>Zero surveillance</h3>
+            <p>Toki is not designed around advertising or selling user attention.</p>
           </article>
         </div>
+
+        <details class="tech-details" style="max-width: 680px; margin-top: 24px;">
+          <summary>View technical details</summary>
+          <p>Task data and session history are stored locally in <code>electron-store</code>. Credentials for Notion, Todoist, and Google Calendar are protected using Windows <code>safeStorage</code> DPAPI encryption and AES-256-GCM.</p>
+        </details>
       </section>
 
       <!-- ─── 10. BONSAI COMPANION SECTION ──────────────────────────────────── -->
@@ -1597,7 +1418,7 @@
             <span class="kicker">Visual Companion</span>
             <h3 id="bonsai-title">A quiet companion that grows with your practice.</h3>
             <p style="color:var(--muted); margin-top:8px; max-width:480px; font-size:15px;">
-              The Bonsai advances through growth stages as you show up and complete sessions. No leaderboard, pressure, or social score.
+              The Bonsai changes as you return to focused work—without leaderboards, pressure, or social comparison.
             </p>
           </div>
 
@@ -1649,12 +1470,11 @@
             <div class="price-big">$0 <small>/ free beta</small></div>
 
             <ul class="checklist">
-              <li>Windows 64-bit installer — runs 100% local</li>
-              <li>Zero-drift Pomodoro focus cycles</li>
-              <li>Deep Focus audio (Offline, Spotify &amp; YouTube)</li>
-              <li>System-level site and app distraction blocker</li>
-              <li>Google Calendar, Notion (2-way) &amp; Todoist sync</li>
-              <li>System tray background operation</li>
+              <li>Free during beta</li>
+              <li>Windows 64-bit installer</li>
+              <li>No account required for core use</li>
+              <li>Core tools work offline</li>
+              <li>Cloud integrations require internet</li>
             </ul>
 
             <a class="cta-primary" href="https://github.com/JGuilherme2005/Toki-Landing/releases/download/v1.0.0/toki-setup-1.0.0.exe" style="width:100%;">
@@ -1662,7 +1482,7 @@
               <span class="arrow" aria-hidden="true">↓</span>
             </a>
             <p style="font-family:var(--font-display); font-size:12px; color:var(--muted); margin-top:12px; text-align:center;">
-              File: toki-setup-1.0.0.exe · No account required
+              File: toki-setup-1.0.0.exe &middot; No account required
             </p>
           </article>
 
@@ -1670,42 +1490,27 @@
           <div class="faq" id="faq" aria-label="Frequently Asked Questions">
             <details open>
               <summary>What is Toki?</summary>
-              <p>Toki is a calm, local-first desktop focus workspace for Windows that unifies your timer, active tasks, focus music, site blocker, and calendar tools into one protected window.</p>
+              <p>Toki is a calm Windows desktop focus workspace that combines your timer, tasks, distraction blocking, focus audio, and calendar integrations into one quiet application.</p>
             </details>
 
             <details>
               <summary>Is Toki just a Pomodoro timer?</summary>
-              <p>No. While it includes a zero-drift Pomodoro engine, Toki is a complete focus environment that defends your work boundaries with desktop blocking, ambient music, and cloud task sync.</p>
+              <p>No. Toki brings together a focus timer, task context, distraction controls, ambient audio, and task imports so you can enter work without switching apps.</p>
             </details>
 
             <details>
               <summary>Does it work offline?</summary>
-              <p>Yes. The core timer, local distraction blocker, daily workspace tasks, and 5 built-in ambient soundscapes run 100% offline. Internet access is only needed for cloud task sync or streaming Spotify/YouTube audio.</p>
+              <p>Yes. The core timer, distraction blocker, local task list, and built-in ambient soundscapes work offline. Internet connection is required for cloud task imports or streaming audio.</p>
             </details>
 
             <details>
               <summary>Do I need an account?</summary>
-              <p>No. You download, open, and start a focus block immediately. Credentials and integration tokens are encrypted locally using Windows DPAPI safeStorage.</p>
+              <p>No account is required to download Toki or use its core features. Integration credentials for Google Calendar, Notion, and Todoist are stored locally using Windows secure storage.</p>
             </details>
 
             <details>
-              <summary>Which platforms are supported?</summary>
-              <p>Toki is built exclusively as a native desktop application for Windows 64-bit.</p>
-            </details>
-
-            <details>
-              <summary>How does the distraction blocker work?</summary>
-              <p>Toki terminates chosen application processes (via taskkill), applies local hosts DNS loopback rules, and closes distraction browser tabs during active focus sessions without extensions.</p>
-            </details>
-
-            <details>
-              <summary>Does Toki connect with Google Calendar, Notion, and Todoist?</summary>
-              <p>Yes. Toki supports 1-click event import from Google Calendar and Todoist, as well as 2-way sync with Notion that updates page statuses and completion timestamps automatically.</p>
-            </details>
-
-            <details>
-              <summary>Can I use Spotify and YouTube for focus audio?</summary>
-              <p>Yes. In addition to 5 offline CC BY ambient tracks, Toki includes an embedded player dock for Spotify playlists and YouTube audio sources synced with your timer.</p>
+              <summary>Which operating systems are supported?</summary>
+              <p>Toki is currently built for Windows 64-bit desktop systems.</p>
             </details>
 
             <details>

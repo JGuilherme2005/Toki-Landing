@@ -3,75 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="TOKI is a desktop focus and deep work app for Windows. A calm instrument to choose a task, start the cycle, and block distractions.">
+  <meta name="description" content="Toki is a calm, local-first Windows focus workspace combining zero-drift timers, tasks, distraction blocking, focus audio, and cloud integrations.">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#0e1210">
-  <meta property="og:title" content="TOKI | Your place to do the work.">
-  <meta property="og:description" content="Everything else was built to keep you scrolling. TOKI was built to help you finally start.">
-  <meta property="og:site_name" content="TOKI">
+  <meta property="og:title" content="Toki | Desktop Focus Workspace for Windows">
+  <meta property="og:description" content="Bring your timer, task context, focus audio, and distraction controls into one protected desktop environment.">
+  <meta property="og:site_name" content="Toki">
   <meta property="og:url" content="https://jguilherme2005.github.io/Toki-Landing/">
   <meta property="og:image" content="https://jguilherme2005.github.io/Toki-Landing/assets/toki-poster.png">
-  <meta property="og:image:alt" content="TOKI desktop focus environment">
-  <meta property="og:image:width" content="1920">
-  <meta property="og:image:height" content="1080">
+  <meta property="og:image:alt" content="Toki desktop focus environment workspace">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="TOKI | Your place to do the work.">
-  <meta name="twitter:description" content="An emotional focus environment for desktop, with timer, tasks, and local blocking.">
+  <meta name="twitter:title" content="Toki | Desktop Focus Workspace for Windows">
+  <meta name="twitter:description" content="Local-first desktop workspace with focus timer, site blocker, ambient audio, and cloud task sync.">
   <meta name="twitter:image" content="https://jguilherme2005.github.io/Toki-Landing/assets/toki-poster.png">
-  <meta name="twitter:image:alt" content="TOKI desktop focus environment">
   <link rel="canonical" href="https://jguilherme2005.github.io/Toki-Landing/">
   <link rel="icon" href="assets/icon.ico">
   <link rel="apple-touch-icon" href="assets/icon.png">
-  <title>TOKI | Your place to do the work.</title>
+  <title>Toki | Desktop Focus Workspace for Windows</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap">
 
   <style>
-    /* ─── TOKENS: DIRECTION A — INSTRUMENT ROOM ───────────────────────── */
+    /* ─── TOKENS: TOKI PRODUCT-LED DESIGN SYSTEM ───────────────────────── */
     :root {
       color-scheme: dark;
 
       /* Fonts */
-      --font-display: 'Geist Mono', 'JetBrains Mono', ui-monospace, monospace;
+      --font-display: 'Geist Mono', ui-monospace, monospace;
       --font-body:    'Outfit', system-ui, sans-serif;
 
       /* Type scale */
-      --text-h1:     clamp(64px, 8.8vw, 128px);
-      --leading-h1:  0.88;
-      --tracking-h1: -0.07em;
-      --text-h2:     clamp(38px, 5.2vw, 76px);
-      --leading-h2:  0.93;
-      --tracking-h2: -0.05em;
-      --text-h3:     clamp(22px, 2.6vw, 34px);
-      --text-body:   clamp(16px, 1.4vw, 18px);
+      --text-h1:     clamp(44px, 6.2vw, 84px);
+      --leading-h1:  0.96;
+      --tracking-h1: -0.05em;
+      --text-h2:     clamp(32px, 4.2vw, 56px);
+      --leading-h2:  1.02;
+      --tracking-h2: -0.04em;
+      --text-h3:     clamp(20px, 2.2vw, 28px);
+      --text-body:   clamp(16px, 1.3vw, 18px);
       --text-sm:     14px;
       --text-xs:     12px;
 
-      /* Palette */
+      /* Palette: Obsidian Dark Moss & High Contrast Ink */
       --bg-deep:      #0e1210;
       --bg-room:      #131712;
-      --surface:      #1e261e;
-      --surface-2:    #232c23;
-      --ink:          #e8eae0;
-      --muted:        #8a9489;
+      --surface:      #1a221a;
+      --surface-2:    #222c22;
+      --ink:          #f2f4ec;
+      --ink-dim:      #c4cbc1;
+      --muted:        #94a093;
       --lime:         #b9e36b;
       --lime-dim:     rgba(185, 227, 107, 0.08);
-      --lime-hover:   rgba(185, 227, 107, 0.24);
-      --border-quiet: rgba(185, 227, 107, 0.12);
-      --border-room:  rgba(232, 234, 224, 0.10);
+      --lime-hover:   rgba(185, 227, 107, 0.22);
+      --border-quiet: rgba(185, 227, 107, 0.16);
+      --border-room:  rgba(242, 244, 236, 0.12);
       --shadow-deep:  rgba(4, 8, 5, 0.5);
-
-      /* Spacing */
-      --space-xs:  8px;
-      --space-sm:  16px;
-      --space-md:  24px;
-      --space-lg:  48px;
-      --space-xl:  80px;
-      --space-2xl: 128px;
 
       /* Easing */
       --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
@@ -111,18 +101,18 @@
       color: var(--ink);
       font-family: var(--font-body);
       font-size: var(--text-body);
-      line-height: 1.55;
+      line-height: 1.6;
       font-feature-settings: "kern" 1, "liga" 1;
     }
 
-    /* Film grain — 4% opacity, screen blend, pointer-events none */
+    /* Film grain texture */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
       z-index: 100;
       pointer-events: none;
-      opacity: 0.04;
+      opacity: 0.035;
       mix-blend-mode: screen;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
     }
@@ -166,11 +156,11 @@
 
     /* ─── SHELL ──────────────────────────────────────────────────────────── */
     .shell {
-      width: min(1180px, calc(100% - 48px));
+      width: min(1200px, calc(100% - 48px));
       margin: 0 auto;
     }
 
-    /* ─── NAV ────────────────────────────────────────────────────────────── */
+    /* ─── COMPACT STICKY NAV ─────────────────────────────────────────────── */
     .nav {
       position: sticky;
       top: 12px;
@@ -183,13 +173,13 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      min-height: 56px;
-      padding: 7px 7px 7px 14px;
+      min-height: 52px;
+      padding: 6px 6px 6px 14px;
       border: 1px solid var(--border-room);
       border-radius: 12px;
-      background: rgba(19, 23, 18, 0.92);
+      background: rgba(19, 23, 18, 0.94);
       backdrop-filter: blur(16px);
-      box-shadow: 0 16px 32px rgba(4, 8, 5, 0.3), inset 0 1px 0 rgba(232, 234, 224, 0.05);
+      box-shadow: 0 16px 32px rgba(4, 8, 5, 0.35);
     }
 
     .brand {
@@ -198,31 +188,29 @@
       gap: 10px;
       color: var(--ink);
       font-family: var(--font-display);
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      min-width: max-content;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
     }
 
     .brand img {
-      width: 30px;
-      height: 30px;
-      border-radius: 7px;
-      box-shadow: 0 4px 12px rgba(4, 8, 5, 0.4);
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 2px;
-      color: var(--muted);
+      gap: 4px;
+      color: var(--ink-dim);
       font-size: 13px;
       font-weight: 500;
     }
 
     .nav-links a {
-      padding: 8px 11px;
-      border-radius: 7px;
+      padding: 8px 12px;
+      border-radius: 6px;
       transition: color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
     }
 
@@ -231,134 +219,48 @@
       background: var(--lime-dim);
     }
 
-    /* Nav CTA: present on desktop, hidden on mobile (não domina o topo) */
     .nav-cta {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
       gap: 8px;
-      min-height: 40px;
+      min-height: 38px;
       padding: 0 14px;
       border: 1px solid var(--border-quiet);
-      border-radius: 8px;
+      border-radius: 7px;
       background: var(--lime);
       color: #0d1a0d;
       font-family: var(--font-display);
       font-size: 12px;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 0.04em;
       white-space: nowrap;
-      box-shadow: 0 8px 20px rgba(91, 130, 32, 0.22);
-      transition: background var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+      box-shadow: 0 6px 16px rgba(91, 130, 32, 0.2);
+      transition: background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
     }
 
     .nav-cta:hover {
       background: #c8ec79;
-      box-shadow: 0 12px 28px rgba(91, 130, 32, 0.32);
       transform: translateY(-1px);
     }
 
-    .nav-cta:active {
-      transform: scale(0.98);
-    }
-
-    /* ─── SHARED KICKER ──────────────────────────────────────────────────── */
+    /* ─── KICKER & HEADINGS ──────────────────────────────────────────────── */
     .kicker {
       display: inline-block;
       font-family: var(--font-display);
-      font-size: 10px;
-      font-weight: 400;
-      letter-spacing: 0.18em;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--lime);
+      margin-bottom: 12px;
     }
 
-    /* ─── BORDER-LEFT SYSTEM ─────────────────────────────────────────────── */
-    .bl-accent {
-      border-left: 2px solid var(--lime);
-      padding-left: 14px;
-    }
-
-    /* ─── PRIMARY CTA ────────────────────────────────────────────────────── */
-    .cta-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      min-height: 52px;
-      padding: 0 24px;
-      border: 1px solid var(--border-quiet);
-      border-radius: 10px;
-      background: var(--lime);
-      color: #0d1a0d;
-      font-family: var(--font-display);
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      box-shadow: 0 10px 28px rgba(91, 130, 32, 0.26);
-      transition: background var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
-    }
-
-    .cta-primary:hover {
-      background: #c8ec79;
-      box-shadow: 0 16px 36px rgba(91, 130, 32, 0.36);
-      transform: translateY(-2px);
-    }
-
-    .cta-primary:active {
-      transform: scale(0.98);
-    }
-
-    .cta-primary .arrow {
-      display: grid;
-      place-items: center;
-      width: 22px;
-      height: 22px;
-      border-radius: 5px;
-      background: rgba(13, 26, 13, 0.14);
-      line-height: 1;
-      font-size: 14px;
-    }
-
-    /* Ghost link */
-    .ghost-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 500;
-      border-bottom: 1px solid rgba(138, 148, 137, 0.3);
-      padding-bottom: 2px;
-      transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
-    }
-
-    .ghost-link:hover {
-      color: var(--ink);
-      border-color: var(--ink);
-    }
-
-    /* ─── SECTION SPACING ────────────────────────────────────────────────── */
-    section {
-      padding: clamp(72px, 10vw, 128px) 0;
-    }
-
-    section + section {
-      border-top: 1px solid var(--border-room);
-    }
-
-    /* ─── SECTION HEAD ───────────────────────────────────────────────────── */
-    .section-head {
-      margin-bottom: clamp(40px, 6vw, 64px);
-    }
-
-    /* ─── HEADINGS ───────────────────────────────────────────────────────── */
     h1 {
       font-family: var(--font-display);
       font-size: var(--text-h1);
       line-height: var(--leading-h1);
       letter-spacing: var(--tracking-h1);
-      font-weight: 300;
+      font-weight: 400;
       color: var(--ink);
       text-wrap: balance;
     }
@@ -368,151 +270,130 @@
       font-size: var(--text-h2);
       line-height: var(--leading-h2);
       letter-spacing: var(--tracking-h2);
-      font-weight: 300;
+      font-weight: 400;
       color: var(--ink);
       text-wrap: balance;
     }
 
     h3 {
       font-size: var(--text-h3);
-      line-height: 1.1;
+      line-height: 1.25;
       letter-spacing: -0.02em;
       font-weight: 600;
       color: var(--ink);
     }
 
-    /* ─── REVEAL: ALWAYS VISIBLE BASE — js-reveal adds animation ────────── */
-    /* AF-1 compliant: opacity:0 NUNCA no base */
-    [data-reveal] {
-      opacity: 1;
+    /* ─── SECTION STRUCTURE ──────────────────────────────────────────────── */
+    section {
+      padding: clamp(64px, 8vw, 112px) 0;
     }
 
-    html.js-reveal [data-reveal] {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity var(--dur-layout) var(--ease-out),
-                  transform var(--dur-layout) var(--ease-out);
+    section + section {
+      border-top: 1px solid var(--border-room);
     }
 
-    html.js-reveal [data-reveal].revealed {
-      opacity: 1;
-      transform: translateY(0);
+    .section-head {
+      margin-bottom: clamp(36px, 5vw, 56px);
     }
 
-    html.js-reveal [data-reveal][data-delay="1"] { transition-delay: 60ms; }
-    html.js-reveal [data-reveal][data-delay="2"] { transition-delay: 120ms; }
-    html.js-reveal [data-reveal][data-delay="3"] { transition-delay: 180ms; }
-
-    @media (prefers-reduced-motion: reduce) {
-      html.js-reveal [data-reveal] {
-        opacity: 1;
-        transform: none;
-        transition: none;
-      }
+    .section-head p {
+      margin-top: 16px;
+      color: var(--muted);
+      max-width: 620px;
+      font-size: 17px;
+      line-height: 1.6;
     }
 
-    /* ─── MASCOT ─────────────────────────────────────────────────────────── */
-    .mascot {
-      position: relative;
-      width: 96px;
-      height: 76px;
-      flex-shrink: 0;
+    /* ─── PRIMARY BUTTON & GHOST LINK ────────────────────────────────────── */
+    .cta-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 50px;
+      padding: 0 24px;
+      border: 1px solid var(--border-quiet);
+      border-radius: 9px;
+      background: var(--lime);
+      color: #0d1a0d;
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      box-shadow: 0 10px 28px rgba(91, 130, 32, 0.25);
+      transition: background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
     }
 
-    .mascot::before {
-      content: "";
-      position: absolute;
-      left: 8px;
-      right: 8px;
-      bottom: 0;
-      height: 52px;
-      border-radius: 38px 38px 28px 28px;
-      background: #2e4232;
-      box-shadow: inset 0 -8px 0 rgba(4, 8, 5, 0.28), 0 12px 24px rgba(4, 8, 5, 0.36);
+    .cta-primary:hover {
+      background: #c8ec79;
+      transform: translateY(-2px);
+      box-shadow: 0 14px 34px rgba(91, 130, 32, 0.35);
     }
 
-    .mascot::after {
-      content: "";
-      position: absolute;
-      left: 26px;
-      top: 8px;
-      width: 46px;
-      height: 46px;
-      border-radius: 50% 50% 42% 42%;
-      background:
-        radial-gradient(circle at 16px 20px, var(--ink) 0 2.5px, transparent 3.5px),
-        radial-gradient(circle at 30px 20px, var(--ink) 0 2.5px, transparent 3.5px),
-        #3d5e43;
-      clip-path: polygon(0 18%, 15% 0, 32% 16%, 68% 16%, 85% 0, 100% 18%, 100% 100%, 0 100%);
+    .cta-primary .arrow {
+      display: grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 4px;
+      background: rgba(13, 26, 13, 0.14);
+      font-size: 14px;
     }
 
-    @keyframes breathe {
-      0%, 100% { transform: scale(1.0); }
-      50%       { transform: scale(1.012); }
+    .ghost-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--ink-dim);
+      font-size: 14px;
+      font-weight: 500;
+      border-bottom: 1px solid rgba(148, 160, 147, 0.3);
+      padding-bottom: 2px;
+      transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
     }
 
-    @keyframes blink {
-      0%, 94%, 100% { transform: scaleY(1); }
-      96%            { transform: scaleY(0.08); }
+    .ghost-link:hover {
+      color: var(--ink);
+      border-color: var(--ink);
     }
 
-    @media (prefers-reduced-motion: no-preference) {
-      .mascot { animation: breathe 3s ease-in-out infinite; }
-      .mascot::after { animation: blink 4s ease-in-out infinite; }
-    }
-
-    /* ─── ① HERO (A PORTA) ───────────────────────────────────────────────── */
+    /* ─── HERO SECTION ───────────────────────────────────────────────────── */
     .hero {
-      padding: clamp(80px, 12vw, 140px) 0 clamp(60px, 8vw, 100px);
-      position: relative;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border-quiet), transparent);
+      padding-top: clamp(48px, 6vw, 80px);
+      padding-bottom: clamp(64px, 8vw, 96px);
     }
 
     .hero-layout {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(360px, 0.9fr);
-      gap: clamp(40px, 6vw, 80px);
-      align-items: start;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 40px;
     }
 
     .hero-eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 10px;
+      padding: 6px 14px;
       border: 1px solid var(--border-quiet);
-      border-radius: 5px;
+      border-radius: 20px;
       background: var(--lime-dim);
-      margin-bottom: 28px;
+      margin-bottom: 20px;
     }
 
-    .hero-eyebrow .pulse {
-      width: 6px;
-      height: 6px;
-      border-radius: 2px;
+    .pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
       background: var(--lime);
-      box-shadow: 0 0 0 4px rgba(185, 227, 107, 0.14);
-    }
-
-    .hero h1 {
-      max-width: 820px;
+      box-shadow: 0 0 0 3px rgba(185, 227, 107, 0.2);
     }
 
     .hero-copy {
       margin-top: 24px;
-      max-width: 540px;
-      color: var(--muted);
-      font-size: clamp(17px, 1.8vw, 21px);
-      line-height: 1.5;
+      max-width: 620px;
+      color: var(--ink-dim);
+      font-size: clamp(18px, 1.8vw, 21px);
+      line-height: 1.55;
     }
 
     .hero-actions {
@@ -520,1265 +401,992 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 16px;
-      margin-top: 36px;
+      margin-top: 32px;
     }
 
-    /* Trust: inline abaixo do CTA em mobile (não display:none) */
-    .hero-trust-inline {
+    .hero-trust-line {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
       margin-top: 20px;
       color: var(--muted);
-      font-size: var(--text-xs);
       font-family: var(--font-display);
-      letter-spacing: 0.06em;
-      line-height: 1.8;
+      font-size: 12px;
+      letter-spacing: 0.05em;
     }
 
-    .hero-trust-inline span {
-      display: inline;
-    }
-
-    .hero-trust-inline span::before {
+    .hero-trust-line span::before {
       content: "· ";
       color: var(--lime);
       margin-right: 2px;
     }
 
-    .hero-trust-inline span:first-child::before {
+    .hero-trust-line span:first-child::before {
       content: "";
       margin-right: 0;
     }
 
-    /* Hero media — produto como instrumento */
-    .hero-media {
-      position: relative;
-    }
-
-    .product-frame {
-      position: relative;
+    /* ─── REAL APP SCREENSHOT MOCKUP ─────────────────────────────────────── */
+    .hero-app-frame {
+      margin-top: 40px;
       padding: 8px;
       border: 1px solid var(--border-room);
       border-radius: 16px;
       background: var(--surface);
-      box-shadow: 0 32px 64px rgba(4, 8, 5, 0.5), inset 0 1px 0 rgba(232, 234, 224, 0.05);
-      /* scroll-driven scale: JS aplica via IntersectionObserver */
-      transform: scale(0.92);
-      transition: transform 800ms var(--ease-out);
+      box-shadow: 0 32px 64px rgba(4, 8, 5, 0.5), inset 0 1px 0 rgba(242, 244, 236, 0.05);
     }
 
-    .product-frame.scaled-in {
-      transform: scale(1);
-    }
-
-    .product-frame::before {
-      content: "";
-      display: block;
-      height: 10px;
-      border-radius: 8px 8px 0 0;
-      background: linear-gradient(90deg,
-        var(--lime) 0 28px,
-        rgba(232, 234, 224, 0.07) 28px 29px,
-        transparent 29px);
-      margin-bottom: 6px;
-    }
-
-    .hero-video {
-      display: block;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      border-radius: 0 0 10px 10px;
-      border: 1px solid rgba(232, 234, 224, 0.08);
-      background: #060a06;
-    }
-
-    /* Floating note / instrument label */
-    .instrument-label {
-      position: absolute;
-      bottom: -16px;
-      left: -16px;
-      z-index: 2;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      width: 200px;
-      padding: 14px;
-      border: 1px solid var(--border-room);
-      border-left: 2px solid var(--lime);
-      border-radius: 10px;
-      background: rgba(30, 38, 30, 0.96);
-      box-shadow: 0 16px 32px rgba(4, 8, 5, 0.4);
-    }
-
-    .instrument-label strong {
-      display: block;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 4px;
-    }
-
-    .instrument-label span {
-      display: block;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.4;
-    }
-
-    /* Hero mascot — aparece em mobile também */
-    .hero-mascot-wrap {
-      display: flex;
-      justify-content: flex-end;
-      margin-top: 24px;
-    }
-
-    /* ─── ② AGITAÇÃO (O INIMIGO) ─────────────────────────────────────────── */
-    .enemy {
-      background: var(--bg-room);
-    }
-
-    .enemy-panel {
-      padding: clamp(32px, 5vw, 56px);
-      border: 1px solid rgba(185, 227, 107, 0.18);
-      border-left: 2px solid var(--lime);
-      border-radius: 16px;
-      background: #182118;
-      box-shadow: 0 24px 48px rgba(4, 8, 5, 0.3), inset 0 1px 0 rgba(232, 234, 224, 0.04);
-    }
-
-    .enemy-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.6fr);
-      gap: clamp(28px, 5vw, 64px);
-      align-items: end;
-    }
-
-    .enemy h2 {
-      margin-top: 14px;
-      max-width: 700px;
-    }
-
-    .enemy-body {
-      margin-top: 20px;
-      color: rgba(232, 234, 224, 0.65);
-      font-size: var(--text-body);
-      line-height: 1.6;
-      max-width: 620px;
-    }
-
-    .enemy-stack {
-      display: grid;
-      gap: 8px;
-    }
-
-    .enemy-chip {
+    .app-window-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      padding: 13px 15px;
-      border: 1px solid var(--border-room);
-      border-radius: 8px;
-      background: rgba(232, 234, 224, 0.04);
-      color: rgba(232, 234, 224, 0.8);
-      font-size: 14px;
-      font-weight: 500;
-      transition: border-color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
+      padding: 6px 12px 10px;
+      border-bottom: 1px solid rgba(242, 244, 236, 0.06);
+      margin-bottom: 6px;
     }
 
-    @media (hover: hover) and (pointer: fine) {
-      .enemy-chip:hover {
-        border-color: var(--lime-hover);
-        background: var(--lime-dim);
-      }
+    .window-dots {
+      display: flex;
+      gap: 6px;
     }
 
-    .enemy-chip-label {
+    .window-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(242, 244, 236, 0.2);
+    }
+
+    .window-title {
       font-family: var(--font-display);
-      font-size: 10px;
-      font-weight: 400;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--lime);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
     }
 
-    /* chip final: TOKI Return — destaque */
-    .enemy-chip.chip-return {
+    .app-screenshot {
+      width: 100%;
+      aspect-ratio: 1422 / 932;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid rgba(242, 244, 236, 0.08);
+      background: #080d08;
+    }
+
+    /* ─── VALUE STRIP / PROOF BAR ────────────────────────────────────────── */
+    .value-strip {
+      background: var(--bg-room);
+      padding: 24px 0;
+      border-top: 1px solid var(--border-room);
+      border-bottom: 1px solid var(--border-room);
+    }
+
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .value-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--ink-dim);
+      font-size: 13px;
+      font-family: var(--font-display);
+      line-height: 1.4;
+    }
+
+    .value-item i {
+      color: var(--lime);
+      font-style: normal;
+      font-size: 15px;
+    }
+
+    /* ─── CORE WORKFLOW SECTION ──────────────────────────────────────────── */
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .step-card {
+      padding: 24px;
+      border: 1px solid var(--border-room);
+      border-radius: 12px;
+      background: var(--surface);
+      box-shadow: 0 12px 24px rgba(4, 8, 5, 0.2);
+      transition: border-color var(--dur-normal) var(--ease-out);
+    }
+
+    .step-card:hover {
+      border-color: var(--lime-hover);
+    }
+
+    .step-num {
+      font-family: var(--font-display);
+      font-size: 11px;
+      color: var(--lime);
+      letter-spacing: 0.16em;
+      margin-bottom: 12px;
+    }
+
+    .step-card h3 {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .step-card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .pomo-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .pomo-pill {
+      font-family: var(--font-display);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      padding: 4px 10px;
+      border-radius: 4px;
+      border: 1px solid var(--border-room);
+      background: rgba(242, 244, 236, 0.04);
+      color: var(--muted);
+    }
+
+    .pomo-pill.active {
       border-color: var(--border-quiet);
       background: var(--lime-dim);
       color: var(--lime);
     }
 
-    .enemy-chip.chip-return .enemy-chip-label {
+    /* ─── FEATURE DEEP SECTIONS (AUDIO, BLOCKER, INTEGRATIONS) ───────────── */
+    .feature-deep-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: clamp(36px, 5vw, 64px);
+      align-items: center;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .feature-point {
+      padding: 16px 20px;
+      border: 1px solid var(--border-room);
+      border-left: 2px solid var(--lime);
+      border-radius: 10px;
+      background: var(--surface);
+    }
+
+    .feature-point h4 {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .feature-point p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* Audio Equalizer animation */
+    .audio-eq-bars {
+      display: inline-flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 14px;
+    }
+
+    .audio-eq-bars span {
+      display: block;
+      width: 3px;
+      border-radius: 1px;
+      background: var(--lime);
+      animation: eq-pulse 1.2s ease-in-out infinite alternate;
+    }
+
+    .audio-eq-bars span:nth-child(1) { height: 40%; animation-delay: 0.1s; }
+    .audio-eq-bars span:nth-child(2) { height: 90%; animation-delay: 0.3s; }
+    .audio-eq-bars span:nth-child(3) { height: 60%; animation-delay: 0.2s; }
+    .audio-eq-bars span:nth-child(4) { height: 100%; animation-delay: 0.4s; }
+    .audio-eq-bars span:nth-child(5) { height: 50%; animation-delay: 0.15s; }
+
+    @keyframes eq-pulse {
+      0% { transform: scaleY(0.3); opacity: 0.6; }
+      100% { transform: scaleY(1); opacity: 1; }
+    }
+
+    /* ─── TABBED INTEGRATIONS SHOWCASE ───────────────────────────────────── */
+    .tab-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .tab-btn {
+      padding: 10px 18px;
+      border: 1px solid var(--border-room);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--muted);
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: border-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
+    }
+
+    .tab-btn:hover {
+      border-color: var(--lime-hover);
+      color: var(--ink);
+    }
+
+    .tab-btn.active {
+      border-color: var(--border-quiet);
+      background: var(--lime-dim);
       color: var(--lime);
     }
 
-    /* ─── ③ SOLUÇÃO (3 INSTRUMENTOS) ─────────────────────────────────────── */
-    .instruments-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
+    .tab-content {
+      display: none;
     }
 
-    .instrument-card {
-      display: flex;
-      flex-direction: column;
-      padding: clamp(24px, 3vw, 36px);
+    .tab-content.active {
+      display: block;
+    }
+
+    /* ─── LOCAL-FIRST PRIVACY CARDS ──────────────────────────────────────── */
+    .privacy-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .privacy-card {
+      padding: clamp(24px, 3vw, 32px);
       border: 1px solid var(--border-room);
       border-radius: 14px;
       background: var(--surface);
-      box-shadow: 0 16px 32px rgba(4, 8, 5, 0.2), inset 0 1px 0 rgba(232, 234, 224, 0.04);
-      transition: border-color var(--dur-normal) var(--ease-out);
+      box-shadow: 0 16px 32px rgba(4, 8, 5, 0.2);
     }
 
-    @media (hover: hover) and (pointer: fine) {
-      .instrument-card:hover {
-        border-color: var(--lime-hover);
-      }
-    }
-
-    .instrument-number {
-      font-family: var(--font-display);
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: 0.16em;
-      color: var(--lime);
-      margin-bottom: 16px;
-    }
-
-    .instrument-card h3 {
-      font-family: var(--font-display);
-      font-size: 22px;
-      letter-spacing: -0.03em;
-      font-weight: 400;
-      margin-bottom: 12px;
-    }
-
-    .instrument-card p {
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.55;
-      flex: 1;
-    }
-
-    .instrument-shot {
-      margin-top: 24px;
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      object-fit: cover;
-      border-radius: 8px;
-      border: 1px solid var(--border-room);
-    }
-
-    /* Bridge inline pós-instrumentos */
-    .bridge {
-      margin-top: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .bridge p {
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    /* ─── ④ PROVA (PRODUTO REAL) ─────────────────────────────────────────── */
-    .proof-demo {
-      background: var(--bg-room);
-    }
-
-    .demo-frame {
-      overflow: hidden;
-      padding: 8px;
-      border: 1px solid var(--border-room);
-      border-radius: 16px;
-      background: var(--surface);
-      box-shadow: 0 28px 56px rgba(4, 8, 5, 0.36), inset 0 1px 0 rgba(232, 234, 224, 0.04);
-    }
-
-    .demo-video {
-      display: block;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      border-radius: 10px;
-      border: 1px solid var(--border-room);
-      background: #060a06;
-    }
-
-    .shots-row {
-      display: grid;
-      grid-template-columns: 1.2fr 0.9fr 0.9fr;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .shot-figure {
-      overflow: hidden;
-      border: 1px solid var(--border-room);
-      border-radius: 10px;
-      background: var(--surface);
-    }
-
-    .shot-figure img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      object-fit: cover;
-      transition: transform 600ms var(--ease-out);
-    }
-
-    @media (hover: hover) and (pointer: fine) {
-      .shot-figure:hover img {
-        transform: scale(1.03);
-      }
-    }
-
-    .shot-caption {
-      padding: 12px 14px 14px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.4;
-    }
-
-    /* Quotes / depoimentos */
-    .quotes-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 40px;
-    }
-
-    .quote-card {
-      padding: 24px;
-      border: 1px solid var(--border-room);
-      border-left: 2px solid var(--lime);
-      border-radius: 12px;
-      background: var(--surface);
-    }
-
-    .quote-card blockquote {
-      font-size: 15px;
-      line-height: 1.6;
-      color: rgba(232, 234, 224, 0.8);
-      font-style: italic;
-      margin-bottom: 16px;
-    }
-
-    .quote-author {
-      font-family: var(--font-display);
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--lime);
-    }
-
-    /* Bridge pós-prova */
-    .bridge-proof {
-      margin-top: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* ─── ⑤ IDENTIDADE (MA — O ESPAÇO) ──────────────────────────────────── */
-    .identity {
-      background: var(--bg-deep);
-    }
-
-    .identity-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: clamp(40px, 6vw, 80px);
-      align-items: start;
-    }
-
-    .identity-left h2 {
-      margin-top: 14px;
-    }
-
-    .identity-left p {
-      margin-top: 22px;
-      color: var(--muted);
-      font-size: var(--text-body);
-      line-height: 1.65;
-    }
-
-    /* 間 character */
-    .ma-char {
-      display: block;
-      font-family: var(--font-display);
-      font-size: clamp(72px, 10vw, 140px);
-      line-height: 1;
-      letter-spacing: -0.04em;
-      color: var(--lime);
-      opacity: 0.18;
-      margin-bottom: 12px;
-      user-select: none;
-    }
-
-    .ma-explain {
+    .privacy-card-tag {
       font-family: var(--font-display);
       font-size: 11px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    /* Anti-features: "what Toki will never be" */
-    .anti-list {
-      display: grid;
-      gap: 0;
-      margin-top: 32px;
-    }
-
-    .anti-item {
-      display: flex;
-      align-items: baseline;
-      gap: 12px;
-      padding: 16px 0;
-      border-top: 1px solid var(--border-room);
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.45;
-    }
-
-    .anti-item:last-child {
-      border-bottom: 1px solid var(--border-room);
-    }
-
-    .anti-item::before {
-      content: "—";
-      font-family: var(--font-display);
       color: var(--lime);
-      flex-shrink: 0;
-      font-size: 12px;
+      margin-bottom: 12px;
     }
 
-    /* ─── ⑥ OFERTA ($0 BETA + FAQ) ───────────────────────────────────────── */
-    .offer {
-      background: var(--bg-room);
+    .privacy-card h3 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
     }
 
+    .privacy-card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* ─── BONSAI & PHILOSOPHY ────────────────────────────────────────────── */
+    .bonsai-box {
+      padding: 32px;
+      border: 1px solid var(--border-room);
+      border-left: 2px solid var(--lime);
+      border-radius: 14px;
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .bonsai-stages {
+      display: flex;
+      gap: 24px;
+    }
+
+    .bonsai-stage {
+      text-align: center;
+    }
+
+    .bonsai-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1px solid var(--lime);
+      margin: 0 auto 8px;
+    }
+
+    .bonsai-stage.stage-3 .bonsai-dot {
+      background: var(--lime);
+      box-shadow: 0 0 10px var(--lime);
+    }
+
+    .bonsai-label {
+      font-family: var(--font-display);
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .ma-char {
+      font-family: var(--font-display);
+      font-size: clamp(64px, 8vw, 110px);
+      line-height: 1;
+      color: var(--lime);
+      opacity: 0.18;
+      user-select: none;
+    }
+
+    /* ─── PRICING / OFFER ────────────────────────────────────────────────── */
     .offer-layout {
       display: grid;
-      grid-template-columns: minmax(300px, 0.86fr) minmax(0, 1.14fr);
-      gap: 18px;
-      align-items: stretch;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      gap: clamp(32px, 5vw, 64px);
+      align-items: start;
     }
 
     .price-card {
-      display: flex;
-      flex-direction: column;
-      padding: clamp(28px, 4vw, 44px);
+      padding: clamp(32px, 4vw, 48px);
       border: 1px solid var(--border-quiet);
-      border-top: 2px solid var(--lime);
-      border-radius: 14px;
+      border-radius: 16px;
       background: var(--surface);
-      box-shadow: 0 22px 44px rgba(4, 8, 5, 0.28);
-    }
-
-    .price-card h3 {
-      font-family: var(--font-display);
-      font-size: 14px;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 8px;
+      box-shadow: 0 24px 48px rgba(4, 8, 5, 0.4);
     }
 
     .price-big {
       font-family: var(--font-display);
-      font-size: clamp(52px, 8vw, 88px);
+      font-size: 48px;
       font-weight: 300;
-      letter-spacing: -0.05em;
-      line-height: 0.88;
       color: var(--ink);
-      font-variant-numeric: tabular-nums;
+      margin: 16px 0 24px;
     }
 
     .price-big small {
       font-size: 18px;
       color: var(--muted);
-      letter-spacing: 0;
-      font-weight: 400;
     }
 
     .checklist {
       list-style: none;
-      padding: 0;
       display: grid;
-      gap: 10px;
-      margin: 28px 0 32px;
-      color: var(--ink);
+      gap: 12px;
+      margin-bottom: 32px;
     }
 
     .checklist li {
-      position: relative;
-      padding-left: 20px;
-      font-size: 15px;
-      line-height: 1.4;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--ink-dim);
+      font-size: 14px;
     }
 
     .checklist li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0.44em;
-      width: 7px;
-      height: 7px;
-      border-radius: 2px;
-      background: var(--lime);
-    }
-
-    .price-note {
-      margin-top: 14px;
-      color: var(--muted);
-      font-size: var(--text-xs);
+      content: "✓";
+      color: var(--lime);
       font-family: var(--font-display);
-      letter-spacing: 0.06em;
+      font-weight: bold;
     }
 
+    /* ─── FAQ ACCORDION ──────────────────────────────────────────────────── */
     .faq {
       display: grid;
-      gap: 8px;
-      align-content: start;
+      gap: 12px;
     }
 
-    details {
-      padding: 18px 20px;
+    .faq details {
       border: 1px solid var(--border-room);
       border-radius: 10px;
       background: var(--surface);
+      padding: 16px 20px;
       transition: border-color var(--dur-fast) var(--ease-out);
     }
 
-    details[open] {
+    .faq details[open] {
       border-color: var(--border-quiet);
     }
 
-    summary {
-      cursor: pointer;
-      color: var(--ink);
-      font-weight: 500;
+    .faq summary {
+      font-family: var(--font-display);
       font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+      cursor: pointer;
       list-style: none;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
     }
 
-    summary::-webkit-details-marker {
+    .faq summary::-webkit-details-marker {
       display: none;
     }
 
-    summary::after {
+    .faq summary::after {
       content: "+";
-      font-family: var(--font-display);
       font-size: 18px;
-      font-weight: 300;
       color: var(--lime);
-      flex-shrink: 0;
       transition: transform var(--dur-fast) var(--ease-out);
     }
 
-    details[open] summary::after {
-      transform: rotate(45deg);
+    .faq details[open] summary::after {
+      content: "−";
     }
 
-    details p {
+    .faq p {
       margin-top: 12px;
       color: var(--muted);
       font-size: 14px;
       line-height: 1.6;
     }
 
-    /* ─── ⑦ BONSAI (SECOND-READ MOMENT) ─────────────────────────────────── */
-    .bonsai-section {
-      background: var(--bg-deep);
-      text-align: center;
-    }
-
-    .bonsai-states {
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      gap: clamp(24px, 4vw, 56px);
-      margin: 0 auto;
-      max-width: 640px;
-    }
-
-    .bonsai-state {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-    }
-
-    /* CSS bonsai em 3 estados — placeholder até SVG real existir */
-    .bonsai-tree {
-      position: relative;
-      width: 80px;
-    }
-
-    .bonsai-tree.small { opacity: 0.35; }
-    .bonsai-tree.medium { opacity: 0.65; }
-    .bonsai-tree.full { opacity: 1; }
-
-    /* Trunk */
-    .bonsai-tree::before {
-      content: "";
-      display: block;
-      margin: 0 auto;
-      width: 6px;
-      border-radius: 3px;
-      background: linear-gradient(180deg, #3d5e43, #2a3e2e);
-    }
-
-    .bonsai-tree.small::before  { height: 28px; }
-    .bonsai-tree.medium::before { height: 44px; }
-    .bonsai-tree.full::before   { height: 60px; }
-
-    /* Canopy */
-    .bonsai-tree::after {
-      content: "";
-      display: block;
-      border-radius: 50% 50% 46% 46%;
-      background: var(--lime);
-      margin: -8px auto 0;
-    }
-
-    .bonsai-tree.small::after  { width: 36px; height: 30px; }
-    .bonsai-tree.medium::after { width: 56px; height: 46px; }
-    .bonsai-tree.full::after   { width: 80px; height: 66px; }
-
-    .bonsai-line {
-      font-size: 14px;
-      color: var(--muted);
-      font-style: italic;
-      text-align: center;
-      max-width: 120px;
-      line-height: 1.45;
-    }
-
-    .bonsai-label {
-      font-family: var(--font-display);
-      font-size: 10px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--lime);
-      opacity: 0.6;
-    }
-
-    .bonsai-asset-placeholder {
-      display: block;
-      margin: 0 auto 32px;
-      padding: 16px 24px;
-      border: 1px dashed var(--border-quiet);
-      border-radius: 8px;
-      color: var(--muted);
-      font-family: var(--font-display);
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      max-width: 400px;
-    }
-
-    .bonsai-intro {
-      font-size: var(--text-body);
-      color: var(--muted);
-      max-width: 480px;
-      margin: 0 auto 48px;
-      line-height: 1.6;
-    }
-
-    /* ─── ⑧ CTA FINAL ────────────────────────────────────────────────────── */
-    .cta-final {
-      background: var(--bg-room);
-    }
-
-    .cta-final-panel {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 32px;
-      align-items: end;
-      padding: clamp(36px, 6vw, 64px);
-      border: 1px solid var(--border-quiet);
-      border-left: 2px solid var(--lime);
-      border-radius: 16px;
-      background: #182118;
-      box-shadow: 0 28px 54px rgba(4, 8, 5, 0.32), inset 0 1px 0 rgba(232, 234, 224, 0.04);
-    }
-
-    .cta-final h2 {
-      max-width: 640px;
-      margin-top: 14px;
-    }
-
-    .cta-final p {
-      margin-top: 18px;
-      color: rgba(232, 234, 224, 0.65);
-      font-size: 17px;
-      line-height: 1.55;
-      max-width: 540px;
-    }
-
-    /* ─── ⑨ FOOTER ───────────────────────────────────────────────────────── */
-    .footer {
-      padding: 28px 0 40px;
-      border-top: 1px solid var(--border-room);
-    }
-
+    /* ─── FOOTER ─────────────────────────────────────────────────────────── */
     .footer-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .footer-brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--font-display);
-      font-size: 12px;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-    }
-
-    .footer-brand img {
-      width: 24px;
-      height: 24px;
-      border-radius: 5px;
+      gap: 20px;
+      padding: 40px 0;
+      border-top: 1px solid var(--border-room);
     }
 
     .footer-links {
       display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      align-items: center;
-    }
-
-    .footer-links a {
-      padding: 6px 10px;
-      border-radius: 5px;
+      gap: 20px;
       color: var(--muted);
       font-size: 13px;
-      font-weight: 500;
-      transition: color var(--dur-fast) var(--ease-out);
     }
 
     .footer-links a:hover {
       color: var(--ink);
     }
 
-    .footer-copy {
-      color: var(--muted);
-      font-size: 12px;
-      font-family: var(--font-display);
-      letter-spacing: 0.04em;
-    }
-
-    /* ─── RESPONSIVE ─────────────────────────────────────────────────────── */
-    @media (max-width: 960px) {
-      .hero-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-media {
-        margin-top: 40px;
-      }
-
-      .instrument-label {
-        position: static;
-        margin-top: 16px;
-        width: auto;
-      }
-
-      .enemy-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .instruments-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .shots-row {
-        grid-template-columns: 1fr;
-      }
-
-      .identity-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .offer-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .quotes-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .cta-final-panel {
-        grid-template-columns: 1fr;
-      }
-
-      .cta-final-panel .cta-primary {
-        width: fit-content;
-      }
+    /* ─── RESPONSIVE RULES ───────────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .value-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .workflow-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .privacy-grid { grid-template-columns: 1fr; }
+      .feature-deep-grid { grid-template-columns: 1fr; }
+      .offer-layout { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 640px) {
-      .shell {
-        width: min(100% - 28px, 1180px);
-      }
-
-      .nav {
-        top: 8px;
-        padding-top: 8px;
-      }
-
-      .nav-inner {
-        padding: 8px;
-      }
-
-      /* Nav CTA some em mobile — bugfix do audit */
-      .nav-cta {
-        display: none;
-      }
-
-      .hero-actions {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .hero-actions .cta-primary {
-        width: 100%;
-        justify-content: center;
-      }
-
-      .hero-actions .ghost-link {
-        justify-content: center;
-      }
-
-      .bonsai-states {
-        gap: 16px;
-      }
-
-      .bonsai-tree {
-        width: 56px;
-      }
-
-      .bonsai-tree.small::after  { width: 28px; height: 22px; }
-      .bonsai-tree.medium::after { width: 40px; height: 34px; }
-      .bonsai-tree.full::after   { width: 56px; height: 48px; }
-
-      .footer-inner {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
-      }
+      .shell { width: calc(100% - 32px); }
+      .value-grid { grid-template-columns: 1fr; }
+      .workflow-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
     }
 
-    /* prefers-reduced-motion: garante conteúdo sempre visível e sem animação */
+    /* prefers-reduced-motion */
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      .product-frame {
-        transform: scale(1);
-        transition: none;
-      }
-
-      .mascot,
-      .mascot::after {
-        animation: none;
-      }
-
-      details summary::after {
-        transition: none;
-      }
+      html { scroll-behavior: auto; }
+      .audio-eq-bars span { animation: none; }
     }
   </style>
 </head>
 <body>
-  <!-- Skip link — preservado conforme audit -->
-  <a class="skip-link" href="#main">Skip to content</a>
+  <!-- Skip Link -->
+  <a class="skip-link" href="#main">Skip to main content</a>
 
   <div class="page">
 
-    <!-- ─── NAV ───────────────────────────────────────────────────────── -->
+    <!-- ─── 1. NAVIGATION ────────────────────────────────────────────────── -->
     <nav class="nav shell" aria-label="Main navigation">
       <div class="nav-inner">
-        <a class="brand" href="#top" aria-label="TOKI home">
-          <img src="assets/icon.png" alt="" width="30" height="30">
+        <a class="brand" href="#top" aria-label="Toki home">
+          <img src="assets/icon.png" alt="Toki logo icon" width="28" height="28">
           <span>TOKI</span>
         </a>
         <div class="nav-links" aria-label="Page sections">
-          <a href="#instruments">Features</a>
-          <a href="#offer">Pricing</a>
+          <a href="#workflow">Product</a>
+          <a href="#audio">Features</a>
+          <a href="#privacy">Privacy</a>
           <a href="#faq">FAQ</a>
         </div>
-        <!-- Hidden on mobile — não domina o topo em 375px -->
         <a class="nav-cta" href="https://github.com/JGuilherme2005/Toki-Landing/releases/download/v1.0.0/toki-setup-1.0.0.exe">
           Download free <span aria-hidden="true">↓</span>
         </a>
       </div>
     </nav>
 
-    <!-- ─── ① HERO: A PORTA ───────────────────────────────────────────── -->
+    <!-- ─── 2. HERO SECTION ──────────────────────────────────────────────── -->
     <header class="hero shell" id="top" aria-labelledby="hero-title">
       <div class="hero-layout">
-
-        <div data-reveal>
-          <div class="hero-eyebrow" aria-label="Windows beta — desktop-first">
+        <div>
+          <div class="hero-eyebrow">
             <i class="pulse" aria-hidden="true"></i>
-            <span class="kicker">Windows beta · Desktop-first</span>
+            <span class="kicker" style="margin-bottom:0;">FOCUS, WITHOUT THE FRAGMENTS</span>
           </div>
 
-          <h1 id="hero-title">Your place<br>to do the<br>work.</h1>
+          <h1 id="hero-title">Everything you need to enter focus.<br>One calm desktop space.</h1>
 
-          <p class="hero-copy">The biggest platforms are built to keep your attention moving. TOKI was built to help it land.</p>
+          <p class="hero-copy">Toki brings your focus timer, tasks, distraction blocking, music, and calendar tools into one quiet Windows app.</p>
 
           <div class="hero-actions">
-            <a class="cta-primary"
-               href="https://github.com/JGuilherme2005/Toki-Landing/releases/download/v1.0.0/toki-setup-1.0.0.exe"
-               aria-label="Download TOKI for Windows, free">
+            <a class="cta-primary" href="https://github.com/JGuilherme2005/Toki-Landing/releases/download/v1.0.0/toki-setup-1.0.0.exe" aria-label="Download Toki for Windows free beta">
               <span>Download for Windows</span>
               <span class="arrow" aria-hidden="true">↓</span>
             </a>
-            <a class="ghost-link" href="#instruments">See the instruments <span aria-hidden="true">↓</span></a>
+            <a class="ghost-link" href="#proof">See how it works <span aria-hidden="true">↓</span></a>
           </div>
 
-          <!-- Trust points: inline, visível em mobile (bugfix hero-trust display:none) -->
-          <p class="hero-trust-inline" aria-label="Trust points">
-            <span>No account in beta</span>
-            <span>Local blocking</span>
-            <span>Timer + tasks + presence</span>
-            <span>Windows installer</span>
-          </p>
-
-          <div class="hero-mascot-wrap" aria-hidden="true">
-            <div class="mascot"></div>
+          <div class="hero-trust-line" aria-label="Trust indicators">
+            <span>Free beta</span>
+            <span>No account required</span>
+            <span>Core tools work offline</span>
+            <span>Windows 64-bit installer</span>
           </div>
         </div>
 
-        <div class="hero-media" data-reveal data-delay="1" aria-label="TOKI app in use">
-          <div class="product-frame" id="product-frame">
-            <video class="hero-video"
-                   autoplay muted loop playsinline controls
-                   preload="metadata"
-                   poster="assets/toki-poster.png"
-                   aria-label="TOKI focus environment in motion">
-               <source src="assets/toki-improved.mp4" type="video/mp4">
-               Your browser cannot play the TOKI product video. The poster image shows the focus environment.
-            </video>
-          </div>
-
-          <div class="instrument-label" aria-hidden="true">
-            <div>
-              <strong>A place, not a dashboard.</strong>
-              <span>TOKI stays open as a calm companion during your block.</span>
+        <!-- Real Product Screenshot Frame Above the Fold -->
+        <div class="hero-app-frame" id="proof" aria-label="Toki desktop workspace interface preview">
+          <div class="app-window-header" aria-hidden="true">
+            <div class="window-dots">
+              <span class="window-dot"></span>
+              <span class="window-dot"></span>
+              <span class="window-dot"></span>
             </div>
+            <span class="window-title">TOKI — Workspace &amp; Focus Timer</span>
           </div>
+          <img class="app-screenshot"
+               src="assets/app/workspace.png"
+               alt="Toki desktop application interface displaying active focus session timer, task list, and Bonsai progress tree"
+               width="1422" height="932"
+               loading="eager"
+               decoding="async">
         </div>
-
       </div>
     </header>
 
     <main id="main">
 
-      <!-- ─── ② AGITAÇÃO: O INIMIGO ─────────────────────────────────── -->
-      <section class="enemy shell" id="enemy" aria-labelledby="enemy-title">
-        <div class="enemy-panel" data-reveal>
-          <div class="enemy-layout">
-            <div>
-              <p class="kicker">The common enemy</p>
-              <h2 id="enemy-title">Your attention is not broken. It is being hunted.</h2>
-              <p class="enemy-body">Big Tech wins when your next minute becomes another scroll. TOKI gives that minute back a place to go: one task, one protected block, one quiet window that is on your side.</p>
-            </div>
-
-            <div class="enemy-stack" aria-label="Attention traps and TOKI's answer">
-              <div class="enemy-chip">
-                Infinite feeds
-                <span class="enemy-chip-label">Scroll</span>
-              </div>
-              <div class="enemy-chip">
-                Algorithmic urgency
-                <span class="enemy-chip-label">React</span>
-              </div>
-              <div class="enemy-chip">
-                Context switching
-                <span class="enemy-chip-label">Fragment</span>
-              </div>
-              <div class="enemy-chip chip-return">
-                TOKI work block
-                <span class="enemy-chip-label">Return ↗</span>
-              </div>
-            </div>
+      <!-- ─── 3. VALUE STRIP / PRODUCT PROOF ───────────────────────────────── -->
+      <section class="value-strip" aria-label="Product value points">
+        <div class="shell">
+          <div class="value-grid">
+            <div class="value-item"><i>⏱</i> Timer that stays accurate</div>
+            <div class="value-item"><i>🛡</i> Block desktop distractions</div>
+            <div class="value-item"><i>🎵</i> Music that follows focus</div>
+            <div class="value-item"><i>📋</i> Tasks &amp; calendars in one room</div>
+            <div class="value-item"><i>⚡</i> Core workflow available offline</div>
           </div>
         </div>
       </section>
 
-      <!-- ─── ③ SOLUÇÃO: 3 INSTRUMENTOS ────────────────────────────────── -->
-      <section class="shell" id="instruments" aria-labelledby="instruments-title">
-        <div class="section-head" data-reveal>
-          <p class="kicker">The instruments</p>
-          <h2 id="instruments-title">Three tools. One intention.</h2>
-          <p style="margin-top:16px; color:var(--muted); max-width:560px; font-size:15px; line-height:1.6;">
-            Less dashboard, more place. Each instrument exists to get you into the block — not to manage your life.
-          </p>
+      <!-- ─── 4. CORE WORKFLOW SECTION ──────────────────────────────────────── -->
+      <section class="shell" id="workflow" aria-labelledby="workflow-title">
+        <div class="section-head">
+          <span class="kicker">The Core Loop</span>
+          <h2 id="workflow-title">Enter deep work in four calm steps.</h2>
+          <p>No complex setups. Pick a task, start a cycle, and let the desktop environment defend your boundary.</p>
         </div>
 
-        <div class="instruments-grid" aria-label="TOKI's three instruments">
-          <article class="instrument-card" data-reveal>
-            <div class="bl-accent">
-              <p class="instrument-number">01</p>
-              <h3>Timer</h3>
+        <div class="workflow-grid">
+          <article class="step-card">
+            <p class="step-num">01 · CHOOSE</p>
+            <h3>Choose your work</h3>
+            <p>Select or create the active task you want in front of you during the session.</p>
+          </article>
+
+          <article class="step-card">
+            <p class="step-num">02 · ENTER FOCUS</p>
+            <h3>Start focus cycle</h3>
+            <p>Run a zero-drift Pomodoro block with wall-clock reconciliation across computer sleep.</p>
+            <div class="pomo-pills" aria-hidden="true">
+              <span class="pomo-pill active">25M FOCUS</span>
+              <span class="pomo-pill">5M BREAK</span>
+              <span class="pomo-pill">ZERO DRIFT</span>
             </div>
-            <p>A configurable Pomodoro cycle that puts a clear boundary around your work. The timer isn't a clock — it's a commitment.</p>
-            <img class="instrument-shot"
-                 src="assets/toki-shot-focus.png"
-                 alt="TOKI's focus screen: timer running with calm visual feedback"
-                 width="640" height="400"
+          </article>
+
+          <article class="step-card">
+            <p class="step-num">03 · PROTECT</p>
+            <h3>Enforce boundary</h3>
+            <p>Toki closes designated apps and blocks distracting websites directly on Windows.</p>
+          </article>
+
+          <article class="step-card">
+            <p class="step-num">04 · CONTINUE</p>
+            <h3>Desktop continuity</h3>
+            <p>Your task progress, history, and preferences stay ready for your next focus session.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ─── 5. DEEP FOCUS AUDIO SECTION ───────────────────────────────────── -->
+      <section class="shell" id="audio" aria-labelledby="audio-title">
+        <div class="feature-deep-grid">
+          <div>
+            <span class="kicker">Deep Focus Audio</span>
+            <h2 id="audio-title">Sound that follows your focus.</h2>
+            <p style="color:var(--ink-dim); margin-top:16px; font-size:17px; line-height:1.6;">
+              Choose an offline ambient track, Spotify playlist, or YouTube source. Toki can preview it immediately, follow the focus timer, pause during breaks, or keep playing continuously.
+            </p>
+
+            <div class="feature-list">
+              <div class="feature-point">
+                <h4>Offline Focus Soundscapes</h4>
+                <p>Includes 5 packaged CC BY 4.0 ambient tracks that play 100% offline without network connections.</p>
+              </div>
+
+              <div class="feature-point">
+                <h4>Spotify &amp; YouTube Sync</h4>
+                <p>Stream your favorite audio sources directly inside an isolated, non-distracting player dock.</p>
+              </div>
+
+              <div class="feature-point">
+                <div style="display:flex; align-items:center; justify-content:space-between;">
+                  <h4>Timer-Bound Auto Fade</h4>
+                  <div class="audio-eq-bars" title="Active audio visualizer">
+                    <span></span><span></span><span></span><span></span><span></span>
+                  </div>
+                </div>
+                <p>Audio starts automatically when focus begins and fades softly when rest time arrives.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-app-frame">
+            <div class="app-window-header" aria-hidden="true">
+              <span class="window-title">TOKI — Deep Focus Audio Engine</span>
+            </div>
+            <img class="app-screenshot"
+                 src="assets/app/deepfocus.png"
+                 alt="Toki Deep Focus Audio tab showing packaged soundscapes, Spotify and YouTube options, and audio playback settings"
+                 width="1407" height="935"
                  loading="lazy"
                  decoding="async">
-          </article>
+          </div>
+        </div>
+      </section>
 
-          <article class="instrument-card" data-reveal data-delay="1">
-            <div class="bl-accent">
-              <p class="instrument-number">02</p>
-              <h3>Blocker</h3>
+      <!-- ─── 6. DISTRACTION BLOCKER SECTION ────────────────────────────────── -->
+      <section class="shell" id="blocker" aria-labelledby="blocker-title">
+        <div class="feature-deep-grid">
+          <div class="hero-app-frame">
+            <div class="app-window-header" aria-hidden="true">
+              <span class="window-title">TOKI — Desktop Distraction Blocker</span>
             </div>
-            <p>Chosen sites and apps are kept out of reach while the cycle runs. Local, desktop-level enforcement — no extension, no workaround.</p>
-            <img class="instrument-shot"
-                 src="assets/toki-shot-block.png"
-                 alt="TOKI's site-blocking screen: protection as presence"
-                 width="640" height="400"
+            <img class="app-screenshot"
+                 src="assets/app/appblock.png"
+                 alt="Toki Distraction Blocker configuration screen showing site rules, app blocking lists, and enforcement controls"
+                 width="1437" height="911"
                  loading="lazy"
                  decoding="async">
-          </article>
+          </div>
 
-          <article class="instrument-card" data-reveal data-delay="2">
-            <div class="bl-accent">
-              <p class="instrument-number">03</p>
-              <h3>Bonsai</h3>
-            </div>
-            <p>Your work leaves a trace. A quiet companion grows through your sessions — presence without push notifications, progress without a scoreboard.</p>
-            <div class="bonsai-asset-placeholder" aria-hidden="true">
-              FOCUS · REST · GROW
-            </div>
-          </article>
-        </div>
+          <div>
+            <span class="kicker">Distraction Enforcement</span>
+            <h2 id="blocker-title">Make distractions harder to reach.</h2>
+            <p style="color:var(--ink-dim); margin-top:16px; font-size:17px; line-height:1.6;">
+              Choose the sites and applications you want out of the way. When Focus begins, Toki enforces the boundary directly on Windows.
+            </p>
 
-        <!-- Bridge inline pós-instrumentos -->
-        <div class="bridge">
-          <p>Ready to enter your first block?</p>
-          <a class="cta-primary"
-             href="https://github.com/JGuilherme2005/Toki-Landing/releases/download/v1.0.0/toki-setup-1.0.0.exe">
-            <span>Download for Windows</span>
-            <span class="arrow" aria-hidden="true">↓</span>
-          </a>
+            <div class="feature-list">
+              <div class="feature-point">
+                <h4>Website DNS Blocking</h4>
+                <p>Writes local loopback rules to the Windows hosts file to block distracting domains instantly.</p>
+              </div>
+
+              <div class="feature-point">
+                <h4>Application Process Termination</h4>
+                <p>Terminates selected application executables (e.g. Discord, Games) using native OS process management.</p>
+              </div>
+
+              <div class="feature-point">
+                <h4>Browser Tab Closure</h4>
+                <p>Automatically closes open browser tabs matching distraction rules during active focus sessions.</p>
+              </div>
+            </div>
+
+            <p style="margin-top:20px; font-size:13px; color:var(--muted); font-family:var(--font-display);">
+              * Administrator Note: Toki requests Windows UAC administrator permission on launch to apply hosts DNS rules.
+            </p>
+          </div>
         </div>
       </section>
 
-      <!-- ─── ④ PROVA: PRODUTO REAL ─────────────────────────────────────── -->
-      <section class="proof-demo shell" id="demo" aria-labelledby="demo-title">
-        <div class="section-head" data-reveal>
-          <p class="kicker">Product proof</p>
-          <h2 id="demo-title">The real thing.</h2>
-          <p style="margin-top:16px; color:var(--muted); max-width:560px; font-size:15px; line-height:1.6;">
-            See TOKI in use: focus cycle, blocking in action, and the feel of a window that stays open and stays yours.
-          </p>
+      <!-- ─── 7. TASKS & CLOUD INTEGRATIONS SECTION ─────────────────────────── -->
+      <section class="shell" id="integrations" aria-labelledby="integrations-title">
+        <div class="section-head">
+          <span class="kicker">Unified Workspace</span>
+          <h2 id="integrations-title">Bring the work into the focus session.</h2>
+          <p>Import scheduled calendar events and tasks from your existing tools into one quiet execution interface.</p>
         </div>
 
-        <div class="demo-frame" data-reveal>
-          <!-- Demo usa controls — asset diferente do hero autoplay (mesma fonte, contexto diferente) -->
-          <video class="demo-video"
-                 controls
-                 preload="metadata"
-                 poster="assets/toki-poster.png"
-                 aria-label="Full TOKI demo: setup, focus cycle, and blocking">
-            <source src="assets/toki-improved.mp4" type="video/mp4">
-            Your browser could not load the TOKI presentation video.
-          </video>
+        <div class="tab-buttons" aria-label="Integration previews">
+          <button type="button" class="tab-btn active" onclick="switchTab('calendar')">Google Calendar</button>
+          <button type="button" class="tab-btn" onclick="switchTab('notion')">Notion (2-Way)</button>
+          <button type="button" class="tab-btn" onclick="switchTab('todoist')">Todoist</button>
+          <button type="button" class="tab-btn" onclick="switchTab('workspace')">Workspace Tasks</button>
         </div>
 
-        <div class="shots-row" data-reveal aria-label="Real product screenshots">
-          <figure class="shot-figure">
-            <img src="assets/toki-shot-setup.png"
-                 alt="TOKI's preparation screen: task and cycle setup before starting focus"
-                 width="640" height="400"
-                 loading="lazy" decoding="async">
-            <figcaption class="shot-caption">Set up the block before pressing start.</figcaption>
-          </figure>
-          <figure class="shot-figure">
-            <img src="assets/toki-shot-focus.png"
-                 alt="TOKI's focus screen: timer running with visual presence"
-                 width="480" height="300"
-                 loading="lazy" decoding="async">
-            <figcaption class="shot-caption">Focus gains visual weight without the noise.</figcaption>
-          </figure>
-          <figure class="shot-figure">
-            <img src="assets/toki-shot-block.png"
-                 alt="TOKI's blocking screen: distraction protection in action"
-                 width="480" height="300"
-                 loading="lazy" decoding="async">
-            <figcaption class="shot-caption">Blocking shows up as protection, not punishment.</figcaption>
-          </figure>
+        <!-- Tab Content: Real Screenshot -->
+        <div id="tab-calendar" class="tab-content active hero-app-frame">
+          <div class="app-window-header" aria-hidden="true">
+            <span class="window-title">TOKI — Google Calendar &amp; Cloud Integrations</span>
+          </div>
+          <img class="app-screenshot"
+               src="assets/app/calendar.png"
+               alt="Toki Integrations screen demonstrating connected Google Calendar, Notion, and Todoist sources"
+               width="1447" height="930"
+               loading="lazy"
+               decoding="async">
         </div>
 
-        <!-- Bridge pós-prova -->
-        <div class="bridge-proof" data-reveal>
-          <a class="cta-primary"
-             href="https://github.com/JGuilherme2005/Toki-Landing/releases/download/v1.0.0/toki-setup-1.0.0.exe">
-            <span>Try it yourself — Download free</span>
-            <span class="arrow" aria-hidden="true">↓</span>
-          </a>
+        <div style="margin-top:24px; display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap:16px;">
+          <div class="feature-point">
+            <h4>Google Calendar (1-Way Import)</h4>
+            <p>Lists user calendars and imports scheduled meetings and timeblocks directly into Toki as focus tasks.</p>
+          </div>
+          <div class="feature-point">
+            <h4>Notion (2-Way Sync)</h4>
+            <p>Imports unchecked page checkboxes and automatically updates page status and completion timestamps upon task finish.</p>
+          </div>
+          <div class="feature-point">
+            <h4>Todoist (1-Way Import)</h4>
+            <p>Connects your Todoist account to pull uncompleted tasks from selected projects with due dates and priority tags.</p>
+          </div>
         </div>
       </section>
 
-      <!-- ─── ⑤ IDENTIDADE: MA — A SALA QUE O TOKI NUNCA SERÁ ────────── -->
-      <section class="identity shell" id="identity" aria-labelledby="identity-title">
-        <div class="identity-layout">
+      <!-- ─── 8. PROGRESS & DESKTOP CONTINUITY SECTION ──────────────────────── -->
+      <section class="shell" id="continuity" aria-labelledby="continuity-title">
+        <div class="feature-deep-grid">
+          <div>
+            <span class="kicker">Desktop Continuity</span>
+            <h2 id="continuity-title">Your focus setup stays with you.</h2>
+            <p style="color:var(--ink-dim); margin-top:16px; font-size:17px; line-height:1.6;">
+              Toki minimizes to the Windows system tray, restores instantly, and retains your task context across system restarts.
+            </p>
 
-          <div class="identity-left" data-reveal>
-            <p class="kicker">Philosophy</p>
-            <h2 id="identity-title">You know what you need to do. You just can't start.</h2>
-            <p>Productivity doesn't fail from lack of method. It fails when the products around you are better at capturing attention than your workspace is at protecting it.</p>
-            <p style="margin-top:16px;">TOKI lives in the <em>Ma</em>: the Japanese concept of meaningful pause — the space between wanting to do and actually doing. A quiet room that waits for you.</p>
+            <div class="feature-list">
+              <div class="feature-point">
+                <h4>System Tray Operation</h4>
+                <p>Runs silently in the notification area, maintaining background distraction protection while you work.</p>
+              </div>
 
-            <div class="anti-list" aria-label="What Toki will never be">
-              <div class="anti-item">No push notifications telling you to be productive</div>
-              <div class="anti-item">No social streaks or gamified accountability</div>
-              <div class="anti-item">No dashboards that require maintenance</div>
-              <div class="anti-item">No subscription to unlock a focus timer</div>
-              <div class="anti-item">No algorithm deciding what matters next</div>
+              <div class="feature-point">
+                <h4>Single Instance Protection</h4>
+                <p>Prevents duplicate app instances and keeps focus state synchronized via internal IPC communication.</p>
+              </div>
+
+              <div class="feature-point">
+                <h4>Custom Session Preferences</h4>
+                <p>Set custom focus, short break, and long break durations stored in local device preferences.</p>
+              </div>
             </div>
           </div>
 
-          <div class="identity-right" data-reveal data-delay="1">
-            <div aria-hidden="true">
-              <!-- 間 with lang="ja" for screen readers: in the footer -->
-              <span class="ma-char" aria-hidden="true">間</span>
-              <p class="ma-explain">Ma — the meaningful pause</p>
+          <div class="hero-app-frame">
+            <div class="app-window-header" aria-hidden="true">
+              <span class="window-title">TOKI — Preferences &amp; System Settings</span>
             </div>
-
-            <div style="margin-top:40px; padding:28px; border:1px solid var(--border-room); border-left:2px solid var(--lime); border-radius:12px; background:var(--surface);">
-              <p class="kicker" style="display:block; margin-bottom:14px;">The digital third place</p>
-              <p style="color:rgba(232,234,224,0.75); font-size:15px; line-height:1.65;">
-                TOKI is designed to be a space users return to because they genuinely want to be there, not because they received another push notification.
-              </p>
-              <p style="color:rgba(232,234,224,0.75); font-size:15px; line-height:1.65; margin-top:12px;">
-                The desktop decision is strategic. Serious work happens on the same machine where distractions live. TOKI meets you there — quietly, on your side.
-              </p>
-            </div>
+            <img class="app-screenshot"
+                 src="assets/app/settings.png"
+                 alt="Toki Settings screen showing custom timer durations, autostart options, and system tray preferences"
+                 width="1446" height="927"
+                 loading="lazy"
+                 decoding="async">
           </div>
-
         </div>
       </section>
 
-      <!-- ─── ⑥ OFERTA: $0 BETA + FAQ ──────────────────────────────────── -->
-      <section class="offer shell" id="offer" aria-labelledby="offer-title">
-        <div class="section-head" data-reveal>
-          <p class="kicker">Pricing</p>
+      <!-- ─── 9. LOCAL-FIRST & PRIVACY SECTION ──────────────────────────────── -->
+      <section class="shell" id="privacy" aria-labelledby="privacy-title">
+        <div class="section-head">
+          <span class="kicker">Local-First Architecture</span>
+          <h2 id="privacy-title">Your focus space stays yours.</h2>
+          <p>Toki's core timer, tasks, history, blocker settings, and offline focus tracks stay on your PC. Connected services are contacted only when you use their integrations.</p>
+        </div>
+
+        <div class="privacy-grid">
+          <article class="privacy-card">
+            <p class="privacy-card-tag">LOCAL BY DEFAULT</p>
+            <h3>100% On-Device Data</h3>
+            <p>Your tasks, Pomodoro sessions, and focus streaks remain stored on your local disk in <code>electron-store</code>. No external user accounts or telemetry tracking.</p>
+          </article>
+
+          <article class="privacy-card">
+            <p class="privacy-card-tag">PROTECTED CONNECTIONS</p>
+            <h3>OS-Backed Encryption</h3>
+            <p>Cloud integration credentials for Notion, Todoist, and Google Calendar are protected using Windows <code>safeStorage</code> DPAPI encryption and AES-256-GCM.</p>
+          </article>
+
+          <article class="privacy-card">
+            <p class="privacy-card-tag">NO ATTENTION MODEL</p>
+            <h3>Zero Surveillance</h3>
+            <p>No remote analytics webhooks, no advertising trackers, and no algorithms attempting to capture your attention. Built purely to help it land.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ─── 10. BONSAI COMPANION SECTION ──────────────────────────────────── -->
+      <section class="shell" id="bonsai" aria-labelledby="bonsai-title">
+        <div class="bonsai-box">
+          <div>
+            <span class="kicker">Visual Companion</span>
+            <h3 id="bonsai-title">A quiet companion that grows with your practice.</h3>
+            <p style="color:var(--muted); margin-top:8px; max-width:480px; font-size:15px;">
+              The Bonsai advances through growth stages as you show up and complete sessions. No leaderboard, pressure, or social score.
+            </p>
+          </div>
+
+          <div class="bonsai-stages" aria-label="Bonsai progression stages">
+            <div class="bonsai-stage">
+              <div class="bonsai-dot"></div>
+              <span class="bonsai-label">Seedling</span>
+            </div>
+            <div class="bonsai-stage">
+              <div class="bonsai-dot"></div>
+              <span class="bonsai-label">Sapling</span>
+            </div>
+            <div class="bonsai-stage stage-3">
+              <div class="bonsai-dot"></div>
+              <span class="bonsai-label" style="color:var(--lime);">Flourished</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── 11. PHILOSOPHY (MA) SECTION ──────────────────────────────────── -->
+      <section class="shell" id="philosophy" aria-labelledby="philo-title">
+        <div style="display:grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.4fr); gap:40px; align-items:center;">
+          <div>
+            <span class="kicker">Philosophy</span>
+            <h2 id="philo-title">A small pause between deciding and beginning.</h2>
+            <p style="color:var(--ink-dim); margin-top:16px; font-size:18px; line-height:1.65;">
+              Toki is designed for the moment when you already know what to do but need a quiet place to start. Inspired by <em>Ma</em> — the Japanese concept of meaningful space between actions.
+            </p>
+          </div>
+          <div style="text-align:center;" aria-hidden="true">
+            <span class="ma-char">間</span>
+            <p style="font-family:var(--font-display); font-size:11px; color:var(--muted); letter-spacing:0.14em; margin-top:8px;">MA — THE MEANINGFUL PAUSE</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── 12. PRICING & DOWNLOAD SECTION ───────────────────────────────── -->
+      <section class="shell" id="offer" aria-labelledby="offer-title">
+        <div class="section-head">
+          <span class="kicker">Pricing</span>
           <h2 id="offer-title">Start with the free beta.</h2>
-          <p style="margin-top:16px; color:var(--muted); max-width:560px; font-size:15px; line-height:1.6;">
-            Download the local Windows installer and run a real cycle — no account needed.
-          </p>
+          <p>Download the local Windows installer and run a real focus block — no account needed.</p>
         </div>
 
         <div class="offer-layout">
-          <article class="price-card" data-reveal>
-            <h3>TOKI Desktop</h3>
-            <div class="price-big">$0 <small>/ beta</small></div>
+          <article class="price-card">
+            <h3 style="font-family:var(--font-display); font-size:22px;">Toki Desktop for Windows</h3>
+            <div class="price-big">$0 <small>/ free beta</small></div>
 
-            <ul class="checklist" aria-label="What's included">
-              <li>Windows installer — runs local</li>
-              <li>Pomodoro and configurable cycles</li>
-              <li>Daily tasks and progress history</li>
-              <li>Local site and app blocking</li>
+            <ul class="checklist">
+              <li>Windows 64-bit installer — runs 100% local</li>
+              <li>Zero-drift Pomodoro focus cycles</li>
+              <li>Deep Focus audio (Offline, Spotify &amp; YouTube)</li>
+              <li>System-level site and app distraction blocker</li>
+              <li>Google Calendar, Notion (2-way) &amp; Todoist sync</li>
+              <li>System tray background operation</li>
             </ul>
 
-            <a class="cta-primary"
-               href="https://github.com/JGuilherme2005/Toki-Landing/releases/download/v1.0.0/toki-setup-1.0.0.exe"
-               style="width:100%; justify-content:center;">
+            <a class="cta-primary" href="https://github.com/JGuilherme2005/Toki-Landing/releases/download/v1.0.0/toki-setup-1.0.0.exe" style="width:100%;">
               <span>Download for Windows</span>
               <span class="arrow" aria-hidden="true">↓</span>
             </a>
-            <p class="price-note">File: toki-setup-1.0.0.exe · No account required</p>
+            <p style="font-family:var(--font-display); font-size:12px; color:var(--muted); margin-top:12px; text-align:center;">
+              File: toki-setup-1.0.0.exe · No account required
+            </p>
           </article>
 
-          <div class="faq" id="faq" data-reveal data-delay="1">
+          <!-- ─── 13. FAQ ACCORDION ────────────────────────────────────────── -->
+          <div class="faq" id="faq" aria-label="Frequently Asked Questions">
             <details open>
-              <summary>Is TOKI a Pomodoro timer?</summary>
-              <p>It has Pomodoro, but the product is bigger: an emotional focus environment for starting and protecting work blocks. The timer is one instrument in a room built for deep work.</p>
+              <summary>What is Toki?</summary>
+              <p>Toki is a calm, local-first desktop focus workspace for Windows that unifies your timer, active tasks, focus music, site blocker, and calendar tools into one protected window.</p>
             </details>
+
+            <details>
+              <summary>Is Toki just a Pomodoro timer?</summary>
+              <p>No. While it includes a zero-drift Pomodoro engine, Toki is a complete focus environment that defends your work boundaries with desktop blocking, ambient music, and cloud task sync.</p>
+            </details>
+
             <details>
               <summary>Does it work offline?</summary>
-              <p>Yes. The current beta runs as a local desktop app on Windows. No internet required once installed.</p>
+              <p>Yes. The core timer, local distraction blocker, daily workspace tasks, and 5 built-in ambient soundscapes run 100% offline. Internet access is only needed for cloud task sync or streaming Spotify/YouTube audio.</p>
             </details>
+
             <details>
               <summary>Do I need an account?</summary>
-              <p>No. Download, open, and start a block. That's it. Account support may come later, but the beta is fully local.</p>
+              <p>No. You download, open, and start a focus block immediately. Credentials and integration tokens are encrypted locally using Windows DPAPI safeStorage.</p>
             </details>
+
             <details>
-              <summary>Does it integrate with Notion or Todoist?</summary>
-              <p>Yes. The desktop app can import work from Notion and Todoist. Google Calendar integration is planned for a future release.</p>
+              <summary>Which platforms are supported?</summary>
+              <p>Toki is built exclusively as a native desktop application for Windows 64-bit.</p>
             </details>
+
             <details>
-              <summary>What is the Bonsai?</summary>
-              <p>A quiet companion that grows alongside your sessions. Not a game, not a streak — just a gentle signal that you showed up and did the work.</p>
+              <summary>How does the distraction blocker work?</summary>
+              <p>Toki terminates chosen application processes (via taskkill), applies local hosts DNS loopback rules, and closes distraction browser tabs during active focus sessions without extensions.</p>
+            </details>
+
+            <details>
+              <summary>Does Toki connect with Google Calendar, Notion, and Todoist?</summary>
+              <p>Yes. Toki supports 1-click event import from Google Calendar and Todoist, as well as 2-way sync with Notion that updates page statuses and completion timestamps automatically.</p>
+            </details>
+
+            <details>
+              <summary>Can I use Spotify and YouTube for focus audio?</summary>
+              <p>Yes. In addition to 5 offline CC BY ambient tracks, Toki includes an embedded player dock for Spotify playlists and YouTube audio sources synced with your timer.</p>
+            </details>
+
+            <details>
+              <summary>Why does Windows ask for administrator permission?</summary>
+              <p>Toki requests Windows UAC administrator elevation on launch because modifying hosts-file DNS rules requires system-level permissions on Windows.</p>
+            </details>
+
+            <details>
+              <summary>Is the beta free?</summary>
+              <p>Yes. The current Windows beta is 100% free to download and use with no account creation.</p>
             </details>
           </div>
         </div>
       </section>
 
-      <!-- ─── ⑦ BONSAI: SECOND-READ MOMENT ─────────────────────────────── -->
-      <section class="bonsai-section shell" id="bonsai" aria-labelledby="bonsai-title">
-        <div data-reveal>
-          <p class="kicker" style="display:block; text-align:center; margin-bottom:16px;">The companion</p>
-          <h2 id="bonsai-title" style="text-align:center;">A bonsai that grows<br>with your work.</h2>
-          <p class="bonsai-intro">Not a metric. Not a streak. Just a living thing that shows up because you did.</p>
-
-          <!-- CSS bonsai fallback — three states, no external illustration required -->
-          <div class="bonsai-states" aria-hidden="true">
-            <div class="bonsai-state">
-              <div class="bonsai-tree small"></div>
-              <p class="bonsai-label">First session</p>
-              <p class="bonsai-line">A seed planted.</p>
-            </div>
-            <div class="bonsai-state">
-              <div class="bonsai-tree medium"></div>
-              <p class="bonsai-label">One week in</p>
-              <p class="bonsai-line">Roots taking hold.</p>
-            </div>
-            <div class="bonsai-state">
-              <div class="bonsai-tree full"></div>
-              <p class="bonsai-label">Your practice</p>
-              <p class="bonsai-line">Something that grew because you showed up.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ─── ⑧ CTA FINAL ───────────────────────────────────────────────── -->
-      <section class="cta-final shell" id="final" aria-labelledby="final-title">
-        <div class="cta-final-panel" data-reveal>
+      <!-- ─── 14. FINAL CTA ───────────────────────────────────────────────── -->
+      <section class="shell" id="final">
+        <div style="padding: clamp(40px, 5vw, 64px); border:1px solid var(--border-quiet); border-radius:16px; background:var(--surface); display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
           <div>
-            <p class="kicker">TOKI</p>
-            <h2 id="final-title">Stop preparing to focus. Just enter it.</h2>
-            <p>Download the beta, open a task, and let the environment protect your next block.</p>
+            <span class="kicker">TOKI DESKTOP</span>
+            <h2>Stop preparing to focus. Just enter it.</h2>
+            <p style="color:var(--muted); margin-top:8px;">Download the free beta for Windows and start your next protected focus session.</p>
           </div>
-          <a class="cta-primary"
-             href="https://github.com/JGuilherme2005/Toki-Landing/releases/download/v1.0.0/toki-setup-1.0.0.exe"
-             aria-label="Download TOKI for Windows — free beta">
+          <a class="cta-primary" href="https://github.com/JGuilherme2005/Toki-Landing/releases/download/v1.0.0/toki-setup-1.0.0.exe">
             <span>Download for Windows</span>
             <span class="arrow" aria-hidden="true">↓</span>
           </a>
@@ -1787,26 +1395,25 @@
 
     </main>
 
-    <!-- ─── ⑨ FOOTER ─────────────────────────────────────────────────────── -->
-    <footer class="footer shell">
+    <!-- ─── FOOTER ─────────────────────────────────────────────────────────── -->
+    <footer class="shell">
       <div class="footer-inner">
-        <a class="footer-brand" href="#top" aria-label="TOKI home">
-          <img src="assets/icon.png" alt="" width="24" height="24">
-          TOKI
+        <a class="brand" href="#top" aria-label="Toki home">
+          <img src="assets/icon.png" alt="Toki icon" width="24" height="24">
+          <span>TOKI</span>
         </a>
 
         <nav class="footer-links" aria-label="Footer links">
-          <a href="#instruments">Features</a>
-          <a href="#demo">Demo</a>
+          <a href="#workflow">Product</a>
+          <a href="#audio">Features</a>
+          <a href="#privacy">Privacy</a>
           <a href="#offer">Pricing</a>
           <a href="#faq">FAQ</a>
           <a href="https://github.com/JGuilherme2005/Toki-Landing/releases/download/v1.0.0/toki-setup-1.0.0.exe">Download</a>
         </nav>
 
-        <p class="footer-copy">
-          &copy; 2026 TOKI &middot;
-          <!-- 間 com lang="ja" para screen readers — bugfix audit -->
-          <span lang="ja" title="Ma — meaningful pause">間</span>
+        <p style="font-family:var(--font-display); font-size:12px; color:var(--muted);">
+          &copy; 2026 Toki &middot; <span lang="ja" title="Ma — meaningful pause">間</span>
         </p>
       </div>
     </footer>
@@ -1814,56 +1421,17 @@
   </div><!-- /.page -->
 
   <script>
-    // Reveal on scroll — ROBUSTO (AF-1 compliant)
-    // Só adiciona html.js-reveal DEPOIS do JS estar ativo.
-    // Sem JS = conteúdo visível (opacity:1 no base CSS).
-    (function () {
-      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reduce) return; // conteúdo já visível no CSS base, não anima
+    // Tab switching for Integrations Showcase
+    function switchTab(tabName) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+      
+      const targetContent = document.getElementById('tab-' + tabName) || document.getElementById('tab-calendar');
+      if (targetContent) targetContent.classList.add('active');
 
-      document.documentElement.classList.add('js-reveal');
-
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) {
-            e.target.classList.add('revealed');
-            io.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('[data-reveal]').forEach(function (el) {
-        io.observe(el);
-      });
-    }());
-
-    // Scroll-driven scale no product-frame (hero video entra em escala 0.92 → 1.0)
-    (function () {
-      var frame = document.getElementById('product-frame');
-      if (!frame) return;
-      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reduce) { frame.style.transform = 'scale(1)'; return; }
-
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) {
-            e.target.classList.add('scaled-in');
-            io.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.2 });
-
-      io.observe(frame);
-    }());
-
-    // Respect reduced-motion preferences for the autoplaying product preview.
-    (function () {
-      var heroVideo = document.querySelector('.hero-video');
-      if (!heroVideo || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      heroVideo.removeAttribute('autoplay');
-      heroVideo.pause();
-      heroVideo.currentTime = 0;
-    }());
+      const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(btn => btn.getAttribute('onclick').includes(tabName));
+      if (activeBtn) activeBtn.classList.add('active');
+    }
   </script>
   <script type="module" src="./src/analytics.js"></script>
 </body>

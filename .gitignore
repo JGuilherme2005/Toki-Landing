@@ -4,3 +4,21 @@ dist/
 .env.local
 *.log
 .DS_Store
+
+# >>> pvs-inteligence (gerado pelo fw — nao versionar) >>>
+.antigravitycli/
+.claude/agents/
+.claude/skills/
+.fw/
+.opencode/
+/AGENTS.md
+/AGENTS.md.bak
+/core/templates/
+core/templates/decision-lineage.md
+core/templates/handoff-message.yaml
+core/templates/memory-atom.md
+docs/referencia/escada-do-rastro.md
+docs/referencia/harness-mastery.md
+docs/referencia/regenerate-loop.md
+docs/referencia/trabalho-profundo.md
+# <<< pvs-inteligence <<<

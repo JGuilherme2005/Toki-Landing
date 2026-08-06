@@ -1,0 +1,269 @@
+[
+  {
+    "id": "core-pomodoro-engine",
+    "name": "Pomodoro Focus & Break Engine",
+    "category": "Core Focus Experience",
+    "status": "Released/merged",
+    "userValue": "Primary",
+    "marketingSuitability": "Hero-level",
+    "summary": "Pure reducer state machine controlling Focus, Short Break, Long Break, and Completed phases with custom minute durations, cycle counts, and wall-clock deadline reconciliation.",
+    "userBenefit": "Provides a predictable, calm structure for work sessions with automated phase progression and zero drift during system sleep.",
+    "limitations": "Does not support seconds-level custom durations (integer minutes only).",
+    "branch": "feature/deep-focus-audio",
+    "sourceFiles": [
+      "src/pomodoro/machine.ts",
+      "src/pomodoro/machine.types.ts",
+      "src/pomodoro/engine.ts",
+      "src/pomodoro/store.ts",
+      "src/pomodoro/store.persist.ts"
+    ],
+    "testFiles": [
+      "tests/unit/pomodoro/machine.test.ts",
+      "tests/unit/pomodoro/engine.test.ts",
+      "tests/unit/pomodoro/parallel.test.ts"
+    ],
+    "confidence": "Verified in code and tests"
+  },
+  {
+    "id": "deep-focus-audio-engine",
+    "name": "Deep Focus Audio & Soundscapes",
+    "category": "Deep Focus",
+    "status": "Implemented on active feature branch",
+    "userValue": "Primary",
+    "marketingSuitability": "Hero-level",
+    "summary": "Offline CC BY ambient audio library combined with isolated local HTTP provider host for Spotify and YouTube streaming auto-bound to focus timer state.",
+    "userBenefit": "Immerses the user in custom or built-in focus audio that automatically starts and pauses with work sessions.",
+    "limitations": "Spotify official iframe API lacks volume and fade-out controls. YouTube metadata requires cloud worker API key. No Spotify user account library import.",
+    "branch": "feature/deep-focus-audio",
+    "sourceFiles": [
+      "src/deep-focus/controller.ts",
+      "src/deep-focus/catalog.ts",
+      "src/deep-focus/provider-host.js",
+      "src/deep-focus/persistence.ts",
+      "src/deep-focus/starter-playlists.ts",
+      "src/assets/sounds/deep-focus/manifest.json"
+    ],
+    "testFiles": [
+      "tests/unit/deep-focus/persistence.test.ts",
+      "tests/unit/deep-focus/fade.test.ts",
+      "tests/unit/deep-focus/timer-sync.test.ts",
+      "tests/unit/deep-focus/provider-host.test.ts",
+      "tests/unit/deep-focus/ui-security.test.ts",
+      "tests/e2e/deep-focus.spec.ts"
+    ],
+    "confidence": "Verified in code and tests"
+  },
+  {
+    "id": "workspace-task-management",
+    "name": "Workspace Task & Daily Flow",
+    "category": "Workspace & Task Management",
+    "status": "Released/merged",
+    "userValue": "Primary",
+    "marketingSuitability": "Main feature section",
+    "summary": "Local task list with modal creation, editing, current-task selection, multi-select re-ordering, and automatic midnight reset with daily routine retention.",
+    "userBenefit": "Keeps work items directly tied to the active timer session and clears yesterday's clutter automatically.",
+    "limitations": "Sub-tasks or nested task hierarchies are not supported.",
+    "branch": "feature/deep-focus-audio",
+    "sourceFiles": [
+      "src/index.html",
+      "src/store.js"
+    ],
+    "testFiles": [
+      "tests/unit/analytics.test.ts"
+    ],
+    "confidence": "Verified in code and tests"
+  },
+  {
+    "id": "distraction-blocker",
+    "name": "Desktop Distraction Blocker",
+    "category": "Website & App Blocker",
+    "status": "Released/merged",
+    "userValue": "Primary",
+    "marketingSuitability": "Main feature section",
+    "summary": "Multi-tier Windows blocker utilizing taskkill for processes, hosts file modification for DNS redirection, and PowerShell window title matching to close browser tabs.",
+    "userBenefit": "Enforces local focus by closing distracting apps and websites automatically when a focus session starts.",
+    "limitations": "Requires Windows Administrator elevation (UAC prompt). DNS-over-HTTPS (DoH) in browsers can bypass hosts file blocking if tab is not closed.",
+    "branch": "feature/deep-focus-audio",
+    "sourceFiles": [
+      "src/blocker.js",
+      "src/kill_by_path.ps1",
+      "src/scripts/block_sites.ps1",
+      "main.js"
+    ],
+    "testFiles": [
+      "tests/unit/architecture/orphan-modules.test.ts"
+    ],
+    "confidence": "Verified in code only"
+  },
+  {
+    "id": "google-calendar-integration",
+    "name": "Google Calendar OAuth Task Import",
+    "category": "Calendar & Integrations",
+    "status": "Released/merged",
+    "userValue": "Supporting",
+    "marketingSuitability": "Main feature section",
+    "summary": "Secure OAuth integration with Cloudflare Worker broker that lists user calendars, queries events in RFC3339 time ranges, and imports them as 1-way Toki tasks with 32-bit FNV-1a deduplication.",
+    "userBenefit": "Converts scheduled calendar events into actionable focus tasks without manual data entry.",
+    "limitations": "1-way import only (no write-back event creation or editing in Google Calendar). Google Tasks API is not implemented.",
+    "branch": "feature/deep-focus-audio",
+    "sourceFiles": [
+      "src/integrations/google-calendar/importer.ts",
+      "src/integrations/google-calendar/browser.ts",
+      "src/integrations/google-calendar/client.ts",
+      "backend/src/google-calendar.ts",
+      "main.js"
+    ],
+    "testFiles": [
+      "tests/unit/integrations/google-calendar/importer.test.ts",
+      "tests/unit/integrations/google-calendar/browser.test.ts",
+      "tests/unit/oauth/google-calendar-callback.test.ts"
+    ],
+    "confidence": "Verified in code and tests"
+  },
+  {
+    "id": "notion-integration",
+    "name": "Notion OAuth 2-Way Task Sync",
+    "category": "Calendar & Integrations",
+    "status": "Released/merged",
+    "userValue": "Supporting",
+    "marketingSuitability": "Main feature section",
+    "summary": "OAuth integration with 4-concurrency recursive block traversal for task import, and a persistent write-back queue that updates Notion page status and checkbox blocks when completed in Toki.",
+    "userBenefit": "Syncs tasks bidirectionally with Notion databases and Mental Palace pages.",
+    "limitations": "Requires exact column property names ('Status', 'Done', 'Completed At', 'Focus Minutes') on custom Notion databases.",
+    "branch": "feature/deep-focus-audio",
+    "sourceFiles": [
+      "src/integrations/notion/importer.ts",
+      "src/integrations/notion/subscriber.ts",
+      "src/integrations/notion/syncQueue.ts",
+      "src/integrations/notion/fuzzyMatch.ts",
+      "backend/src/notion.ts"
+    ],
+    "testFiles": [
+      "tests/unit/integrations/notion/importer.test.ts",
+      "tests/unit/integrations/notion/fuzzyMatch.test.ts",
+      "tests/unit/integrations/notion/mapper.test.ts",
+      "tests/unit/oauth/notion-broker.test.js"
+    ],
+    "confidence": "Verified in code and tests"
+  },
+  {
+    "id": "todoist-integration",
+    "name": "Todoist OAuth Task Import",
+    "category": "Calendar & Integrations",
+    "status": "Released/merged",
+    "userValue": "Supporting",
+    "marketingSuitability": "Main feature section",
+    "summary": "OAuth 2.0 integration allowing users to browse Todoist projects and import uncompleted tasks with priority, label, and due date metadata.",
+    "userBenefit": "Brings Todoist project tasks straight into the local focus workspace.",
+    "limitations": "1-way import only (scope requested is read-only 'data:read'; no write-back task completion).",
+    "branch": "feature/deep-focus-audio",
+    "sourceFiles": [
+      "src/integrations/todoist/importer.ts",
+      "src/integrations/todoist/browser.ts",
+      "backend/src/todoist.ts"
+    ],
+    "testFiles": [
+      "tests/unit/integrations/todoist/importer.test.ts",
+      "tests/unit/integrations/todoist/browser.test.ts"
+    ],
+    "confidence": "Verified in code and tests"
+  },
+  {
+    "id": "history-analytics",
+    "name": "Local Focus Analytics & History",
+    "category": "History & Statistics",
+    "status": "Released/merged",
+    "userValue": "Supporting",
+    "marketingSuitability": "Secondary feature",
+    "summary": "Local analytics engine calculating daily focus time, session deduplication, current/best streak tracking, and interactive monthly activity calendar.",
+    "userBenefit": "Helps track long-term productivity patterns and maintain focus streaks without external tracking.",
+    "limitations": "Data is stored locally in Electron store; clearing local app data removes history unless backed up.",
+    "branch": "feature/deep-focus-audio",
+    "sourceFiles": [
+      "src/lib/analytics.js",
+      "src/index.html",
+      "src/store.js"
+    ],
+    "testFiles": [
+      "tests/unit/analytics.test.ts"
+    ],
+    "confidence": "Verified in code and tests"
+  },
+  {
+    "id": "system-tray-background",
+    "name": "System Tray & Background Operation",
+    "category": "Desktop Experience",
+    "status": "Released/merged",
+    "userValue": "Supporting",
+    "marketingSuitability": "Secondary feature",
+    "summary": "Windows system tray integration allowing Toki to run silently in the background when the main window is closed, maintaining active blocker and timer operations.",
+    "userBenefit": "Keeps distraction blocking active without occupying space on the taskbar.",
+    "limitations": "Windows system tray menu options are minimal (Show Application, Quit).",
+    "branch": "feature/deep-focus-audio",
+    "sourceFiles": [
+      "main.js"
+    ],
+    "testFiles": [
+      "tests/unit/architecture/orphan-modules.test.ts"
+    ],
+    "confidence": "Verified in code only"
+  },
+  {
+    "id": "privacy-security-local-first",
+    "name": "Local-First Zero-Telemetry Security Architecture",
+    "category": "Privacy & Security",
+    "status": "Released/merged",
+    "userValue": "Primary",
+    "marketingSuitability": "Secondary feature",
+    "summary": "Local-first data model with zero user tracking/analytics, OS-backed safeStorage DPAPI encryption for local installation secrets, AES-256-GCM cloud token encryption, and strict renderer process isolation.",
+    "userBenefit": "Guarantees complete personal privacy; personal focus data and tasks never leave the device.",
+    "limitations": "Integrations require connection to Cloudflare Worker broker.",
+    "branch": "feature/deep-focus-audio",
+    "sourceFiles": [
+      "main.js",
+      "preload.js",
+      "src/oauth/secure-installation.js",
+      "backend/src/crypto.ts"
+    ],
+    "testFiles": [
+      "tests/unit/oauth/renderer-secret-boundary.test.js",
+      "tests/unit/oauth/secure-installation.test.js"
+    ],
+    "confidence": "Verified in code and tests"
+  },
+  {
+    "id": "bonsai-visual-companion",
+    "name": "Visual Bonsai Growth Companion",
+    "category": "Core Focus Experience",
+    "status": "Released/merged",
+    "userValue": "Supporting",
+    "marketingSuitability": "Secondary feature",
+    "summary": "SVG visual growth indicator that advances through 5 intra-session stages (seed to flourished) and 5 global evolution levels as focus sessions accumulate.",
+    "userBenefit": "Provides subtle, non-intrusive visual encouragement during work blocks.",
+    "limitations": "Visual customisation of the Bonsai species is not supported.",
+    "branch": "feature/deep-focus-audio",
+    "sourceFiles": [
+      "src/bonsai.js",
+      "src/index.html"
+    ],
+    "testFiles": [
+      "tests/unit/analytics.test.ts"
+    ],
+    "confidence": "Verified in code and tests"
+  },
+  {
+    "id": "autostart-on-boot",
+    "name": "Windows System Startup / Autostart",
+    "category": "Desktop Experience",
+    "status": "Planned only",
+    "userValue": "Advanced",
+    "marketingSuitability": "Do not market yet",
+    "summary": "Option to launch Toki automatically when Windows boots.",
+    "userBenefit": "Would start focus protections on system boot.",
+    "limitations": "Not implemented. No calls to app.setLoginItemSettings() or registry autorun exist.",
+    "branch": "feature/deep-focus-audio",
+    "sourceFiles": [],
+    "testFiles": [],
+    "confidence": "Verified in code only"
+  }
+]

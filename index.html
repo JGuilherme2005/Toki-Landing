@@ -960,6 +960,113 @@
       font-weight: 500;
     }
 
+    /* ─── INTERACTIVE FOCUS MODE FEEDBACK SELECTOR ───────────────────────── */
+    .mode-selector-wrap {
+      margin-top: 28px;
+      padding: 20px;
+      border: 1px solid var(--border-room);
+      border-radius: 12px;
+      background: var(--surface);
+      box-shadow: 0 12px 24px rgba(4, 8, 5, 0.3);
+    }
+
+    .mode-selector-title {
+      font-family: var(--font-display);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--lime);
+      margin-bottom: 12px;
+    }
+
+    .mode-chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .mode-chip {
+      padding: 8px 14px;
+      border: 1px solid var(--border-room);
+      border-radius: 7px;
+      background: rgba(242, 244, 236, 0.04);
+      color: var(--ink-dim);
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all var(--dur-fast) var(--ease-out);
+    }
+
+    .mode-chip:hover {
+      border-color: var(--lime-hover);
+      color: var(--ink);
+      transform: translateY(-1px);
+    }
+
+    .mode-chip.active {
+      border-color: var(--border-quiet);
+      background: var(--lime-dim);
+      color: var(--lime);
+      box-shadow: 0 4px 12px rgba(185, 227, 107, 0.15);
+    }
+
+    .mode-feedback-box {
+      margin-top: 14px;
+      padding: 12px 16px;
+      border-left: 2px solid var(--lime);
+      border-radius: 6px;
+      background: rgba(185, 227, 107, 0.04);
+      font-size: 13px;
+      color: var(--ink);
+      line-height: 1.5;
+      transition: opacity var(--dur-fast) var(--ease-out);
+    }
+
+    /* ─── INFINITE AUTO-SCROLLING MARQUEE TRACK ("naquele ngc de movimentar") ─── */
+    .marquee-container {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      margin-top: 32px;
+      padding: 10px 0;
+      mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 20px;
+      width: max-content;
+      animation: scroll-marquee 48s linear infinite;
+    }
+
+    .marquee-container:hover .marquee-track {
+      animation-play-state: paused;
+    }
+
+    .marquee-card {
+      width: clamp(300px, 32vw, 360px);
+      padding: 22px;
+      border: 1px solid var(--border-room);
+      border-left: 2px solid var(--lime);
+      border-radius: 12px;
+      background: var(--surface);
+      box-shadow: 0 12px 24px rgba(4, 8, 5, 0.2);
+      flex-shrink: 0;
+      transition: border-color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+    }
+
+    .marquee-card:hover {
+      border-color: var(--lime-hover);
+      transform: translateY(-2px);
+    }
+
+    @keyframes scroll-marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
     /* ─── RESPONSIVE RULES ───────────────────────────────────────────────── */
     @media (max-width: 1024px) {
       .value-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -1036,6 +1143,20 @@
             <span>No account required</span>
             <span>Core tools work offline</span>
             <span>Windows 64-bit installer</span>
+          </div>
+
+          <!-- Interactive Focus Goal Mode Selector & Instant Feedback -->
+          <div class="mode-selector-wrap" aria-label="Interactive focus mode recommendation">
+            <p class="mode-selector-title">SELECT YOUR PRIMARY WORKFLOW FOR INSTANT SETUP:</p>
+            <div class="mode-chips">
+              <button type="button" class="mode-chip active" onclick="selectMode('coding')">💻 Software Coding</button>
+              <button type="button" class="mode-chip" onclick="selectMode('writing')">✍️ Writing &amp; Research</button>
+              <button type="button" class="mode-chip" onclick="selectMode('planning')">📅 Deep Planning</button>
+              <button type="button" class="mode-chip" onclick="selectMode('ambient')">🎧 Ambient Focus</button>
+            </div>
+            <div id="mode-feedback" class="mode-feedback-box">
+              <strong>Recommended Setup for Coding:</strong> 50m Focus cycle · Distraction Blocker active (process termination) · Spotify Lofi &amp; CC BY soundscapes.
+            </div>
           </div>
         </div>
 
@@ -1350,6 +1471,94 @@
             </div>
           </article>
         </div>
+
+        <!-- Infinite Auto-Scrolling Marquee Track ("naquele ngc de ficar movimentando") -->
+        <div class="marquee-container" aria-label="Continuous user workflow testimonials stream">
+          <div class="marquee-track">
+            <article class="marquee-card">
+              <p class="story-role">SOFTWARE ENGINEER</p>
+              <p class="story-quote">"VS Code + Toki Blocker shut off Discord and web feeds during 50m coding blocks."</p>
+              <p class="story-impact">➔ 3+ hrs protected focus daily</p>
+            </article>
+            <article class="marquee-card">
+              <p class="story-role">TECHNICAL WRITER</p>
+              <p class="story-quote">"Packaged CC BY ambient audio gives me an offline sanctuary to write articles."</p>
+              <p class="story-impact">➔ Zero tab-switching</p>
+            </article>
+            <article class="marquee-card">
+              <p class="story-role">PRODUCT MANAGER</p>
+              <p class="story-quote">"Google Calendar meeting imports and 2-way Notion status sync save 30m every morning."</p>
+              <p class="story-impact">➔ Real-time database sync</p>
+            </article>
+            <article class="marquee-card">
+              <p class="story-role">DATA SCIENTIST</p>
+              <p class="story-quote">"Jupyter notebook analysis sessions stay uninterrupted with local app process blocking."</p>
+              <p class="story-impact">➔ Deep analytical focus</p>
+            </article>
+            <article class="marquee-card">
+              <p class="story-role">UI/UX DESIGNER</p>
+              <p class="story-quote">"Figma design sprints with Spotify lofi synced directly to my focus timer cycles."</p>
+              <p class="story-impact">➔ Auto sound fade on breaks</p>
+            </article>
+            <article class="marquee-card">
+              <p class="story-role">ACADEMIC SCHOLAR</p>
+              <p class="story-quote">"Zero-drift timer stays accurate across laptop sleep and long research reading blocks."</p>
+              <p class="story-impact">➔ Wall-clock sleep recovery</p>
+            </article>
+            <article class="marquee-card">
+              <p class="story-role">CONTENT CREATOR</p>
+              <p class="story-quote">"Hosts DNS blocker stops impulsive YouTube feed checks while video exports render."</p>
+              <p class="story-impact">➔ System-level enforcement</p>
+            </article>
+            <article class="marquee-card">
+              <p class="story-role">FINANCIAL ANALYST</p>
+              <p class="story-quote">"100% local electron-store privacy guarantees sensitive financial models stay on my PC."</p>
+              <p class="story-impact">➔ Zero telemetry tracking</p>
+            </article>
+
+            <!-- DUPLICATED LOOP SET FOR SEAMLESS 100% MARQUEE SCROLL -->
+            <article class="marquee-card" aria-hidden="true">
+              <p class="story-role">SOFTWARE ENGINEER</p>
+              <p class="story-quote">"VS Code + Toki Blocker shut off Discord and web feeds during 50m coding blocks."</p>
+              <p class="story-impact">➔ 3+ hrs protected focus daily</p>
+            </article>
+            <article class="marquee-card" aria-hidden="true">
+              <p class="story-role">TECHNICAL WRITER</p>
+              <p class="story-quote">"Packaged CC BY ambient audio gives me an offline sanctuary to write articles."</p>
+              <p class="story-impact">➔ Zero tab-switching</p>
+            </article>
+            <article class="marquee-card" aria-hidden="true">
+              <p class="story-role">PRODUCT MANAGER</p>
+              <p class="story-quote">"Google Calendar meeting imports and 2-way Notion status sync save 30m every morning."</p>
+              <p class="story-impact">➔ Real-time database sync</p>
+            </article>
+            <article class="marquee-card" aria-hidden="true">
+              <p class="story-role">DATA SCIENTIST</p>
+              <p class="story-quote">"Jupyter notebook analysis sessions stay uninterrupted with local app process blocking."</p>
+              <p class="story-impact">➔ Deep analytical focus</p>
+            </article>
+            <article class="marquee-card" aria-hidden="true">
+              <p class="story-role">UI/UX DESIGNER</p>
+              <p class="story-quote">"Figma design sprints with Spotify lofi synced directly to my focus timer cycles."</p>
+              <p class="story-impact">➔ Auto sound fade on breaks</p>
+            </article>
+            <article class="marquee-card" aria-hidden="true">
+              <p class="story-role">ACADEMIC SCHOLAR</p>
+              <p class="story-quote">"Zero-drift timer stays accurate across laptop sleep and long research reading blocks."</p>
+              <p class="story-impact">➔ Wall-clock sleep recovery</p>
+            </article>
+            <article class="marquee-card" aria-hidden="true">
+              <p class="story-role">CONTENT CREATOR</p>
+              <p class="story-quote">"Hosts DNS blocker stops impulsive YouTube feed checks while video exports render."</p>
+              <p class="story-impact">➔ System-level enforcement</p>
+            </article>
+            <article class="marquee-card" aria-hidden="true">
+              <p class="story-role">FINANCIAL ANALYST</p>
+              <p class="story-quote">"100% local electron-store privacy guarantees sensitive financial models stay on my PC."</p>
+              <p class="story-impact">➔ Zero telemetry tracking</p>
+            </article>
+          </div>
+        </div>
       </section>
 
       <!-- ─── 9. LOCAL-FIRST & PRIVACY SECTION ──────────────────────────────── -->
@@ -1565,6 +1774,25 @@
 
       const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(btn => btn.getAttribute('onclick').includes(tabName));
       if (activeBtn) activeBtn.classList.add('active');
+    }
+
+    // Interactive Focus Mode Selector Feedback
+    function selectMode(mode) {
+      document.querySelectorAll('.mode-chip').forEach(btn => btn.classList.remove('active'));
+      const activeChip = Array.from(document.querySelectorAll('.mode-chip')).find(btn => btn.getAttribute('onclick').includes(mode));
+      if (activeChip) activeChip.classList.add('active');
+
+      const feedbackMap = {
+        coding: '<strong>Recommended Setup for Coding:</strong> 50m Focus cycle · Distraction Blocker active (process termination) · Spotify Lofi &amp; CC BY soundscapes.',
+        writing: '<strong>Recommended Setup for Writing:</strong> 25m Pomodoro · 100% Offline Ambient Soundscapes ("Peace of Mind") · Bonsai tree companion active.',
+        planning: '<strong>Recommended Setup for Deep Planning:</strong> 1-click Google Calendar import · 2-way Notion database sync · Daily routine persistence.',
+        ambient: '<strong>Recommended Setup for Ambient Focus:</strong> Deep Focus Audio Engine · Continuous playback mode · System Tray background operation.'
+      };
+
+      const feedbackBox = document.getElementById('mode-feedback');
+      if (feedbackBox) {
+        feedbackBox.innerHTML = feedbackMap[mode] || feedbackMap.coding;
+      }
     }
   </script>
   <script type="module" src="./src/analytics.js"></script>

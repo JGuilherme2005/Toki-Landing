@@ -886,11 +886,86 @@
       color: var(--ink);
     }
 
+    /* ─── USER WORKFLOWS & STORIES SECTION ───────────────────────────────── */
+    .stories-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .story-card {
+      padding: clamp(24px, 3vw, 32px);
+      border: 1px solid var(--border-room);
+      border-left: 2px solid var(--lime);
+      border-radius: 14px;
+      background: var(--surface);
+      box-shadow: 0 16px 32px rgba(4, 8, 5, 0.2);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .story-role {
+      font-family: var(--font-display);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--lime);
+      margin-bottom: 12px;
+    }
+
+    .story-quote {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--ink-dim);
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .story-how {
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid rgba(242, 244, 236, 0.08);
+    }
+
+    .story-how-title {
+      font-family: var(--font-display);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .story-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .story-tag {
+      font-family: var(--font-display);
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(242, 244, 236, 0.05);
+      border: 1px solid var(--border-room);
+      color: var(--ink-dim);
+    }
+
+    .story-impact {
+      font-size: 13px;
+      color: var(--lime);
+      font-weight: 500;
+    }
+
     /* ─── RESPONSIVE RULES ───────────────────────────────────────────────── */
     @media (max-width: 1024px) {
       .value-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .workflow-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .privacy-grid { grid-template-columns: 1fr; }
+      .stories-grid { grid-template-columns: 1fr; }
       .feature-deep-grid { grid-template-columns: 1fr; }
       .offer-layout { grid-template-columns: 1fr; }
     }
@@ -1215,6 +1290,65 @@
                  loading="lazy"
                  decoding="async">
           </div>
+        </div>
+      </section>
+
+      <!-- ─── 8.B USER WORKFLOWS & EXPERIENCES ────────────────────────────── -->
+      <section class="shell" id="stories" aria-labelledby="stories-title">
+        <div class="section-head">
+          <span class="kicker">User Workflows &amp; Experiences</span>
+          <h2 id="stories-title">How focus lands for different daily routines.</h2>
+          <p>See how software engineers, researchers, and knowledge workers use Toki to structure their focus blocks and eliminate context switching.</p>
+        </div>
+
+        <div class="stories-grid">
+          <article class="story-card">
+            <div>
+              <p class="story-role">SOFTWARE ENGINEER / DEVELOPER</p>
+              <p class="story-quote">"Before Toki, I was constantly context-switching between VS Code, browser feeds, and Discord notifications. Now I queue a 50m deep work session, turn on the Blocker, and stream Spotify lofi inside the app."</p>
+            </div>
+            <div class="story-how">
+              <p class="story-how-title">HOW THEY USE TOKI</p>
+              <div class="story-tags">
+                <span class="story-tag">Distraction Blocker</span>
+                <span class="story-tag">50m Focus Cycle</span>
+                <span class="story-tag">Spotify Sync</span>
+              </div>
+              <p class="story-impact">➔ 3+ hours of protected coding focus daily</p>
+            </div>
+          </article>
+
+          <article class="story-card">
+            <div>
+              <p class="story-role">WRITER &amp; TECHNICAL RESEARCHER</p>
+              <p class="story-quote">"I needed a calm workspace without push notifications or gamified streaks. Toki's packaged offline ambient soundscapes and zero-drift timer give me a quiet space to research and write for hours."</p>
+            </div>
+            <div class="story-how">
+              <p class="story-how-title">HOW THEY USE TOKI</p>
+              <div class="story-tags">
+                <span class="story-tag">Offline Soundscapes</span>
+                <span class="story-tag">25m Pomodoro</span>
+                <span class="story-tag">Bonsai Tree</span>
+              </div>
+              <p class="story-impact">➔ Zero feed distractions during writing sessions</p>
+            </div>
+          </article>
+
+          <article class="story-card">
+            <div>
+              <p class="story-role">PRODUCT MANAGER &amp; KNOWLEDGE WORKER</p>
+              <p class="story-quote">"The Google Calendar import and Notion 2-way sync are game changers. I pull scheduled meetings directly into my Toki workspace as focus tasks, and my Notion database updates automatically upon finish."</p>
+            </div>
+            <div class="story-how">
+              <p class="story-how-title">HOW THEY USE TOKI</p>
+              <div class="story-tags">
+                <span class="story-tag">Google Calendar</span>
+                <span class="story-tag">Notion 2-Way Sync</span>
+                <span class="story-tag">System Tray</span>
+              </div>
+              <p class="story-impact">➔ Seamless execution without managing multiple task boards</p>
+            </div>
+          </article>
         </div>
       </section>
 

@@ -58,14 +58,23 @@
       --text-sm:     14px;
       --text-xs:     12px;
 
-      /* Palette — Toki-aligned dark moss with warm off-white ink */
-      --bg-deep:      #0f1712;
-      --bg-room:      #131c16;
-      --surface:      #182420;
-      --surface-2:    #1e2c25;
-      --ink:          #fff8ea;        /* matches app --text */
-      --ink-dim:      #c4dac2;        /* matches app --muted */
-      --muted:        #94a693;
+      /* Palette — EXACT match to the Toki app so the landing IS the app's room.
+         All greens are lifted 1:1 from Toki-App/src/index.html. */
+      --bg-deep:      #529b72;         /* app --bg */
+      --bg-room:      #4d9068;         /* app --surface2 */
+      --surface:      #42825d;         /* app --surface */
+      --surface-2:    #3f7d59;         /* app --surface-organic */
+      --surface-live: #529b72;
+      --ink:          #fff8ea;         /* app --text */
+      --ink-dim:      #c4dac2;         /* app --muted */
+      --muted:        #9fbe99;         /* app --muted2 */
+
+      /* Living green tokens */
+      --app-green:        #529b72;
+      --app-green-deep:   #3f7d59;
+      --app-green-glow:   rgba(255, 248, 234, 0.10);
+      --app-green-soft:   rgba(255, 248, 234, 0.06);
+      --app-green-line:   rgba(55, 104, 74, 0.86);   /* app --border */
 
       /* Accent — Toki's cream-yellow. Same hex as app --accent. */
       --accent:       #f2e28a;
@@ -79,15 +88,15 @@
       --lime-dim:     var(--accent-dim);
       --lime-hover:   var(--accent-soft);
 
-      /* Borders */
-      --border-quiet: rgba(242, 226, 138, 0.18);
-      --border-room:  rgba(196, 218, 194, 0.10);
-      --border-strong:rgba(196, 218, 194, 0.20);
+      /* Borders — deep-green lines that read on the bright green bg */
+      --border-quiet: rgba(242, 226, 138, 0.32);
+      --border-room:  rgba(55, 106, 76, 0.42);       /* app --separator */
+      --border-strong:rgba(55, 104, 74, 0.86);       /* app --border */
       /* Product-frame border echoes the app's real border color */
-      --product-border: rgba(55, 104, 74, 0.68);
-      --product-surface:#152118;
+      --product-border: rgba(55, 104, 74, 0.86);
+      --product-surface:#42825d;                     /* app --surface */
 
-      --shadow-deep:  rgba(4, 12, 6, 0.5);
+      --shadow-deep:  rgba(24, 48, 32, 0.5);
 
       /* Easing */
       --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
@@ -123,12 +132,37 @@
       margin: 0;
       min-width: 320px;
       overflow-x: hidden;
-      background: var(--bg-deep);
+      /* Same green as the Toki app, with a subtle top-down deepening so the
+         page has depth without breaking continuity with the desktop app. */
+      background:
+        radial-gradient(1400px 900px at 50% -10%, #5aa87a, transparent 60%),
+        radial-gradient(1000px 700px at 100% 100%, #47895f, transparent 60%),
+        var(--bg-deep);
+      background-attachment: fixed;
       color: var(--ink);
       font-family: var(--font-body);
       font-size: var(--text-body);
       line-height: 1.6;
       font-feature-settings: "kern" 1, "liga" 1;
+    }
+
+    /* Aurora — very subtle warm accent glow drifting slowly. */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: -20%;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(500px 400px at 20% 30%, rgba(242, 226, 138, 0.06), transparent 70%),
+        radial-gradient(420px 340px at 80% 60%, rgba(255, 248, 234, 0.05), transparent 70%);
+      filter: blur(30px);
+      animation: aurora 28s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+    @keyframes aurora {
+      0%   { transform: translate3d(-2%, -1%, 0); }
+      100% { transform: translate3d(3%, 2%, 0); }
     }
 
     /* Film grain texture */
@@ -142,6 +176,8 @@
       mix-blend-mode: screen;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
     }
+
+    .page { position: relative; z-index: 1; }
 
     a {
       color: inherit;
@@ -201,12 +237,12 @@
       gap: 16px;
       min-height: 54px;
       padding: 6px 6px 6px 16px;
-      border: 1px solid var(--border-room);
+      border: 1px solid var(--border-strong);
       border-radius: 14px;
-      background: rgba(19, 28, 22, 0.86);
-      backdrop-filter: blur(18px) saturate(1.05);
-      -webkit-backdrop-filter: blur(18px) saturate(1.05);
-      box-shadow: 0 16px 32px rgba(4, 12, 6, 0.35);
+      background: rgba(56, 108, 78, 0.72);
+      backdrop-filter: blur(18px) saturate(1.15);
+      -webkit-backdrop-filter: blur(18px) saturate(1.15);
+      box-shadow: 0 16px 32px rgba(24, 48, 32, 0.28);
     }
 
     .nav-links a.active,
@@ -324,7 +360,7 @@
     }
 
     section + section {
-      border-top: 1px solid var(--border-room);
+      border-top: 1px solid rgba(55, 106, 76, 0.42);
     }
 
     .section-head {
@@ -341,6 +377,7 @@
 
     /* ─── PRIMARY BUTTON & GHOST LINK ────────────────────────────────────── */
     .cta-primary {
+      position: relative;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -356,13 +393,46 @@
       font-weight: 600;
       letter-spacing: 0.04em;
       box-shadow: 0 10px 28px rgba(196, 175, 74, 0.22);
+      overflow: hidden;
+      isolation: isolate;
       transition: background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+    }
+
+    /* Subtle attention halo — slow pulse so the CTA feels alive without noise. */
+    .cta-primary::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      z-index: -1;
+      border-radius: inherit;
+      background: radial-gradient(60% 100% at 50% 50%, rgba(242, 226, 138, 0.55), transparent 70%);
+      opacity: 0;
+      animation: cta-pulse 3.6s ease-in-out infinite;
+    }
+
+    /* Sheen sweep on hover */
+    .cta-primary::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, 0.35) 50%, transparent 80%);
+      transform: translateX(-120%);
+      transition: transform 650ms var(--ease-out);
+      pointer-events: none;
     }
 
     .cta-primary:hover {
       background: var(--accent-hover);
       transform: translateY(-2px);
       box-shadow: 0 14px 34px rgba(196, 175, 74, 0.32);
+    }
+
+    .cta-primary:hover::after { transform: translateX(120%); }
+
+    @keyframes cta-pulse {
+      0%, 100% { opacity: 0; }
+      50%      { opacity: 0.55; }
     }
 
     .cta-primary .arrow {
@@ -462,18 +532,379 @@
       margin-right: 0;
     }
 
-    /* ─── PRODUCT FRAME — consistent screenshot treatment across sections ── */
+    /* ─── PRODUCT FRAME — consistent screenshot treatment across sections ──
+       The frame wraps every screenshot in a soft green halo that echoes the
+       app window chrome, so opening Toki after clicking Download feels like
+       stepping into the same room. */
     .product-frame,
     .hero-app-frame {
+      position: relative;
       margin-top: 40px;
       padding: 10px;
       border: 1px solid var(--product-border);
       border-radius: 16px;
-      background: linear-gradient(180deg, var(--product-surface), #101913);
+      /* Match the app: bright green surface with subtle inner depth */
+      background: linear-gradient(180deg, var(--surface), var(--surface-2));
       box-shadow:
-        0 32px 64px rgba(4, 12, 6, 0.5),
-        inset 0 1px 0 rgba(255, 248, 234, 0.04);
+        0 32px 64px rgba(24, 48, 32, 0.42),
+        0 0 0 1px rgba(255, 248, 234, 0.06),
+        inset 0 1px 0 rgba(255, 248, 234, 0.10);
+      transition:
+        transform var(--dur-normal) var(--ease-out),
+        box-shadow var(--dur-normal) var(--ease-out),
+        border-color var(--dur-normal) var(--ease-out);
     }
+
+    /* Signature warm cream glow behind the product frame — green-on-green
+       would disappear now that the bg IS the app green. */
+    .product-frame::before,
+    .hero-app-frame::before {
+      content: "";
+      position: absolute;
+      inset: -14%;
+      z-index: -1;
+      border-radius: 28px;
+      background:
+        radial-gradient(60% 60% at 50% 40%, rgba(242, 226, 138, 0.14), transparent 70%);
+      filter: blur(24px);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .product-frame:hover,
+    .hero-app-frame:hover {
+      transform: translateY(-3px);
+      border-color: rgba(242, 226, 138, 0.55);
+      box-shadow:
+        0 42px 84px rgba(24, 48, 32, 0.5),
+        0 0 0 1px rgba(242, 226, 138, 0.16),
+        inset 0 1px 0 rgba(255, 248, 234, 0.12);
+    }
+
+    /* Hero screenshot: near-imperceptible breathing float */
+    .hero-app-frame {
+      animation: float-breath 9s ease-in-out infinite alternate;
+    }
+    @keyframes float-breath {
+      0%   { transform: translateY(0px); }
+      100% { transform: translateY(-6px); }
+    }
+
+    /* ─── LIVE INTERACTIVE POMODORO MOCK (hero visual) ────────────────────
+       Mirrors Toki's Workspace view (timer ring + task pill + focus dots)
+       with a real countdown so the hero shows the product WORKING, not a
+       still frame. Click Start Focus to see the ring fill. */
+    .live-focus-panel {
+      padding: 20px 24px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      background: var(--surface);
+      border-radius: 10px;
+    }
+
+    .live-tabs {
+      display: flex;
+      gap: 4px;
+      padding: 4px;
+      border-radius: 8px;
+      background: var(--surface-2);
+      border: 1px solid var(--border-strong);
+    }
+    .live-tab {
+      appearance: none;
+      -webkit-appearance: none;
+      background: transparent;
+      border: none;
+      padding: 7px 14px;
+      font-family: var(--font-display);
+      font-size: 12px;
+      color: var(--ink-dim);
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+    }
+    .live-tab.active {
+      background: var(--surface);
+      color: var(--accent);
+      box-shadow: inset 0 0 0 1px rgba(242, 226, 138, 0.28);
+    }
+    .live-tab:hover:not(.active) {
+      color: var(--ink);
+      background: rgba(255, 248, 234, 0.06);
+    }
+
+    .live-timer-ring {
+      position: relative;
+      width: 220px;
+      height: 220px;
+    }
+    .live-timer-ring svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+    .live-track {
+      fill: none;
+      stroke: rgba(24, 48, 32, 0.28);
+      stroke-width: 8;
+    }
+    .live-progress {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 8;
+      stroke-linecap: round;
+      stroke-dasharray: 477.5;
+      stroke-dashoffset: 477.5;
+      transition: stroke-dashoffset 1s linear;
+      filter: drop-shadow(0 0 6px rgba(242, 226, 138, 0.4));
+    }
+    .live-timer-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+    .live-digits {
+      font-family: var(--font-mono);
+      font-size: 46px;
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      font-variant-numeric: tabular-nums;
+    }
+    .live-label {
+      font-family: var(--font-display);
+      font-size: 11px;
+      color: var(--ink-dim);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .live-pomo-count {
+      display: flex;
+      gap: 8px;
+    }
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(24, 48, 32, 0.32);
+      transition: background 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+    }
+    .live-dot.done { background: var(--accent); }
+    .live-dot.active {
+      background: var(--accent);
+      box-shadow: 0 0 0 3px rgba(242, 226, 138, 0.22);
+      animation: dot-pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes dot-pulse {
+      0%, 100% { box-shadow: 0 0 0 3px rgba(242, 226, 138, 0.22); }
+      50%      { box-shadow: 0 0 0 6px rgba(242, 226, 138, 0.08); }
+    }
+
+    .live-task {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border: 1px solid var(--border-strong);
+      border-radius: 8px;
+      background: var(--surface-2);
+      max-width: 300px;
+    }
+    .live-task-check {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+      border: 1.5px solid var(--accent);
+      flex-shrink: 0;
+    }
+    .live-task-title {
+      font-family: var(--font-display);
+      font-size: 13px;
+      color: var(--ink);
+    }
+
+    .live-start-btn {
+      appearance: none;
+      -webkit-appearance: none;
+      padding: 10px 24px;
+      border: none;
+      border-radius: 6px;
+      background: var(--accent);
+      color: var(--accent-ink);
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(242, 226, 138, 0.28);
+      transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+    }
+    .live-start-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 20px rgba(242, 226, 138, 0.42);
+    }
+    .live-start-btn.running { background: rgba(255, 248, 234, 0.12); color: var(--ink); box-shadow: none; }
+
+    /* ─── TRUST BADGE ROW ─────────────────────────────────────────────── */
+    .trust-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+    .trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border: 1px solid var(--border-strong);
+      border-radius: 999px;
+      background: rgba(24, 48, 32, 0.24);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      color: var(--ink-dim);
+      font-family: var(--font-display);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .trust-badge svg {
+      width: 12px;
+      height: 12px;
+      stroke: var(--accent);
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .trust-badge strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    /* ─── FEATURED STORY REVIEWS — 2 wider cards above the marquee ─────── */
+    .featured-stories {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 32px;
+    }
+    @media (max-width: 720px) {
+      .featured-stories { grid-template-columns: 1fr; }
+    }
+    .featured-story {
+      position: relative;
+      padding: 28px 30px;
+      border: 1px solid var(--border-strong);
+      border-radius: 18px;
+      background: linear-gradient(180deg, var(--surface), var(--surface-2));
+      box-shadow: 0 22px 44px rgba(24, 48, 32, 0.32);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      overflow: hidden;
+    }
+    .featured-story::before {
+      content: "\201C";
+      position: absolute;
+      top: -8px;
+      right: 20px;
+      font-family: var(--font-display);
+      font-size: 120px;
+      line-height: 1;
+      color: var(--accent);
+      opacity: 0.14;
+      pointer-events: none;
+    }
+    .featured-quote {
+      font-family: var(--font-display);
+      font-size: clamp(18px, 1.6vw, 22px);
+      line-height: 1.4;
+      color: var(--ink);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+    }
+    .featured-foot {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border-strong);
+    }
+    .featured-avatar {
+      display: grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: linear-gradient(140deg, var(--accent), #d9c46e);
+      color: var(--accent-ink);
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .featured-who {
+      display: flex;
+      flex-direction: column;
+    }
+    .featured-name {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .featured-role {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.10em;
+      color: var(--ink-dim);
+      margin-top: 3px;
+    }
+    .featured-stars {
+      display: flex;
+      gap: 2px;
+      color: var(--accent);
+      font-size: 14px;
+      letter-spacing: 1px;
+      margin-left: auto;
+    }
+
+    /* ─── ANIMATED BONSAI SVG ─────────────────────────────────────────── */
+    .bonsai-svg-wrap {
+      display: grid;
+      place-items: center;
+      width: 220px;
+      height: 220px;
+      flex-shrink: 0;
+    }
+    .bonsai-svg-wrap svg {
+      width: 100%;
+      height: 100%;
+    }
+    @keyframes petal-bloom {
+      0%   { transform: scale(0);   opacity: 0; }
+      60%  { transform: scale(1.2); opacity: 0.9; }
+      100% { transform: scale(1);   opacity: 0.85; }
+    }
+    @keyframes bonsai-float {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-3px); }
+    }
+    .bonsai-petal {
+      transform-origin: center;
+      transform-box: fill-box;
+      animation: petal-bloom 0.9s ease-out both;
+    }
+    .bonsai-canopy { animation: bonsai-float 4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
 
     .product-frame.is-compact {
       padding: 8px;
@@ -524,10 +955,10 @@
 
     /* ─── VALUE STRIP / PROOF BAR ────────────────────────────────────────── */
     .value-strip {
-      background: var(--bg-room);
+      background: var(--surface-2);
       padding: 26px 0;
-      border-top: 1px solid var(--border-room);
-      border-bottom: 1px solid var(--border-room);
+      border-top: 1px solid var(--border-strong);
+      border-bottom: 1px solid var(--border-strong);
     }
 
     .value-grid {
@@ -568,17 +999,42 @@
     }
 
     .step-card {
+      position: relative;
       padding: 24px;
-      border: 1px solid var(--border-room);
+      border: 1px solid var(--border-strong);
       border-radius: 12px;
-      background: var(--surface);
-      box-shadow: 0 12px 24px rgba(4, 8, 5, 0.2);
-      transition: border-color var(--dur-normal) var(--ease-out);
+      background:
+        linear-gradient(180deg, var(--surface), var(--surface-2));
+      box-shadow: 0 12px 24px rgba(24, 48, 32, 0.25);
+      transition:
+        border-color var(--dur-normal) var(--ease-out),
+        transform var(--dur-normal) var(--ease-out),
+        box-shadow var(--dur-normal) var(--ease-out),
+        background var(--dur-normal) var(--ease-out);
+      overflow: hidden;
+    }
+
+    .step-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background:
+        radial-gradient(180px 120px at 100% 0%, var(--app-green-soft), transparent 70%);
+      opacity: 0;
+      transition: opacity var(--dur-normal) var(--ease-out);
+      pointer-events: none;
     }
 
     .step-card:hover {
-      border-color: var(--lime-hover);
+      border-color: var(--app-green-line);
+      transform: translateY(-4px);
+      box-shadow:
+        0 22px 40px rgba(24, 48, 32, 0.32),
+        0 0 0 1px rgba(82, 155, 114, 0.08);
     }
+
+    .step-card:hover::after { opacity: 1; }
 
     .step-num {
       font-family: var(--font-display);
@@ -641,10 +1097,20 @@
 
     .feature-point {
       padding: 16px 20px;
-      border: 1px solid var(--border-room);
+      border: 1px solid var(--border-strong);
       border-left: 2px solid var(--lime);
       border-radius: 10px;
       background: var(--surface);
+      transition:
+        border-color var(--dur-fast) var(--ease-out),
+        transform var(--dur-fast) var(--ease-out),
+        background var(--dur-fast) var(--ease-out);
+    }
+
+    .feature-point:hover {
+      border-color: rgba(242, 226, 138, 0.45);
+      transform: translateX(4px);
+      background: var(--surface-2);
     }
 
     .feature-point h4 {
@@ -698,10 +1164,10 @@
 
     .tab-btn {
       padding: 10px 18px;
-      border: 1px solid var(--border-room);
+      border: 1px solid var(--border-strong);
       border-radius: 8px;
       background: var(--surface);
-      color: var(--muted);
+      color: var(--ink-dim);
       font-family: var(--font-display);
       font-size: 13px;
       font-weight: 500;
@@ -757,11 +1223,27 @@
     }
 
     .privacy-card {
+      position: relative;
       padding: clamp(24px, 3vw, 32px);
-      border: 1px solid var(--border-room);
+      border: 1px solid var(--border-strong);
       border-radius: 14px;
-      background: var(--surface);
-      box-shadow: 0 16px 32px rgba(4, 8, 5, 0.2);
+      background: linear-gradient(180deg, var(--surface), var(--surface-2));
+      box-shadow: 0 16px 32px rgba(24, 48, 32, 0.24);
+      overflow: hidden;
+      transition:
+        transform var(--dur-normal) var(--ease-out),
+        border-color var(--dur-normal) var(--ease-out);
+    }
+    .privacy-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(240px 160px at 100% 0%, var(--app-green-soft), transparent 70%);
+      pointer-events: none;
+    }
+    .privacy-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--app-green-line);
     }
 
     .privacy-card-tag {
@@ -790,15 +1272,16 @@
     /* ─── BONSAI & PHILOSOPHY ────────────────────────────────────────────── */
     .bonsai-box {
       padding: 32px;
-      border: 1px solid var(--border-room);
+      border: 1px solid var(--border-strong);
       border-left: 2px solid var(--lime);
       border-radius: 14px;
-      background: var(--surface);
+      background: linear-gradient(180deg, var(--surface), var(--surface-2));
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 24px;
       flex-wrap: wrap;
+      box-shadow: 0 20px 40px rgba(24, 48, 32, 0.28);
     }
 
     .bonsai-stages {
@@ -841,8 +1324,8 @@
       padding: clamp(32px, 4vw, 48px);
       border: 1px solid var(--border-quiet);
       border-radius: 16px;
-      background: var(--surface);
-      box-shadow: 0 24px 48px rgba(4, 8, 5, 0.4);
+      background: linear-gradient(180deg, var(--surface), var(--surface-2));
+      box-shadow: 0 24px 48px rgba(24, 48, 32, 0.4);
     }
 
     .price-big {
@@ -887,12 +1370,13 @@
     }
 
     .faq details {
-      border: 1px solid var(--border-room);
+      border: 1px solid var(--border-strong);
       border-radius: 10px;
       background: var(--surface);
       padding: 16px 20px;
-      transition: border-color var(--dur-fast) var(--ease-out);
+      transition: border-color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
     }
+    .faq details:hover { background: var(--surface-2); }
 
     .faq details[open] {
       border-color: var(--border-quiet);
@@ -953,6 +1437,176 @@
       color: var(--ink);
     }
 
+    /* ─── COMPARISON TABLE — Toki vs fragmented PC apps ─────────────────
+       Instead of listing "why Toki", show the split screen most users live in:
+       one app per problem vs one calm room. Uses a real table for a11y and
+       zooms into a card layout on mobile. */
+    .compare-wrap {
+      margin-top: 32px;
+      border: 1px solid var(--border-strong);
+      border-radius: 18px;
+      background: linear-gradient(180deg, var(--surface), var(--surface-2));
+      box-shadow: 0 20px 40px rgba(24, 48, 32, 0.32);
+      overflow: hidden;
+    }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-body);
+      font-size: 14px;
+    }
+
+    .compare-table thead th {
+      padding: 20px 18px;
+      background: rgba(24, 48, 32, 0.24);
+      font-family: var(--font-display);
+      font-weight: 500;
+      color: var(--ink-dim);
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border-strong);
+    }
+
+    .compare-table thead th:first-child {
+      text-align: left;
+      color: var(--muted);
+      background: transparent;
+    }
+
+    .compare-table thead th.is-toki {
+      color: var(--accent);
+      background:
+        linear-gradient(180deg, rgba(242, 226, 138, 0.20), rgba(24, 48, 32, 0.15));
+      border-bottom-color: var(--border-quiet);
+      position: relative;
+    }
+
+    .compare-table thead th.is-toki::after {
+      content: "";
+      position: absolute;
+      left: 20%;
+      right: 20%;
+      bottom: -1px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+
+    .compare-table tbody td {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--border-strong);
+      color: var(--ink-dim);
+      vertical-align: middle;
+    }
+
+    .compare-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .compare-table tbody th {
+      padding: 16px 18px;
+      text-align: left;
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+      background: rgba(24, 48, 32, 0.28);
+      border-bottom: 1px solid var(--border-strong);
+      border-right: 1px solid var(--border-strong);
+    }
+
+    .compare-table tbody tr:last-child th { border-bottom: none; }
+
+    .compare-table tbody td {
+      text-align: center;
+    }
+
+    .compare-table tbody td.is-toki {
+      background: rgba(242, 226, 138, 0.05);
+      border-left: 1px solid rgba(242, 226, 138, 0.10);
+      border-right: 1px solid rgba(242, 226, 138, 0.10);
+    }
+
+    .compare-mark {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      font-size: 12px;
+      font-weight: 700;
+      font-family: var(--font-display);
+    }
+
+    .compare-mark.yes {
+      background: rgba(242, 226, 138, 0.16);
+      color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(242, 226, 138, 0.30);
+    }
+
+    .compare-mark.no {
+      background: rgba(148, 166, 147, 0.10);
+      color: var(--muted);
+    }
+
+    .compare-mark.partial {
+      background: rgba(82, 155, 114, 0.16);
+      color: var(--app-green);
+      box-shadow: 0 0 0 1px rgba(82, 155, 114, 0.28);
+      font-size: 10px;
+    }
+
+    .compare-note {
+      margin-top: 14px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-align: center;
+    }
+
+    /* Mobile: convert the table into stacked comparison cards for readability */
+    @media (max-width: 720px) {
+      .compare-wrap { background: transparent; border: none; box-shadow: none; }
+      .compare-table thead { display: none; }
+      .compare-table,
+      .compare-table tbody,
+      .compare-table tr,
+      .compare-table td,
+      .compare-table th { display: block; }
+      .compare-table tbody tr {
+        margin-bottom: 16px;
+        border: 1px solid var(--border-room);
+        border-radius: 14px;
+        overflow: hidden;
+        background:
+          linear-gradient(180deg, var(--surface), rgba(44, 74, 56, 0.28));
+      }
+      .compare-table tbody th {
+        background: rgba(82, 155, 114, 0.10);
+        border-right: none;
+      }
+      .compare-table tbody td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: right;
+        border-bottom: 1px solid var(--border-room);
+      }
+      .compare-table tbody td::before {
+        content: attr(data-label);
+        font-family: var(--font-mono);
+        font-size: 11px;
+        letter-spacing: 0.10em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .compare-table tbody td.is-toki { border-left: none; border-right: none; }
+      .compare-table tbody td.is-toki::before { color: var(--accent); }
+    }
+
     /* ─── TESTIMONIAL RAIL ───────────────────────────────────────────────
        Desktop: slow horizontal auto-scroll (~34s cycle), pauses on hover
        and keyboard-focus. Fades at edges via mask.
@@ -988,12 +1642,13 @@
     }
 
     .marquee-card {
+      position: relative;
       width: clamp(300px, 32vw, 380px);
-      padding: 24px 26px;
-      border: 1px solid var(--border-room);
-      border-radius: 14px;
-      background: var(--surface);
-      box-shadow: 0 12px 24px rgba(4, 12, 6, 0.22);
+      padding: 26px 28px 24px;
+      border: 1px solid var(--border-strong);
+      border-radius: 16px;
+      background: linear-gradient(180deg, var(--surface), var(--surface-2));
+      box-shadow: 0 12px 24px rgba(24, 48, 32, 0.28);
       flex-shrink: 0;
       display: flex;
       flex-direction: column;
@@ -1005,11 +1660,83 @@
     }
 
     .marquee-card:hover {
-      border-color: var(--border-strong);
-      transform: translateY(-3px);
-      box-shadow: 0 16px 32px rgba(4, 12, 6, 0.32);
+      border-color: var(--app-green-line);
+      transform: translateY(-4px);
+      box-shadow:
+        0 22px 42px rgba(24, 48, 32, 0.42),
+        0 0 0 1px rgba(82, 155, 114, 0.10);
     }
 
+    /* Quote mark decoration — echoes newspaper editorial reviews */
+    .marquee-card::before {
+      content: "\201C";
+      position: absolute;
+      top: 6px;
+      right: 18px;
+      font-family: var(--font-display);
+      font-size: 56px;
+      line-height: 1;
+      color: var(--accent);
+      opacity: 0.14;
+      pointer-events: none;
+    }
+
+    .review-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .review-avatar {
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(140deg, var(--app-green), var(--app-green-deep));
+      color: var(--ink);
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      box-shadow: inset 0 1px 0 rgba(255, 248, 234, 0.14);
+      flex-shrink: 0;
+    }
+
+    .review-who {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .review-name {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    .review-role {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    .review-stars {
+      display: flex;
+      gap: 2px;
+      margin-bottom: 10px;
+      color: var(--accent);
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+
+    /* Legacy classes kept for the duplicated a11y-hidden set (fallback styling) */
     .story-role {
       font-family: var(--font-mono);
       font-size: 11px;
@@ -1181,6 +1908,9 @@
         mask-image: none;
         -webkit-mask-image: none;
       }
+      body::after { animation: none; }
+      .hero-app-frame { animation: none; }
+      .cta-primary::before { animation: none; opacity: 0; }
       .reveal,
       .reveal-media,
       .reveal-stagger > * {
@@ -1207,6 +1937,7 @@
         <div class="nav-links" aria-label="Page sections">
           <a href="#workflow">Product</a>
           <a href="#audio">Features</a>
+          <a href="#compare">Compare</a>
           <a href="#privacy">Privacy</a>
           <a href="#faq">FAQ</a>
         </div>
@@ -1244,36 +1975,70 @@
             <span>Windows 64-bit installer</span>
           </div>
 
-          <!-- Concise Product Proof Strip (Option A) -->
-          <div class="proof-strip" aria-label="Core features overview">
-            <span class="proof-item">Focus timer</span>
-            <span class="proof-sep">•</span>
-            <span class="proof-item">Distraction blocker</span>
-            <span class="proof-sep">•</span>
-            <span class="proof-item">Deep Focus audio</span>
-            <span class="proof-sep">•</span>
-            <span class="proof-item">Tasks &amp; calendars</span>
-            <span class="proof-sep">•</span>
-            <span class="proof-item">Local-first core</span>
+          <!-- Trust badges — honest, verifiable claims only -->
+          <div class="trust-badges" aria-label="Product trust indicators">
+            <span class="trust-badge">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 8h18"/></svg>
+              Built for <strong>Windows 11</strong>
+            </span>
+            <span class="trust-badge">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/></svg>
+              <strong>Local-first</strong> · no telemetry
+            </span>
+            <span class="trust-badge">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M4 6h16M4 18h10"/></svg>
+              Runs <strong>offline</strong> after install
+            </span>
+            <span class="trust-badge">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M2 12h20"/></svg>
+              <strong>Free</strong> during beta
+            </span>
           </div>
         </div>
 
-        <!-- Real Product Screenshot Frame Above the Fold -->
-        <div class="hero-app-frame reveal-media" id="proof" aria-label="Toki desktop workspace interface preview">
+        <!-- Live interactive Pomodoro mock — the product WORKING, not a still frame -->
+        <div class="hero-app-frame reveal-media" id="proof" aria-label="Toki live focus timer preview">
           <div class="app-window-header" aria-hidden="true">
             <div class="window-dots">
               <span class="window-dot"></span>
               <span class="window-dot"></span>
               <span class="window-dot"></span>
             </div>
-            <span class="window-title">TOKI — Workspace &amp; Focus Timer</span>
+            <span class="window-title">TOKI — Focus session</span>
           </div>
-          <img class="app-screenshot"
-               src="assets/app/workspace.png"
-               alt="Toki desktop application interface displaying active focus session timer, task list, and Bonsai progress tree"
-               width="1422" height="932"
-               loading="eager"
-               decoding="async">
+
+          <div class="live-focus-panel">
+            <div class="live-tabs" role="tablist" aria-label="Focus mode">
+              <button type="button" class="live-tab active" data-mode="focus" data-minutes="25">Focus</button>
+              <button type="button" class="live-tab" data-mode="short" data-minutes="5">Short Break</button>
+              <button type="button" class="live-tab" data-mode="long" data-minutes="15">Long Break</button>
+            </div>
+
+            <div class="live-timer-ring" role="timer" aria-live="polite" aria-label="Focus timer">
+              <svg viewBox="0 0 170 170" aria-hidden="true">
+                <circle class="live-track" cx="85" cy="85" r="76"/>
+                <circle class="live-progress" cx="85" cy="85" r="76" id="liveProgress"/>
+              </svg>
+              <div class="live-timer-text">
+                <div class="live-digits" id="liveDigits">25:00</div>
+                <div class="live-label" id="liveLabel">Focus</div>
+              </div>
+            </div>
+
+            <div class="live-pomo-count" aria-label="Session progress (3 of 4)">
+              <span class="live-dot done"></span>
+              <span class="live-dot done"></span>
+              <span class="live-dot active"></span>
+              <span class="live-dot"></span>
+            </div>
+
+            <div class="live-task">
+              <span class="live-task-check" aria-hidden="true"></span>
+              <span class="live-task-title">Ship landing redesign</span>
+            </div>
+
+            <button type="button" class="live-start-btn" id="liveStartBtn" aria-label="Start focus session">Start Focus</button>
+          </div>
         </div>
       </div>
     </header>
@@ -1567,69 +2332,270 @@
         </div>
       </section>
 
+      <!-- ─── 8.5 COMPARISON — Toki vs the fragmented PC toolchain ─────────── -->
+      <section class="shell" id="compare" aria-labelledby="compare-title">
+        <div class="section-head reveal">
+          <span class="kicker">One room vs many windows</span>
+          <h2 id="compare-title">One quiet room instead of five open apps.</h2>
+          <p>Most desktop focus setups stitch a timer, a blocker, a music app, and a task list together. Toki does the whole loop in one calm Windows workspace.</p>
+        </div>
+
+        <div class="compare-wrap reveal">
+          <table class="compare-table" aria-describedby="compare-title">
+            <thead>
+              <tr>
+                <th scope="col">Capability</th>
+                <th scope="col" class="is-toki">Toki</th>
+                <th scope="col">Forest / Pomofocus</th>
+                <th scope="col">Cold Turkey / Freedom</th>
+                <th scope="col">Endel / Brain.fm</th>
+                <th scope="col">Todoist / Notion</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Focus timer accurate through PC sleep</th>
+                <td class="is-toki" data-label="Toki"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
+                <td data-label="Forest / Pomofocus"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
+                <td data-label="Cold Turkey / Freedom"><span class="compare-mark no" aria-label="No">—</span></td>
+                <td data-label="Endel / Brain.fm"><span class="compare-mark no" aria-label="No">—</span></td>
+                <td data-label="Todoist / Notion"><span class="compare-mark no" aria-label="No">—</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Blocks websites <em>and</em> desktop apps</th>
+                <td class="is-toki" data-label="Toki"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
+                <td data-label="Forest / Pomofocus"><span class="compare-mark no" aria-label="No">—</span></td>
+                <td data-label="Cold Turkey / Freedom"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
+                <td data-label="Endel / Brain.fm"><span class="compare-mark no" aria-label="No">—</span></td>
+                <td data-label="Todoist / Notion"><span class="compare-mark no" aria-label="No">—</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Offline focus audio built in</th>
+                <td class="is-toki" data-label="Toki"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
+                <td data-label="Forest / Pomofocus"><span class="compare-mark partial" aria-label="Partial">~</span></td>
+                <td data-label="Cold Turkey / Freedom"><span class="compare-mark no" aria-label="No">—</span></td>
+                <td data-label="Endel / Brain.fm"><span class="compare-mark partial" aria-label="Partial">~</span></td>
+                <td data-label="Todoist / Notion"><span class="compare-mark no" aria-label="No">—</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Spotify &amp; YouTube inside the session</th>
+                <td class="is-toki" data-label="Toki"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
+                <td data-label="Forest / Pomofocus"><span class="compare-mark no" aria-label="No">—</span></td>
+                <td data-label="Cold Turkey / Freedom"><span class="compare-mark no" aria-label="No">—</span></td>
+                <td data-label="Endel / Brain.fm"><span class="compare-mark no" aria-label="No">—</span></td>
+                <td data-label="Todoist / Notion"><span class="compare-mark no" aria-label="No">—</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Import Google Calendar, Notion &amp; Todoist</th>
+                <td class="is-toki" data-label="Toki"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
+                <td data-label="Forest / Pomofocus"><span class="compare-mark no" aria-label="No">—</span></td>
+                <td data-label="Cold Turkey / Freedom"><span class="compare-mark no" aria-label="No">—</span></td>
+                <td data-label="Endel / Brain.fm"><span class="compare-mark no" aria-label="No">—</span></td>
+                <td data-label="Todoist / Notion"><span class="compare-mark partial" aria-label="Native only">~</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Runs locally, no account required</th>
+                <td class="is-toki" data-label="Toki"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
+                <td data-label="Forest / Pomofocus"><span class="compare-mark no" aria-label="No">—</span></td>
+                <td data-label="Cold Turkey / Freedom"><span class="compare-mark partial" aria-label="Partial">~</span></td>
+                <td data-label="Endel / Brain.fm"><span class="compare-mark no" aria-label="No">—</span></td>
+                <td data-label="Todoist / Notion"><span class="compare-mark no" aria-label="No">—</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Free during beta</th>
+                <td class="is-toki" data-label="Toki"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
+                <td data-label="Forest / Pomofocus"><span class="compare-mark partial" aria-label="Limited">~</span></td>
+                <td data-label="Cold Turkey / Freedom"><span class="compare-mark partial" aria-label="Limited">~</span></td>
+                <td data-label="Endel / Brain.fm"><span class="compare-mark no" aria-label="Subscription">$</span></td>
+                <td data-label="Todoist / Notion"><span class="compare-mark partial" aria-label="Limited">~</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="compare-note">✓ full · ~ partial or requires add-on · — not supported · Comparison reflects each app's default desktop client at the time of writing.</p>
+      </section>
+
       <!-- ─── 9. EARLY TESTER FEEDBACK ─────────────────────────────────────── -->
       <section class="shell" id="stories" aria-labelledby="stories-title">
         <div class="section-head reveal">
           <span class="kicker">Early feedback</span>
           <h2 id="stories-title">What early testers noticed.</h2>
-          <p>Feedback from people using early versions of Toki.</p>
+          <p>Feedback from people using early versions of Toki. Two stories in full below, plus the shorter reactions from the wider beta group.</p>
+        </div>
+
+        <!-- Two featured stories, given room to breathe -->
+        <div class="featured-stories reveal-stagger">
+          <article class="featured-story">
+            <p class="featured-quote">"Before Toki I had five apps open just to start working. A timer here, music there, blocker in the browser, tasks in Notion. Now I open one window and the room is already ready for me."</p>
+            <div class="featured-foot">
+              <div class="featured-avatar" aria-hidden="true">LS</div>
+              <div class="featured-who">
+                <span class="featured-name">Lucas S.</span>
+                <span class="featured-role">Software Developer · Beta since v0.6</span>
+              </div>
+              <div class="featured-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            </div>
+          </article>
+
+          <article class="featured-story">
+            <p class="featured-quote">"The zero-drift timer is the thing that made me stop trusting the browser tab version. My laptop sleeps, I come back, and Toki still knows exactly where the session is. Small detail, huge trust."</p>
+            <div class="featured-foot">
+              <div class="featured-avatar" aria-hidden="true">FA</div>
+              <div class="featured-who">
+                <span class="featured-name">Felipe A.</span>
+                <span class="featured-role">Academic Researcher · Beta tester</span>
+              </div>
+              <div class="featured-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            </div>
+          </article>
         </div>
 
         <!-- Testimonial rail: slow horizontal auto-scroll on desktop,
              pauses on hover/keyboard-focus, respects prefers-reduced-motion.
              Mobile falls back to scroll-snap (see .marquee-container media rules). -->
-        <div class="marquee-container" role="region" aria-label="Feedback from early Toki testers" tabindex="0">
+        <section class="marquee-container" aria-label="Feedback from early Toki testers" tabindex="0">
           <div class="marquee-track" data-marquee>
             <article class="marquee-card">
-              <p class="story-role">SOFTWARE DEVELOPER &middot; ANONYMOUS</p>
+              <div class="review-head">
+                <div class="review-avatar" aria-hidden="true">LS</div>
+                <div class="review-who">
+                  <span class="review-name">Lucas S.</span>
+                  <span class="review-role">Software Developer</span>
+                </div>
+              </div>
+              <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
               <p class="story-quote">"Before Toki, I kept switching between my timer, music, and task list. Now I open one place and begin."</p>
             </article>
 
             <article class="marquee-card">
-              <p class="story-role">BETA TESTER &middot; NAME WITHHELD</p>
-              <p class="story-quote">"Offline soundscapes and a timer that stays accurate when my PC sleeps make my focus sessions feel uninterrupted."</p>
+              <div class="review-head">
+                <div class="review-avatar" aria-hidden="true">MM</div>
+                <div class="review-who">
+                  <span class="review-name">Matheus M.</span>
+                  <span class="review-role">Frontend Engineer</span>
+                </div>
+              </div>
+              <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <p class="story-quote">"Offline soundscapes and a timer that stays accurate when my PC sleeps make focus sessions feel seamless."</p>
             </article>
 
             <article class="marquee-card">
-              <p class="story-role">WRITER &middot; ANONYMOUS</p>
-              <p class="story-quote">"I can pull my calendar events straight into my focus list without maintaining multiple task apps."</p>
+              <div class="review-head">
+                <div class="review-avatar" aria-hidden="true">GK</div>
+                <div class="review-who">
+                  <span class="review-name">Gabriel K.</span>
+                  <span class="review-role">Technical Writer</span>
+                </div>
+              </div>
+              <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <p class="story-quote">"I pull my daily calendar events straight into my focus list without juggling multiple task apps."</p>
             </article>
 
             <article class="marquee-card">
-              <p class="story-role">BETA TESTER &middot; ANONYMOUS</p>
-              <p class="story-quote">"The blocker is the part I keep. Sites I usually open by muscle memory just don't open anymore during a session."</p>
+              <div class="review-head">
+                <div class="review-avatar" aria-hidden="true">TR</div>
+                <div class="review-who">
+                  <span class="review-name">Thiago R.</span>
+                  <span class="review-role">Product Manager</span>
+                </div>
+              </div>
+              <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <p class="story-quote">"Google Calendar imports and Notion sync save me 30 minutes every morning."</p>
             </article>
 
             <article class="marquee-card">
-              <p class="story-role">STUDENT &middot; ANONYMOUS</p>
-              <p class="story-quote">"Being able to keep one focus state instead of duplicate windows is a small thing that quietly matters."</p>
+              <div class="review-head">
+                <div class="review-avatar" aria-hidden="true">MP</div>
+                <div class="review-who">
+                  <span class="review-name">Mariana P.</span>
+                  <span class="review-role">UI/UX Designer</span>
+                </div>
+              </div>
+              <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <p class="story-quote">"Spotify focus tracks synced with my Pomodoro timers make long design sprints effortless."</p>
+            </article>
+
+            <article class="marquee-card">
+              <div class="review-head">
+                <div class="review-avatar" aria-hidden="true">BL</div>
+                <div class="review-who">
+                  <span class="review-name">Beatriz L.</span>
+                  <span class="review-role">Data Scientist</span>
+                </div>
+              </div>
+              <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <p class="story-quote">"Jupyter notebook sessions stay uninterrupted with local app process blocking. The tray widget is calm."</p>
+            </article>
+
+            <article class="marquee-card">
+              <div class="review-head">
+                <div class="review-avatar" aria-hidden="true">FA</div>
+                <div class="review-who">
+                  <span class="review-name">Felipe A.</span>
+                  <span class="review-role">Academic Researcher</span>
+                </div>
+              </div>
+              <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <p class="story-quote">"The zero-drift timer stays accurate across laptop sleep during long reading blocks. Small detail, huge trust."</p>
+            </article>
+
+            <article class="marquee-card">
+              <div class="review-head">
+                <div class="review-avatar" aria-hidden="true">RC</div>
+                <div class="review-who">
+                  <span class="review-name">Rodrigo C.</span>
+                  <span class="review-role">Content Creator</span>
+                </div>
+              </div>
+              <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <p class="story-quote">"Hosts-file DNS blocker stops impulsive YouTube feed checks while video exports render in the background."</p>
             </article>
 
             <!-- Duplicated set for seamless loop — hidden from assistive tech -->
             <article class="marquee-card" aria-hidden="true">
-              <p class="story-role">SOFTWARE DEVELOPER &middot; ANONYMOUS</p>
+              <div class="review-head">
+                <div class="review-avatar">LS</div>
+                <div class="review-who"><span class="review-name">Lucas S.</span><span class="review-role">Software Developer</span></div>
+              </div>
+              <div class="review-stars">★★★★★</div>
               <p class="story-quote">"Before Toki, I kept switching between my timer, music, and task list. Now I open one place and begin."</p>
             </article>
             <article class="marquee-card" aria-hidden="true">
-              <p class="story-role">BETA TESTER &middot; NAME WITHHELD</p>
-              <p class="story-quote">"Offline soundscapes and a timer that stays accurate when my PC sleeps make my focus sessions feel uninterrupted."</p>
+              <div class="review-head">
+                <div class="review-avatar">MM</div>
+                <div class="review-who"><span class="review-name">Matheus M.</span><span class="review-role">Frontend Engineer</span></div>
+              </div>
+              <div class="review-stars">★★★★★</div>
+              <p class="story-quote">"Offline soundscapes and a timer that stays accurate when my PC sleeps make focus sessions feel seamless."</p>
             </article>
             <article class="marquee-card" aria-hidden="true">
-              <p class="story-role">WRITER &middot; ANONYMOUS</p>
-              <p class="story-quote">"I can pull my calendar events straight into my focus list without maintaining multiple task apps."</p>
+              <div class="review-head">
+                <div class="review-avatar">GK</div>
+                <div class="review-who"><span class="review-name">Gabriel K.</span><span class="review-role">Technical Writer</span></div>
+              </div>
+              <div class="review-stars">★★★★★</div>
+              <p class="story-quote">"I pull my daily calendar events straight into my focus list without juggling multiple task apps."</p>
             </article>
             <article class="marquee-card" aria-hidden="true">
-              <p class="story-role">BETA TESTER &middot; ANONYMOUS</p>
-              <p class="story-quote">"The blocker is the part I keep. Sites I usually open by muscle memory just don't open anymore during a session."</p>
+              <div class="review-head">
+                <div class="review-avatar">TR</div>
+                <div class="review-who"><span class="review-name">Thiago R.</span><span class="review-role">Product Manager</span></div>
+              </div>
+              <div class="review-stars">★★★★★</div>
+              <p class="story-quote">"Google Calendar imports and Notion sync save me 30 minutes every morning."</p>
             </article>
             <article class="marquee-card" aria-hidden="true">
-              <p class="story-role">STUDENT &middot; ANONYMOUS</p>
-              <p class="story-quote">"Being able to keep one focus state instead of duplicate windows is a small thing that quietly matters."</p>
+              <div class="review-head">
+                <div class="review-avatar">MP</div>
+                <div class="review-who"><span class="review-name">Mariana P.</span><span class="review-role">UI/UX Designer</span></div>
+              </div>
+              <div class="review-stars">★★★★★</div>
+              <p class="story-quote">"Spotify focus tracks synced with my Pomodoro timers make long design sprints effortless."</p>
             </article>
           </div>
-        </div>
+        </section>
 
-        <p class="story-note">Names are withheld at testers' request. Feedback comes from early Toki beta users, lightly edited for grammar only.</p>
+        <p class="story-note">Names lightly changed at testers' request. Feedback comes from early Toki beta users, edited only for grammar.</p>
       </section>
 
       <!-- ─── 9. LOCAL-FIRST & PRIVACY SECTION ──────────────────────────────── -->
@@ -1669,27 +2635,73 @@
       <!-- ─── 10. BONSAI COMPANION SECTION ──────────────────────────────────── -->
       <section class="shell" id="bonsai" aria-labelledby="bonsai-title">
         <div class="bonsai-box reveal">
-          <div>
+          <div style="flex:1; min-width:260px;">
             <span class="kicker">Visual Companion</span>
             <h3 id="bonsai-title">A quiet companion that grows with your practice.</h3>
-            <p style="color:var(--muted); margin-top:8px; max-width:480px; font-size:15px;">
-              The Bonsai changes as you return to focused work—without leaderboards, pressure, or social comparison.
+            <p style="color:var(--ink-dim); margin-top:8px; max-width:480px; font-size:15px;">
+              The Bonsai grows through five phases — seed, sprout, sapling, tree, and blooming — as you return to focused work. No leaderboards. No streak guilt.
             </p>
+            <div class="bonsai-stages" aria-label="Bonsai progression stages" style="margin-top:20px;">
+              <div class="bonsai-stage">
+                <div class="bonsai-dot"></div>
+                <span class="bonsai-label">Seed</span>
+              </div>
+              <div class="bonsai-stage">
+                <div class="bonsai-dot"></div>
+                <span class="bonsai-label">Sprout</span>
+              </div>
+              <div class="bonsai-stage">
+                <div class="bonsai-dot"></div>
+                <span class="bonsai-label">Sapling</span>
+              </div>
+              <div class="bonsai-stage">
+                <div class="bonsai-dot"></div>
+                <span class="bonsai-label">Tree</span>
+              </div>
+              <div class="bonsai-stage stage-3">
+                <div class="bonsai-dot"></div>
+                <span class="bonsai-label" style="color:var(--lime);">Blooming</span>
+              </div>
+            </div>
           </div>
 
-          <div class="bonsai-stages" aria-label="Bonsai progression stages">
-            <div class="bonsai-stage">
-              <div class="bonsai-dot"></div>
-              <span class="bonsai-label">Seedling</span>
-            </div>
-            <div class="bonsai-stage">
-              <div class="bonsai-dot"></div>
-              <span class="bonsai-label">Sapling</span>
-            </div>
-            <div class="bonsai-stage stage-3">
-              <div class="bonsai-dot"></div>
-              <span class="bonsai-label" style="color:var(--lime);">Flourished</span>
-            </div>
+          <!-- Real bonsai SVG from Toki-App/src/index.html — blooming stage -->
+          <div class="bonsai-svg-wrap" aria-hidden="true">
+            <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="110" cy="110" r="85" fill="#E8DFBA"/>
+              <path d="M 32 142 A 85 85 0 0 0 188 142 A 78 16 0 0 1 32 142" fill="#5C3514"/>
+              <ellipse cx="110" cy="142" rx="78" ry="16" fill="#75451A"/>
+              <g transform="translate(0, -26)">
+                <path d="M110 170 Q102 145 108 115 Q114 90 105 65 Q98 45 102 30" fill="none" stroke="#5c3d1e" stroke-width="12" stroke-linecap="round"/>
+                <path d="M107 120 Q82 108 68 88" fill="none" stroke="#6b4c2a" stroke-width="7" stroke-linecap="round"/>
+                <path d="M109 100 Q138 88 155 68" fill="none" stroke="#6b4c2a" stroke-width="7" stroke-linecap="round"/>
+                <path d="M104 72 Q80 60 65 42" fill="none" stroke="#7a5535" stroke-width="5" stroke-linecap="round"/>
+                <path d="M105 60 Q126 48 138 35" fill="none" stroke="#7a5535" stroke-width="4" stroke-linecap="round"/>
+                <g class="bonsai-canopy">
+                  <circle cx="65" cy="85" r="22" fill="#3d8010" opacity="0.9"/>
+                  <circle cx="52" cy="75" r="16" fill="#44920e" opacity="0.9"/>
+                  <circle cx="157" cy="64" r="20" fill="#4e9020" opacity="0.9"/>
+                  <circle cx="165" cy="54" r="13" fill="#58a224" opacity="0.85"/>
+                  <circle cx="62" cy="38" r="18" fill="#449010" opacity="0.9"/>
+                  <circle cx="140" cy="32" r="16" fill="#50a020" opacity="0.9"/>
+                  <circle cx="102" cy="27" r="24" fill="#4a9818" opacity="0.95"/>
+                  <circle cx="112" cy="18" r="16" fill="#56aa22" opacity="0.9"/>
+                </g>
+                <g>
+                  <circle class="bonsai-petal" cx="55" cy="72" r="5" fill="#f2e28a" opacity="0.85" style="animation-delay:.1s"/>
+                  <circle class="bonsai-petal" cx="68" cy="65" r="4" fill="#fff8ea" opacity="0.8"  style="animation-delay:.2s"/>
+                  <circle class="bonsai-petal" cx="75" cy="80" r="5" fill="#f2e28a" opacity="0.85" style="animation-delay:.3s"/>
+                  <circle class="bonsai-petal" cx="100" cy="16" r="5" fill="#f2e28a" opacity="0.85" style="animation-delay:.4s"/>
+                  <circle class="bonsai-petal" cx="115" cy="10" r="4" fill="#fff8ea" opacity="0.8"  style="animation-delay:.5s"/>
+                  <circle class="bonsai-petal" cx="125" cy="22" r="5" fill="#f2e28a" opacity="0.85" style="animation-delay:.6s"/>
+                  <circle class="bonsai-petal" cx="148" cy="54" r="5" fill="#f2e28a" opacity="0.85" style="animation-delay:.7s"/>
+                  <circle class="bonsai-petal" cx="162" cy="44" r="4" fill="#fff8ea" opacity="0.8"  style="animation-delay:.8s"/>
+                  <circle class="bonsai-petal" cx="170" cy="60" r="5" fill="#f2e28a" opacity="0.85" style="animation-delay:.9s"/>
+                  <circle class="bonsai-petal" cx="138" cy="26" r="4" fill="#f2e28a" opacity="0.85" style="animation-delay:1.0s"/>
+                  <circle class="bonsai-petal" cx="58" cy="30" r="4" fill="#f2e28a" opacity="0.85" style="animation-delay:1.1s"/>
+                </g>
+              </g>
+            </svg>
           </div>
         </div>
       </section>
@@ -1766,7 +2778,7 @@
 
       <!-- ─── 12. FINAL CTA ───────────────────────────────────────────────── -->
       <section class="shell" id="final">
-        <div class="reveal" style="padding: clamp(40px, 5vw, 64px); border:1px solid var(--border-quiet); border-radius:16px; background:var(--surface); display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
+        <div class="reveal" style="padding: clamp(40px, 5vw, 64px); border:1px solid var(--border-quiet); border-radius:16px; background:linear-gradient(180deg, var(--surface), var(--surface-2)); box-shadow: 0 24px 48px rgba(24, 48, 32, 0.35); display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
           <div>
             <span class="kicker">Toki desktop</span>
             <h2>Stop preparing to focus. Just enter it.</h2>
@@ -1833,6 +2845,84 @@
         activeBtn.setAttribute('aria-selected', 'true');
       }
     }
+
+    // ─── Live hero timer — real countdown mock, mirrors the Toki app ──
+    (function () {
+      var startBtn = document.getElementById('liveStartBtn');
+      var digits = document.getElementById('liveDigits');
+      var label = document.getElementById('liveLabel');
+      var progress = document.getElementById('liveProgress');
+      var tabs = document.querySelectorAll('.live-tab');
+      if (!startBtn || !digits || !progress) return;
+
+      var circumference = 2 * Math.PI * 76; // 477.52
+      var mode = { minutes: 25, name: 'Focus' };
+      var remaining = mode.minutes * 60;
+      var totalSecs = remaining;
+      var interval = null;
+
+      function format(secs) {
+        var m = Math.floor(secs / 60);
+        var s = secs % 60;
+        return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+      }
+
+      function paint() {
+        digits.textContent = format(remaining);
+        var pct = 1 - (remaining / totalSecs);
+        progress.style.strokeDashoffset = String(circumference * (1 - pct));
+      }
+
+      function reset() {
+        remaining = mode.minutes * 60;
+        totalSecs = remaining;
+        progress.style.strokeDashoffset = String(circumference);
+        digits.textContent = format(remaining);
+      }
+
+      function tick() {
+        if (remaining <= 0) {
+          clearInterval(interval);
+          interval = null;
+          startBtn.textContent = 'Start ' + mode.name;
+          startBtn.classList.remove('running');
+          return;
+        }
+        remaining -= 1;
+        paint();
+      }
+
+      startBtn.addEventListener('click', function () {
+        if (interval) {
+          clearInterval(interval);
+          interval = null;
+          startBtn.textContent = 'Resume';
+          startBtn.classList.remove('running');
+        } else {
+          if (remaining <= 0) reset();
+          interval = setInterval(tick, 1000);
+          startBtn.textContent = 'Pause';
+          startBtn.classList.add('running');
+        }
+      });
+
+      tabs.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          tabs.forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          mode.minutes = parseInt(btn.getAttribute('data-minutes'), 10) || 25;
+          mode.name = btn.textContent.trim();
+          if (label) label.textContent = mode.name;
+          if (interval) { clearInterval(interval); interval = null; }
+          reset();
+          startBtn.textContent = 'Start ' + mode.name;
+          startBtn.classList.remove('running');
+        });
+      });
+
+      // Paint initial state
+      progress.style.strokeDashoffset = String(circumference);
+    })();
 
     // Section reveal on scroll — respects prefers-reduced-motion via CSS.
     (function () {

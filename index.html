@@ -591,9 +591,9 @@
     }
 
     /* ─── FLOATING HERO CARDS — real product moments around the hero ─────
-       Four tilted "sticky notes" that hover around the live timer, showing
-       what Toki actually does in-session. Hidden on tablet/mobile so the
-       hero stays legible on small screens. */
+       Four tilted "sticky notes" that hover around the live timer inside
+       the app frame, framing the product moment without covering the
+       headline copy. Hidden on tablet/mobile so the hero stays legible. */
     .hero-layout {
       position: relative;
     }
@@ -601,7 +601,7 @@
     .hero-float {
       position: absolute;
       z-index: 3;
-      width: clamp(220px, 20vw, 280px);
+      width: clamp(210px, 18vw, 260px);
       padding: 14px 16px;
       border-radius: 14px;
       background: rgba(255, 248, 234, 0.96);
@@ -659,11 +659,12 @@
       border-radius: 3px;
     }
 
-    /* Positions & tilts — desktop only */
-    .hero-float-1 { top: -8px;    left: -18px;   transform: rotate(-6deg); animation: card-drift-a 8s ease-in-out infinite alternate; }
-    .hero-float-2 { top: 28px;    right: -12px;  transform: rotate(5deg);  animation: card-drift-b 9s ease-in-out infinite alternate; }
-    .hero-float-3 { bottom: 40px; left: -32px;   transform: rotate(4deg);  animation: card-drift-c 10s ease-in-out infinite alternate; }
-    .hero-float-4 { bottom: 8px;  right: -20px;  transform: rotate(-5deg); animation: card-drift-d 11s ease-in-out infinite alternate; }
+    /* Positions & tilts — anchored to the app frame so cards frame the
+       product moment (timer) instead of covering the headline copy. */
+    .hero-float-1 { top: -18px;    left: -34px;   transform: rotate(-6deg); animation: card-drift-a 8s ease-in-out infinite alternate; }
+    .hero-float-2 { top: 32px;     right: -38px;  transform: rotate(5deg);  animation: card-drift-b 9s ease-in-out infinite alternate; }
+    .hero-float-3 { bottom: 48px;  left: -42px;   transform: rotate(4deg);  animation: card-drift-c 10s ease-in-out infinite alternate; }
+    .hero-float-4 { bottom: -14px; right: -30px;  transform: rotate(-5deg); animation: card-drift-d 11s ease-in-out infinite alternate; }
 
     @keyframes card-drift-a { 0% { transform: rotate(-6deg) translateY(0); } 100% { transform: rotate(-6deg) translateY(-8px); } }
     @keyframes card-drift-b { 0% { transform: rotate(5deg)  translateY(0); } 100% { transform: rotate(5deg)  translateY(-6px); } }
@@ -2124,39 +2125,41 @@
 
             <button type="button" class="live-start-btn" id="liveStartBtn" aria-label="Start focus session">Start Focus</button>
           </div>
-        </div>
 
-        <!-- Floating "sticky notes" showing real Toki moments — desktop only -->
-        <div class="hero-float hero-float-1" aria-hidden="true">
-          <div class="hero-float-head">
-            <span class="hero-float-dot is-focus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span>
-            Focus session started
+          <!-- Floating "sticky notes" showing real Toki moments — anchored to
+               the app frame so they frame the product instead of covering
+               the headline. Desktop only (hidden below 1180px). -->
+          <div class="hero-float hero-float-1" aria-hidden="true">
+            <div class="hero-float-head">
+              <span class="hero-float-dot is-focus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span>
+              Focus session started
+            </div>
+            <p class="hero-float-body">"24:12 left · <strong>youtube.com</strong> and <strong>discord.exe</strong> blocked until the ring completes."</p>
           </div>
-          <p class="hero-float-body">"24:12 left · <strong>youtube.com</strong> and <strong>discord.exe</strong> blocked until the ring completes."</p>
-        </div>
 
-        <div class="hero-float hero-float-2" aria-hidden="true">
-          <div class="hero-float-head">
-            <span class="hero-float-dot is-audio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span>
-            Deep Focus playing
+          <div class="hero-float hero-float-2" aria-hidden="true">
+            <div class="hero-float-head">
+              <span class="hero-float-dot is-audio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span>
+              Deep Focus playing
+            </div>
+            <p class="hero-float-body">"<strong>Lofi Focus</strong> pauses on your break, resumes the moment Focus starts again."</p>
           </div>
-          <p class="hero-float-body">"<strong>Lofi Focus</strong> pauses on your break, resumes the moment Focus starts again."</p>
-        </div>
 
-        <div class="hero-float hero-float-3" aria-hidden="true">
-          <div class="hero-float-head">
-            <span class="hero-float-dot is-cal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
-            9:00 · Design review
+          <div class="hero-float hero-float-3" aria-hidden="true">
+            <div class="hero-float-head">
+              <span class="hero-float-dot is-cal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+              9:00 · Design review
+            </div>
+            <p class="hero-float-body">"Just imported from <strong>Google Calendar</strong> into today's focus list."</p>
           </div>
-          <p class="hero-float-body">"Just imported from <strong>Google Calendar</strong> into today's focus list."</p>
-        </div>
 
-        <div class="hero-float hero-float-4" aria-hidden="true">
-          <div class="hero-float-head">
-            <span class="hero-float-dot is-block"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12A8 8 0 1 1 4.6 8.5"/><path d="M20 4v5h-5"/></svg></span>
-            Bonsai · session 3 of 4
+          <div class="hero-float hero-float-4" aria-hidden="true">
+            <div class="hero-float-head">
+              <span class="hero-float-dot is-block"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12A8 8 0 1 1 4.6 8.5"/><path d="M20 4v5h-5"/></svg></span>
+              Bonsai · session 3 of 4
+            </div>
+            <p class="hero-float-body">"Reached the <strong>sapling</strong> stage — 12 more sessions until it blooms."</p>
           </div>
-          <p class="hero-float-body">"Reached the <strong>sapling</strong> stage — 12 more sessions until it blooms."</p>
         </div>
       </div>
     </header>
@@ -2333,48 +2336,22 @@
         </div>
 
         <div class="tab-buttons reveal" role="tablist" aria-label="Integration previews">
-          <button type="button" class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-calendar" onclick="switchTab('calendar')">Google Calendar</button>
-          <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-notion" onclick="switchTab('notion')">Notion</button>
-          <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-todoist" onclick="switchTab('todoist')">Todoist</button>
+          <button type="button" class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-integrations" onclick="switchTab('integrations')">Bring into Toki</button>
           <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-workspace" onclick="switchTab('workspace')">Workspace</button>
         </div>
 
-        <!-- The Integrations screen is a single hub in Toki — this is the real
-             "Bring into Toki" modal showing Notion, Todoist, Google Calendar
-             connected + Google Tasks / Obsidian coming later. -->
-        <div id="tab-calendar" class="tab-content active product-frame reveal-media" role="tabpanel">
+        <!-- The Integrations screen is a single hub in Toki — one modal shows
+             Notion, Todoist, and Google Calendar connected side by side, so a
+             single tab covers all three sources instead of repeating them. -->
+        <div id="tab-integrations" class="tab-content active product-frame reveal-media" role="tabpanel">
           <div class="app-window-header" aria-hidden="true">
             <span class="window-title">TOKI — Bring into Toki</span>
           </div>
           <img class="app-screenshot"
-               src="assets/app/toki-intregations.png"
-               alt="Toki Bring into Toki modal — Notion and Todoist connected under Tasks, Google Calendar connected under Events, Obsidian listed as coming later"
-               width="1917" height="1037"
-               style="aspect-ratio: 1917 / 1037;"
-               loading="lazy"
-               decoding="async">
-        </div>
-        <div id="tab-notion" class="tab-content product-frame" role="tabpanel" hidden>
-          <div class="app-window-header" aria-hidden="true">
-            <span class="window-title">TOKI — Bring into Toki · Notion</span>
-          </div>
-          <img class="app-screenshot"
-               src="assets/app/toki-intregations.png"
-               alt="Toki Bring into Toki modal — Notion connection ready to import"
-               width="1917" height="1037"
-               style="aspect-ratio: 1917 / 1037;"
-               loading="lazy"
-               decoding="async">
-        </div>
-        <div id="tab-todoist" class="tab-content product-frame" role="tabpanel" hidden>
-          <div class="app-window-header" aria-hidden="true">
-            <span class="window-title">TOKI — Bring into Toki · Todoist</span>
-          </div>
-          <img class="app-screenshot"
-               src="assets/app/toki-intregations.png"
-               alt="Toki Bring into Toki modal — Todoist connection ready to import"
-               width="1917" height="1037"
-               style="aspect-ratio: 1917 / 1037;"
+               src="assets/app/calendar.png"
+               alt="Toki Bring into Toki view showing Google Calendar, Notion, and Todoist imported into today's focus list"
+               width="1916" height="1077"
+               style="aspect-ratio: 1916 / 1077;"
                loading="lazy"
                decoding="async">
         </div>
@@ -2950,7 +2927,7 @@
         content.setAttribute('hidden', '');
       });
 
-      var targetContent = document.getElementById('tab-' + tabName) || document.getElementById('tab-calendar');
+      var targetContent = document.getElementById('tab-' + tabName) || document.getElementById('tab-integrations');
       if (targetContent) {
         targetContent.removeAttribute('hidden');
         // Next tick so the transition applies from the reset state

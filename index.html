@@ -3,34 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Toki is a calm, local-first Windows focus workspace combining zero-drift timers, tasks, distraction blocking, focus audio, and cloud integrations.">
+  <meta name="description" content="Sylviae is a calm, local-first Windows focus workspace combining zero-drift timers, tasks, distraction blocking, focus audio, and cloud integrations.">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#0e1210">
-  <meta property="og:title" content="Toki | Desktop Focus Workspace for Windows">
+  <meta property="og:title" content="Sylviae | Desktop Focus Workspace for Windows">
   <meta property="og:description" content="Bring your timer, task context, focus audio, and distraction controls into one protected desktop environment.">
-  <meta property="og:site_name" content="Toki">
+  <meta property="og:site_name" content="Sylviae">
   <meta property="og:url" content="https://jguilherme2005.github.io/Toki-Landing/">
   <meta property="og:image" content="https://jguilherme2005.github.io/Toki-Landing/assets/toki-poster.png">
-  <meta property="og:image:alt" content="Toki desktop focus environment workspace">
+  <meta property="og:image:alt" content="Sylviae desktop focus environment workspace">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Toki | Desktop Focus Workspace for Windows">
+  <meta name="twitter:title" content="Sylviae | Desktop Focus Workspace for Windows">
   <meta name="twitter:description" content="Local-first desktop workspace with focus timer, site blocker, ambient audio, and cloud task sync.">
   <meta name="twitter:image" content="https://jguilherme2005.github.io/Toki-Landing/assets/toki-poster.png">
   <link rel="canonical" href="https://jguilherme2005.github.io/Toki-Landing/">
   <link rel="icon" href="assets/icon.ico">
   <link rel="apple-touch-icon" href="assets/icon.png">
-  <title>Toki | Desktop Focus Workspace for Windows</title>
+  <title>Sylviae | Desktop Focus Workspace for Windows</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap">
 
   <style>
-    /* ─── TOKENS: TOKI PRODUCT-LED DESIGN SYSTEM ─────────────────────────
-       Colors mirror the real Toki desktop app (Toki-App/src/index.html):
+    /* ─── TOKENS: SYLVIAE PRODUCT-LED DESIGN SYSTEM ─────────────────────────
+       Colors mirror the real Sylviae desktop app (Toki-App/src/index.html):
          app --accent  #f2e28a  -> landing --accent  (cream yellow)
          app --text    #fff8ea  -> landing --ink     (warm off-white)
          app --muted   #c4dac2  -> landing --ink-dim
@@ -41,8 +41,9 @@
     :root {
       color-scheme: dark;
 
-      /* Fonts — Syne matches the app's UI stack; JetBrains Mono matches its numeric stack */
-      --font-display: 'Syne', 'Aptos', 'Segoe UI Variable', 'Segoe UI', system-ui, sans-serif;
+      /* Fonts — Fraunces is a soft, warm variable serif for the Sylviae brand voice
+         (calm, intelligent, slightly magical); JetBrains Mono matches the app's numeric stack */
+      --font-display: 'Fraunces', Georgia, 'Iowan Old Style', serif;
       --font-body:    'Outfit', 'Segoe UI', system-ui, sans-serif;
       --font-mono:    'JetBrains Mono', 'Cascadia Mono', 'Consolas', ui-monospace, monospace;
 
@@ -58,7 +59,7 @@
       --text-sm:     14px;
       --text-xs:     12px;
 
-      /* Palette — EXACT match to the Toki app so the landing IS the app's room.
+      /* Palette — EXACT match to the Sylviae app so the landing IS the app's room.
          All greens are lifted 1:1 from Toki-App/src/index.html. */
       --bg-deep:      #529b72;         /* app --bg */
       --bg-room:      #4d9068;         /* app --surface2 */
@@ -76,7 +77,7 @@
       --app-green-soft:   rgba(255, 248, 234, 0.06);
       --app-green-line:   rgba(55, 104, 74, 0.86);   /* app --border */
 
-      /* Accent — Toki's cream-yellow. Same hex as app --accent. */
+      /* Accent — Sylviae's cream-yellow. Same hex as app --accent. */
       --accent:       #f2e28a;
       --accent-hover: #f6ea9c;
       --accent-dim:   rgba(242, 226, 138, 0.10);
@@ -132,7 +133,7 @@
       margin: 0;
       min-width: 320px;
       overflow-x: hidden;
-      /* Same green as the Toki app, with a subtle top-down deepening so the
+      /* Same green as the Sylviae app, with a subtle top-down deepening so the
          page has depth without breaking continuity with the desktop app. */
       background:
         radial-gradient(1400px 900px at 50% -10%, #5aa87a, transparent 60%),
@@ -534,10 +535,9 @@
 
     /* ─── PRODUCT FRAME — consistent screenshot treatment across sections ──
        The frame wraps every screenshot in a soft green halo that echoes the
-       app window chrome, so opening Toki after clicking Download feels like
+       app window chrome, so opening Sylviae after clicking Download feels like
        stepping into the same room. */
-    .product-frame,
-    .hero-app-frame {
+    .product-frame {
       position: relative;
       margin-top: 40px;
       padding: 10px;
@@ -557,8 +557,7 @@
 
     /* Signature warm cream glow behind the product frame — green-on-green
        would disappear now that the bg IS the app green. */
-    .product-frame::before,
-    .hero-app-frame::before {
+    .product-frame::before {
       content: "";
       position: absolute;
       inset: -14%;
@@ -571,309 +570,27 @@
       pointer-events: none;
     }
 
-    .product-frame:hover,
-    .hero-app-frame:hover {
+    .product-frame:hover {
       transform: translateY(-3px);
-      border-color: rgba(242, 226, 138, 0.55);
       box-shadow:
         0 42px 84px rgba(24, 48, 32, 0.5),
-        0 0 0 1px rgba(242, 226, 138, 0.16),
+        0 0 0 1px rgba(255, 248, 234, 0.08),
         inset 0 1px 0 rgba(255, 248, 234, 0.12);
     }
 
-    /* Hero screenshot: near-imperceptible breathing float */
-    .hero-app-frame {
-      animation: float-breath 9s ease-in-out infinite alternate;
-    }
-    @keyframes float-breath {
-      0%   { transform: translateY(0px); }
-      100% { transform: translateY(-6px); }
-    }
-
-    /* ─── FLOATING HERO CARDS — real product moments around the hero ─────
-       Four tilted "sticky notes" that hover around the live timer inside
-       the app frame, framing the product moment without covering the
-       headline copy. Hidden on tablet/mobile so the hero stays legible. */
-    .hero-layout {
-      position: relative;
-    }
-
-    .hero-float {
-      position: absolute;
-      z-index: 3;
-      width: clamp(210px, 18vw, 260px);
-      padding: 14px 16px;
-      border-radius: 14px;
-      background: rgba(255, 248, 234, 0.96);
-      color: #1f2b22;
+    /* In-page product screenshots — darker + yellow-edged so the "window"
+       reads as a distinct object against the green page instead of blending
+       into it (both were the same green surface before). */
+    .product-frame {
+      background: linear-gradient(180deg, rgba(28, 54, 38, 0.94), rgba(22, 44, 31, 0.97));
+      border-color: rgba(242, 226, 138, 0.28);
       box-shadow:
-        0 24px 48px rgba(24, 48, 32, 0.36),
-        0 0 0 1px rgba(24, 48, 32, 0.06);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      pointer-events: none;
+        0 32px 64px rgba(12, 26, 17, 0.55),
+        0 0 0 1px rgba(242, 226, 138, 0.10),
+        inset 0 1px 0 rgba(255, 248, 234, 0.06);
     }
-
-    .hero-float-head {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--font-display);
-      font-size: 13px;
-      font-weight: 600;
-      color: #1f2b22;
-    }
-
-    .hero-float-dot {
-      display: grid;
-      place-items: center;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      flex-shrink: 0;
-      color: #1f2b22;
-    }
-    .hero-float-dot svg { width: 12px; height: 12px; stroke-width: 2.2; }
-    .hero-float-dot.is-focus  { background: #f2e28a; }
-    .hero-float-dot.is-audio  { background: #cfe2ff; }
-    .hero-float-dot.is-block  { background: #ffd0c8; }
-    .hero-float-dot.is-cal    { background: #d4f0dd; }
-
-    .hero-float-body {
-      font-family: var(--font-body);
-      font-size: 12.5px;
-      line-height: 1.45;
-      color: #3a4a3f;
-      font-style: italic;
-    }
-    .hero-float-body strong {
-      font-style: normal;
-      font-family: var(--font-mono);
-      font-size: 11.5px;
-      color: #1f2b22;
-      background: rgba(24, 48, 32, 0.06);
-      padding: 1px 5px;
-      border-radius: 3px;
-    }
-
-    /* Positions & tilts — anchored to the app frame so cards frame the
-       product moment (timer) instead of covering the headline copy. */
-    .hero-float-1 { top: -18px;    left: -34px;   transform: rotate(-6deg); animation: card-drift-a 8s ease-in-out infinite alternate; }
-    .hero-float-2 { top: 32px;     right: -38px;  transform: rotate(5deg);  animation: card-drift-b 9s ease-in-out infinite alternate; }
-    .hero-float-3 { bottom: 48px;  left: -42px;   transform: rotate(4deg);  animation: card-drift-c 10s ease-in-out infinite alternate; }
-    .hero-float-4 { bottom: -14px; right: -30px;  transform: rotate(-5deg); animation: card-drift-d 11s ease-in-out infinite alternate; }
-
-    @keyframes card-drift-a { 0% { transform: rotate(-6deg) translateY(0); } 100% { transform: rotate(-6deg) translateY(-8px); } }
-    @keyframes card-drift-b { 0% { transform: rotate(5deg)  translateY(0); } 100% { transform: rotate(5deg)  translateY(-6px); } }
-    @keyframes card-drift-c { 0% { transform: rotate(4deg)  translateY(0); } 100% { transform: rotate(4deg)  translateY(-7px); } }
-    @keyframes card-drift-d { 0% { transform: rotate(-5deg) translateY(0); } 100% { transform: rotate(-5deg) translateY(-9px); } }
-
-    /* Hide floating cards on small screens (clutter + illegibility) */
-    @media (max-width: 1180px) {
-      .hero-float { display: none; }
-    }
-
-    /* ─── LIVE INTERACTIVE POMODORO MOCK (hero visual) ────────────────────
-       Mirrors Toki's Workspace view (timer ring + task pill + focus dots)
-       with a real countdown so the hero shows the product WORKING, not a
-       still frame. Click Start Focus to see the ring fill. */
-    .live-focus-panel {
-      padding: 20px 24px 28px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 18px;
-      background: var(--surface);
-      border-radius: 10px;
-    }
-
-    .live-tabs {
-      display: flex;
-      gap: 4px;
-      padding: 4px;
-      border-radius: 8px;
-      background: var(--surface-2);
-      border: 1px solid var(--border-strong);
-    }
-    .live-tab {
-      appearance: none;
-      -webkit-appearance: none;
-      background: transparent;
-      border: none;
-      padding: 7px 14px;
-      font-family: var(--font-display);
-      font-size: 12px;
-      color: var(--ink-dim);
-      cursor: pointer;
-      border-radius: 5px;
-      transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
-    }
-    .live-tab.active {
-      background: var(--surface);
-      color: var(--accent);
-      box-shadow: inset 0 0 0 1px rgba(242, 226, 138, 0.28);
-    }
-    .live-tab:hover:not(.active) {
-      color: var(--ink);
-      background: rgba(255, 248, 234, 0.06);
-    }
-
-    .live-timer-ring {
-      position: relative;
-      width: 220px;
-      height: 220px;
-    }
-    .live-timer-ring svg {
-      width: 100%;
-      height: 100%;
-      transform: rotate(-90deg);
-    }
-    .live-track {
-      fill: none;
-      stroke: rgba(24, 48, 32, 0.28);
-      stroke-width: 8;
-    }
-    .live-progress {
-      fill: none;
-      stroke: var(--accent);
-      stroke-width: 8;
-      stroke-linecap: round;
-      stroke-dasharray: 477.5;
-      stroke-dashoffset: 477.5;
-      transition: stroke-dashoffset 1s linear;
-      filter: drop-shadow(0 0 6px rgba(242, 226, 138, 0.4));
-    }
-    .live-timer-text {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-    }
-    .live-digits {
-      font-family: var(--font-mono);
-      font-size: 46px;
-      font-weight: 400;
-      color: var(--ink);
-      letter-spacing: -0.02em;
-      font-variant-numeric: tabular-nums;
-    }
-    .live-label {
-      font-family: var(--font-display);
-      font-size: 11px;
-      color: var(--ink-dim);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-
-    .live-pomo-count {
-      display: flex;
-      gap: 8px;
-    }
-    .live-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(24, 48, 32, 0.32);
-      transition: background 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
-    }
-    .live-dot.done { background: var(--accent); }
-    .live-dot.active {
-      background: var(--accent);
-      box-shadow: 0 0 0 3px rgba(242, 226, 138, 0.22);
-      animation: dot-pulse 1.8s ease-in-out infinite;
-    }
-    @keyframes dot-pulse {
-      0%, 100% { box-shadow: 0 0 0 3px rgba(242, 226, 138, 0.22); }
-      50%      { box-shadow: 0 0 0 6px rgba(242, 226, 138, 0.08); }
-    }
-
-    .live-task {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 16px;
-      border: 1px solid var(--border-strong);
-      border-radius: 8px;
-      background: var(--surface-2);
-      max-width: 300px;
-    }
-    .live-task-check {
-      width: 16px;
-      height: 16px;
-      border-radius: 4px;
-      border: 1.5px solid var(--accent);
-      flex-shrink: 0;
-    }
-    .live-task-title {
-      font-family: var(--font-display);
-      font-size: 13px;
-      color: var(--ink);
-    }
-
-    .live-start-btn {
-      appearance: none;
-      -webkit-appearance: none;
-      padding: 10px 24px;
-      border: none;
-      border-radius: 6px;
-      background: var(--accent);
-      color: var(--accent-ink);
-      font-family: var(--font-display);
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      cursor: pointer;
-      box-shadow: 0 6px 16px rgba(242, 226, 138, 0.28);
-      transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
-    }
-    .live-start-btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 20px rgba(242, 226, 138, 0.42);
-    }
-    .live-start-btn.running { background: rgba(255, 248, 234, 0.12); color: var(--ink); box-shadow: none; }
-
-    /* ─── TRUST BADGE ROW ─────────────────────────────────────────────── */
-    .trust-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 24px;
-    }
-    .trust-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      border: 1px solid var(--border-strong);
-      border-radius: 999px;
-      background: rgba(24, 48, 32, 0.24);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      color: var(--ink-dim);
-      font-family: var(--font-display);
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .trust-badge svg {
-      width: 12px;
-      height: 12px;
-      stroke: var(--accent);
-      stroke-width: 2;
-      fill: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-    .trust-badge strong {
-      color: var(--ink);
-      font-weight: 600;
+    .product-frame::before {
+      background: radial-gradient(60% 60% at 50% 18%, rgba(242, 226, 138, 0.24), transparent 70%);
     }
 
     /* ─── FEATURED STORY REVIEWS — 2 wider cards above the marquee ─────── */
@@ -963,34 +680,6 @@
       letter-spacing: 1px;
       margin-left: auto;
     }
-
-    /* ─── ANIMATED BONSAI SVG ─────────────────────────────────────────── */
-    .bonsai-svg-wrap {
-      display: grid;
-      place-items: center;
-      width: 220px;
-      height: 220px;
-      flex-shrink: 0;
-    }
-    .bonsai-svg-wrap svg {
-      width: 100%;
-      height: 100%;
-    }
-    @keyframes petal-bloom {
-      0%   { transform: scale(0);   opacity: 0; }
-      60%  { transform: scale(1.2); opacity: 0.9; }
-      100% { transform: scale(1);   opacity: 0.85; }
-    }
-    @keyframes bonsai-float {
-      0%, 100% { transform: translateY(0); }
-      50%      { transform: translateY(-3px); }
-    }
-    .bonsai-petal {
-      transform-origin: center;
-      transform-box: fill-box;
-      animation: petal-bloom 0.9s ease-out both;
-    }
-    .bonsai-canopy { animation: bonsai-float 4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
 
     .product-frame.is-compact {
       padding: 8px;
@@ -1355,47 +1044,115 @@
       line-height: 1.6;
     }
 
-    /* ─── BONSAI & PHILOSOPHY ────────────────────────────────────────────── */
-    .bonsai-box {
-      padding: 32px;
-      border: 1px solid var(--border-strong);
-      border-left: 2px solid var(--lime);
-      border-radius: 14px;
-      background: linear-gradient(180deg, var(--surface), var(--surface-2));
-      display: flex;
+    /* ─── DEEP FOCUS PORTAL ───────────────────────────────────────────────
+       One fixed illustrated background (assets/sylviae/deep-focus-bg.jpg),
+       always visible — Sylviae's pose is the only thing that quietly
+       changes on top of it. Kept deliberately simple: no toggle, no fake
+       window chrome, just the destination itself, always playing. */
+    .portal-section {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(32px, 5vw, 64px);
       align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      flex-wrap: wrap;
-      box-shadow: 0 20px 40px rgba(24, 48, 32, 0.28);
     }
 
-    .bonsai-stages {
+    .portal-demo { padding: 10px; }
+
+    .portal-stage {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .portal-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Soft yellow ambient glow — the one whisper of the portal, always on,
+       never a hard flash. */
+    .portal-glow {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(closest-side at 50% 72%, rgba(242, 226, 138, 0.28), transparent 70%);
+      animation: portal-glow-pulse 6s ease-in-out infinite;
+    }
+    @keyframes portal-glow-pulse {
+      0%, 100% { opacity: 0.55; }
+      50%      { opacity: 1; }
+    }
+
+    .portal-timer {
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
       display: flex;
-      gap: 24px;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      padding: 8px 20px;
+      border-radius: 999px;
+      background: rgba(24, 32, 20, 0.34);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
     }
 
-    .bonsai-stage {
-      text-align: center;
+    .portal-timer-digits {
+      font-family: var(--font-mono);
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      font-variant-numeric: tabular-nums;
+      color: #fff8ea;
     }
 
-    .bonsai-dot {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      border: 1px solid var(--lime);
-      margin: 0 auto 8px;
+    .portal-timer-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #f2e28a;
     }
 
-    .bonsai-stage.stage-3 .bonsai-dot {
-      background: var(--lime);
-      box-shadow: 0 0 10px var(--lime);
+    /* Sylviae's activity layer — three poses cross-fade in a slow loop on
+       top of the one fixed background. Always playing, never gated behind
+       an interaction. */
+    .portal-companion {
+      position: absolute;
+      bottom: 6%;
+      left: 50%;
+      width: 34%;
+      max-width: 210px;
+      height: auto;
+      transform: translateX(-50%) translateY(6px);
+      filter: drop-shadow(0 14px 18px rgba(20, 30, 15, 0.35));
+      opacity: 0;
+      animation: companion-cycle 18s ease-in-out infinite;
+    }
+    .portal-companion.is-b { animation-delay: 6s; }
+    .portal-companion.is-c { animation-delay: 12s; }
+
+    @keyframes companion-cycle {
+      0%, 3%    { opacity: 0; transform: translateX(-50%) translateY(6px); }
+      8%, 28%   { opacity: 1; transform: translateX(-50%) translateY(0); }
+      33%, 100% { opacity: 0; transform: translateX(-50%) translateY(6px); }
     }
 
-    .bonsai-label {
-      font-family: var(--font-display);
-      font-size: 11px;
-      color: var(--muted);
+    @media (max-width: 900px) {
+      .portal-section { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .portal-companion { animation: none; opacity: 1; transform: translateX(-50%); }
+      .portal-companion.is-b, .portal-companion.is-c { display: none; }
+      .portal-glow { animation: none; opacity: 0.7; }
     }
 
     /* ─── PRICING / OFFER ────────────────────────────────────────────────── */
@@ -1523,8 +1280,8 @@
       color: var(--ink);
     }
 
-    /* ─── COMPARISON TABLE — Toki vs fragmented PC apps ─────────────────
-       Instead of listing "why Toki", show the split screen most users live in:
+    /* ─── COMPARISON TABLE — Sylviae vs fragmented PC apps ─────────────────
+       Instead of listing "why Sylviae", show the split screen most users live in:
        one app per problem vs one calm room. Uses a real table for a11y and
        zooms into a card layout on mobile. */
     .compare-wrap {
@@ -1995,7 +1752,6 @@
         -webkit-mask-image: none;
       }
       body::after { animation: none; }
-      .hero-app-frame { animation: none; }
       .cta-primary::before { animation: none; opacity: 0; }
       .reveal,
       .reveal-media,
@@ -2016,15 +1772,16 @@
     <!-- ─── 1. NAVIGATION ────────────────────────────────────────────────── -->
     <nav class="nav shell" aria-label="Main navigation">
       <div class="nav-inner">
-        <a class="brand" href="#top" aria-label="Toki home">
-          <img src="assets/icon.png" alt="Toki logo icon" width="28" height="28">
-          <span>TOKI</span>
+        <a class="brand" href="#top" aria-label="Sylviae home">
+          <img src="assets/icon.png" alt="Sylviae logo icon" width="28" height="28">
+          <span>SYLVIAE</span>
         </a>
         <div class="nav-links" aria-label="Page sections">
           <a href="#workflow">Product</a>
           <a href="#audio">Features</a>
           <a href="#compare">Compare</a>
           <a href="#privacy">Privacy</a>
+          <a href="#focusmode">Focus Mode</a>
           <a href="#faq">FAQ</a>
         </div>
         <a class="nav-cta" href="https://github.com/JGuilherme2005/Toki-Landing/releases/download/v1.0.0/toki-setup-1.0.0.exe">
@@ -2044,10 +1801,10 @@
 
           <h1 id="hero-title">Everything you need to enter focus.<br>One calm desktop space.</h1>
 
-          <p class="hero-copy">Toki brings your focus timer, tasks, distraction blocking, music, and calendar tools into one quiet Windows app.</p>
+          <p class="hero-copy">Sylviae brings your focus timer, tasks, distraction blocking, music, and calendar tools into one quiet Windows app.</p>
 
           <div class="hero-actions">
-            <a class="cta-primary" href="https://github.com/JGuilherme2005/Toki-Landing/releases/download/v1.0.0/toki-setup-1.0.0.exe" aria-label="Download Toki for Windows free beta">
+            <a class="cta-primary" href="https://github.com/JGuilherme2005/Toki-Landing/releases/download/v1.0.0/toki-setup-1.0.0.exe" aria-label="Download Sylviae for Windows free beta">
               <span>Download for Windows</span>
               <span class="arrow" aria-hidden="true">↓</span>
             </a>
@@ -2060,106 +1817,19 @@
             <span>Core tools work offline</span>
             <span>Windows 64-bit installer</span>
           </div>
-
-          <!-- Trust badges — honest, verifiable claims only -->
-          <div class="trust-badges" aria-label="Product trust indicators">
-            <span class="trust-badge">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 8h18"/></svg>
-              Built for <strong>Windows 11</strong>
-            </span>
-            <span class="trust-badge">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/></svg>
-              <strong>Local-first</strong> · no telemetry
-            </span>
-            <span class="trust-badge">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M4 6h16M4 18h10"/></svg>
-              Runs <strong>offline</strong> after install
-            </span>
-            <span class="trust-badge">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M2 12h20"/></svg>
-              <strong>Free</strong> during beta
-            </span>
-          </div>
         </div>
 
-        <!-- Live interactive Pomodoro mock — the product WORKING, not a still frame -->
-        <div class="hero-app-frame reveal-media" id="proof" aria-label="Toki live focus timer preview">
+        <!-- Real product screenshot — simple, consistent with every other
+             section instead of a separate fake-interactive mock. -->
+        <div class="product-frame reveal-media" id="proof" aria-label="Sylviae workspace preview">
           <div class="app-window-header" aria-hidden="true">
-            <div class="window-dots">
-              <span class="window-dot"></span>
-              <span class="window-dot"></span>
-              <span class="window-dot"></span>
-            </div>
-            <span class="window-title">TOKI — Focus session</span>
+            <span class="window-title">SYLVIAE — Workspace</span>
           </div>
-
-          <div class="live-focus-panel">
-            <div class="live-tabs" role="tablist" aria-label="Focus mode">
-              <button type="button" class="live-tab active" data-mode="focus" data-minutes="25">Focus</button>
-              <button type="button" class="live-tab" data-mode="short" data-minutes="5">Short Break</button>
-              <button type="button" class="live-tab" data-mode="long" data-minutes="15">Long Break</button>
-            </div>
-
-            <div class="live-timer-ring" role="timer" aria-live="polite" aria-label="Focus timer">
-              <svg viewBox="0 0 170 170" aria-hidden="true">
-                <circle class="live-track" cx="85" cy="85" r="76"/>
-                <circle class="live-progress" cx="85" cy="85" r="76" id="liveProgress"/>
-              </svg>
-              <div class="live-timer-text">
-                <div class="live-digits" id="liveDigits">25:00</div>
-                <div class="live-label" id="liveLabel">Focus</div>
-              </div>
-            </div>
-
-            <div class="live-pomo-count" aria-label="Session progress (3 of 4)">
-              <span class="live-dot done"></span>
-              <span class="live-dot done"></span>
-              <span class="live-dot active"></span>
-              <span class="live-dot"></span>
-            </div>
-
-            <div class="live-task">
-              <span class="live-task-check" aria-hidden="true"></span>
-              <span class="live-task-title">Ship landing redesign</span>
-            </div>
-
-            <button type="button" class="live-start-btn" id="liveStartBtn" aria-label="Start focus session">Start Focus</button>
-          </div>
-
-          <!-- Floating "sticky notes" showing real Toki moments — anchored to
-               the app frame so they frame the product instead of covering
-               the headline. Desktop only (hidden below 1180px). -->
-          <div class="hero-float hero-float-1" aria-hidden="true">
-            <div class="hero-float-head">
-              <span class="hero-float-dot is-focus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span>
-              Focus session started
-            </div>
-            <p class="hero-float-body">"24:12 left · <strong>youtube.com</strong> and <strong>discord.exe</strong> blocked until the ring completes."</p>
-          </div>
-
-          <div class="hero-float hero-float-2" aria-hidden="true">
-            <div class="hero-float-head">
-              <span class="hero-float-dot is-audio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span>
-              Deep Focus playing
-            </div>
-            <p class="hero-float-body">"<strong>Lofi Focus</strong> pauses on your break, resumes the moment Focus starts again."</p>
-          </div>
-
-          <div class="hero-float hero-float-3" aria-hidden="true">
-            <div class="hero-float-head">
-              <span class="hero-float-dot is-cal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
-              9:00 · Design review
-            </div>
-            <p class="hero-float-body">"Just imported from <strong>Google Calendar</strong> into today's focus list."</p>
-          </div>
-
-          <div class="hero-float hero-float-4" aria-hidden="true">
-            <div class="hero-float-head">
-              <span class="hero-float-dot is-block"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12A8 8 0 1 1 4.6 8.5"/><path d="M20 4v5h-5"/></svg></span>
-              Bonsai · session 3 of 4
-            </div>
-            <p class="hero-float-body">"Reached the <strong>sapling</strong> stage — 12 more sessions until it blooms."</p>
-          </div>
+          <img class="app-screenshot"
+               src="assets/app/workspace.png"
+               alt="Sylviae workspace showing the focus timer and today's tasks"
+               width="1422" height="932"
+               loading="lazy" decoding="async">
         </div>
       </div>
     </header>
@@ -2237,7 +1907,7 @@
       <section class="shell" id="audio" aria-labelledby="audio-title">
         <div class="feature-deep-grid">
           <div class="reveal">
-            <span class="kicker">Deep Focus</span>
+            <span class="kicker">Focus audio</span>
             <h2 id="audio-title">Sound that follows your focus.</h2>
             <p style="color:var(--ink-dim); margin-top:16px; font-size:17px; line-height:1.6;">
               Choose offline focus music, or use Spotify and YouTube sources. Audio can follow the focus timer, become silent during breaks, or keep playing continuously.
@@ -2251,7 +1921,7 @@
 
               <div class="feature-point">
                 <h4>Spotify and YouTube</h4>
-                <p>Use supported external audio sources directly inside Toki.</p>
+                <p>Use supported external audio sources directly inside Sylviae.</p>
               </div>
 
               <div class="feature-point">
@@ -2268,11 +1938,11 @@
 
           <div class="product-frame reveal-media">
             <div class="app-window-header" aria-hidden="true">
-              <span class="window-title">TOKI — Deep Focus</span>
+              <span class="window-title">SYLVIAE — Deep Focus</span>
             </div>
             <img class="app-screenshot"
                  src="assets/app/deepfocus.png"
-                 alt="Toki Deep Focus tab showing offline focus tracks, Spotify and YouTube sources, and playback settings"
+                 alt="Sylviae Deep Focus tab showing offline focus tracks, Spotify and YouTube sources, and playback settings"
                  width="1407" height="935"
                  loading="lazy"
                  decoding="async">
@@ -2285,11 +1955,11 @@
         <div class="feature-deep-grid">
           <div class="product-frame reveal-media">
             <div class="app-window-header" aria-hidden="true">
-              <span class="window-title">TOKI — Distraction Blocker</span>
+              <span class="window-title">SYLVIAE — Distraction Blocker</span>
             </div>
             <img class="app-screenshot"
                  src="assets/app/appblock.png"
-                 alt="Toki Distraction Blocker showing site rules, app blocking lists, and enforcement controls"
+                 alt="Sylviae Distraction Blocker showing site rules, app blocking lists, and enforcement controls"
                  width="1437" height="911"
                  loading="lazy"
                  decoding="async">
@@ -2299,7 +1969,7 @@
             <span class="kicker">Distraction blocker</span>
             <h2 id="blocker-title">Make distractions harder to reach.</h2>
             <p style="color:var(--ink-dim); margin-top:16px; font-size:17px; line-height:1.6;">
-              Choose the sites and applications you want out of the way. When Focus begins, Toki enforces the boundary directly on Windows.
+              Choose the sites and applications you want out of the way. When Focus begins, Sylviae enforces the boundary directly on Windows.
             </p>
 
             <div class="feature-list reveal-stagger">
@@ -2321,7 +1991,7 @@
 
             <details class="tech-details">
               <summary>How does blocking work?</summary>
-              <p>Blocking is applied directly on Windows — the blocker keeps selected sites unreachable and closes matching applications and browser tabs. Toki may request Windows administrator permission on launch because these actions run at the system level.</p>
+              <p>Sylviae blocks distracting sites and apps directly on Windows, not just in one browser tab — so switching tabs or apps doesn't get you around it. Windows may ask for a one-time permission on first launch so Sylviae can actually enforce the block.</p>
             </details>
           </div>
         </div>
@@ -2336,20 +2006,20 @@
         </div>
 
         <div class="tab-buttons reveal" role="tablist" aria-label="Integration previews">
-          <button type="button" class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-integrations" onclick="switchTab('integrations')">Bring into Toki</button>
+          <button type="button" class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-integrations" onclick="switchTab('integrations')">Bring into Sylviae</button>
           <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-workspace" onclick="switchTab('workspace')">Workspace</button>
         </div>
 
-        <!-- The Integrations screen is a single hub in Toki — one modal shows
+        <!-- The Integrations screen is a single hub in Sylviae — one modal shows
              Notion, Todoist, and Google Calendar connected side by side, so a
              single tab covers all three sources instead of repeating them. -->
         <div id="tab-integrations" class="tab-content active product-frame reveal-media" role="tabpanel">
           <div class="app-window-header" aria-hidden="true">
-            <span class="window-title">TOKI — Bring into Toki</span>
+            <span class="window-title">SYLVIAE — Bring into Sylviae</span>
           </div>
           <img class="app-screenshot"
                src="assets/app/calendar.png"
-               alt="Toki Bring into Toki view showing Google Calendar, Notion, and Todoist imported into today's focus list"
+               alt="Sylviae Bring into Sylviae view showing Google Calendar, Notion, and Todoist imported into today's focus list"
                width="1916" height="1077"
                style="aspect-ratio: 1916 / 1077;"
                loading="lazy"
@@ -2357,11 +2027,11 @@
         </div>
         <div id="tab-workspace" class="tab-content product-frame" role="tabpanel" hidden>
           <div class="app-window-header" aria-hidden="true">
-            <span class="window-title">TOKI — Workspace</span>
+            <span class="window-title">SYLVIAE — Workspace</span>
           </div>
           <img class="app-screenshot"
                src="assets/app/workspace.png"
-               alt="Toki Workspace showing local focus tasks"
+               alt="Sylviae Workspace showing local focus tasks"
                width="1422" height="932"
                loading="lazy"
                decoding="async">
@@ -2394,13 +2064,13 @@
             <span class="kicker">Desktop continuity</span>
             <h2 id="continuity-title">Your focus setup stays with you.</h2>
             <p style="color:var(--ink-dim); margin-top:16px; font-size:17px; line-height:1.6;">
-              Close the window without losing the room you set up. Toki keeps running quietly in the system tray and remembers where you left off.
+              Close the window without losing the room you set up. Sylviae keeps running quietly in the system tray and remembers where you left off.
             </p>
 
             <div class="feature-list">
               <div class="feature-point">
                 <h4>Runs in the background</h4>
-                <p>Toki stays available from the Windows system tray while you work in other apps.</p>
+                <p>Sylviae stays available from the Windows system tray while you work in other apps.</p>
               </div>
 
               <div class="feature-point">
@@ -2410,18 +2080,18 @@
 
               <div class="feature-point">
                 <h4>Keeps one focus state</h4>
-                <p>Opening Toki again brings you back to the same session — no conflicting duplicate windows.</p>
+                <p>Opening Sylviae again brings you back to the same session — no conflicting duplicate windows.</p>
               </div>
             </div>
           </div>
 
           <div class="product-frame reveal-media">
             <div class="app-window-header" aria-hidden="true">
-              <span class="window-title">TOKI — Settings</span>
+              <span class="window-title">SYLVIAE — Settings</span>
             </div>
             <img class="app-screenshot"
                  src="assets/app/settings.png"
-                 alt="Toki settings screen showing preferences that persist across sessions"
+                 alt="Sylviae settings screen showing preferences that persist across sessions"
                  width="1446" height="927"
                  loading="lazy"
                  decoding="async">
@@ -2429,12 +2099,12 @@
         </div>
       </section>
 
-      <!-- ─── 8.5 COMPARISON — Toki vs the fragmented PC toolchain ─────────── -->
+      <!-- ─── 8.5 COMPARISON — Sylviae vs the fragmented PC toolchain ─────────── -->
       <section class="shell" id="compare" aria-labelledby="compare-title">
         <div class="section-head reveal">
           <span class="kicker">One room vs many windows</span>
           <h2 id="compare-title">One quiet room instead of five open apps.</h2>
-          <p>Most desktop focus setups stitch a timer, a blocker, a music app, and a task list together. Toki does the whole loop in one calm Windows workspace.</p>
+          <p>Most desktop focus setups stitch a timer, a blocker, a music app, and a task list together. Sylviae does the whole loop in one calm Windows workspace.</p>
         </div>
 
         <div class="compare-wrap reveal">
@@ -2442,7 +2112,7 @@
             <thead>
               <tr>
                 <th scope="col">Capability</th>
-                <th scope="col" class="is-toki">Toki</th>
+                <th scope="col" class="is-toki">Sylviae</th>
                 <th scope="col">Forest / Pomofocus</th>
                 <th scope="col">Cold Turkey / Freedom</th>
                 <th scope="col">Endel / Brain.fm</th>
@@ -2452,7 +2122,7 @@
             <tbody>
               <tr>
                 <th scope="row">Focus timer accurate through PC sleep</th>
-                <td class="is-toki" data-label="Toki"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
+                <td class="is-toki" data-label="Sylviae"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
                 <td data-label="Forest / Pomofocus"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
                 <td data-label="Cold Turkey / Freedom"><span class="compare-mark no" aria-label="No">—</span></td>
                 <td data-label="Endel / Brain.fm"><span class="compare-mark no" aria-label="No">—</span></td>
@@ -2460,7 +2130,7 @@
               </tr>
               <tr>
                 <th scope="row">Blocks websites <em>and</em> desktop apps</th>
-                <td class="is-toki" data-label="Toki"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
+                <td class="is-toki" data-label="Sylviae"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
                 <td data-label="Forest / Pomofocus"><span class="compare-mark no" aria-label="No">—</span></td>
                 <td data-label="Cold Turkey / Freedom"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
                 <td data-label="Endel / Brain.fm"><span class="compare-mark no" aria-label="No">—</span></td>
@@ -2468,7 +2138,7 @@
               </tr>
               <tr>
                 <th scope="row">Offline focus audio built in</th>
-                <td class="is-toki" data-label="Toki"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
+                <td class="is-toki" data-label="Sylviae"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
                 <td data-label="Forest / Pomofocus"><span class="compare-mark partial" aria-label="Partial">~</span></td>
                 <td data-label="Cold Turkey / Freedom"><span class="compare-mark no" aria-label="No">—</span></td>
                 <td data-label="Endel / Brain.fm"><span class="compare-mark partial" aria-label="Partial">~</span></td>
@@ -2476,7 +2146,7 @@
               </tr>
               <tr>
                 <th scope="row">Spotify &amp; YouTube inside the session</th>
-                <td class="is-toki" data-label="Toki"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
+                <td class="is-toki" data-label="Sylviae"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
                 <td data-label="Forest / Pomofocus"><span class="compare-mark no" aria-label="No">—</span></td>
                 <td data-label="Cold Turkey / Freedom"><span class="compare-mark no" aria-label="No">—</span></td>
                 <td data-label="Endel / Brain.fm"><span class="compare-mark no" aria-label="No">—</span></td>
@@ -2484,7 +2154,7 @@
               </tr>
               <tr>
                 <th scope="row">Import Google Calendar, Notion &amp; Todoist</th>
-                <td class="is-toki" data-label="Toki"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
+                <td class="is-toki" data-label="Sylviae"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
                 <td data-label="Forest / Pomofocus"><span class="compare-mark no" aria-label="No">—</span></td>
                 <td data-label="Cold Turkey / Freedom"><span class="compare-mark no" aria-label="No">—</span></td>
                 <td data-label="Endel / Brain.fm"><span class="compare-mark no" aria-label="No">—</span></td>
@@ -2492,7 +2162,7 @@
               </tr>
               <tr>
                 <th scope="row">Runs locally, no account required</th>
-                <td class="is-toki" data-label="Toki"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
+                <td class="is-toki" data-label="Sylviae"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
                 <td data-label="Forest / Pomofocus"><span class="compare-mark no" aria-label="No">—</span></td>
                 <td data-label="Cold Turkey / Freedom"><span class="compare-mark partial" aria-label="Partial">~</span></td>
                 <td data-label="Endel / Brain.fm"><span class="compare-mark no" aria-label="No">—</span></td>
@@ -2500,7 +2170,7 @@
               </tr>
               <tr>
                 <th scope="row">Free during beta</th>
-                <td class="is-toki" data-label="Toki"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
+                <td class="is-toki" data-label="Sylviae"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
                 <td data-label="Forest / Pomofocus"><span class="compare-mark partial" aria-label="Limited">~</span></td>
                 <td data-label="Cold Turkey / Freedom"><span class="compare-mark partial" aria-label="Limited">~</span></td>
                 <td data-label="Endel / Brain.fm"><span class="compare-mark no" aria-label="Subscription">$</span></td>
@@ -2517,13 +2187,13 @@
         <div class="section-head reveal">
           <span class="kicker">Early feedback</span>
           <h2 id="stories-title">What early testers noticed.</h2>
-          <p>Feedback from people using early versions of Toki. Two stories in full below, plus the shorter reactions from the wider beta group.</p>
+          <p>Feedback from people using early versions of Sylviae. Two stories in full below, plus the shorter reactions from the wider beta group.</p>
         </div>
 
         <!-- Two featured stories, given room to breathe -->
         <div class="featured-stories reveal-stagger">
           <article class="featured-story">
-            <p class="featured-quote">"Before Toki I had five apps open just to start working. A timer here, music there, blocker in the browser, tasks in Notion. Now I open one window and the room is already ready for me."</p>
+            <p class="featured-quote">"Before Sylviae I had five apps open just to start working. A timer here, music there, blocker in the browser, tasks in Notion. Now I open one window and the room is already ready for me."</p>
             <div class="featured-foot">
               <div class="featured-avatar" aria-hidden="true">LS</div>
               <div class="featured-who">
@@ -2535,7 +2205,7 @@
           </article>
 
           <article class="featured-story">
-            <p class="featured-quote">"The zero-drift timer is the thing that made me stop trusting the browser tab version. My laptop sleeps, I come back, and Toki still knows exactly where the session is. Small detail, huge trust."</p>
+            <p class="featured-quote">"The zero-drift timer is the thing that made me stop trusting the browser tab version. My laptop sleeps, I come back, and Sylviae still knows exactly where the session is. Small detail, huge trust."</p>
             <div class="featured-foot">
               <div class="featured-avatar" aria-hidden="true">FA</div>
               <div class="featured-who">
@@ -2550,7 +2220,7 @@
         <!-- Testimonial rail: slow horizontal auto-scroll on desktop,
              pauses on hover/keyboard-focus, respects prefers-reduced-motion.
              Mobile falls back to scroll-snap (see .marquee-container media rules). -->
-        <section class="marquee-container" aria-label="Feedback from early Toki testers" tabindex="0">
+        <section class="marquee-container" aria-label="Feedback from early Sylviae testers" tabindex="0">
           <div class="marquee-track" data-marquee>
             <article class="marquee-card">
               <div class="review-head">
@@ -2561,7 +2231,7 @@
                 </div>
               </div>
               <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
-              <p class="story-quote">"Before Toki, I kept switching between my timer, music, and task list. Now I open one place and begin."</p>
+              <p class="story-quote">"Before Sylviae, I kept switching between my timer, music, and task list. Now I open one place and begin."</p>
             </article>
 
             <article class="marquee-card">
@@ -2655,7 +2325,7 @@
                 <div class="review-who"><span class="review-name">Lucas S.</span><span class="review-role">Software Developer</span></div>
               </div>
               <div class="review-stars">★★★★★</div>
-              <p class="story-quote">"Before Toki, I kept switching between my timer, music, and task list. Now I open one place and begin."</p>
+              <p class="story-quote">"Before Sylviae, I kept switching between my timer, music, and task list. Now I open one place and begin."</p>
             </article>
             <article class="marquee-card" aria-hidden="true">
               <div class="review-head">
@@ -2692,7 +2362,7 @@
           </div>
         </section>
 
-        <p class="story-note">Names lightly changed at testers' request. Feedback comes from early Toki beta users, edited only for grammar.</p>
+        <p class="story-note">Names lightly changed at testers' request. Feedback comes from early Sylviae beta users, edited only for grammar.</p>
       </section>
 
       <!-- ─── 9. LOCAL-FIRST & PRIVACY SECTION ──────────────────────────────── -->
@@ -2700,7 +2370,7 @@
         <div class="section-head reveal">
           <span class="kicker">Local-first</span>
           <h2 id="privacy-title">Your focus space stays yours.</h2>
-          <p>Toki's core timer, tasks, history, blocker preferences, and offline tracks stay on your device. Connected services are contacted only when you choose to use them.</p>
+          <p>Sylviae's core timer, tasks, history, blocker preferences, and offline tracks stay on your device. Connected services are contacted only when you choose to use them.</p>
         </div>
 
         <div class="privacy-grid reveal-stagger">
@@ -2719,86 +2389,50 @@
           <article class="privacy-card">
             <p class="privacy-card-tag">NO ADVERTISING MODEL</p>
             <h3>Not built on attention</h3>
-            <p>Toki is not built around advertising or selling user attention.</p>
+            <p>Sylviae is not built around advertising or selling user attention.</p>
           </article>
         </div>
 
         <details class="tech-details" style="max-width: 680px; margin-top: 24px;">
-          <summary>Technical details</summary>
-          <p>Task data and session history are stored locally in <code>electron-store</code>. Credentials for Notion, Todoist, and Google Calendar are stored using Windows <code>safeStorage</code> (DPAPI) with AES-256-GCM for at-rest protection.</p>
+          <summary>How is my data protected?</summary>
+          <p>Your tasks and session history are saved in a local file on your own device, not in the cloud. If you connect Notion, Todoist, or Google Calendar, those login details are encrypted using Windows' own built-in secure storage — the same protection Windows uses for your other saved passwords.</p>
         </details>
       </section>
 
-      <!-- ─── 10. BONSAI COMPANION SECTION ──────────────────────────────────── -->
-      <section class="shell" id="bonsai" aria-labelledby="bonsai-title">
-        <div class="bonsai-box reveal">
-          <div style="flex:1; min-width:260px;">
-            <span class="kicker">Visual Companion</span>
-            <h3 id="bonsai-title">A quiet companion that grows with your practice.</h3>
-            <p style="color:var(--ink-dim); margin-top:8px; max-width:480px; font-size:15px;">
-              The Bonsai grows through five phases — seed, sprout, sapling, tree, and blooming — as you return to focused work. No leaderboards. No streak guilt.
+      <!-- ─── 10. FOCUS MODE PORTAL SECTION ─────────────────────────────────── -->
+      <section class="shell" id="focusmode" aria-labelledby="focusmode-title">
+        <div class="portal-section reveal">
+          <div>
+            <span class="kicker">Focus Mode</span>
+            <h2 id="focusmode-title">Cross into Focus Mode.</h2>
+            <p style="color:var(--ink-dim); margin-top:16px; font-size:17px; line-height:1.6;">
+              Your normal workspace stays clean, functional, and yours. Step into Focus Mode and a short yellow portal carries you into one calm illustrated space — Sylviae is already there, working quietly alongside you while the timer stays in charge.
             </p>
-            <div class="bonsai-stages" aria-label="Bonsai progression stages" style="margin-top:20px;">
-              <div class="bonsai-stage">
-                <div class="bonsai-dot"></div>
-                <span class="bonsai-label">Seed</span>
+
+            <div class="feature-list reveal-stagger" style="margin-top:8px;">
+              <div class="feature-point">
+                <h4>One fixed space</h4>
+                <p>The same calm illustrated room every session — nothing new to load, nothing to pull focus from the timer.</p>
               </div>
-              <div class="bonsai-stage">
-                <div class="bonsai-dot"></div>
-                <span class="bonsai-label">Sprout</span>
-              </div>
-              <div class="bonsai-stage">
-                <div class="bonsai-dot"></div>
-                <span class="bonsai-label">Sapling</span>
-              </div>
-              <div class="bonsai-stage">
-                <div class="bonsai-dot"></div>
-                <span class="bonsai-label">Tree</span>
-              </div>
-              <div class="bonsai-stage stage-3">
-                <div class="bonsai-dot"></div>
-                <span class="bonsai-label" style="color:var(--lime);">Blooming</span>
+              <div class="feature-point">
+                <h4>Sylviae keeps you company</h4>
+                <p>Resting, reading, or just quietly nearby — soft, loop-based motion that never asks for attention.</p>
               </div>
             </div>
           </div>
 
-          <!-- Real bonsai SVG from Toki-App/src/index.html — blooming stage -->
-          <div class="bonsai-svg-wrap" aria-hidden="true">
-            <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="110" cy="110" r="85" fill="#E8DFBA"/>
-              <path d="M 32 142 A 85 85 0 0 0 188 142 A 78 16 0 0 1 32 142" fill="#5C3514"/>
-              <ellipse cx="110" cy="142" rx="78" ry="16" fill="#75451A"/>
-              <g transform="translate(0, -26)">
-                <path d="M110 170 Q102 145 108 115 Q114 90 105 65 Q98 45 102 30" fill="none" stroke="#5c3d1e" stroke-width="12" stroke-linecap="round"/>
-                <path d="M107 120 Q82 108 68 88" fill="none" stroke="#6b4c2a" stroke-width="7" stroke-linecap="round"/>
-                <path d="M109 100 Q138 88 155 68" fill="none" stroke="#6b4c2a" stroke-width="7" stroke-linecap="round"/>
-                <path d="M104 72 Q80 60 65 42" fill="none" stroke="#7a5535" stroke-width="5" stroke-linecap="round"/>
-                <path d="M105 60 Q126 48 138 35" fill="none" stroke="#7a5535" stroke-width="4" stroke-linecap="round"/>
-                <g class="bonsai-canopy">
-                  <circle cx="65" cy="85" r="22" fill="#3d8010" opacity="0.9"/>
-                  <circle cx="52" cy="75" r="16" fill="#44920e" opacity="0.9"/>
-                  <circle cx="157" cy="64" r="20" fill="#4e9020" opacity="0.9"/>
-                  <circle cx="165" cy="54" r="13" fill="#58a224" opacity="0.85"/>
-                  <circle cx="62" cy="38" r="18" fill="#449010" opacity="0.9"/>
-                  <circle cx="140" cy="32" r="16" fill="#50a020" opacity="0.9"/>
-                  <circle cx="102" cy="27" r="24" fill="#4a9818" opacity="0.95"/>
-                  <circle cx="112" cy="18" r="16" fill="#56aa22" opacity="0.9"/>
-                </g>
-                <g>
-                  <circle class="bonsai-petal" cx="55" cy="72" r="5" fill="#f2e28a" opacity="0.85" style="animation-delay:.1s"/>
-                  <circle class="bonsai-petal" cx="68" cy="65" r="4" fill="#fff8ea" opacity="0.8"  style="animation-delay:.2s"/>
-                  <circle class="bonsai-petal" cx="75" cy="80" r="5" fill="#f2e28a" opacity="0.85" style="animation-delay:.3s"/>
-                  <circle class="bonsai-petal" cx="100" cy="16" r="5" fill="#f2e28a" opacity="0.85" style="animation-delay:.4s"/>
-                  <circle class="bonsai-petal" cx="115" cy="10" r="4" fill="#fff8ea" opacity="0.8"  style="animation-delay:.5s"/>
-                  <circle class="bonsai-petal" cx="125" cy="22" r="5" fill="#f2e28a" opacity="0.85" style="animation-delay:.6s"/>
-                  <circle class="bonsai-petal" cx="148" cy="54" r="5" fill="#f2e28a" opacity="0.85" style="animation-delay:.7s"/>
-                  <circle class="bonsai-petal" cx="162" cy="44" r="4" fill="#fff8ea" opacity="0.8"  style="animation-delay:.8s"/>
-                  <circle class="bonsai-petal" cx="170" cy="60" r="5" fill="#f2e28a" opacity="0.85" style="animation-delay:.9s"/>
-                  <circle class="bonsai-petal" cx="138" cy="26" r="4" fill="#f2e28a" opacity="0.85" style="animation-delay:1.0s"/>
-                  <circle class="bonsai-petal" cx="58" cy="30" r="4" fill="#f2e28a" opacity="0.85" style="animation-delay:1.1s"/>
-                </g>
-              </g>
-            </svg>
+          <div class="portal-demo product-frame reveal-media">
+            <div class="portal-stage">
+              <img class="portal-bg" src="assets/sylviae/deep-focus-bg.jpg" alt="Sylviae's fixed Focus Mode space — a calm, softly lit illustrated room" loading="lazy" decoding="async">
+              <div class="portal-glow" aria-hidden="true"></div>
+              <div class="portal-timer">
+                <span class="portal-timer-digits">25:00</span>
+                <span class="portal-timer-label">Focus</span>
+              </div>
+              <img class="portal-companion is-a" src="assets/sylviae/companion-calm.png" alt="Sylviae, a green fox-dragon companion, resting quietly in Focus Mode" loading="lazy" decoding="async">
+              <img class="portal-companion is-b" src="assets/sylviae/companion-sleepy.png" alt="" loading="lazy" decoding="async">
+              <img class="portal-companion is-c" src="assets/sylviae/companion-happy.png" alt="" loading="lazy" decoding="async">
+            </div>
           </div>
         </div>
       </section>
@@ -2813,7 +2447,7 @@
 
         <div class="offer-layout">
           <article class="price-card">
-            <h3 style="font-family:var(--font-display); font-size:22px;">Toki Desktop for Windows</h3>
+            <h3 style="font-family:var(--font-display); font-size:22px;">Sylviae Desktop for Windows</h3>
             <div class="price-big">$0 <small>/ free beta</small></div>
 
             <ul class="checklist">
@@ -2836,13 +2470,13 @@
           <!-- ─── 13. FAQ ACCORDION ────────────────────────────────────────── -->
           <div class="faq" id="faq" aria-label="Frequently Asked Questions">
             <details open>
-              <summary>What is Toki?</summary>
-              <p>Toki is a calm Windows desktop focus workspace that combines your timer, tasks, distraction blocking, focus audio, and calendar integrations into one quiet application.</p>
+              <summary>What is Sylviae?</summary>
+              <p>Sylviae is a calm Windows desktop focus workspace that combines your timer, tasks, distraction blocking, focus audio, and calendar integrations into one quiet application.</p>
             </details>
 
             <details>
-              <summary>Is Toki just a Pomodoro timer?</summary>
-              <p>No. Toki brings together a focus timer, task context, distraction controls, ambient audio, and task imports so you can enter work without switching apps.</p>
+              <summary>Is Sylviae just a Pomodoro timer?</summary>
+              <p>No. Sylviae brings together a focus timer, task context, distraction controls, ambient audio, and task imports so you can enter work without switching apps.</p>
             </details>
 
             <details>
@@ -2852,17 +2486,17 @@
 
             <details>
               <summary>Do I need an account?</summary>
-              <p>No account is required to download Toki or use its core features. Integration credentials for Google Calendar, Notion, and Todoist are stored locally using Windows secure storage.</p>
+              <p>No account is required to download Sylviae or use its core features. Integration credentials for Google Calendar, Notion, and Todoist are stored locally using Windows secure storage.</p>
             </details>
 
             <details>
               <summary>Which operating systems are supported?</summary>
-              <p>Toki is currently built for Windows 64-bit desktop systems.</p>
+              <p>Sylviae is currently built for Windows 64-bit desktop systems.</p>
             </details>
 
             <details>
-              <summary>Why does Windows ask for administrator permission?</summary>
-              <p>Toki requests Windows UAC administrator elevation on launch because modifying hosts-file DNS rules requires system-level permissions on Windows.</p>
+              <summary>Why does Windows ask for permission on launch?</summary>
+              <p>Blocking a website only works if it's enforced by Windows itself, not just inside your browser. That's why Sylviae asks for a one-time system permission — the same kind of prompt you'd see installing any app that manages your network or firewall.</p>
             </details>
 
             <details>
@@ -2877,7 +2511,7 @@
       <section class="shell" id="final">
         <div class="reveal" style="padding: clamp(40px, 5vw, 64px); border:1px solid var(--border-quiet); border-radius:16px; background:linear-gradient(180deg, var(--surface), var(--surface-2)); box-shadow: 0 24px 48px rgba(24, 48, 32, 0.35); display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
           <div>
-            <span class="kicker">Toki desktop</span>
+            <span class="kicker">Sylviae desktop</span>
             <h2>Stop preparing to focus. Just enter it.</h2>
             <p style="color:var(--muted); margin-top:8px;">Download the free beta for Windows and start your next protected focus session.</p>
           </div>
@@ -2893,22 +2527,24 @@
     <!-- ─── FOOTER ─────────────────────────────────────────────────────────── -->
     <footer class="shell">
       <div class="footer-inner">
-        <a class="brand" href="#top" aria-label="Toki home">
-          <img src="assets/icon.png" alt="Toki icon" width="24" height="24">
-          <span>TOKI</span>
+        <a class="brand" href="#top" aria-label="Sylviae home">
+          <img src="assets/icon.png" alt="Sylviae icon" width="24" height="24">
+          <span>SYLVIAE</span>
         </a>
 
         <nav class="footer-links" aria-label="Footer links">
           <a href="#workflow">Product</a>
           <a href="#audio">Features</a>
+          <a href="#compare">Compare</a>
           <a href="#privacy">Privacy</a>
+          <a href="#focusmode">Focus Mode</a>
           <a href="#offer">Pricing</a>
           <a href="#faq">FAQ</a>
           <a href="https://github.com/JGuilherme2005/Toki-Landing/releases/download/v1.0.0/toki-setup-1.0.0.exe">Download</a>
         </nav>
 
         <p style="font-family:var(--font-mono); font-size:12px; color:var(--muted);">
-          &copy; 2026 Toki &middot; Windows desktop focus workspace
+          &copy; 2026 Sylviae &middot; Windows desktop focus workspace
         </p>
       </div>
     </footer>
@@ -2942,84 +2578,6 @@
         activeBtn.setAttribute('aria-selected', 'true');
       }
     }
-
-    // ─── Live hero timer — real countdown mock, mirrors the Toki app ──
-    (function () {
-      var startBtn = document.getElementById('liveStartBtn');
-      var digits = document.getElementById('liveDigits');
-      var label = document.getElementById('liveLabel');
-      var progress = document.getElementById('liveProgress');
-      var tabs = document.querySelectorAll('.live-tab');
-      if (!startBtn || !digits || !progress) return;
-
-      var circumference = 2 * Math.PI * 76; // 477.52
-      var mode = { minutes: 25, name: 'Focus' };
-      var remaining = mode.minutes * 60;
-      var totalSecs = remaining;
-      var interval = null;
-
-      function format(secs) {
-        var m = Math.floor(secs / 60);
-        var s = secs % 60;
-        return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
-      }
-
-      function paint() {
-        digits.textContent = format(remaining);
-        var pct = 1 - (remaining / totalSecs);
-        progress.style.strokeDashoffset = String(circumference * (1 - pct));
-      }
-
-      function reset() {
-        remaining = mode.minutes * 60;
-        totalSecs = remaining;
-        progress.style.strokeDashoffset = String(circumference);
-        digits.textContent = format(remaining);
-      }
-
-      function tick() {
-        if (remaining <= 0) {
-          clearInterval(interval);
-          interval = null;
-          startBtn.textContent = 'Start ' + mode.name;
-          startBtn.classList.remove('running');
-          return;
-        }
-        remaining -= 1;
-        paint();
-      }
-
-      startBtn.addEventListener('click', function () {
-        if (interval) {
-          clearInterval(interval);
-          interval = null;
-          startBtn.textContent = 'Resume';
-          startBtn.classList.remove('running');
-        } else {
-          if (remaining <= 0) reset();
-          interval = setInterval(tick, 1000);
-          startBtn.textContent = 'Pause';
-          startBtn.classList.add('running');
-        }
-      });
-
-      tabs.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          tabs.forEach(function (b) { b.classList.remove('active'); });
-          btn.classList.add('active');
-          mode.minutes = parseInt(btn.getAttribute('data-minutes'), 10) || 25;
-          mode.name = btn.textContent.trim();
-          if (label) label.textContent = mode.name;
-          if (interval) { clearInterval(interval); interval = null; }
-          reset();
-          startBtn.textContent = 'Start ' + mode.name;
-          startBtn.classList.remove('running');
-        });
-      });
-
-      // Paint initial state
-      progress.style.strokeDashoffset = String(circumference);
-    })();
 
     // Section reveal on scroll — respects prefers-reduced-motion via CSS.
     (function () {

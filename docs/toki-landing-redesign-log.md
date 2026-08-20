@@ -1,3 +1,14 @@
+## Rebrand — Toki → Sylviae
+
+- **Date**: 2026-08-20
+- **Official product name**: Sylviae
+- **Official domain**: https://www.sylviae.space/
+- **Stable technical identifiers retained**: GitHub repo slug `Toki-Landing`, GitHub Pages base path `/Toki-Landing/`, release asset filename `toki-setup-1.0.0.exe`, app repo URL `github.com/JGuilherme2005/Toki`. These are infrastructure/URLs, not user-facing branding, and changing them would break existing links or the download button.
+- **Known gap**: `assets/toki-poster.png` (the OG/Twitter social-share image) still shows the old "toki" wordmark — no approved Sylviae replacement exists yet. See project follow-ups.
+- The entries below predate the rebrand and describe the redesign process while the product was still named Toki. They are left as written for historical accuracy.
+
+---
+
 # 🌿 Toki Landing Page Redesign — Master Log
 
 - **Data**: 06/08/2026 às 11:36 (Horário de Brasília)

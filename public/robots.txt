@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jguilherme2005.github.io/Toki-Landing/sitemap.xml
+Sitemap: https://www.sylviae.space/sitemap.xml

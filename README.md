@@ -1,6 +1,6 @@
-# TOKI Landing
+# Sylviae Landing
 
-Public marketing website for [TOKI](https://github.com/JGuilherme2005/Toki), the Windows desktop focus application.
+Public marketing website for [Sylviae](https://github.com/JGuilherme2005/Toki), the Windows desktop focus application.
 
 This repository is operationally independent from the Electron application. It contains the landing source, website media, SEO metadata, optional analytics configuration, and GitHub Pages deployment workflow.
 
@@ -32,7 +32,9 @@ Analytics are disabled by default. To enable Plausible without committing creden
 
 ## Deployment
 
-Pushes to `main` run `.github/workflows/deploy-pages.yml`. Enable GitHub Pages with **Source: GitHub Actions** in the repository settings. The configured canonical URL is:
+The canonical production site is **https://www.sylviae.space/**.
+
+Pushes to `main` also run `.github/workflows/deploy-pages.yml`, which publishes a GitHub Pages mirror. Enable GitHub Pages with **Source: GitHub Actions** in the repository settings. That mirror's URL is:
 
 https://jguilherme2005.github.io/Toki-Landing/
 

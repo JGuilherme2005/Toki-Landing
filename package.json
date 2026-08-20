@@ -1,8 +1,8 @@
 {
-  "name": "toki-landing",
+  "name": "sylviae-landing",
   "version": "1.0.0",
   "private": true,
-  "description": "Public marketing website for the TOKI desktop focus application.",
+  "description": "Public marketing website for the Sylviae desktop focus application.",
   "type": "module",
   "scripts": {
     "dev": "vite",

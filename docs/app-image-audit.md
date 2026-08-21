@@ -1,40 +1,54 @@
 # Toki App Image Audit & Screenshot Selection
 
-**Date:** August 6, 2026  
-**Source Directory:** `C:\Users\regob\Downloads\Projetos_de_Codigo\Toki-Landing\app-images`  
-**Target Optimization Folder:** `C:\Users\regob\Downloads\Projetos_de_Codigo\Toki-Landing\assets\app\`
+**Date:** August 6, 2026 (v1) · **Updated:** August 21, 2026 (v2)
+**v2 Source Directory:** `C:\Users\regob\Downloads\Projetos_de_Codigo\Toki-Landing\asserts_2.0`
+**Target Folder:** `assets/app/`
 
 ---
 
-## 1. Asset Inventory
+## 1. v2 Asset Inventory (current)
 
-| Filename | App View Shown | Dimensions | Size | Visible State | Private Info | Suitable for Desktop | Suitable for Mobile | Trimming Needed | Target Landing Section |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| `workspace .png` | **Main Workspace & Focus Timer** | 1422 $\times$ 932 px | 54.2 KB | Active focus session with timer (25:00), active task selection, navigation sidebar, and Bonsai tree. | None | **Yes (Hero & Core Workflow)** | Yes (Responsive framing) | No | **Hero Visual & Core Workflow** |
-| `Deepfocus .png` | **Deep Focus Audio Engine** | 1407 $\times$ 935 px | 78.2 KB | Deep Focus tab open with ambient soundscape selection, Spotify & YouTube audio sources, timer sync toggle. | None | **Yes (Deep Focus Section)** | Yes | No | **Deep Focus Audio Section** |
-| `appblock.png` | **Desktop Distraction Blocker** | 1437 $\times$ 911 px | 52.8 KB | Blocker interface showing website rules, executable app blocking, and active session protection status. | None | **Yes (Distraction Blocker)** | Yes | No | **Distraction Blocker Section** |
-| `calendar.png` | **Tasks & Integrations** | 1447 $\times$ 930 px | 69.2 KB | Integrations & Calendar view showing Google Calendar, Notion, and Todoist connected sources and imported tasks. | None | **Yes (Tasks & Integrations)** | Yes | No | **Tasks & Cloud Integrations Section** |
-| `settings.png` | **Settings & Desktop Continuity** | 1446 $\times$ 927 px | 50.0 KB | Preferences panel with custom timer durations, autostart toggle, system tray settings, and local data paths. | None | **Yes (Desktop Continuity)** | Yes | No | **Progress & Desktop Continuity Section** |
+Full-window captures of the rebranded Sylviae app (green theme, icon-tab nav), no title bar chrome, ~1913×1076px each.
 
----
+| Filename (source) | Landing filename | App View Shown | Dimensions | Category / Target Section |
+| :--- | :--- | :--- | :--- | :--- |
+| `workspace.png` | `assets/app/workspace.png` | Focus timer + Focus List + Today's Progress | 1913×1072 | **Hero visual** & **Core workflow** (`#top`, `#workflow`) |
+| `appblocklist.png` | `assets/app/appblock.png` | App Blocklist (.exe) + Site Blocklist, Secure DNS notice | 1913×1076 | **Distraction Blocker** (`#blocker`) |
+| `deepfocus_music.png` | `assets/app/deepfocus.png` | Deep Focus — offline library (Focus Library tab), current sound + volume, playback mode | 1918×1077 | **Deep Focus audio**, "Offline library" tab (`#audio`) |
+| `deepfocus_music_yt.png` | `assets/app/deepfocus-youtube.png` | Deep Focus — YouTube source playing, Spotify connect CTA, saved audio list | 1915×1078 | **Deep Focus audio**, "YouTube" tab (`#audio`) |
+| `calendar_steak_consistency .png` | `assets/app/streak.png` | Streak & Consistency — current/best streak, productive days, monthly focus calendar | 1915×1076 | **Streak & Consistency** (new section, `#streak`) |
+| `settings.png` | `assets/app/settings.png` | Timer Settings, System toggles, Notification Type, About | 1912×1077 | **Desktop Continuity / Settings** (`#continuity`) |
+| `intregations.png` (added later) | `assets/app/integrations.png` | "Bring into Sylviae" modal — Notion, Todoist, Google Calendar connected, Google Tasks/Obsidian coming soon | 1915×1077 | **Tasks & Cloud Integrations** (`#integrations`) |
 
-## 2. Derivative Assets Created
+### Resolved gap
 
-The original files in `app-images/` remain 100% untouched. Optimized web derivatives are stored in `assets/app/`:
-
-1. `assets/app/workspace.png` (from `workspace .png`)
-2. `assets/app/deepfocus.png` (from `Deepfocus .png`)
-3. `assets/app/appblock.png` (from `appblock.png`)
-4. `assets/app/calendar.png` (from `calendar.png`)
-5. `assets/app/settings.png` (from `settings.png`)
+`#integrations` previously used `assets/app/calendar.png`, which actually showed the Streak & Consistency screen, not the integrations modal — a mismatch carried over from v1. It's now fixed with `assets/app/integrations.png` (correct content, current "Sylviae" branding, no title-bar chrome — consistent with every other screenshot on the page). The stale `calendar.png` and the off-brand `toki-intregations.png` (old "Toki" title, modal-over-blurred-background) have been deleted from `assets/app/`.
 
 ---
 
-## 3. Section Assignment Strategy
+## 2. v2 Section Assignment Strategy
 
-- **Hero Section**: `assets/app/workspace.png` — Hero mockup showing the active desktop focus environment in full high-resolution detail above the fold.
-- **Core Focus Workflow**: `assets/app/workspace.png` — Step-by-step interactive workflow demonstration (Choose task $\rightarrow$ Enter Focus $\rightarrow$ Protect session $\rightarrow$ Desktop continuity).
-- **Deep Focus Audio Section**: `assets/app/deepfocus.png` — Large dedicated section showing packaged ambient soundscapes, Spotify & YouTube timer sync, and continuous playback options.
-- **Desktop Distraction Blocker**: `assets/app/appblock.png` — System-level process killing, hosts DNS blocking, and browser tab protection.
-- **Tasks & Cloud Integrations**: `assets/app/calendar.png` — Interactive tabbed showcase demonstrating 1-click import from Google Calendar, Todoist, and 2-way sync with Notion.
-- **Progress & Desktop Continuity**: `assets/app/settings.png` — Demonstrating system tray operation, background persistence, and local preferences.
+- **Hero + Core workflow**: `workspace.png` — timer, focus list, and today's progress in one frame; reused in both the hero and the Workspace tab of the integrations showcase.
+- **Deep Focus audio**: two-tab showcase — `deepfocus.png` (offline library, default tab) and `deepfocus-youtube.png` (YouTube source, second tab) — replacing the single static image.
+- **Distraction Blocker**: `appblock.png` — app + site blocklists and the Secure DNS status row.
+- **Streak & Consistency** *(new section, inserted between Desktop Continuity and the comparison table)*: `streak.png` — current streak, best streak, productive days this month, and the monthly focus calendar.
+- **Desktop Continuity**: `settings.png` — timer defaults, background/notification toggles, persisted across sessions.
+
+---
+
+## 3. v1 History (superseded)
+
+<details>
+<summary>Original August 6, 2026 audit</summary>
+
+| Filename | App View Shown | Dimensions | Size | Target Landing Section |
+| :--- | :--- | :--- | :--- | :--- |
+| `workspace .png` | Main Workspace & Focus Timer | 1422×932 | 54.2 KB | Hero Visual & Core Workflow |
+| `Deepfocus .png` | Deep Focus Audio Engine | 1407×935 | 78.2 KB | Deep Focus Audio Section |
+| `appblock.png` | Desktop Distraction Blocker | 1437×911 | 52.8 KB | Distraction Blocker Section |
+| `calendar.png` | Tasks & Integrations | 1447×930 | 69.2 KB | Tasks & Cloud Integrations Section |
+| `settings.png` | Settings & Desktop Continuity | 1446×927 | 50.0 KB | Progress & Desktop Continuity Section |
+
+The originals in `app-images/` remain untouched; v1 derivatives lived in `assets/app/` under the same names now overwritten by v2.
+
+</details>

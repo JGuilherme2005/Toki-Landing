@@ -1828,7 +1828,8 @@
           <img class="app-screenshot"
                src="assets/app/workspace.png"
                alt="Sylviae workspace showing the focus timer and today's tasks"
-               width="1422" height="932"
+               width="1913" height="1072"
+               style="aspect-ratio: 1913 / 1072;"
                loading="lazy" decoding="async">
         </div>
       </div>
@@ -1936,16 +1937,36 @@
             </div>
           </div>
 
-          <div class="product-frame reveal-media">
-            <div class="app-window-header" aria-hidden="true">
-              <span class="window-title">SYLVIAE — Deep Focus</span>
+          <div class="reveal-media">
+            <div class="tab-buttons" role="tablist" aria-label="Deep Focus audio source previews">
+              <button type="button" class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-audio-library" onclick="switchTab(this, 'audio-library')">Offline library</button>
+              <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-audio-youtube" onclick="switchTab(this, 'audio-youtube')">YouTube</button>
             </div>
-            <img class="app-screenshot"
-                 src="assets/app/deepfocus.png"
-                 alt="Sylviae Deep Focus tab showing offline focus tracks, Spotify and YouTube sources, and playback settings"
-                 width="1407" height="935"
-                 loading="lazy"
-                 decoding="async">
+
+            <div id="tab-audio-library" class="tab-content active product-frame" role="tabpanel">
+              <div class="app-window-header" aria-hidden="true">
+                <span class="window-title">SYLVIAE — Deep Focus</span>
+              </div>
+              <img class="app-screenshot"
+                   src="assets/app/deepfocus.png"
+                   alt="Sylviae Deep Focus tab showing the offline focus library with tracks from Kevin MacLeod and Scott Buckley"
+                   width="1918" height="1077"
+                   style="aspect-ratio: 1918 / 1077;"
+                   loading="lazy"
+                   decoding="async">
+            </div>
+            <div id="tab-audio-youtube" class="tab-content product-frame" role="tabpanel" hidden>
+              <div class="app-window-header" aria-hidden="true">
+                <span class="window-title">SYLVIAE — Deep Focus</span>
+              </div>
+              <img class="app-screenshot"
+                   src="assets/app/deepfocus-youtube.png"
+                   alt="Sylviae Deep Focus tab playing a YouTube focus track, synced to pause and resume with the timer"
+                   width="1915" height="1078"
+                   style="aspect-ratio: 1915 / 1078;"
+                   loading="lazy"
+                   decoding="async">
+            </div>
           </div>
         </div>
       </section>
@@ -1960,7 +1981,8 @@
             <img class="app-screenshot"
                  src="assets/app/appblock.png"
                  alt="Sylviae Distraction Blocker showing site rules, app blocking lists, and enforcement controls"
-                 width="1437" height="911"
+                 width="1913" height="1076"
+                 style="aspect-ratio: 1913 / 1076;"
                  loading="lazy"
                  decoding="async">
           </div>
@@ -2006,8 +2028,8 @@
         </div>
 
         <div class="tab-buttons reveal" role="tablist" aria-label="Integration previews">
-          <button type="button" class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-integrations" onclick="switchTab('integrations')">Bring into Sylviae</button>
-          <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-workspace" onclick="switchTab('workspace')">Workspace</button>
+          <button type="button" class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-integrations" onclick="switchTab(this, 'integrations')">Bring into Sylviae</button>
+          <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-workspace" onclick="switchTab(this, 'workspace')">Workspace</button>
         </div>
 
         <!-- The Integrations screen is a single hub in Sylviae — one modal shows
@@ -2018,10 +2040,10 @@
             <span class="window-title">SYLVIAE — Bring into Sylviae</span>
           </div>
           <img class="app-screenshot"
-               src="assets/app/calendar.png"
-               alt="Sylviae Bring into Sylviae view showing Google Calendar, Notion, and Todoist imported into today's focus list"
-               width="1916" height="1077"
-               style="aspect-ratio: 1916 / 1077;"
+               src="assets/app/integrations.png"
+               alt="Sylviae Bring into Sylviae modal showing Notion, Todoist, and Google Calendar connected and ready to import"
+               width="1915" height="1077"
+               style="aspect-ratio: 1915 / 1077;"
                loading="lazy"
                decoding="async">
         </div>
@@ -2032,7 +2054,8 @@
           <img class="app-screenshot"
                src="assets/app/workspace.png"
                alt="Sylviae Workspace showing local focus tasks"
-               width="1422" height="932"
+               width="1913" height="1072"
+               style="aspect-ratio: 1913 / 1072;"
                loading="lazy"
                decoding="async">
         </div>
@@ -2092,9 +2115,53 @@
             <img class="app-screenshot"
                  src="assets/app/settings.png"
                  alt="Sylviae settings screen showing preferences that persist across sessions"
-                 width="1446" height="927"
+                 width="1912" height="1077"
+                 style="aspect-ratio: 1912 / 1077;"
                  loading="lazy"
                  decoding="async">
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── 8.4 STREAK & CONSISTENCY ─────────────────────────────────────── -->
+      <section class="shell" id="streak" aria-labelledby="streak-title">
+        <div class="feature-deep-grid">
+          <div class="product-frame reveal-media">
+            <div class="app-window-header" aria-hidden="true">
+              <span class="window-title">SYLVIAE — Streak &amp; Consistency</span>
+            </div>
+            <img class="app-screenshot"
+                 src="assets/app/streak.png"
+                 alt="Sylviae Streak & Consistency screen showing current streak, best streak, monthly focus calendar, and today's focus time"
+                 width="1915" height="1076"
+                 style="aspect-ratio: 1915 / 1076;"
+                 loading="lazy"
+                 decoding="async">
+          </div>
+
+          <div class="reveal">
+            <span class="kicker">Streak &amp; consistency</span>
+            <h2 id="streak-title">See your consistency, not just today's session.</h2>
+            <p style="color:var(--ink-dim); margin-top:16px; font-size:17px; line-height:1.6;">
+              A monthly calendar shows which days you kept the streak alive, so showing up stays visible beyond a single focus session.
+            </p>
+
+            <div class="feature-list reveal-stagger">
+              <div class="feature-point">
+                <h4>Current and best streak</h4>
+                <p>Track consecutive focus days alongside your all-time best.</p>
+              </div>
+
+              <div class="feature-point">
+                <h4>Monthly focus calendar</h4>
+                <p>A day-by-day view of no focus, some focus, and goal-met days.</p>
+              </div>
+
+              <div class="feature-point">
+                <h4>Daily focus time</h4>
+                <p>See today's accumulated focus time at a glance.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -2553,25 +2620,29 @@
 
   <script>
     // Tab switching for Integrations
-    function switchTab(tabName) {
-      document.querySelectorAll('.tab-btn').forEach(function (btn) {
+    function switchTab(triggerBtn, tabName) {
+      // Scoped to the enclosing section so independent tab groups (Deep
+      // Focus, Tasks & integrations) don't hide each other's panels.
+      var scope = triggerBtn.closest('section') || document;
+
+      scope.querySelectorAll('.tab-btn').forEach(function (btn) {
         btn.classList.remove('active');
         btn.setAttribute('aria-selected', 'false');
       });
-      document.querySelectorAll('.tab-content').forEach(function (content) {
+      scope.querySelectorAll('.tab-content').forEach(function (content) {
         content.classList.remove('active');
         content.setAttribute('hidden', '');
       });
 
-      var targetContent = document.getElementById('tab-' + tabName) || document.getElementById('tab-integrations');
+      var targetContent = scope.querySelector('#tab-' + tabName);
       if (targetContent) {
         targetContent.removeAttribute('hidden');
         // Next tick so the transition applies from the reset state
         requestAnimationFrame(function () { targetContent.classList.add('active'); });
       }
 
-      var activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(function (btn) {
-        return btn.getAttribute('onclick').includes(tabName);
+      var activeBtn = Array.from(scope.querySelectorAll('.tab-btn')).find(function (btn) {
+        return btn.getAttribute('onclick').includes("'" + tabName + "'");
       });
       if (activeBtn) {
         activeBtn.classList.add('active');

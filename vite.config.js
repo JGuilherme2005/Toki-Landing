@@ -8,6 +8,12 @@ export default defineConfig({
   base: isVercel ? '/' : '/Toki-Landing/',
   build: {
     outDir: 'dist',
-    emptyOutDir: true
+    emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: 'index.html',
+        authCallback: 'auth/callback/index.html'
+      }
+    }
   }
 });

@@ -2,12 +2,30 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { buildAppCallbackUrl, getCallbackState } from '../src/auth-callback.js';
 
-test('recognizes successful email confirmation and keeps its callback payload for Sylviae', () => {
-  const search = '?token_hash=a%2Fb%2Bc&type=email';
+test('recognizes a verified signup return and keeps its callback payload for Sylviae', () => {
+  const search = '?flow=signup&code=a%2Fb%2Bc';
   const state = getCallbackState(search);
 
   assert.deepEqual(state, { kind: 'confirmed', canOpenApp: true });
   assert.equal(buildAppCallbackUrl(search), `toki://auth-callback${search}`);
+});
+
+test('does not say confirmed for an unverified email token', () => {
+  assert.deepEqual(getCallbackState('?token_hash=opaque&type=email'), {
+    kind: 'ready',
+    canOpenApp: true
+  });
+});
+
+test('does not say confirmed when a signup verification fails', () => {
+  assert.deepEqual(getCallbackState('?flow=signup&error_code=otp_expired'), {
+    kind: 'expired',
+    canOpenApp: false
+  });
+  assert.deepEqual(getCallbackState('?flow=signup'), {
+    kind: 'error',
+    canOpenApp: false
+  });
 });
 
 test('recognizes a password recovery link', () => {

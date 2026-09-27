@@ -28,11 +28,20 @@ test('does not say confirmed when a signup verification fails', () => {
   });
 });
 
-test('recognizes a password recovery link', () => {
+test('does not claim a raw password recovery token was verified', () => {
   assert.deepEqual(getCallbackState('?token_hash=opaque&type=recovery'), {
+    kind: 'ready',
+    canOpenApp: true
+  });
+});
+
+test('recognizes a verified PKCE recovery redirect without claiming the password changed', () => {
+  assert.deepEqual(getCallbackState('?flow=recovery&code=one-time-code'), {
     kind: 'recovery',
     canOpenApp: true
   });
+  assert.deepEqual(getCallbackState('?flow=recovery'), { kind: 'error', canOpenApp: false });
+  assert.deepEqual(getCallbackState('?flow=recovery&error_code=otp_expired'), { kind: 'expired', canOpenApp: false });
 });
 
 test('recognizes expired links without exposing the provider error', () => {
@@ -61,6 +70,8 @@ test('only the untyped Google PKCE callback attempts to open Sylviae automatical
   assert.equal(shouldAutoOpenApp('', '#code=opaque'), true);
   assert.equal(shouldAutoOpenApp('?code=opaque&type=recovery'), false);
   assert.equal(shouldAutoOpenApp('?code=opaque&type=email'), false);
+  assert.equal(shouldAutoOpenApp('?flow=signup&code=opaque'), false);
+  assert.equal(shouldAutoOpenApp('?flow=recovery&code=opaque'), false);
   assert.equal(shouldAutoOpenApp('?token_hash=opaque&type=recovery'), false);
   assert.equal(shouldAutoOpenApp('?error=access_denied&code=opaque'), false);
   assert.equal(shouldAutoOpenApp('?access_token=one&refresh_token=two'), false);

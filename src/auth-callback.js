@@ -29,17 +29,19 @@ export function getCallbackState(search = '', hash = '') {
   }
 
   const type = get('type').toLowerCase();
-  const signupReturn = query.get('flow') === 'signup';
+  const flow = (query.get('flow') || '').toLowerCase();
   const validCode = has('code');
   const validTokenHash = has('token_hash') && ['email', 'signup', 'recovery', 'magiclink', 'email_change'].includes(type);
   const validTokenPair = has('access_token') && has('refresh_token');
   const canOpenApp = validCode || validTokenHash || validTokenPair;
 
   if (!canOpenApp) return { kind: 'error', canOpenApp: false };
-  if (type === 'recovery') return { kind: 'recovery', canOpenApp: true };
+  if ((type === 'recovery' || flow === 'recovery') && (validCode || validTokenPair)) {
+    return { kind: 'recovery', canOpenApp: true };
+  }
   // Only a Supabase return carrying a session/code can show signup success.
   // A token_hash is still unverified and must never be presented as confirmed.
-  if (signupReturn && (validCode || validTokenPair)) return { kind: 'confirmed', canOpenApp: true };
+  if (flow === 'signup' && (validCode || validTokenPair)) return { kind: 'confirmed', canOpenApp: true };
   if (validCode) return { kind: 'ready', canOpenApp: true };
   if (validTokenHash || validTokenPair) return { kind: 'ready', canOpenApp: true };
   return { kind: 'error', canOpenApp: false };
@@ -60,7 +62,7 @@ export function shouldAutoOpenApp(search = '', hash = '') {
 
 const copy = {
   confirmed: ['Your email is confirmed.', 'Return to Sylviae to finish signing in with your new account.'],
-  recovery: ['Password reset link ready.', 'Open Sylviae to continue resetting your password.'],
+  recovery: ['Your reset link is verified.', 'Open Sylviae to choose a new password. Your password has not changed yet.'],
   ready: ['Your Sylviae link is ready.', 'Open Sylviae to finish this step.'],
   expired: ['This link has expired.', 'Request a new one in Sylviae, then open the fresh link from your email.'],
   error: ['We couldn’t complete this link.', 'Return to Sylviae and request a fresh link. If the problem continues, try opening the newest email.']

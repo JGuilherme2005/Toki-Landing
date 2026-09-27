@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { buildAppCallbackUrl, getCallbackState } from '../src/auth-callback.js';
+import { buildAppCallbackUrl, getCallbackState, shouldAutoOpenApp } from '../src/auth-callback.js';
 
 test('recognizes successful email confirmation and keeps its callback payload for Sylviae', () => {
   const search = '?token_hash=a%2Fb%2Bc&type=email';
@@ -36,4 +36,37 @@ test('preserves the callback query and fragment verbatim in the app link', () =>
   const hash = '#access_token=one%2Ftwo&refresh_token=three';
   assert.equal(buildAppCallbackUrl(search, hash), `toki://auth-callback${search}${hash}`);
   assert.deepEqual(getCallbackState(search, hash), { kind: 'ready', canOpenApp: true });
+});
+
+test('only the untyped Google PKCE callback attempts to open Sylviae automatically', () => {
+  assert.equal(shouldAutoOpenApp('?code=opaque'), true);
+  assert.equal(shouldAutoOpenApp('', '#code=opaque'), true);
+  assert.equal(shouldAutoOpenApp('?code=opaque&type=recovery'), false);
+  assert.equal(shouldAutoOpenApp('?code=opaque&type=email'), false);
+  assert.equal(shouldAutoOpenApp('?token_hash=opaque&type=recovery'), false);
+  assert.equal(shouldAutoOpenApp('?error=access_denied&code=opaque'), false);
+  assert.equal(shouldAutoOpenApp('?access_token=one&refresh_token=two'), false);
+});
+
+test('attempts the Google app handoff while keeping its manual button available', async () => {
+  const elements = Object.fromEntries(['title', 'message', 'open-app', 'hint'].map((id) => [id, {}]));
+  const opened = [];
+  globalThis.window = {
+    location: {
+      search: '?code=opaque',
+      hash: '',
+      assign(url) { opened.push(url); }
+    }
+  };
+  globalThis.document = { getElementById(id) { return elements[id]; } };
+
+  try {
+    await import('../src/auth-callback.js?google-handoff');
+    assert.deepEqual(opened, ['toki://auth-callback?code=opaque']);
+    assert.equal(elements['open-app'].href, opened[0]);
+    assert.equal(elements['open-app'].hidden, false);
+  } finally {
+    delete globalThis.window;
+    delete globalThis.document;
+  }
 });

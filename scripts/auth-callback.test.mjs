@@ -2,19 +2,46 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { buildAppCallbackUrl, getCallbackState, shouldAutoOpenApp } from '../src/auth-callback.js';
 
-test('recognizes successful email confirmation and keeps its callback payload for Sylviae', () => {
-  const search = '?token_hash=a%2Fb%2Bc&type=email';
+test('recognizes a verified signup return and keeps its callback payload for Sylviae', () => {
+  const search = '?flow=signup&code=a%2Fb%2Bc';
   const state = getCallbackState(search);
 
   assert.deepEqual(state, { kind: 'confirmed', canOpenApp: true });
   assert.equal(buildAppCallbackUrl(search), `toki://auth-callback${search}`);
 });
 
-test('recognizes a password recovery link', () => {
+test('does not say confirmed for an unverified email token', () => {
+  assert.deepEqual(getCallbackState('?token_hash=opaque&type=email'), {
+    kind: 'ready',
+    canOpenApp: true
+  });
+});
+
+test('does not say confirmed when a signup verification fails', () => {
+  assert.deepEqual(getCallbackState('?flow=signup&error_code=otp_expired'), {
+    kind: 'expired',
+    canOpenApp: false
+  });
+  assert.deepEqual(getCallbackState('?flow=signup'), {
+    kind: 'error',
+    canOpenApp: false
+  });
+});
+
+test('does not claim a raw password recovery token was verified', () => {
   assert.deepEqual(getCallbackState('?token_hash=opaque&type=recovery'), {
+    kind: 'ready',
+    canOpenApp: true
+  });
+});
+
+test('recognizes a verified PKCE recovery redirect without claiming the password changed', () => {
+  assert.deepEqual(getCallbackState('?flow=recovery&code=one-time-code'), {
     kind: 'recovery',
     canOpenApp: true
   });
+  assert.deepEqual(getCallbackState('?flow=recovery'), { kind: 'error', canOpenApp: false });
+  assert.deepEqual(getCallbackState('?flow=recovery&error_code=otp_expired'), { kind: 'expired', canOpenApp: false });
 });
 
 test('recognizes expired links without exposing the provider error', () => {
@@ -43,6 +70,8 @@ test('only the untyped Google PKCE callback attempts to open Sylviae automatical
   assert.equal(shouldAutoOpenApp('', '#code=opaque'), true);
   assert.equal(shouldAutoOpenApp('?code=opaque&type=recovery'), false);
   assert.equal(shouldAutoOpenApp('?code=opaque&type=email'), false);
+  assert.equal(shouldAutoOpenApp('?flow=signup&code=opaque'), false);
+  assert.equal(shouldAutoOpenApp('?flow=recovery&code=opaque'), false);
   assert.equal(shouldAutoOpenApp('?token_hash=opaque&type=recovery'), false);
   assert.equal(shouldAutoOpenApp('?error=access_denied&code=opaque'), false);
   assert.equal(shouldAutoOpenApp('?access_token=one&refresh_token=two'), false);

@@ -17,6 +17,15 @@ test('recognizes a password recovery link', () => {
   });
 });
 
+test('recognizes a verified PKCE recovery redirect without claiming the password changed', () => {
+  assert.deepEqual(getCallbackState('?flow=recovery&code=one-time-code'), {
+    kind: 'recovery',
+    canOpenApp: true
+  });
+  assert.deepEqual(getCallbackState('?flow=recovery'), { kind: 'error', canOpenApp: false });
+  assert.deepEqual(getCallbackState('?flow=recovery&error_code=otp_expired'), { kind: 'expired', canOpenApp: false });
+});
+
 test('recognizes expired links without exposing the provider error', () => {
   assert.deepEqual(getCallbackState('?error=access_denied&error_code=otp_expired&error_description=Link+expired'), {
     kind: 'expired',

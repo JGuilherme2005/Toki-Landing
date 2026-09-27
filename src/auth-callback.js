@@ -49,6 +49,15 @@ export function buildAppCallbackUrl(search = '', hash = '') {
   return `toki://auth-callback${search}${hash}`;
 }
 
+export function shouldAutoOpenApp(search = '', hash = '') {
+  const { query, fragment } = readCallbackParams(search, hash);
+  const type = query.get('type') || fragment.get('type');
+  // kiss: Google is the only current hosted callback with an untyped PKCE code.
+  return getCallbackState(search, hash).kind === 'ready'
+    && !type
+    && Boolean(query.get('code') || fragment.get('code'));
+}
+
 const copy = {
   confirmed: ['Your email is confirmed.', 'Return to Sylviae to finish signing in with your new account.'],
   recovery: ['Password reset link ready.', 'Open Sylviae to continue resetting your password.'],
@@ -67,6 +76,14 @@ if (typeof window !== 'undefined') {
   if (state.canOpenApp) {
     openApp.href = buildAppCallbackUrl(window.location.search, window.location.hash);
     openApp.hidden = false;
+    if (shouldAutoOpenApp(window.location.search, window.location.hash)) {
+      document.getElementById('hint').textContent = 'If your browser asks, allow Sylviae to open. If nothing happens, use the Open Sylviae button.';
+      try {
+        window.location.assign(openApp.href);
+      } catch {
+        // Browser protocol restrictions can block automatic opening; the button remains available.
+      }
+    }
   }
 
   if (state.kind === 'expired' || state.kind === 'error') {

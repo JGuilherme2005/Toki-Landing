@@ -28,7 +28,7 @@ body::after { opacity: .45; }
 .pond-caption { position: absolute; z-index: 2; bottom: 24px; left: 0; width: 100%; display: flex; justify-content: center; align-items: center; gap: 9px; color: var(--ink); font-size: 13px; letter-spacing: .01em; }
 .pond-caption-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 10px var(--gold); }
 .hero #proof { grid-column: 1 / -1; margin-top: 0; }
-.hero #proof::after { content: "A real focus session in Sylviae for Windows"; display: block; text-align: center; margin-top: 15px; font-size: 13px; color: var(--muted); }
+.hero-layout > .preview-note { grid-column: 1 / -1; margin: -70px auto 0; max-width: 700px; }
 
 .product-frame { border-color: var(--polish-line); border-radius: 18px; padding: 7px; background: #171c19; box-shadow: 0 30px 70px rgba(0,0,0,.28); }
 .product-frame::before { opacity: .36; }
@@ -110,10 +110,13 @@ footer { border-top: 1px solid var(--polish-line); }
   .hero-platform { font-size: 13px; }
   .pond-stage { width: min(100%, 350px); aspect-ratio: 540 / 650; }
   .hero #proof { grid-column: 1; margin-top: 12px; }
+  .hero-layout > .preview-note { grid-column: 1; margin-top: -26px; }
   .hero #proof { overflow: hidden; }
-  .hero #proof .app-screenshot { max-width: none; width: 134%; margin-left: -17%; }
-  #blocker .app-screenshot { max-width: none; width: 130%; margin-left: -15%; }
+  .hero #proof .app-screenshot { max-width: none; width: 190%; margin-left: 0; }
+  #blocker .app-screenshot { max-width: none; width: 190%; margin-left: -38%; }
   #blocker .product-frame { overflow: hidden; }
+  .focus-desktop .product-frame { overflow: hidden; }
+  .focus-desktop .app-screenshot { max-width: none; width: 135%; margin-left: -17.5%; }
   main > section { padding-block: 80px; }
   .section-head { margin-bottom: 32px; }
   .workflow-grid { grid-template-columns: 1fr 1fr; }

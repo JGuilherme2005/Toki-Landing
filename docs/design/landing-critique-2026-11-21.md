@@ -19,6 +19,8 @@ Live site, full page after scrolling through every section: [375](../screenshots
 - [Round 1 at 375](../screenshots/polish-v2/round-1/375.png) / [1440](../screenshots/polish-v2/round-1/1440.png): the video and quieter frame established the direction, but the value strip and four-step cards delayed product proof and kept the page dense.
 - [Round 2 at 375](../screenshots/polish-v2/round-2/375.png) / [1440](../screenshots/polish-v2/round-2/1440.png): removed those repeated sections and moved the blocker next to the hero. The phone section and separate comparison still repeated a long platform story.
 - [Round 3 at 375](../screenshots/polish-v2/round-3/375.png) / [1440](../screenshots/polish-v2/round-3/1440.png): enlarged narrow-screen desktop evidence, moved the comparison next to mobile status, and made detailed mobile features opt-in. The Android private-beta and no-blocking caveats remain visible.
+- [Round 4 at 375](../screenshots/polish-v2/round-4/375.png) / [1440](../screenshots/polish-v2/round-4/1440.png): after the native desktop screenshot PR merged, the dark preview windows restored product fidelity but looked too small on mobile. The running Deep Focus preview moved earlier in the story; its preview-only status remains explicit.
+- [Final at 375](../screenshots/polish-v2/after/375.png) / [1440](../screenshots/polish-v2/after/1440.png): enlarged the native Today and Blockers previews on narrow screens. The Blockers screenshot shows selected site toggles and a “Blocking ready” state; it does not show a browser error page during an enforced block.
 
 ## Constraints for implementation
 

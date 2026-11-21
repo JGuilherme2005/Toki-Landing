@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#17251d">
+  <meta name="theme-color" content="#111513">
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="referrer" content="no-referrer">
   <title>Sylviae sign-in link</title>
   <style>
     :root {
       color-scheme: dark;
-      font-family: 'Outfit', 'Segoe UI', system-ui, sans-serif;
-      background: #17251d;
-      color: #fff8ea;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #111513;
+      color: #efe9dc;
       font-synthesis: none;
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
-      --accent: #f2e28a;
-      --muted: #c4dac2;
+      --accent: #8fc27a;
+      --muted: #a3a79b;
     }
 
     * { box-sizing: border-box; }
@@ -29,17 +29,17 @@
       place-items: center;
       padding: 24px;
       background:
-        radial-gradient(ellipse at 50% 0%, rgba(82, 155, 114, .28), transparent 58%),
-        #17251d;
+        radial-gradient(ellipse at 50% 0%, rgba(143, 194, 122, .14), transparent 58%),
+        #111513;
     }
 
     main {
       width: min(100%, 440px);
       padding: clamp(28px, 8vw, 48px);
-      border: 1px solid rgba(242, 226, 138, .24);
+      border: 1px solid rgba(239, 233, 220, .12);
       border-radius: 24px;
-      background: linear-gradient(155deg, rgba(66, 130, 93, .82), rgba(39, 72, 52, .96));
-      box-shadow: 0 24px 72px rgba(5, 15, 9, .34);
+      background: #171c19;
+      box-shadow: 0 24px 72px rgba(0, 0, 0, .45);
       text-align: center;
     }
 
@@ -49,14 +49,10 @@
       height: 52px;
       place-items: center;
       margin: 0 auto 22px;
-      border-radius: 17px;
-      background: var(--accent);
-      color: #25392b;
-      font-family: Georgia, serif;
-      font-size: 31px;
-      font-weight: 700;
-      line-height: 1;
+      overflow: hidden;
     }
+
+    .mark img { width: 100%; height: 100%; object-fit: contain; }
 
     .brand {
       margin: 0 0 22px;
@@ -68,9 +64,9 @@
 
     h1 {
       margin: 0;
-      font-family: Fraunces, Georgia, serif;
+      font-family: 'Syne', system-ui, sans-serif;
       font-size: clamp(30px, 8vw, 38px);
-      font-weight: 500;
+      font-weight: 700;
       letter-spacing: -.035em;
       line-height: 1.12;
     }
@@ -93,15 +89,15 @@
       padding: 13px 20px;
       border-radius: 14px;
       background: var(--accent);
-      color: #1a241b;
+      color: #0c0f0d;
       font-size: 16px;
       font-weight: 700;
       text-decoration: none;
       transition: background-color 160ms ease, transform 160ms ease;
     }
 
-    .open-app:hover { background: #f6ea9c; transform: translateY(-1px); }
-    .open-app:focus-visible { outline: 3px solid #fff8ea; outline-offset: 4px; }
+    .open-app:hover { background: #a3d28f; transform: translateY(-1px); }
+    .open-app:focus-visible { outline: 3px solid #efe9dc; outline-offset: 4px; }
     .open-app[hidden] { display: none; }
 
     .hint { margin: 18px 0 0; font-size: 14px; }
@@ -114,7 +110,7 @@
 </head>
 <body>
   <main aria-labelledby="title">
-    <div class="mark" aria-hidden="true">s</div>
+    <div class="mark" aria-hidden="true"><img src="../../assets/icon.png" alt="" width="52" height="52"></div>
     <p class="brand">SYLVIAE</p>
     <h1 id="title">Checking your link…</h1>
     <p class="message" id="message">We’re checking your Sylviae link.</p>

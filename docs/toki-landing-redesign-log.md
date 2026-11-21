@@ -37,13 +37,13 @@ The Toki landing page has been completely refactored from an abstract manifesto 
 
 ## 🖼️ Application Screenshots & Proportions Matrix
 
-| Section | Derivative Asset Path | Screenshot Source | Display Aspect & Framing |
+| Section | Historical asset status | Screenshot source dimensions | Display Aspect & Framing |
 | :--- | :--- | :--- | :--- |
-| **Hero & Core Workflow** | `assets/app/workspace.png` | `workspace .png` (1422 × 932 px) | Natural proportions, desktop window header |
-| **Deep Focus Audio** | `assets/app/deepfocus.png` | `Deepfocus .png` (1407 × 935 px) | Natural proportions, EQ visualizer bars |
-| **Distraction Blocker** | `assets/app/appblock.png` | `appblock.png` (1437 × 911 px) | Natural proportions, collapsed tech details |
+| **Hero & Core Workflow** | Retired v1 derivative | 1422 x 932 px | Natural proportions, desktop window header |
+| **Deep Focus Audio** | Retired v1 derivative | 1407 x 935 px | Natural proportions, EQ visualizer bars |
+| **Distraction Blocker** | Retired v1 derivative | 1437 x 911 px | Natural proportions, collapsed tech details |
 | **Tasks & Integrations** | `assets/app/calendar.png` | `calendar.png` (1447 × 930 px) | Natural proportions, tab switcher |
-| **Desktop Continuity** | `assets/app/settings.png` | `settings.png` (1446 × 927 px) | Natural proportions, tray preferences |
+| **Desktop Continuity** | Retired v1 derivative | 1446 x 927 px | Natural proportions, tray preferences |
 
 ---
 

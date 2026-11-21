@@ -52,3 +52,14 @@ Full-window captures of the rebranded Sylviae app (green theme, icon-tab nav), n
 The originals in `app-images/` remain untouched; v1 derivatives lived in `assets/app/` under the same names now overwritten by v2.
 
 </details>
+
+---
+
+## v3 (2026-11-21): new native desktop app (preview)
+
+Desktop screenshots now show the new native app (Rust + GPUI) and are labelled "New native desktop app (preview)",
+because the Windows download is still the v1.0.0 Electron beta. See `docs/screenshots/native-desktop/README.md`.
+Mapping: hero + Workspace tab -> `native-today`; Focus audio tabs -> `native-sounds` / `native-deepfocus`;
+Distraction blocker -> `native-blockers`; Streak -> `native-calendar`; Settings -> `native-settings`;
+Deep Focus (focus mode) section also shows `native-deepfocus`. The "Bring into Sylviae" integrations screenshot
+has no native equivalent yet and stays the v1.0.0 beta image (labelled as such).

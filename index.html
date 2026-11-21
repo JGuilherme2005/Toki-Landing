@@ -1512,6 +1512,8 @@
     .mobile-status strong { color: var(--ink); }
     .mobile-cta { margin-top: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
     .mobile-cta-note { font-size: 13px; color: var(--muted); }
+    .preview-note { margin: 14px auto 0; max-width: 62ch; text-align: center; font-size: 13px; line-height: 1.5; color: var(--muted); }
+    .focus-desktop { margin: 56px auto 0; max-width: 820px; }
     .compare-cell-note { display: block; margin-top: 4px; font-size: 12px; color: var(--muted); }
     .phone-row:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
     @media (max-width: 640px) {
@@ -1585,19 +1587,20 @@
 
         <!-- Real product screenshot — simple, consistent with every other
              section instead of a separate fake-interactive mock. -->
-        <div class="product-frame reveal-media" id="proof" aria-label="Sylviae workspace preview">
+        <div class="product-frame reveal-media" id="proof" aria-label="Sylviae native desktop app preview">
           <div class="app-window-header" aria-hidden="true">
-            <span class="window-title">SYLVIAE — Workspace</span>
+            <span class="window-title">SYLVIAE — Today · New native desktop app (preview)</span>
           </div>
           <img class="app-screenshot"
-               src="assets/app/workspace-1280.webp"
-               srcset="assets/app/workspace-640.webp 640w, assets/app/workspace-1280.webp 1280w"
+               src="assets/app/native-today-1280.webp"
+               srcset="assets/app/native-today-640.webp 640w, assets/app/native-today-1280.webp 1280w"
                sizes="(max-width: 1250px) 92vw, 1178px"
-               alt="Sylviae workspace showing the focus timer and today's tasks"
-               width="1913" height="1072"
-               style="aspect-ratio: 1913 / 1072;"
+               alt="New native desktop app (preview): the Today screen with a 25:00 focus timer, the selected task and a list of today's tasks"
+               width="1582" height="900"
+               style="aspect-ratio: 1582 / 900;"
                loading="lazy" decoding="async">
         </div>
+        <p class="preview-note">Screenshots show the new native Sylviae desktop app, which is still a preview. The Windows download on this page is the current v1.0.0 beta, which looks different.</p>
       </div>
     </header>
 
@@ -1704,36 +1707,36 @@
           </div>
 
           <div class="reveal-media">
-            <div class="tab-buttons" role="tablist" aria-label="Deep Focus audio source previews">
-              <button type="button" class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-audio-library" onclick="switchTab(this, 'audio-library')">Offline library</button>
-              <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-audio-youtube" onclick="switchTab(this, 'audio-youtube')">YouTube</button>
+            <div class="tab-buttons" role="tablist" aria-label="New native desktop app (preview): Sounds and Deep Focus">
+              <button type="button" class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-audio-library" onclick="switchTab(this, 'audio-library')">Sounds</button>
+              <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-audio-youtube" onclick="switchTab(this, 'audio-youtube')">Deep Focus</button>
             </div>
 
             <div id="tab-audio-library" class="tab-content active product-frame" role="tabpanel">
               <div class="app-window-header" aria-hidden="true">
-                <span class="window-title">SYLVIAE — Deep Focus</span>
+                <span class="window-title">SYLVIAE — Sounds · New native desktop app (preview)</span>
               </div>
               <img class="app-screenshot"
-                   src="assets/app/deepfocus-1280.webp"
-                   srcset="assets/app/deepfocus-640.webp 640w, assets/app/deepfocus-1280.webp 1280w"
+                   src="assets/app/native-sounds-1280.webp"
+                   srcset="assets/app/native-sounds-640.webp 640w, assets/app/native-sounds-1280.webp 1280w"
                    sizes="(max-width: 1024px) 92vw, (max-width: 1250px) 46vw, 570px"
-                   alt="Sylviae Deep Focus tab showing the offline focus library with tracks from Kevin MacLeod and Scott Buckley"
-                   width="1918" height="1077"
-                   style="aspect-ratio: 1918 / 1077;"
+                   alt="New native desktop app (preview): the Sounds screen with a field to paste a YouTube playlist link and saved playlists that open in the browser"
+                   width="1582" height="590"
+                   style="aspect-ratio: 1582 / 590;"
                    loading="lazy"
                    decoding="async">
             </div>
             <div id="tab-audio-youtube" class="tab-content product-frame" role="tabpanel" hidden>
               <div class="app-window-header" aria-hidden="true">
-                <span class="window-title">SYLVIAE — Deep Focus</span>
+                <span class="window-title">SYLVIAE — Deep Focus · New native desktop app (preview)</span>
               </div>
               <img class="app-screenshot"
-                   src="assets/app/deepfocus-youtube-1280.webp"
-                   srcset="assets/app/deepfocus-youtube-640.webp 640w, assets/app/deepfocus-youtube-1280.webp 1280w"
+                   src="assets/app/native-deepfocus-1280.webp"
+                   srcset="assets/app/native-deepfocus-640.webp 640w, assets/app/native-deepfocus-1280.webp 1280w"
                    sizes="(max-width: 1024px) 92vw, (max-width: 1250px) 46vw, 570px"
-                   alt="Sylviae Deep Focus tab playing a YouTube focus track, synced to pause and resume with the timer"
-                   width="1915" height="1078"
-                   style="aspect-ratio: 1915 / 1078;"
+                   alt="New native desktop app (preview): Deep Focus in full screen, a frog reading on a lily pad at night with the task name, an 18:23 countdown and Pause, Skip and End session buttons"
+                   width="1920" height="1080"
+                   style="aspect-ratio: 1920 / 1080;"
                    loading="lazy"
                    decoding="async">
             </div>
@@ -1746,15 +1749,15 @@
         <div class="feature-deep-grid">
           <div class="product-frame reveal-media">
             <div class="app-window-header" aria-hidden="true">
-              <span class="window-title">SYLVIAE — Distraction Blocker</span>
+              <span class="window-title">SYLVIAE — Blockers · New native desktop app (preview)</span>
             </div>
             <img class="app-screenshot"
-                 src="assets/app/appblock-1280.webp"
-                 srcset="assets/app/appblock-640.webp 640w, assets/app/appblock-1280.webp 1280w"
+                 src="assets/app/native-blockers-1280.webp"
+                 srcset="assets/app/native-blockers-640.webp 640w, assets/app/native-blockers-1280.webp 1280w"
                  sizes="(max-width: 1024px) 92vw, (max-width: 1250px) 41vw, 515px"
-                 alt="Sylviae Distraction Blocker showing site rules, app blocking lists, and enforcement controls"
-                 width="1913" height="1076"
-                 style="aspect-ratio: 1913 / 1076;"
+                 alt="New native desktop app (preview): the Blockers screen with lists of blocked sites and apps, each with an on/off toggle"
+                 width="1582" height="1000"
+                 style="aspect-ratio: 1582 / 1000;"
                  loading="lazy"
                  decoding="async">
           </div>
@@ -1809,7 +1812,7 @@
              single tab covers all three sources instead of repeating them. -->
         <div id="tab-integrations" class="tab-content active product-frame reveal-media" role="tabpanel">
           <div class="app-window-header" aria-hidden="true">
-            <span class="window-title">SYLVIAE — Bring into Sylviae</span>
+            <span class="window-title">SYLVIAE — Bring into Sylviae · Windows beta v1.0.0</span>
           </div>
           <img class="app-screenshot"
                src="assets/app/integrations-1280.webp"
@@ -1823,15 +1826,15 @@
         </div>
         <div id="tab-workspace" class="tab-content product-frame" role="tabpanel" hidden>
           <div class="app-window-header" aria-hidden="true">
-            <span class="window-title">SYLVIAE — Workspace</span>
+            <span class="window-title">SYLVIAE — Today · New native desktop app (preview)</span>
           </div>
           <img class="app-screenshot"
-               src="assets/app/workspace-1280.webp"
-               srcset="assets/app/workspace-640.webp 640w, assets/app/workspace-1280.webp 1280w"
+               src="assets/app/native-today-1280.webp"
+               srcset="assets/app/native-today-640.webp 640w, assets/app/native-today-1280.webp 1280w"
                sizes="(max-width: 1250px) 92vw, 1178px"
-               alt="Sylviae Workspace showing local focus tasks"
-               width="1913" height="1072"
-               style="aspect-ratio: 1913 / 1072;"
+               alt="New native desktop app (preview): the Today screen showing local focus tasks, one marked as up next"
+               width="1582" height="900"
+               style="aspect-ratio: 1582 / 900;"
                loading="lazy"
                decoding="async">
         </div>
@@ -1886,15 +1889,15 @@
 
           <div class="product-frame reveal-media">
             <div class="app-window-header" aria-hidden="true">
-              <span class="window-title">SYLVIAE — Settings</span>
+              <span class="window-title">SYLVIAE — Settings · New native desktop app (preview)</span>
             </div>
             <img class="app-screenshot"
-                 src="assets/app/settings-1280.webp"
-                 srcset="assets/app/settings-640.webp 640w, assets/app/settings-1280.webp 1280w"
+                 src="assets/app/native-settings-1280.webp"
+                 srcset="assets/app/native-settings-640.webp 640w, assets/app/native-settings-1280.webp 1280w"
                  sizes="(max-width: 1024px) 92vw, (max-width: 1250px) 46vw, 570px"
-                 alt="Sylviae settings screen showing preferences that persist across sessions"
-                 width="1912" height="1077"
-                 style="aspect-ratio: 1912 / 1077;"
+                 alt="New native desktop app (preview): the Settings screen with toggles to start breaks and focus automatically and to keep running in the background"
+                 width="1582" height="680"
+                 style="aspect-ratio: 1582 / 680;"
                  loading="lazy"
                  decoding="async">
           </div>
@@ -1906,15 +1909,15 @@
         <div class="feature-deep-grid">
           <div class="product-frame reveal-media">
             <div class="app-window-header" aria-hidden="true">
-              <span class="window-title">SYLVIAE — Streak &amp; Consistency</span>
+              <span class="window-title">SYLVIAE — Calendar · New native desktop app (preview)</span>
             </div>
             <img class="app-screenshot"
-                 src="assets/app/streak-1280.webp"
-                 srcset="assets/app/streak-640.webp 640w, assets/app/streak-1280.webp 1280w"
+                 src="assets/app/native-calendar-1280.webp"
+                 srcset="assets/app/native-calendar-640.webp 640w, assets/app/native-calendar-1280.webp 1280w"
                  sizes="(max-width: 1024px) 92vw, (max-width: 1250px) 41vw, 515px"
-                 alt="Sylviae Streak & Consistency screen showing current streak, best streak, monthly focus calendar, and today's focus time"
-                 width="1915" height="1076"
-                 style="aspect-ratio: 1915 / 1076;"
+                 alt="New native desktop app (preview): the Calendar screen with a monthly focus heat map and the selected day's minutes focused, sessions and tasks"
+                 width="1582" height="940"
+                 style="aspect-ratio: 1582 / 940;"
                  loading="lazy"
                  decoding="async">
           </div>
@@ -2142,6 +2145,23 @@
             <figcaption>Deep Focus on Android</figcaption>
           </figure>
         </div>
+
+        <div class="focus-desktop reveal-media">
+          <div class="product-frame">
+            <div class="app-window-header" aria-hidden="true">
+              <span class="window-title">SYLVIAE — Deep Focus · New native desktop app (preview)</span>
+            </div>
+            <img class="app-screenshot"
+                 src="assets/app/native-deepfocus-1280.webp"
+                 srcset="assets/app/native-deepfocus-640.webp 640w, assets/app/native-deepfocus-1280.webp 1280w"
+                 sizes="(max-width: 880px) 92vw, 820px"
+                 alt="New native desktop app (preview): Deep Focus in full screen, the same pond with a frog reading on a lily pad, the task name, an 18:23 countdown and Pause, Skip and End session buttons"
+                 width="1920" height="1080"
+                 style="aspect-ratio: 1920 / 1080;"
+                 loading="lazy" decoding="async">
+          </div>
+          <p class="preview-note">Deep Focus on the new native desktop app (preview). The current Windows beta download does not include it yet.</p>
+        </div>
       </section>
 
       <!-- ─── 11. PRICING & DOWNLOAD SECTION ───────────────────────────────── -->
@@ -2171,6 +2191,9 @@
             </a>
             <p style="font-family:var(--font-display); font-size:12px; color:var(--muted); margin-top:12px; text-align:center;">
               File: toki-setup-1.0.0.exe &middot; No account required
+            </p>
+            <p class="preview-note" style="text-align:center; margin-top:10px;">
+              This installer is the v1.0.0 Windows beta (published July 2026). It does not include the new native desktop app shown in the preview screenshots.
             </p>
           </article>
 

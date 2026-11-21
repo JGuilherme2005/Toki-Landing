@@ -9,14 +9,11 @@
   <meta name="description" content="Sylviae sign-in link handoff. This page is not indexed.">
   <title>Sylviae sign-in link</title>
   <link rel="icon" href="../../assets/icon.ico" sizes="any">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700&display=swap"></noscript>
+  <link rel="preload" href="../../assets/fonts/Syne-Bold.woff2" as="font" type="font/woff2" crossorigin>
   <style>
     :root {
       color-scheme: dark;
-      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
       background: #111513;
       color: #efe9dc;
       font-synthesis: none;
@@ -66,6 +63,14 @@
       font-size: 11px;
       font-weight: 600;
       letter-spacing: .2em;
+    }
+
+    @font-face {
+      font-family: 'Syne';
+      src: url('../../assets/fonts/Syne-Bold.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
     }
 
     /* Metric-matched fallback so the late Syne swap does not shift the heading. */

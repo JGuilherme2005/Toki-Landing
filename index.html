@@ -855,7 +855,7 @@
     .step-card h3 {
       font-family: var(--font-display);
       font-size: 18px;
-      font-weight: 500;
+      font-weight: 700;
       margin-bottom: 8px;
     }
 
@@ -873,15 +873,17 @@
     }
 
     .pomo-pill {
-      font-family: var(--font-mono);
+      font-family: var(--font-body);
       font-size: 11px;
       letter-spacing: 0.08em;
       padding: 4px 10px;
       border-radius: 4px;
       border: 1px solid var(--border-room);
       background: rgba(242, 244, 236, 0.04);
-      color: var(--muted);  font-weight: 500;
+      color: var(--muted);
+      font-weight: 500;
     }
+    .pomo-pill .duration { font-family: var(--font-mono); }
 
     .pomo-pill.active {
       border-color: var(--border-quiet);
@@ -924,7 +926,7 @@
     .feature-point h3 {
       font-family: var(--font-display);
       font-size: 15px;
-      font-weight: 500;
+      font-weight: 700;
       color: var(--ink);
       margin-bottom: 4px;
     }
@@ -1066,7 +1068,7 @@
     .privacy-card h3 {
       font-family: var(--font-display);
       font-size: 20px;
-      font-weight: 400;
+      font-weight: 700;
       letter-spacing: -0.03em;
       margin-bottom: 10px;
     }
@@ -1102,6 +1104,7 @@
     }
 
     .price-big small {
+      font-family: var(--font-body);
       font-size: 18px;
       color: var(--muted);
     }
@@ -1527,7 +1530,7 @@
       border-radius: 14px;
       background: var(--surface);
     }
-    .mobile-status h3 { font-size: 20px; margin-bottom: 12px; }
+    .mobile-status h3 { font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 12px; }
     .mobile-status ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; color: var(--ink-dim); }
     .mobile-status strong { color: var(--ink); }
     .mobile-cta { margin-top: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
@@ -1671,8 +1674,8 @@
             <h3>Focus</h3>
             <p>Start a configurable focus session.</p>
             <div class="pomo-pills" aria-hidden="true">
-              <span class="pomo-pill active">25M FOCUS</span>
-              <span class="pomo-pill">5M BREAK</span>
+              <span class="pomo-pill active"><span class="duration">25M</span> FOCUS</span>
+              <span class="pomo-pill"><span class="duration">5M</span> BREAK</span>
             </div>
           </article>
 

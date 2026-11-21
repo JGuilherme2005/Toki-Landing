@@ -1550,6 +1550,7 @@
       .phone-row .phone-shot { flex: 0 0 68%; scroll-snap-align: center; }
     }
   </style>
+  <link rel="stylesheet" href="assets/landing-polish.css">
 </head>
 <body>
   <!-- Skip Link -->
@@ -1560,762 +1561,77 @@
     <!-- ─── 1. NAVIGATION ────────────────────────────────────────────────── -->
     <nav class="nav shell" aria-label="Main navigation">
       <div class="nav-inner">
-        <a class="brand" href="#top" aria-label="Sylviae home">
-          <img src="assets/icon-64.png" alt="" width="28" height="28">
-          <span>SYLVIAE</span>
-        </a>
+        <a class="brand" href="#top" aria-label="Sylviae home"><img src="assets/icon-64.png" alt="" width="28" height="28"><span>SYLVIAE</span></a>
         <div class="nav-links" aria-label="Page sections">
-          <a href="#workflow">Product</a>
-          <a href="#audio">Features</a>
-          <a href="#mobile">Mobile</a>
-          <a href="#compare">Compare</a>
-          <a href="#privacy">Privacy</a>
-          <a href="#faq">FAQ</a>
+          <a href="#focus">Focus</a><a href="#blocker">Blocking</a><a href="#sounds">Sounds</a><a href="#mobile">Android</a><a href="#faq">FAQ</a>
         </div>
-        <a class="nav-cta" href="https://github.com/JGuilherme2005/Toki-Landing/releases/download/v1.0.0/toki-setup-1.0.0.exe">
-          Download free <span aria-hidden="true">↓</span>
-        </a>
+        <a class="nav-cta" href="https://github.com/JGuilherme2005/Toki-Landing/releases/download/v1.0.0/toki-setup-1.0.0.exe">Download for Windows <span aria-hidden="true">&darr;</span></a>
       </div>
     </nav>
 
-    <!-- ─── 2. HERO SECTION ──────────────────────────────────────────────── -->
     <header class="hero shell" id="top" aria-labelledby="hero-title">
-      <div class="hero-layout">
-        <div class="reveal">
-          <div class="hero-eyebrow">
-            <i class="pulse" aria-hidden="true"></i>
-            <span class="kicker" style="margin-bottom:0;">FOCUS, WITHOUT THE FRAGMENTS</span>
-          </div>
-
-          <h1 id="hero-title">Everything you need to enter focus.<br>One calm desktop space.</h1>
-
-          <p class="hero-copy">Sylviae brings your focus timer, tasks, distraction blocking, music, and calendar tools into one quiet Windows app, with an Android companion in private beta.</p>
-
-          <div class="hero-actions">
-            <a class="cta-primary" href="https://github.com/JGuilherme2005/Toki-Landing/releases/download/v1.0.0/toki-setup-1.0.0.exe" aria-label="Download for Windows, Sylviae free beta">
-              <span>Download for Windows</span>
-              <span class="arrow" aria-hidden="true">↓</span>
-            </a>
-            <a class="ghost-link" href="#proof">See how it works <span aria-hidden="true">↓</span></a>
-            <a class="ghost-link" href="#mobile">Sylviae Mobile (Android private beta) <span aria-hidden="true">↓</span></a>
-          </div>
-
-          <div class="hero-trust-line" aria-label="Trust indicators">
-            <span>Free beta</span>
-            <span>No account required</span>
-            <span>Core tools work offline</span>
-            <span>Windows 64-bit installer</span>
-          </div>
-        </div>
-
-        <!-- Real product screenshot — simple, consistent with every other
-             section instead of a separate fake-interactive mock. -->
-        <div class="product-frame reveal-media" id="proof" aria-label="Sylviae native desktop app preview">
-          <div class="app-window-header" aria-hidden="true">
-            <span class="window-title">SYLVIAE — Today · New native desktop app (preview)</span>
-          </div>
-          <img class="app-screenshot"
-               src="assets/app/native-today-1280.webp"
-               srcset="assets/app/native-today-640.webp 640w, assets/app/native-today-1280.webp 1280w"
-               sizes="(max-width: 1250px) 92vw, 1178px"
-               alt="New native desktop app (preview): the Today screen with a 25:00 focus timer, the selected task and a list of today's tasks"
-               width="1582" height="900"
-               style="aspect-ratio: 1582 / 900;"
-               loading="lazy" decoding="async">
-        </div>
-        <p class="preview-note">Screenshots show the new native Sylviae desktop app, which is still a preview. The Windows download on this page is the current v1.0.0 beta, which looks different.</p>
+      <div class="pond-stage" role="img" aria-label="A frog reading on a lily pad under a night sky">
+        <video class="pond-video" poster="assets/hero/frog-reading-poster.webp" width="540" height="960" muted loop playsinline preload="none" aria-hidden="true">
+          <source src="assets/hero/frog-reading.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-message">
+        <h1 id="hero-title">Focus, gently.</h1>
+        <p class="hero-copy">Timer, tasks, and fewer distractions in one calm Windows space.</p>
+        <a class="cta-primary" href="https://github.com/JGuilherme2005/Toki-Landing/releases/download/v1.0.0/toki-setup-1.0.0.exe">Download for Windows <span aria-hidden="true">&darr;</span></a>
+        <a class="hero-mobile-link" href="#mobile">Android companion &middot; private beta</a>
       </div>
     </header>
 
     <main id="main">
-
-      <!-- ─── 3. VALUE STRIP / PRODUCT PROOF ───────────────────────────────── -->
-      <section class="value-strip" aria-label="Product value points">
-        <div class="shell">
-          <div class="value-grid reveal-stagger">
-            <div class="value-item">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M9 3h6"/></svg>
-              Accurate focus timer
-            </div>
-            <div class="value-item">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/></svg>
-              Block desktop distractions
-            </div>
-            <div class="value-item">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18V9a8 8 0 0116 0v9"/><rect x="3" y="14" width="5" height="6" rx="1.5"/><rect x="16" y="14" width="5" height="6" rx="1.5"/></svg>
-              Music that follows the session
-            </div>
-            <div class="value-item">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>
-              Tasks and calendars together
-            </div>
-            <div class="value-item">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0116 0"/><path d="M4 12v6a2 2 0 002 2h12a2 2 0 002-2v-6"/><path d="M8 12v3M16 12v3"/></svg>
-              Core tools work offline
-            </div>
-          </div>
-        </div>
+      <section class="story shell" id="focus" aria-labelledby="focus-title">
+        <div class="story-copy"><span class="story-num">01 / FOCUS</span><h2 id="focus-title">Begin with one task.</h2><p>A focus timer and your tasks share one calm Windows workspace.</p></div>
+        <figure class="story-visual focus-visual">
+          <div class="visual-crop"><picture><source media="(max-width: 1024px)" srcset="assets/app/mobile-today.webp" width="410" height="560"><img src="assets/app/native-today-1280.webp" srcset="assets/app/native-today-640.webp 640w, assets/app/native-today-1280.webp 1280w" sizes="(max-width: 700px) 900px, (max-width: 1400px) 75vw, 1050px" alt="Native desktop preview showing a 25 minute focus timer beside today's tasks" width="1582" height="900" loading="lazy" decoding="async"></picture></div>
+          <figcaption>Native desktop images are previews; the download is the current Windows v1.0.0 beta.</figcaption>
+        </figure>
       </section>
 
-      <!-- ─── 4. CORE WORKFLOW SECTION ──────────────────────────────────────── -->
-      <section class="shell" id="workflow" aria-labelledby="workflow-title">
-        <div class="section-head reveal">
-          <span class="kicker">The core loop</span>
-          <h2 id="workflow-title">Enter deep work in four calm steps.</h2>
-          <p>No complex setup. Pick a task, start a session, and let the desktop hold the boundary.</p>
-        </div>
-
-        <div class="workflow-grid reveal-stagger">
-          <article class="step-card">
-            <p class="step-num">01 · CHOOSE</p>
-            <h3>Choose</h3>
-            <p>Pick the task you want in front of you.</p>
-          </article>
-
-          <article class="step-card">
-            <p class="step-num">02 · FOCUS</p>
-            <h3>Focus</h3>
-            <p>Start a configurable focus session.</p>
-            <div class="pomo-pills" aria-hidden="true">
-              <span class="pomo-pill active"><span class="duration">25M</span> FOCUS</span>
-              <span class="pomo-pill"><span class="duration">5M</span> BREAK</span>
-            </div>
-          </article>
-
-          <article class="step-card">
-            <p class="step-num">03 · PROTECT</p>
-            <h3>Protect</h3>
-            <p>Keep selected sites and applications out of reach.</p>
-          </article>
-
-          <article class="step-card">
-            <p class="step-num">04 · CONTINUE</p>
-            <h3>Continue</h3>
-            <p>Return with your progress and setup still ready.</p>
-          </article>
-        </div>
+      <section class="story shell story-reverse" id="blocker" aria-labelledby="blocker-title">
+        <div class="story-copy"><span class="story-num">02 / BLOCK</span><h2 id="blocker-title">Close the distractions.</h2><p>Selected sites and apps stay out of reach when a Windows focus session starts.</p></div>
+        <figure class="story-visual blocker-visual"><div class="visual-crop"><picture><source media="(max-width: 1024px)" srcset="assets/app/mobile-blockers.webp" width="660" height="510"><img src="assets/app/native-blockers-1280.webp" srcset="assets/app/native-blockers-640.webp 640w, assets/app/native-blockers-1280.webp 1280w" sizes="(max-width: 700px) 900px, (max-width: 1400px) 75vw, 1050px" alt="Native desktop preview of the Blockers screen with selected sites and apps" width="1582" height="1000" loading="lazy" decoding="async"></picture></div></figure>
       </section>
 
-      <!-- ─── 5. DEEP FOCUS AUDIO SECTION ───────────────────────────────────── -->
-      <section class="shell" id="audio" aria-labelledby="audio-title">
-        <div class="feature-deep-grid">
-          <div class="reveal">
-            <span class="kicker">Focus audio</span>
-            <h2 id="audio-title">Sound that follows your focus.</h2>
-            <p style="color:var(--ink-dim); margin-top:16px; font-size:17px; line-height:1.6;">
-              Choose offline focus music, or use Spotify and YouTube sources. Audio can follow the focus timer, become silent during breaks, or keep playing continuously.
-            </p>
-
-            <div class="feature-list reveal-stagger">
-              <div class="feature-point">
-                <h3>Offline focus library</h3>
-                <p>Focus tracks available without an internet connection.</p>
-              </div>
-
-              <div class="feature-point">
-                <h3>Spotify and YouTube</h3>
-                <p>Use supported external audio sources directly inside Sylviae.</p>
-              </div>
-
-              <div class="feature-point">
-                <div style="display:flex; align-items:center; justify-content:space-between;">
-                  <h3>Follows your session</h3>
-                  <div class="audio-eq-bars" aria-hidden="true" title="Active audio visualizer">
-                    <span></span><span></span><span></span><span></span><span></span>
-                  </div>
-                </div>
-                <p>Audio can follow Focus and pause during breaks, or keep playing continuously.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="reveal-media">
-            <div class="tab-buttons" role="tablist" aria-label="New native desktop app (preview): Sounds and Deep Focus">
-              <button type="button" class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-audio-library" onclick="switchTab(this, 'audio-library')">Sounds</button>
-              <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-audio-youtube" onclick="switchTab(this, 'audio-youtube')">Deep Focus</button>
-            </div>
-
-            <div id="tab-audio-library" class="tab-content active product-frame" role="tabpanel">
-              <div class="app-window-header" aria-hidden="true">
-                <span class="window-title">SYLVIAE — Sounds · New native desktop app (preview)</span>
-              </div>
-              <img class="app-screenshot"
-                   src="assets/app/native-sounds-1280.webp"
-                   srcset="assets/app/native-sounds-640.webp 640w, assets/app/native-sounds-1280.webp 1280w"
-                   sizes="(max-width: 1024px) 92vw, (max-width: 1250px) 46vw, 570px"
-                   alt="New native desktop app (preview): the Sounds screen with a field to paste a YouTube playlist link and saved playlists that open in the browser"
-                   width="1582" height="590"
-                   style="aspect-ratio: 1582 / 590;"
-                   loading="lazy"
-                   decoding="async">
-            </div>
-            <div id="tab-audio-youtube" class="tab-content product-frame" role="tabpanel" hidden>
-              <div class="app-window-header" aria-hidden="true">
-                <span class="window-title">SYLVIAE — Deep Focus · New native desktop app (preview)</span>
-              </div>
-              <img class="app-screenshot"
-                   src="assets/app/native-deepfocus-1280.webp"
-                   srcset="assets/app/native-deepfocus-640.webp 640w, assets/app/native-deepfocus-1280.webp 1280w"
-                   sizes="(max-width: 1024px) 92vw, (max-width: 1250px) 46vw, 570px"
-                   alt="New native desktop app (preview): Deep Focus in full screen, a frog reading on a lily pad at night with the task name, an 18:23 countdown and Pause, Skip and End session buttons"
-                   width="1920" height="1080"
-                   style="aspect-ratio: 1920 / 1080;"
-                   loading="lazy"
-                   decoding="async">
-            </div>
-          </div>
-        </div>
+      <section class="story shell" id="sounds" aria-labelledby="sounds-title">
+        <div class="story-copy"><span class="story-num">03 / SOUND</span><h2 id="sounds-title">Let the room settle.</h2><p>Focus audio can follow the timer and fall silent during breaks.</p></div>
+        <figure class="story-visual sounds-visual"><div class="visual-crop"><picture><source media="(max-width: 1024px)" srcset="assets/app/mobile-sounds.webp" width="660" height="382"><img src="assets/app/native-sounds-1280.webp" srcset="assets/app/native-sounds-640.webp 640w, assets/app/native-sounds-1280.webp 1280w" sizes="(max-width: 700px) 900px, (max-width: 1400px) 75vw, 1050px" alt="Native desktop preview of the Sounds screen with saved audio sources" width="1582" height="590" loading="lazy" decoding="async"></picture></div></figure>
       </section>
 
-      <!-- ─── 6. DISTRACTION BLOCKER SECTION ────────────────────────────────── -->
-      <section class="shell" id="blocker" aria-labelledby="blocker-title">
-        <div class="feature-deep-grid">
-          <div class="product-frame reveal-media">
-            <div class="app-window-header" aria-hidden="true">
-              <span class="window-title">SYLVIAE — Blockers · New native desktop app (preview)</span>
-            </div>
-            <img class="app-screenshot"
-                 src="assets/app/native-blockers-1280.webp"
-                 srcset="assets/app/native-blockers-640.webp 640w, assets/app/native-blockers-1280.webp 1280w"
-                 sizes="(max-width: 1024px) 92vw, (max-width: 1250px) 41vw, 515px"
-                 alt="New native desktop app (preview): the Blockers screen with lists of blocked sites and apps, each with an on/off toggle"
-                 width="1582" height="1000"
-                 style="aspect-ratio: 1582 / 1000;"
-                 loading="lazy"
-                 decoding="async">
-          </div>
-
-          <div class="reveal">
-            <span class="kicker">Distraction blocker</span>
-            <h2 id="blocker-title">Make distractions harder to reach.</h2>
-            <p style="color:var(--ink-dim); margin-top:16px; font-size:17px; line-height:1.6;">
-              Choose the sites and applications you want out of the way. When Focus begins, Sylviae enforces the boundary directly on Windows.
-            </p>
-
-            <div class="feature-list reveal-stagger">
-              <div class="feature-point">
-                <h3>Block distracting websites</h3>
-                <p>Selected domains stay out of reach while a session runs.</p>
-              </div>
-
-              <div class="feature-point">
-                <h3>Keep selected applications closed</h3>
-                <p>Prevent distracting desktop programs from running during focus.</p>
-              </div>
-
-              <div class="feature-point">
-                <h3>Close distracting tabs</h3>
-                <p>Open browser tabs matching your block list are closed automatically.</p>
-              </div>
-            </div>
-
-            <details class="tech-details">
-              <summary>How does blocking work?</summary>
-              <p>Sylviae blocks distracting sites and apps directly on Windows, not just in one browser tab — so switching tabs or apps doesn't get you around it. Windows may ask for a one-time permission on first launch so Sylviae can actually enforce the block.</p>
-            </details>
-          </div>
-        </div>
+      <section class="story shell story-mobile" id="mobile" aria-labelledby="mobile-title">
+        <div class="story-copy"><span class="story-num">04 / ANDROID PRIVATE BETA</span><h2 id="mobile-title">Take the calm along.</h2><p>The Android companion is in private beta, available by request.</p><a class="text-link" href="https://github.com/JGuilherme2005/Toki-Landing/issues/new?title=Android%20private%20beta%20access%20request&amp;body=I%27d%20like%20to%20request%20access%20to%20the%20Sylviae%20Android%20private%20beta." target="_blank" rel="noopener noreferrer">Request Android beta access <span aria-hidden="true">&nearr;</span></a><small>Opens GitHub &middot; a free account is required.</small><small>Android beta saves blocklists; it does not block sites or apps.</small></div>
+        <figure class="story-visual mobile-visual"><img src="assets/mobile/deep-focus.webp" alt="Sylviae Android Deep Focus private beta with a running timer and the frog reading on a lily pad" width="540" height="1200" loading="lazy" decoding="async"></figure>
       </section>
 
-      <!-- ─── 7. TASKS & CLOUD INTEGRATIONS SECTION ─────────────────────────── -->
-      <section class="shell" id="integrations" aria-labelledby="integrations-title">
-        <div class="section-head reveal">
-          <span class="kicker">Tasks &amp; integrations</span>
-          <h2 id="integrations-title">Bring the work into the focus session.</h2>
-          <p>Import tasks and scheduled events from tools you already use, then choose what belongs in your next session.</p>
-        </div>
-
-        <div class="tab-buttons reveal" role="tablist" aria-label="Integration previews">
-          <button type="button" class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-integrations" onclick="switchTab(this, 'integrations')">Bring into Sylviae</button>
-          <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-workspace" onclick="switchTab(this, 'workspace')">Workspace</button>
-        </div>
-
-        <!-- The Integrations screen is a single hub in Sylviae — one modal shows
-             Notion, Todoist, and Google Calendar connected side by side, so a
-             single tab covers all three sources instead of repeating them. -->
-        <div id="tab-integrations" class="tab-content active product-frame reveal-media" role="tabpanel">
-          <div class="app-window-header" aria-hidden="true">
-            <span class="window-title">SYLVIAE — Bring into Sylviae · Windows beta v1.0.0</span>
-          </div>
-          <img class="app-screenshot"
-               src="assets/app/integrations-1280.webp"
-               srcset="assets/app/integrations-640.webp 640w, assets/app/integrations-1280.webp 1280w"
-               sizes="(max-width: 1250px) 92vw, 1178px"
-               alt="Sylviae Bring into Sylviae modal showing Notion, Todoist, and Google Calendar connected and ready to import"
-               width="1915" height="1077"
-               style="aspect-ratio: 1915 / 1077;"
-               loading="lazy"
-               decoding="async">
-        </div>
-        <div id="tab-workspace" class="tab-content product-frame" role="tabpanel" hidden>
-          <div class="app-window-header" aria-hidden="true">
-            <span class="window-title">SYLVIAE — Today · New native desktop app (preview)</span>
-          </div>
-          <img class="app-screenshot"
-               src="assets/app/native-today-1280.webp"
-               srcset="assets/app/native-today-640.webp 640w, assets/app/native-today-1280.webp 1280w"
-               sizes="(max-width: 1250px) 92vw, 1178px"
-               alt="New native desktop app (preview): the Today screen showing local focus tasks, one marked as up next"
-               width="1582" height="900"
-               style="aspect-ratio: 1582 / 900;"
-               loading="lazy"
-               decoding="async">
-        </div>
-
-        <div class="integration-notes reveal-stagger">
-          <div class="feature-point">
-            <h3>Google Calendar</h3>
-            <p>Import upcoming calendar events into your focus list.</p>
-          </div>
-          <div class="feature-point">
-            <h3>Notion</h3>
-            <p>Import supported Notion tasks and sync completion back to Notion.</p>
-          </div>
-          <div class="feature-point">
-            <h3>Todoist</h3>
-            <p>Import tasks from selected Todoist projects.</p>
-          </div>
-          <div class="feature-point">
-            <h3>Workspace</h3>
-            <p>Create and manage local focus tasks alongside imports.</p>
-          </div>
+      <section class="faq-section shell" id="faq" aria-labelledby="faq-title">
+        <h2 id="faq-title">A few good things to know.</h2>
+        <div class="faq-list">
+          <details><summary>Is Sylviae free?</summary><p>The current Windows beta is free to download and use. No account is required for the core tools.</p></details>
+          <details><summary>Does it work offline?</summary><p>The core timer, local tasks, history, blocker preferences, and offline tracks stay on your device. Cloud imports and streaming audio need internet.</p></details>
+          <details><summary>Which devices are supported?</summary><p>The public installer supports Windows 64-bit. The Android companion is a private beta by request; there is no public mobile download or store listing.</p></details>
+          <details><summary>Does Android block sites and apps?</summary><p>Not yet. The Android beta saves your blocklist only. Site and app blocking is a Windows desktop feature.</p></details>
         </div>
       </section>
-
-      <!-- ─── 8. DESKTOP CONTINUITY ────────────────────────────────────────── -->
-      <section class="shell" id="continuity" aria-labelledby="continuity-title">
-        <div class="feature-deep-grid">
-          <div class="reveal">
-            <span class="kicker">Desktop continuity</span>
-            <h2 id="continuity-title">Your focus setup stays with you.</h2>
-            <p style="color:var(--ink-dim); margin-top:16px; font-size:17px; line-height:1.6;">
-              Close the window without losing the room you set up. Sylviae keeps running quietly in the system tray and remembers where you left off.
-            </p>
-
-            <div class="feature-list">
-              <div class="feature-point">
-                <h3>Runs in the background</h3>
-                <p>Sylviae stays available from the Windows system tray while you work in other apps.</p>
-              </div>
-
-              <div class="feature-point">
-                <h3>Remembers your setup</h3>
-                <p>Tasks, audio choice, timer settings, and preferences remain ready for the next session.</p>
-              </div>
-
-              <div class="feature-point">
-                <h3>Keeps one focus state</h3>
-                <p>Opening Sylviae again brings you back to the same session — no conflicting duplicate windows.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-frame reveal-media">
-            <div class="app-window-header" aria-hidden="true">
-              <span class="window-title">SYLVIAE — Settings · New native desktop app (preview)</span>
-            </div>
-            <img class="app-screenshot"
-                 src="assets/app/native-settings-1280.webp"
-                 srcset="assets/app/native-settings-640.webp 640w, assets/app/native-settings-1280.webp 1280w"
-                 sizes="(max-width: 1024px) 92vw, (max-width: 1250px) 46vw, 570px"
-                 alt="New native desktop app (preview): the Settings screen with toggles to start breaks and focus automatically and to keep running in the background"
-                 width="1582" height="680"
-                 style="aspect-ratio: 1582 / 680;"
-                 loading="lazy"
-                 decoding="async">
-          </div>
-        </div>
-      </section>
-
-      <!-- ─── 8.4 STREAK & CONSISTENCY ─────────────────────────────────────── -->
-      <section class="shell" id="streak" aria-labelledby="streak-title">
-        <div class="feature-deep-grid">
-          <div class="product-frame reveal-media">
-            <div class="app-window-header" aria-hidden="true">
-              <span class="window-title">SYLVIAE — Calendar · New native desktop app (preview)</span>
-            </div>
-            <img class="app-screenshot"
-                 src="assets/app/native-calendar-1280.webp"
-                 srcset="assets/app/native-calendar-640.webp 640w, assets/app/native-calendar-1280.webp 1280w"
-                 sizes="(max-width: 1024px) 92vw, (max-width: 1250px) 41vw, 515px"
-                 alt="New native desktop app (preview): the Calendar screen with a monthly focus heat map and the selected day's minutes focused, sessions and tasks"
-                 width="1582" height="940"
-                 style="aspect-ratio: 1582 / 940;"
-                 loading="lazy"
-                 decoding="async">
-          </div>
-
-          <div class="reveal">
-            <span class="kicker">Streak &amp; consistency</span>
-            <h2 id="streak-title">See your consistency, not just today's session.</h2>
-            <p style="color:var(--ink-dim); margin-top:16px; font-size:17px; line-height:1.6;">
-              A monthly calendar shows which days you kept the streak alive, so showing up stays visible beyond a single focus session.
-            </p>
-
-            <div class="feature-list reveal-stagger">
-              <div class="feature-point">
-                <h3>Current and best streak</h3>
-                <p>Track consecutive focus days alongside your all-time best.</p>
-              </div>
-
-              <div class="feature-point">
-                <h3>Monthly focus calendar</h3>
-                <p>A day-by-day view of no focus, some focus, and goal-met days.</p>
-              </div>
-
-              <div class="feature-point">
-                <h3>Daily focus time</h3>
-                <p>See today's accumulated focus time at a glance.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ─── 8.4b SYLVIAE MOBILE ──────────────────────────────────────────── -->
-      <section class="shell" id="mobile" aria-labelledby="mobile-title">
-        <div class="section-head reveal">
-          <span class="kicker">Sylviae Mobile · Android private beta</span>
-          <h2 id="mobile-title">The same calm loop, on your phone.</h2>
-          <p>Pick a task, start a focus session, and let a frog reading by a moonlit pond keep you company. Everything below runs on the device, and you can use it without an account.</p>
-        </div>
-
-        <div class="phone-row reveal-stagger" role="group" aria-label="Sylviae Mobile screenshots" tabindex="0">
-          <figure class="phone-shot">
-            <img src="assets/mobile/focus.webp" width="540" height="1200" loading="lazy" decoding="async"
-                 alt="Sylviae Mobile Focus screen: a 25:00 timer with Focus, Short break and Long break tabs, a Start button and a task list">
-            <figcaption>Focus timer and tasks</figcaption>
-          </figure>
-          <figure class="phone-shot">
-            <img src="assets/mobile/history.webp" width="540" height="1200" loading="lazy" decoding="async"
-                 alt="Sylviae Mobile History screen: focus time today, day streak, a monthly focus calendar and a list of sessions">
-            <figcaption>History and streak calendar</figcaption>
-          </figure>
-          <figure class="phone-shot">
-            <img src="assets/mobile/blocklist.webp" width="540" height="1200" loading="lazy" decoding="async"
-                 alt="Sylviae Mobile Blocklist screen stating that blocking is not active and this build saves your list only">
-            <figcaption>Blocklist (saved list only)</figcaption>
-          </figure>
-        </div>
-
-        <div class="feature-list is-grid reveal-stagger">
-          <div class="feature-point">
-            <h3>Focus, short and long breaks</h3>
-            <p>Start, pause, skip or end a session, with a task list that lives on your phone and daily tasks that come back each day.</p>
-          </div>
-          <div class="feature-point">
-            <h3>A pond for Deep Focus</h3>
-            <p>While a Focus session runs, the screen becomes a looping moonlit pond with your task and the countdown. <a href="#focusmode">See Deep Focus</a>.</p>
-          </div>
-          <div class="feature-point">
-            <h3>Focus audio</h3>
-            <p>Five offline tracks that follow the Focus timer or play continuously. Saved Spotify and YouTube links open in their own apps.</p>
-          </div>
-          <div class="feature-point">
-            <h3>Streaks you can see</h3>
-            <p>A monthly calendar of partial and complete days, plus an Android home-screen widget with your week and current streak.</p>
-          </div>
-          <div class="feature-point">
-            <h3>Friendly reminders</h3>
-            <p>Gentle nudges about open tasks and your streak, plus a notice when a Focus or break phase ends. Reminder text follows your phone's language: English, Portuguese or Spanish.</p>
-          </div>
-          <div class="feature-point">
-            <h3>Private by default</h3>
-            <p>Choose &ldquo;Continue without an account&rdquo; and your tasks stay on your phone.</p>
-          </div>
-        </div>
-
-        <aside class="mobile-status reveal" aria-labelledby="mobile-status-title">
-          <h3 id="mobile-status-title">Where Sylviae Mobile stands today</h3>
-          <ul>
-            <li><strong>Android private beta.</strong> It is not on Google Play or the App Store, and there is no public mobile download. Access is by request.</li>
-            <li><strong>No blocking on the phone.</strong> You can save sites and apps to a blocklist, but this build does not block anything. Blocking is a Windows desktop feature.</li>
-            <li><strong>Integrations depend on the connection service.</strong> Notion, Todoist and Google Calendar import are on the Windows beta; on mobile they need the integration service to be reachable.</li>
-          </ul>
-        </aside>
-
-        <p class="mobile-cta reveal"><a class="ghost-link" href="https://github.com/JGuilherme2005/Toki-Landing/issues/new?title=Android%20private%20beta%20access%20request&amp;body=I%27d%20like%20to%20request%20access%20to%20the%20Sylviae%20Android%20private%20beta." target="_blank" rel="noopener noreferrer">Request Android beta access <span aria-hidden="true">→</span></a><span class="mobile-cta-note">Opens a GitHub issue on this project (free GitHub account required). Windows download above stays the main way to try Sylviae.</span></p>
-      </section>
-
-      <!-- ─── 8.5 DESKTOP VS MOBILE ────────────────────────────────────────── -->
-      <section class="shell" id="compare" aria-labelledby="compare-title">
-        <div class="section-head reveal">
-          <span class="kicker">Desktop and mobile</span>
-          <h2 id="compare-title">Same loop, honest differences.</h2>
-          <p>Sylviae Mobile is a companion, not a copy. Some desktop abilities, like system-level blocking, do not exist on the phone yet.</p>
-        </div>
-
-        <div class="compare-wrap reveal">
-          <table class="compare-table" aria-describedby="compare-title">
-            <thead>
-              <tr>
-                <th scope="col">Capability</th>
-                <th scope="col" class="is-sylviae">Windows desktop (beta)</th>
-                <th scope="col">Android mobile (private beta)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Focus, short break and long break</th>
-                <td class="is-sylviae" data-label="Windows desktop (beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
-                <td data-label="Android mobile (private beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
-              </tr>
-              <tr>
-                <th scope="row">Local tasks, core tools work offline</th>
-                <td class="is-sylviae" data-label="Windows desktop (beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
-                <td data-label="Android mobile (private beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
-              </tr>
-              <tr>
-                <th scope="row">Five offline focus tracks</th>
-                <td class="is-sylviae" data-label="Windows desktop (beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
-                <td data-label="Android mobile (private beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
-              </tr>
-              <tr>
-                <th scope="row">Spotify &amp; YouTube sources</th>
-                <td class="is-sylviae" data-label="Windows desktop (beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
-                <td data-label="Android mobile (private beta)"><span class="compare-mark partial" aria-label="Partial">~</span><span class="compare-cell-note">Opens in the provider's app</span></td>
-              </tr>
-              <tr>
-                <th scope="row">Blocks websites <em>and</em> apps</th>
-                <td class="is-sylviae" data-label="Windows desktop (beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
-                <td data-label="Android mobile (private beta)"><span class="compare-mark no" aria-label="No">—</span><span class="compare-cell-note">Saves the list only</span></td>
-              </tr>
-              <tr>
-                <th scope="row">Import Google Calendar, Notion &amp; Todoist</th>
-                <td class="is-sylviae" data-label="Windows desktop (beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
-                <td data-label="Android mobile (private beta)"><span class="compare-mark partial" aria-label="Partial">~</span><span class="compare-cell-note">Needs the integration service</span></td>
-              </tr>
-              <tr>
-                <th scope="row">Streak and history calendar</th>
-                <td class="is-sylviae" data-label="Windows desktop (beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
-                <td data-label="Android mobile (private beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
-              </tr>
-              <tr>
-                <th scope="row">Home-screen streak widget</th>
-                <td class="is-sylviae" data-label="Windows desktop (beta)"><span class="compare-mark no" aria-label="No">—</span></td>
-                <td data-label="Android mobile (private beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
-              </tr>
-              <tr>
-                <th scope="row">Public download</th>
-                <td class="is-sylviae" data-label="Windows desktop (beta)"><span class="compare-mark yes" aria-label="Yes">✓</span><span class="compare-cell-note">Free beta installer</span></td>
-                <td data-label="Android mobile (private beta)"><span class="compare-mark no" aria-label="No">—</span><span class="compare-cell-note">Private beta build, no store listing</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="compare-note">✓ available · ~ partial · — not available. The desktop column describes the Windows beta; the mobile column describes the current Android private beta build.</p>
-      </section>
-
-      <!-- ─── 9. LOCAL-FIRST & PRIVACY SECTION ──────────────────────────────── -->
-      <section class="shell" id="privacy" aria-labelledby="privacy-title">
-        <div class="section-head reveal">
-          <span class="kicker">Local-first</span>
-          <h2 id="privacy-title">Your focus space stays yours.</h2>
-          <p>Sylviae's core timer, tasks, history, blocker preferences, and offline tracks stay on your device. Connected services are contacted only when you choose to use them.</p>
-        </div>
-
-        <div class="privacy-grid reveal-stagger">
-          <article class="privacy-card">
-            <p class="privacy-card-tag">LOCAL BY DEFAULT</p>
-            <h3>On-device data</h3>
-            <p>Core timer, tasks, history, blocker preferences, and offline tracks stay on your device.</p>
-          </article>
-
-          <article class="privacy-card">
-            <p class="privacy-card-tag">PROTECTED CONNECTIONS</p>
-            <h3>Protected storage</h3>
-            <p>Connected-service credentials use protected storage and encrypted handling.</p>
-          </article>
-
-          <article class="privacy-card">
-            <p class="privacy-card-tag">NO ADVERTISING MODEL</p>
-            <h3>Not built on attention</h3>
-            <p>Sylviae is not built around advertising or selling user attention.</p>
-          </article>
-        </div>
-
-        <details class="tech-details" style="max-width: 680px; margin-top: 24px;">
-          <summary>How is my data protected?</summary>
-          <p>Your tasks and session history are saved in a local file on your own device, not in the cloud. If you connect Notion, Todoist, or Google Calendar, those login details are encrypted using Windows' own built-in secure storage — the same protection Windows uses for your other saved passwords.</p>
-        </details>
-      </section>
-
-      <!-- ─── 10. DEEP FOCUS (MOBILE) ──────────────────────────────────────── -->
-      <section class="shell" id="focusmode" aria-labelledby="focusmode-title">
-        <div class="feature-deep-grid">
-          <div class="reveal">
-            <span class="kicker">Deep Focus · Sylviae Mobile</span>
-            <h2 id="focusmode-title">Step into the pond.</h2>
-            <p style="color:var(--ink-dim); margin-top:16px; font-size:17px; line-height:1.6;">
-              When a Focus session is running on Sylviae Mobile, the screen becomes one quiet scene: a frog reading on a lily pad under a night sky, your task, and the countdown. Nothing else asks for attention.
-            </p>
-
-            <div class="feature-list reveal-stagger">
-              <div class="feature-point">
-                <h3>One fixed scene</h3>
-                <p>The same pond every session, a looping muted video that mixes with your focus audio.</p>
-              </div>
-              <div class="feature-point">
-                <h3>Controls stay in reach</h3>
-                <p>Pause, skip or end the session, and see which track is playing, without leaving the scene.</p>
-              </div>
-            </div>
-          </div>
-
-          <figure class="phone-shot deep-phone reveal-media">
-            <img src="assets/mobile/deep-focus.webp" width="540" height="1200" loading="lazy" decoding="async"
-                 alt="Sylviae Mobile Deep Focus: a frog reading a book on a lily pad at night, with the task name, a 24:53 countdown, the track Peace of Mind and Pause, Skip and End session buttons">
-            <figcaption>Deep Focus on Android</figcaption>
-          </figure>
-        </div>
-
-        <div class="focus-desktop reveal-media">
-          <div class="product-frame">
-            <div class="app-window-header" aria-hidden="true">
-              <span class="window-title">SYLVIAE — Deep Focus · New native desktop app (preview)</span>
-            </div>
-            <img class="app-screenshot"
-                 src="assets/app/native-deepfocus-1280.webp"
-                 srcset="assets/app/native-deepfocus-640.webp 640w, assets/app/native-deepfocus-1280.webp 1280w"
-                 sizes="(max-width: 880px) 92vw, 820px"
-                 alt="New native desktop app (preview): Deep Focus in full screen, the same pond with a frog reading on a lily pad, the task name, an 18:23 countdown and Pause, Skip and End session buttons"
-                 width="1920" height="1080"
-                 style="aspect-ratio: 1920 / 1080;"
-                 loading="lazy" decoding="async">
-          </div>
-          <p class="preview-note">Deep Focus on the new native desktop app (preview). The current Windows beta download does not include it yet.</p>
-        </div>
-      </section>
-
-      <!-- ─── 11. PRICING & DOWNLOAD SECTION ───────────────────────────────── -->
-      <section class="shell" id="offer" aria-labelledby="offer-title">
-        <div class="section-head reveal">
-          <span class="kicker">Free beta</span>
-          <h2 id="offer-title">Start with the free beta.</h2>
-          <p>Download the local Windows installer and run a real focus block — no account needed.</p>
-        </div>
-
-        <div class="offer-layout">
-          <article class="price-card">
-            <h3 style="font-family:var(--font-display); font-size:22px;">Sylviae Desktop for Windows</h3>
-            <div class="price-big">$0 <small>/ free beta</small></div>
-
-            <ul class="checklist">
-              <li>Free during beta</li>
-              <li>Windows 64-bit installer</li>
-              <li>No account required for core use</li>
-              <li>Core tools work offline</li>
-              <li>Cloud integrations require internet</li>
-            </ul>
-
-            <a class="cta-primary" href="https://github.com/JGuilherme2005/Toki-Landing/releases/download/v1.0.0/toki-setup-1.0.0.exe" style="width:100%;">
-              <span>Download for Windows</span>
-              <span class="arrow" aria-hidden="true">↓</span>
-            </a>
-            <p style="font-size:12px; color:var(--muted); margin-top:12px; text-align:center;">
-              File: toki-setup-1.0.0.exe &middot; No account required
-            </p>
-            <p class="preview-note" style="text-align:center; margin-top:10px;">
-              This installer is the v1.0.0 Windows beta (published July 2026). It does not include the new native desktop app shown in the preview screenshots.
-            </p>
-          </article>
-
-          <!-- ─── 13. FAQ ACCORDION ────────────────────────────────────────── -->
-          <div class="faq" id="faq" aria-label="Frequently Asked Questions">
-            <details open>
-              <summary>What is Sylviae?</summary>
-              <p>Sylviae is a calm focus workspace. The Windows desktop beta combines your timer, tasks, distraction blocking, focus audio, and task imports in one quiet application, and an Android companion (private beta, by request) brings the timer, tasks, focus audio and streaks to your phone.</p>
-            </details>
-
-            <details>
-              <summary>Is Sylviae just a Pomodoro timer?</summary>
-              <p>No. Sylviae brings together a focus timer, task context, distraction controls, ambient audio, and task imports so you can enter work without switching apps.</p>
-            </details>
-
-            <details>
-              <summary>Does it work offline?</summary>
-              <p>Yes. The core timer, distraction blocker, local task list, and built-in ambient soundscapes work offline. Internet connection is required for cloud task imports or streaming audio.</p>
-            </details>
-
-            <details>
-              <summary>Do I need an account?</summary>
-              <p>No account is required to download Sylviae or use its core features. Integration credentials for Google Calendar, Notion, and Todoist are stored locally using Windows secure storage. On mobile you can choose &ldquo;Continue without an account&rdquo; and keep your tasks on your phone.</p>
-            </details>
-
-            <details>
-              <summary>Which operating systems are supported?</summary>
-              <p>Sylviae Desktop is built for Windows 64-bit. Sylviae Mobile is an Android private beta build, available by request. There is no macOS, Linux or iOS version.</p>
-            </details>
-
-            <details>
-              <summary>Is there a mobile app?</summary>
-              <p>Yes, as an Android private beta. It has the focus timer, tasks, Deep Focus, focus audio, history and streaks. It is not on Google Play or the App Store yet, and there is no public mobile download. You can request beta access with a GitHub issue (a free GitHub account is needed).</p>
-            </details>
-
-            <details>
-              <summary>Does the mobile app block distracting apps or sites?</summary>
-              <p>Not yet. The mobile Blocklist only saves your list of sites and apps, and the screen says so. Blocking is a Windows desktop feature.</p>
-            </details>
-
-
-            <details>
-              <summary>Why does Windows ask for permission on launch?</summary>
-              <p>Blocking a website only works if it's enforced by Windows itself, not just inside your browser. That's why Sylviae asks for a one-time system permission — the same kind of prompt you'd see installing any app that manages your network or firewall.</p>
-            </details>
-
-            <details>
-              <summary>Is the beta free?</summary>
-              <p>Yes. The current Windows beta is 100% free to download and use with no account creation.</p>
-            </details>
-          </div>
-        </div>
-      </section>
-
-      <!-- ─── 12. FINAL CTA ───────────────────────────────────────────────── -->
-      <section class="shell" id="final">
-        <div class="reveal" style="padding: clamp(40px, 5vw, 64px); border:1px solid var(--border-quiet); border-radius:16px; background:linear-gradient(180deg, var(--surface), var(--surface-2)); box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35); display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
-          <div>
-            <span class="kicker">Sylviae for Windows</span>
-            <h2>Stop preparing to focus. Just enter it.</h2>
-            <p style="color:var(--muted); margin-top:8px;">Download the free beta for Windows and start your next protected focus session.</p>
-          </div>
-          <a class="cta-primary" href="https://github.com/JGuilherme2005/Toki-Landing/releases/download/v1.0.0/toki-setup-1.0.0.exe">
-            <span>Download for Windows</span>
-            <span class="arrow" aria-hidden="true">↓</span>
-          </a>
-        </div>
-      </section>
-
     </main>
 
-    <!-- ─── FOOTER ─────────────────────────────────────────────────────────── -->
-    <footer class="shell">
-      <div class="footer-inner">
-        <a class="brand" href="#top" aria-label="Sylviae home">
-          <img src="assets/icon-64.png" alt="" width="24" height="24">
-          <span>SYLVIAE</span>
-        </a>
-
-        <nav class="footer-links" aria-label="Footer links">
-          <a href="#workflow">Product</a>
-          <a href="#audio">Features</a>
-          <a href="#mobile">Mobile</a>
-          <a href="#compare">Compare</a>
-          <a href="#privacy">Privacy</a>
-          <a href="#offer">Pricing</a>
-          <a href="#faq">FAQ</a>
-          <a href="https://github.com/JGuilherme2005/Toki-Landing/releases/download/v1.0.0/toki-setup-1.0.0.exe">Download</a>
-        </nav>
-
-        <p style="font-family:var(--font-body); font-size:12px; color:var(--muted);">
-          &copy; 2026 Sylviae &middot; Windows desktop beta and Android private beta
-        </p>
-      </div>
-    </footer>
+    <footer class="shell"><p>Local by default. Your timer, tasks, and history stay on your device.</p><div class="footer-bottom"><a class="brand" href="#top" aria-label="Sylviae home"><img src="assets/icon-64.png" alt="" width="24" height="24"><span>SYLVIAE</span></a><span>&copy; 2026 Sylviae &middot; Windows beta &middot; Android private beta</span></div></footer>
 
   </div><!-- /.page -->
 
   <script>
+    // Start the decorative pond only after the page is usable. The poster is
+    // the permanent reduced-motion fallback and reserves the video's space.
+    window.addEventListener('load', function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var video = document.querySelector('.pond-video');
+      if (!video) return;
+      video.play().catch(function () {});
+    }, { once: true });
+
     // Tab switching for Integrations
     function switchTab(triggerBtn, tabName) {
       // Scoped to the enclosing section so independent tab groups (Deep

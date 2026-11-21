@@ -50,7 +50,7 @@
 - **Security:** Accurate (`safeStorage` DPAPI encryption on local installation secrets, AES-256-GCM cloud token encryption, renderer context isolation).
 
 ### 2.5 Visual Assets & Media
-- Media files in `Toki-Landing/assets/` (`toki-improved.mp4`, `toki-shot-setup.png`, `toki-shot-focus.png`, `toki-shot-block.png`, `icon.png`, `icon.ico`) are valid.
+- Media files in `Toki-Landing/assets/` (`toki-improved.mp4`, `icon.png`, `icon.ico`) are valid. The unreferenced `toki-shot-*.png` captures were removed in the quality pass.
 - Screenshots accurately represent the core UI layout. However, new screenshots capturing the **Deep Focus Audio** tab and **Google Calendar Integration** modal should be added when updating the landing page.
 
 ---

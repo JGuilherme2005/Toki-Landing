@@ -3,48 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Sylviae is a calm, local-first Windows focus workspace combining zero-drift timers, tasks, distraction blocking, focus audio, and cloud integrations.">
+  <meta name="description" content="Sylviae is a calm, local-first focus workspace: a free Windows desktop beta with timers, tasks, distraction blocking, focus audio and task imports, plus an Android preview companion.">
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#0e1210">
-  <meta property="og:title" content="Sylviae | Desktop Focus Workspace for Windows">
-  <meta property="og:description" content="Bring your timer, task context, focus audio, and distraction controls into one protected desktop environment.">
+  <meta name="theme-color" content="#111513">
+  <meta property="og:title" content="Sylviae | Calm Focus Workspace for Windows and Android">
+  <meta property="og:description" content="A calm focus timer, tasks, focus audio and distraction controls. Free Windows beta, plus an Android preview.">
   <meta property="og:site_name" content="Sylviae">
   <meta property="og:url" content="https://www.sylviae.space/">
-  <meta property="og:image" content="https://www.sylviae.space/assets/toki-poster.png">
-  <meta property="og:image:alt" content="Sylviae desktop focus environment workspace">
+  <meta property="og:image" content="https://www.sylviae.space/assets/og-sylviae.jpg">
+  <meta property="og:image:alt" content="Sylviae Mobile Deep Focus: a frog reading on a lily pad beside the focus timer">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Sylviae | Desktop Focus Workspace for Windows">
-  <meta name="twitter:description" content="Local-first desktop workspace with focus timer, site blocker, ambient audio, and cloud task sync.">
-  <meta name="twitter:image" content="https://www.sylviae.space/assets/toki-poster.png">
+  <meta name="twitter:title" content="Sylviae | Calm Focus Workspace for Windows and Android">
+  <meta name="twitter:description" content="Local-first focus timer, tasks and focus audio. Windows desktop beta and Android preview.">
+  <meta name="twitter:image" content="https://www.sylviae.space/assets/og-sylviae.jpg">
   <link rel="canonical" href="https://www.sylviae.space/">
   <link rel="icon" href="assets/icon.ico">
-  <link rel="apple-touch-icon" href="assets/icon.png">
-  <title>Sylviae | Desktop Focus Workspace for Windows</title>
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <title>Sylviae | Calm Focus Workspace for Windows and Android</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&display=swap">
 
   <style>
-    /* ─── TOKENS: SYLVIAE PRODUCT-LED DESIGN SYSTEM ─────────────────────────
-       Colors mirror the real Sylviae desktop app (Toki-App/src/index.html):
-         app --accent  #f2e28a  -> landing --accent  (cream yellow)
-         app --text    #fff8ea  -> landing --ink     (warm off-white)
-         app --muted   #c4dac2  -> landing --ink-dim
-         app --surface #42825d  -> landing --product-surface (product frame edges)
-       Landing keeps a darker room background to frame product screenshots
-       without visual shock when the user opens the actual application.
+    /* ─── TOKENS: SYLVIAE "MOONLIT POND" ────────────────────────────────────
+       Mirrors the current Sylviae design tokens (Sylviae-Mobile docs/design/README.md,
+       which follows the desktop "moonlit pond" palette):
+         BG #111513 · SURFACE #171c19 · SURFACE2 #1f2521 · TEXT #efe9dc · MUTED #a3a79b
+         ACCENT #8fc27a (the one action colour) · GOLD #f0c75e
+       Fonts: Syne for titles, system face for body, JetBrains Mono for numbers.
     */
     :root {
       color-scheme: dark;
 
-      /* Fonts — Fraunces is a soft, warm variable serif for the Sylviae brand voice
-         (calm, intelligent, slightly magical); JetBrains Mono matches the app's numeric stack */
-      --font-display: 'Fraunces', Georgia, 'Iowan Old Style', serif;
-      --font-body:    'Outfit', 'Segoe UI', system-ui, sans-serif;
+      --font-display: 'Syne', 'Segoe UI', system-ui, sans-serif;
+      --font-body:    system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
       --font-mono:    'JetBrains Mono', 'Cascadia Mono', 'Consolas', ui-monospace, monospace;
 
       /* Type scale — calibrated for 100%, 110%, 125% browser zoom */
@@ -59,45 +54,40 @@
       --text-sm:     14px;
       --text-xs:     12px;
 
-      /* Palette — EXACT match to the Sylviae app so the landing IS the app's room.
-         All greens are lifted 1:1 from Toki-App/src/index.html. */
-      --bg-deep:      #529b72;         /* app --bg */
-      --bg-room:      #4d9068;         /* app --surface2 */
-      --surface:      #42825d;         /* app --surface */
-      --surface-2:    #3f7d59;         /* app --surface-organic */
-      --surface-live: #529b72;
-      --ink:          #fff8ea;         /* app --text */
-      --ink-dim:      #c4dac2;         /* app --muted */
-      --muted:        #9fbe99;         /* app --muted2 */
+      --bg-deep:      #111513;
+      --bg-room:      #0c0f0d;
+      --surface:      #171c19;
+      --surface-2:    #1f2521;
+      --surface-live: #1f2521;
+      --ink:          #efe9dc;
+      --ink-dim:      #c9cbbf;
+      --muted:        #a3a79b;
 
-      /* Living green tokens */
-      --app-green:        #529b72;
-      --app-green-deep:   #3f7d59;
-      --app-green-glow:   rgba(255, 248, 234, 0.10);
-      --app-green-soft:   rgba(255, 248, 234, 0.06);
-      --app-green-line:   rgba(55, 104, 74, 0.86);   /* app --border */
+      --app-green:        #8fc27a;
+      --app-green-deep:   #1f2521;
+      --app-green-glow:   rgba(239, 233, 220, 0.08);
+      --app-green-soft:   rgba(239, 233, 220, 0.05);
+      --app-green-line:   rgba(239, 233, 220, 0.12);
 
-      /* Accent — Sylviae's cream-yellow. Same hex as app --accent. */
-      --accent:       #f2e28a;
-      --accent-hover: #f6ea9c;
-      --accent-dim:   rgba(242, 226, 138, 0.10);
-      --accent-soft:  rgba(242, 226, 138, 0.22);
-      --accent-ink:   #1a1f14;
+      --accent:       #8fc27a;
+      --accent-hover: #a3d28f;
+      --accent-dim:   rgba(143, 194, 122, 0.10);
+      --accent-soft:  rgba(143, 194, 122, 0.22);
+      --accent-ink:   #0c0f0d;
+      --gold:         #f0c75e;
 
       /* Back-compat aliases (existing CSS still references --lime tokens) */
       --lime:         var(--accent);
       --lime-dim:     var(--accent-dim);
       --lime-hover:   var(--accent-soft);
 
-      /* Borders — deep-green lines that read on the bright green bg */
-      --border-quiet: rgba(242, 226, 138, 0.32);
-      --border-room:  rgba(55, 106, 76, 0.42);       /* app --separator */
-      --border-strong:rgba(55, 104, 74, 0.86);       /* app --border */
-      /* Product-frame border echoes the app's real border color */
-      --product-border: rgba(55, 104, 74, 0.86);
-      --product-surface:#42825d;                     /* app --surface */
+      --border-quiet: rgba(143, 194, 122, 0.30);
+      --border-room:  rgba(239, 233, 220, 0.08);
+      --border-strong:rgba(239, 233, 220, 0.13);
+      --product-border: rgba(239, 233, 220, 0.13);
+      --product-surface:#171c19;
 
-      --shadow-deep:  rgba(24, 48, 32, 0.5);
+      --shadow-deep:  rgba(0, 0, 0, 0.5);
 
       /* Easing */
       --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
@@ -136,8 +126,8 @@
       /* Same green as the Sylviae app, with a subtle top-down deepening so the
          page has depth without breaking continuity with the desktop app. */
       background:
-        radial-gradient(1400px 900px at 50% -10%, #5aa87a, transparent 60%),
-        radial-gradient(1000px 700px at 100% 100%, #47895f, transparent 60%),
+        radial-gradient(1400px 900px at 50% -10%, #1a241d, transparent 60%),
+        radial-gradient(1000px 700px at 100% 100%, #12201a, transparent 60%),
         var(--bg-deep);
       background-attachment: fixed;
       color: var(--ink);
@@ -155,8 +145,8 @@
       z-index: 0;
       pointer-events: none;
       background:
-        radial-gradient(500px 400px at 20% 30%, rgba(242, 226, 138, 0.06), transparent 70%),
-        radial-gradient(420px 340px at 80% 60%, rgba(255, 248, 234, 0.05), transparent 70%);
+        radial-gradient(500px 400px at 20% 30%, rgba(143, 194, 122, 0.06), transparent 70%),
+        radial-gradient(420px 340px at 80% 60%, rgba(239, 233, 220, 0.05), transparent 70%);
       filter: blur(30px);
       animation: aurora 28s ease-in-out infinite alternate;
       will-change: transform;
@@ -240,10 +230,10 @@
       padding: 6px 6px 6px 16px;
       border: 1px solid var(--border-strong);
       border-radius: 14px;
-      background: rgba(56, 108, 78, 0.72);
+      background: rgba(17, 21, 19, 0.82);
       backdrop-filter: blur(18px) saturate(1.15);
       -webkit-backdrop-filter: blur(18px) saturate(1.15);
-      box-shadow: 0 16px 32px rgba(24, 48, 32, 0.28);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.28);
     }
 
     .nav-links a.active,
@@ -304,7 +294,7 @@
       font-weight: 600;
       letter-spacing: 0.04em;
       white-space: nowrap;
-      box-shadow: 0 6px 16px rgba(196, 175, 74, 0.18);
+      box-shadow: 0 6px 16px rgba(60, 100, 50, 0.18);
       transition: background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
     }
 
@@ -361,7 +351,7 @@
     }
 
     section + section {
-      border-top: 1px solid rgba(55, 106, 76, 0.42);
+      border-top: 1px solid rgba(239, 233, 220, 0.08);
     }
 
     .section-head {
@@ -393,7 +383,7 @@
       font-size: 13px;
       font-weight: 600;
       letter-spacing: 0.04em;
-      box-shadow: 0 10px 28px rgba(196, 175, 74, 0.22);
+      box-shadow: 0 10px 28px rgba(60, 100, 50, 0.22);
       overflow: hidden;
       isolation: isolate;
       transition: background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
@@ -406,7 +396,7 @@
       inset: -2px;
       z-index: -1;
       border-radius: inherit;
-      background: radial-gradient(60% 100% at 50% 50%, rgba(242, 226, 138, 0.55), transparent 70%);
+      background: radial-gradient(60% 100% at 50% 50%, rgba(143, 194, 122, 0.55), transparent 70%);
       opacity: 0;
       animation: cta-pulse 3.6s ease-in-out infinite;
     }
@@ -426,7 +416,7 @@
     .cta-primary:hover {
       background: var(--accent-hover);
       transform: translateY(-2px);
-      box-shadow: 0 14px 34px rgba(196, 175, 74, 0.32);
+      box-shadow: 0 14px 34px rgba(60, 100, 50, 0.32);
     }
 
     .cta-primary:hover::after { transform: translateX(120%); }
@@ -546,9 +536,9 @@
       /* Match the app: bright green surface with subtle inner depth */
       background: linear-gradient(180deg, var(--surface), var(--surface-2));
       box-shadow:
-        0 32px 64px rgba(24, 48, 32, 0.42),
-        0 0 0 1px rgba(255, 248, 234, 0.06),
-        inset 0 1px 0 rgba(255, 248, 234, 0.10);
+        0 32px 64px rgba(0, 0, 0, 0.42),
+        0 0 0 1px rgba(239, 233, 220, 0.06),
+        inset 0 1px 0 rgba(239, 233, 220, 0.10);
       transition:
         transform var(--dur-normal) var(--ease-out),
         box-shadow var(--dur-normal) var(--ease-out),
@@ -564,7 +554,7 @@
       z-index: -1;
       border-radius: 28px;
       background:
-        radial-gradient(60% 60% at 50% 40%, rgba(242, 226, 138, 0.14), transparent 70%);
+        radial-gradient(60% 60% at 50% 40%, rgba(143, 194, 122, 0.14), transparent 70%);
       filter: blur(24px);
       opacity: 0.9;
       pointer-events: none;
@@ -573,24 +563,24 @@
     .product-frame:hover {
       transform: translateY(-3px);
       box-shadow:
-        0 42px 84px rgba(24, 48, 32, 0.5),
-        0 0 0 1px rgba(255, 248, 234, 0.08),
-        inset 0 1px 0 rgba(255, 248, 234, 0.12);
+        0 42px 84px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(239, 233, 220, 0.08),
+        inset 0 1px 0 rgba(239, 233, 220, 0.12);
     }
 
     /* In-page product screenshots — darker + yellow-edged so the "window"
        reads as a distinct object against the green page instead of blending
        into it (both were the same green surface before). */
     .product-frame {
-      background: linear-gradient(180deg, rgba(28, 54, 38, 0.94), rgba(22, 44, 31, 0.97));
-      border-color: rgba(242, 226, 138, 0.28);
+      background: linear-gradient(180deg, rgba(31, 37, 33, 0.96), rgba(23, 28, 25, 0.98));
+      border-color: rgba(143, 194, 122, 0.28);
       box-shadow:
-        0 32px 64px rgba(12, 26, 17, 0.55),
-        0 0 0 1px rgba(242, 226, 138, 0.10),
-        inset 0 1px 0 rgba(255, 248, 234, 0.06);
+        0 32px 64px rgba(0, 0, 0, 0.55),
+        0 0 0 1px rgba(143, 194, 122, 0.10),
+        inset 0 1px 0 rgba(239, 233, 220, 0.06);
     }
     .product-frame::before {
-      background: radial-gradient(60% 60% at 50% 18%, rgba(242, 226, 138, 0.24), transparent 70%);
+      background: radial-gradient(60% 60% at 50% 18%, rgba(143, 194, 122, 0.24), transparent 70%);
     }
 
     /* ─── FEATURED STORY REVIEWS — 2 wider cards above the marquee ─────── */
@@ -609,7 +599,7 @@
       border: 1px solid var(--border-strong);
       border-radius: 18px;
       background: linear-gradient(180deg, var(--surface), var(--surface-2));
-      box-shadow: 0 22px 44px rgba(24, 48, 32, 0.32);
+      box-shadow: 0 22px 44px rgba(0, 0, 0, 0.32);
       display: flex;
       flex-direction: column;
       gap: 18px;
@@ -648,7 +638,7 @@
       width: 46px;
       height: 46px;
       border-radius: 50%;
-      background: linear-gradient(140deg, var(--accent), #d9c46e);
+      background: linear-gradient(140deg, var(--accent), #6fa65c);
       color: var(--accent-ink);
       font-family: var(--font-display);
       font-size: 15px;
@@ -691,7 +681,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 6px 10px 10px;
-      border-bottom: 1px solid rgba(255, 248, 234, 0.05);
+      border-bottom: 1px solid rgba(239, 233, 220, 0.05);
       margin-bottom: 8px;
     }
 
@@ -704,7 +694,7 @@
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: rgba(255, 248, 234, 0.16);
+      background: rgba(239, 233, 220, 0.16);
     }
 
     .window-title {
@@ -722,8 +712,8 @@
       height: auto;
       display: block;
       border-radius: 8px;
-      border: 1px solid rgba(255, 248, 234, 0.06);
-      background: #529b72;               /* matches app --bg so any small letterbox blends with the app */
+      border: 1px solid rgba(239, 233, 220, 0.06);
+      background: #111513;               /* matches app --bg so any small letterbox blends with the app */
       object-fit: contain;
       aspect-ratio: 3 / 2;
     }
@@ -780,7 +770,7 @@
       border-radius: 12px;
       background:
         linear-gradient(180deg, var(--surface), var(--surface-2));
-      box-shadow: 0 12px 24px rgba(24, 48, 32, 0.25);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
       transition:
         border-color var(--dur-normal) var(--ease-out),
         transform var(--dur-normal) var(--ease-out),
@@ -805,8 +795,8 @@
       border-color: var(--app-green-line);
       transform: translateY(-4px);
       box-shadow:
-        0 22px 40px rgba(24, 48, 32, 0.32),
-        0 0 0 1px rgba(82, 155, 114, 0.08);
+        0 22px 40px rgba(0, 0, 0, 0.32),
+        0 0 0 1px rgba(143, 194, 122, 0.08);
     }
 
     .step-card:hover::after { opacity: 1; }
@@ -883,12 +873,12 @@
     }
 
     .feature-point:hover {
-      border-color: rgba(242, 226, 138, 0.45);
+      border-color: rgba(143, 194, 122, 0.45);
       transform: translateX(4px);
       background: var(--surface-2);
     }
 
-    .feature-point h4 {
+    .feature-point h3 {
       font-family: var(--font-display);
       font-size: 15px;
       font-weight: 500;
@@ -1003,7 +993,7 @@
       border: 1px solid var(--border-strong);
       border-radius: 14px;
       background: linear-gradient(180deg, var(--surface), var(--surface-2));
-      box-shadow: 0 16px 32px rgba(24, 48, 32, 0.24);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.24);
       overflow: hidden;
       transition:
         transform var(--dur-normal) var(--ease-out),
@@ -1044,117 +1034,6 @@
       line-height: 1.6;
     }
 
-    /* ─── DEEP FOCUS PORTAL ───────────────────────────────────────────────
-       One fixed illustrated background (assets/sylviae/deep-focus-bg.jpg),
-       always visible — Sylviae's pose is the only thing that quietly
-       changes on top of it. Kept deliberately simple: no toggle, no fake
-       window chrome, just the destination itself, always playing. */
-    .portal-section {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: clamp(32px, 5vw, 64px);
-      align-items: center;
-    }
-
-    .portal-demo { padding: 10px; }
-
-    .portal-stage {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 3 / 2;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    .portal-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* Soft yellow ambient glow — the one whisper of the portal, always on,
-       never a hard flash. */
-    .portal-glow {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background: radial-gradient(closest-side at 50% 72%, rgba(242, 226, 138, 0.28), transparent 70%);
-      animation: portal-glow-pulse 6s ease-in-out infinite;
-    }
-    @keyframes portal-glow-pulse {
-      0%, 100% { opacity: 0.55; }
-      50%      { opacity: 1; }
-    }
-
-    .portal-timer {
-      position: absolute;
-      top: 16px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2px;
-      padding: 8px 20px;
-      border-radius: 999px;
-      background: rgba(24, 32, 20, 0.34);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-    }
-
-    .portal-timer-digits {
-      font-family: var(--font-mono);
-      font-size: 20px;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      font-variant-numeric: tabular-nums;
-      color: #fff8ea;
-    }
-
-    .portal-timer-label {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #f2e28a;
-    }
-
-    /* Sylviae's activity layer — three poses cross-fade in a slow loop on
-       top of the one fixed background. Always playing, never gated behind
-       an interaction. */
-    .portal-companion {
-      position: absolute;
-      bottom: 6%;
-      left: 50%;
-      width: 34%;
-      max-width: 210px;
-      height: auto;
-      transform: translateX(-50%) translateY(6px);
-      filter: drop-shadow(0 14px 18px rgba(20, 30, 15, 0.35));
-      opacity: 0;
-      animation: companion-cycle 18s ease-in-out infinite;
-    }
-    .portal-companion.is-b { animation-delay: 6s; }
-    .portal-companion.is-c { animation-delay: 12s; }
-
-    @keyframes companion-cycle {
-      0%, 3%    { opacity: 0; transform: translateX(-50%) translateY(6px); }
-      8%, 28%   { opacity: 1; transform: translateX(-50%) translateY(0); }
-      33%, 100% { opacity: 0; transform: translateX(-50%) translateY(6px); }
-    }
-
-    @media (max-width: 900px) {
-      .portal-section { grid-template-columns: 1fr; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .portal-companion { animation: none; opacity: 1; transform: translateX(-50%); }
-      .portal-companion.is-b, .portal-companion.is-c { display: none; }
-      .portal-glow { animation: none; opacity: 0.7; }
-    }
-
     /* ─── PRICING / OFFER ────────────────────────────────────────────────── */
     .offer-layout {
       display: grid;
@@ -1168,7 +1047,7 @@
       border: 1px solid var(--border-quiet);
       border-radius: 16px;
       background: linear-gradient(180deg, var(--surface), var(--surface-2));
-      box-shadow: 0 24px 48px rgba(24, 48, 32, 0.4);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
     }
 
     .price-big {
@@ -1271,7 +1150,8 @@
 
     .footer-links {
       display: flex;
-      gap: 20px;
+      flex-wrap: wrap;
+      gap: 10px 20px;
       color: var(--muted);
       font-size: 13px;
     }
@@ -1289,7 +1169,7 @@
       border: 1px solid var(--border-strong);
       border-radius: 18px;
       background: linear-gradient(180deg, var(--surface), var(--surface-2));
-      box-shadow: 0 20px 40px rgba(24, 48, 32, 0.32);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.32);
       overflow: hidden;
     }
 
@@ -1302,7 +1182,7 @@
 
     .compare-table thead th {
       padding: 20px 18px;
-      background: rgba(24, 48, 32, 0.24);
+      background: rgba(0, 0, 0, 0.24);
       font-family: var(--font-display);
       font-weight: 500;
       color: var(--ink-dim);
@@ -1322,7 +1202,7 @@
     .compare-table thead th.is-sylviae {
       color: var(--accent);
       background:
-        linear-gradient(180deg, rgba(242, 226, 138, 0.20), rgba(24, 48, 32, 0.15));
+        linear-gradient(180deg, rgba(143, 194, 122, 0.20), rgba(0, 0, 0, 0.15));
       border-bottom-color: var(--border-quiet);
       position: relative;
     }
@@ -1355,7 +1235,7 @@
       font-size: 14px;
       font-weight: 500;
       color: var(--ink);
-      background: rgba(24, 48, 32, 0.28);
+      background: rgba(0, 0, 0, 0.28);
       border-bottom: 1px solid var(--border-strong);
       border-right: 1px solid var(--border-strong);
     }
@@ -1367,9 +1247,9 @@
     }
 
     .compare-table tbody td.is-sylviae {
-      background: rgba(242, 226, 138, 0.05);
-      border-left: 1px solid rgba(242, 226, 138, 0.10);
-      border-right: 1px solid rgba(242, 226, 138, 0.10);
+      background: rgba(143, 194, 122, 0.05);
+      border-left: 1px solid rgba(143, 194, 122, 0.10);
+      border-right: 1px solid rgba(143, 194, 122, 0.10);
     }
 
     .compare-mark {
@@ -1384,9 +1264,9 @@
     }
 
     .compare-mark.yes {
-      background: rgba(242, 226, 138, 0.16);
+      background: rgba(143, 194, 122, 0.16);
       color: var(--accent);
-      box-shadow: 0 0 0 1px rgba(242, 226, 138, 0.30);
+      box-shadow: 0 0 0 1px rgba(143, 194, 122, 0.30);
     }
 
     .compare-mark.no {
@@ -1395,9 +1275,9 @@
     }
 
     .compare-mark.partial {
-      background: rgba(82, 155, 114, 0.16);
+      background: rgba(143, 194, 122, 0.16);
       color: var(--app-green);
-      box-shadow: 0 0 0 1px rgba(82, 155, 114, 0.28);
+      box-shadow: 0 0 0 1px rgba(143, 194, 122, 0.28);
       font-size: 10px;
     }
 
@@ -1425,10 +1305,10 @@
         border-radius: 14px;
         overflow: hidden;
         background:
-          linear-gradient(180deg, var(--surface), rgba(44, 74, 56, 0.28));
+          linear-gradient(180deg, var(--surface), rgba(31, 37, 33, 0.6));
       }
       .compare-table tbody th {
-        background: rgba(82, 155, 114, 0.10);
+        background: rgba(143, 194, 122, 0.10);
         border-right: none;
       }
       .compare-table tbody td {
@@ -1448,177 +1328,6 @@
       }
       .compare-table tbody td.is-sylviae { border-left: none; border-right: none; }
       .compare-table tbody td.is-sylviae::before { color: var(--accent); }
-    }
-
-    /* ─── TESTIMONIAL RAIL ───────────────────────────────────────────────
-       Desktop: slow horizontal auto-scroll (~34s cycle), pauses on hover
-       and keyboard-focus. Fades at edges via mask.
-       Mobile:  scroll-snap-x carousel (no auto-scroll).
-       Reduced motion: no auto-scroll, static grid-like row.
-    */
-    .marquee-container {
-      overflow: hidden;
-      position: relative;
-      width: 100%;
-      margin-top: 32px;
-      padding: 10px 0;
-      mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-      -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-    }
-    .marquee-container:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 6px;
-      border-radius: 12px;
-    }
-
-    .marquee-track {
-      display: flex;
-      gap: 20px;
-      width: max-content;
-      animation: scroll-marquee 34s linear infinite;
-      will-change: transform;
-    }
-
-    .marquee-container:hover .marquee-track,
-    .marquee-container:focus-within .marquee-track {
-      animation-play-state: paused;
-    }
-
-    .marquee-card {
-      position: relative;
-      width: clamp(300px, 32vw, 380px);
-      padding: 26px 28px 24px;
-      border: 1px solid var(--border-strong);
-      border-radius: 16px;
-      background: linear-gradient(180deg, var(--surface), var(--surface-2));
-      box-shadow: 0 12px 24px rgba(24, 48, 32, 0.28);
-      flex-shrink: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition:
-        border-color var(--dur-fast) var(--ease-out),
-        transform var(--dur-fast) var(--ease-out),
-        box-shadow var(--dur-fast) var(--ease-out);
-    }
-
-    .marquee-card:hover {
-      border-color: var(--app-green-line);
-      transform: translateY(-4px);
-      box-shadow:
-        0 22px 42px rgba(24, 48, 32, 0.42),
-        0 0 0 1px rgba(82, 155, 114, 0.10);
-    }
-
-    /* Quote mark decoration — echoes newspaper editorial reviews */
-    .marquee-card::before {
-      content: "\201C";
-      position: absolute;
-      top: 6px;
-      right: 18px;
-      font-family: var(--font-display);
-      font-size: 56px;
-      line-height: 1;
-      color: var(--accent);
-      opacity: 0.14;
-      pointer-events: none;
-    }
-
-    .review-head {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 14px;
-    }
-
-    .review-avatar {
-      display: grid;
-      place-items: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: linear-gradient(140deg, var(--app-green), var(--app-green-deep));
-      color: var(--ink);
-      font-family: var(--font-display);
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      box-shadow: inset 0 1px 0 rgba(255, 248, 234, 0.14);
-      flex-shrink: 0;
-    }
-
-    .review-who {
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-    }
-
-    .review-name {
-      font-family: var(--font-display);
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--ink);
-      line-height: 1.2;
-    }
-
-    .review-role {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-top: 3px;
-    }
-
-    .review-stars {
-      display: flex;
-      gap: 2px;
-      margin-bottom: 10px;
-      color: var(--accent);
-      font-size: 13px;
-      letter-spacing: 1px;
-    }
-
-    /* Legacy classes kept for the duplicated a11y-hidden set (fallback styling) */
-    .story-role {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 14px;
-    }
-
-    .story-quote {
-      font-size: 15px;
-      line-height: 1.6;
-      color: var(--ink-dim);
-    }
-
-    @keyframes scroll-marquee {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    /* Mobile fallback: honest scroll-snap carousel, no auto-scroll */
-    @media (max-width: 640px) {
-      .marquee-container {
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        mask-image: none;
-        -webkit-mask-image: none;
-      }
-      .marquee-track {
-        animation: none;
-        width: max-content;
-        padding: 0 12px;
-      }
-      .marquee-card {
-        scroll-snap-align: center;
-        width: 82vw;
-      }
-      /* Duplicate loop cards not needed on mobile — visually harmless */
     }
 
     /* ─── SECTION REVEAL MOTION SYSTEM ──────────────────────────────────── */
@@ -1714,15 +1423,6 @@
       line-height: 1.55;
     }
 
-    /* ─── TESTIMONIAL ATTRIBUTION NOTE ───────────────────────────────────── */
-    .story-note {
-      margin-top: 24px;
-      font-size: 12px;
-      color: var(--muted);
-      font-style: italic;
-      text-align: center;
-    }
-
     /* ─── RESPONSIVE RULES ───────────────────────────────────────────────── */
     @media (max-width: 1024px) {
       .value-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -1745,12 +1445,6 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .audio-eq-bars span { animation: none; }
-      .marquee-track { animation: none; }
-      .marquee-container {
-        overflow-x: auto;
-        mask-image: none;
-        -webkit-mask-image: none;
-      }
       body::after { animation: none; }
       .cta-primary::before { animation: none; opacity: 0; }
       .reveal,
@@ -1760,6 +1454,50 @@
         transform: none !important;
         transition: none !important;
       }
+    }
+
+    /* ─── SYLVIAE MOBILE (phone screenshots, status box) ─────────────────── */
+    .phone-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 260px));
+      gap: clamp(16px, 3vw, 32px);
+      justify-content: center;
+      margin-top: 40px;
+    }
+    .phone-shot { margin: 0; text-align: center; }
+    .phone-shot img {
+      width: 100%;
+      height: auto;
+      border-radius: 28px;
+      border: 1px solid var(--border-strong);
+      background: var(--surface);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+    }
+    .phone-shot figcaption { margin-top: 14px; font-size: var(--text-sm); color: var(--ink-dim); }
+    .deep-phone { max-width: 300px; margin: 0 auto; }
+    .feature-list.is-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-top: 40px; }
+    .feature-point a { color: var(--accent); text-underline-offset: 3px; }
+    .mobile-status {
+      margin-top: 32px;
+      padding: 22px 26px;
+      border: 1px solid var(--border-quiet);
+      border-radius: 14px;
+      background: var(--surface);
+    }
+    .mobile-status h3 { font-family: var(--font-display); font-size: 20px; margin-bottom: 12px; }
+    .mobile-status ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; color: var(--ink-dim); }
+    .mobile-status strong { color: var(--ink); }
+    .compare-cell-note { display: block; margin-top: 4px; font-size: 12px; color: var(--muted); }
+    .phone-row:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    @media (max-width: 640px) {
+      .phone-row {
+        display: flex;
+        justify-content: flex-start;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 12px;
+      }
+      .phone-row .phone-shot { flex: 0 0 68%; scroll-snap-align: center; }
     }
   </style>
 </head>
@@ -1773,15 +1511,15 @@
     <nav class="nav shell" aria-label="Main navigation">
       <div class="nav-inner">
         <a class="brand" href="#top" aria-label="Sylviae home">
-          <img src="assets/icon.png" alt="Sylviae logo icon" width="28" height="28">
+          <img src="assets/icon.png" alt="" width="28" height="28">
           <span>SYLVIAE</span>
         </a>
         <div class="nav-links" aria-label="Page sections">
           <a href="#workflow">Product</a>
           <a href="#audio">Features</a>
+          <a href="#mobile">Mobile</a>
           <a href="#compare">Compare</a>
           <a href="#privacy">Privacy</a>
-          <a href="#focusmode">Focus Mode</a>
           <a href="#faq">FAQ</a>
         </div>
         <a class="nav-cta" href="https://github.com/JGuilherme2005/Toki-Landing/releases/download/v1.0.0/toki-setup-1.0.0.exe">
@@ -1801,7 +1539,7 @@
 
           <h1 id="hero-title">Everything you need to enter focus.<br>One calm desktop space.</h1>
 
-          <p class="hero-copy">Sylviae brings your focus timer, tasks, distraction blocking, music, and calendar tools into one quiet Windows app.</p>
+          <p class="hero-copy">Sylviae brings your focus timer, tasks, distraction blocking, music, and calendar tools into one quiet Windows app, with an Android preview companion for your phone.</p>
 
           <div class="hero-actions">
             <a class="cta-primary" href="https://github.com/JGuilherme2005/Toki-Landing/releases/download/v1.0.0/toki-setup-1.0.0.exe" aria-label="Download Sylviae for Windows free beta">
@@ -1809,6 +1547,7 @@
               <span class="arrow" aria-hidden="true">↓</span>
             </a>
             <a class="ghost-link" href="#proof">See how it works <span aria-hidden="true">↓</span></a>
+            <a class="ghost-link" href="#mobile">Sylviae Mobile (Android preview) <span aria-hidden="true">↓</span></a>
           </div>
 
           <div class="hero-trust-line" aria-label="Trust indicators">
@@ -1916,18 +1655,18 @@
 
             <div class="feature-list reveal-stagger">
               <div class="feature-point">
-                <h4>Offline focus library</h4>
+                <h3>Offline focus library</h3>
                 <p>Focus tracks available without an internet connection.</p>
               </div>
 
               <div class="feature-point">
-                <h4>Spotify and YouTube</h4>
+                <h3>Spotify and YouTube</h3>
                 <p>Use supported external audio sources directly inside Sylviae.</p>
               </div>
 
               <div class="feature-point">
                 <div style="display:flex; align-items:center; justify-content:space-between;">
-                  <h4>Follows your session</h4>
+                  <h3>Follows your session</h3>
                   <div class="audio-eq-bars" aria-hidden="true" title="Active audio visualizer">
                     <span></span><span></span><span></span><span></span><span></span>
                   </div>
@@ -1996,17 +1735,17 @@
 
             <div class="feature-list reveal-stagger">
               <div class="feature-point">
-                <h4>Block distracting websites</h4>
+                <h3>Block distracting websites</h3>
                 <p>Selected domains stay out of reach while a session runs.</p>
               </div>
 
               <div class="feature-point">
-                <h4>Keep selected applications closed</h4>
+                <h3>Keep selected applications closed</h3>
                 <p>Prevent distracting desktop programs from running during focus.</p>
               </div>
 
               <div class="feature-point">
-                <h4>Close distracting tabs</h4>
+                <h3>Close distracting tabs</h3>
                 <p>Open browser tabs matching your block list are closed automatically.</p>
               </div>
             </div>
@@ -2062,19 +1801,19 @@
 
         <div class="integration-notes reveal-stagger">
           <div class="feature-point">
-            <h4>Google Calendar</h4>
+            <h3>Google Calendar</h3>
             <p>Import upcoming calendar events into your focus list.</p>
           </div>
           <div class="feature-point">
-            <h4>Notion</h4>
+            <h3>Notion</h3>
             <p>Import supported Notion tasks and sync completion back to Notion.</p>
           </div>
           <div class="feature-point">
-            <h4>Todoist</h4>
+            <h3>Todoist</h3>
             <p>Import tasks from selected Todoist projects.</p>
           </div>
           <div class="feature-point">
-            <h4>Workspace</h4>
+            <h3>Workspace</h3>
             <p>Create and manage local focus tasks alongside imports.</p>
           </div>
         </div>
@@ -2092,17 +1831,17 @@
 
             <div class="feature-list">
               <div class="feature-point">
-                <h4>Runs in the background</h4>
+                <h3>Runs in the background</h3>
                 <p>Sylviae stays available from the Windows system tray while you work in other apps.</p>
               </div>
 
               <div class="feature-point">
-                <h4>Remembers your setup</h4>
+                <h3>Remembers your setup</h3>
                 <p>Tasks, audio choice, timer settings, and preferences remain ready for the next session.</p>
               </div>
 
               <div class="feature-point">
-                <h4>Keeps one focus state</h4>
+                <h3>Keeps one focus state</h3>
                 <p>Opening Sylviae again brings you back to the same session — no conflicting duplicate windows.</p>
               </div>
             </div>
@@ -2148,17 +1887,17 @@
 
             <div class="feature-list reveal-stagger">
               <div class="feature-point">
-                <h4>Current and best streak</h4>
+                <h3>Current and best streak</h3>
                 <p>Track consecutive focus days alongside your all-time best.</p>
               </div>
 
               <div class="feature-point">
-                <h4>Monthly focus calendar</h4>
+                <h3>Monthly focus calendar</h3>
                 <p>A day-by-day view of no focus, some focus, and goal-met days.</p>
               </div>
 
               <div class="feature-point">
-                <h4>Daily focus time</h4>
+                <h3>Daily focus time</h3>
                 <p>See today's accumulated focus time at a glance.</p>
               </div>
             </div>
@@ -2166,12 +1905,75 @@
         </div>
       </section>
 
-      <!-- ─── 8.5 COMPARISON — Sylviae vs the fragmented PC toolchain ─────────── -->
+      <!-- ─── 8.4b SYLVIAE MOBILE ──────────────────────────────────────────── -->
+      <section class="shell" id="mobile" aria-labelledby="mobile-title">
+        <div class="section-head reveal">
+          <span class="kicker">Sylviae Mobile · Android preview</span>
+          <h2 id="mobile-title">The same calm loop, on your phone.</h2>
+          <p>Pick a task, start a focus session, and let a frog reading by a moonlit pond keep you company. Everything below runs on the device, and you can use it without an account.</p>
+        </div>
+
+        <div class="phone-row reveal-stagger" role="group" aria-label="Sylviae Mobile screenshots" tabindex="0">
+          <figure class="phone-shot">
+            <img src="assets/mobile/focus.webp" width="540" height="1200" loading="lazy" decoding="async"
+                 alt="Sylviae Mobile Focus screen: a 25:00 timer with Focus, Short break and Long break tabs, a Start button and a task list">
+            <figcaption>Focus timer and tasks</figcaption>
+          </figure>
+          <figure class="phone-shot">
+            <img src="assets/mobile/history.webp" width="540" height="1200" loading="lazy" decoding="async"
+                 alt="Sylviae Mobile History screen: focus time today, day streak, a monthly focus calendar and a list of sessions">
+            <figcaption>History and streak calendar</figcaption>
+          </figure>
+          <figure class="phone-shot">
+            <img src="assets/mobile/blocklist.webp" width="540" height="1200" loading="lazy" decoding="async"
+                 alt="Sylviae Mobile Blocklist screen stating that blocking is not active and this build saves your list only">
+            <figcaption>Blocklist (saved list only)</figcaption>
+          </figure>
+        </div>
+
+        <div class="feature-list is-grid reveal-stagger">
+          <div class="feature-point">
+            <h3>Focus, short and long breaks</h3>
+            <p>Start, pause, skip or end a session, with a task list that lives on your phone and daily tasks that come back each day.</p>
+          </div>
+          <div class="feature-point">
+            <h3>A pond for Deep Focus</h3>
+            <p>While a Focus session runs, the screen becomes a looping moonlit pond with your task and the countdown. <a href="#focusmode">See Deep Focus</a>.</p>
+          </div>
+          <div class="feature-point">
+            <h3>Focus audio</h3>
+            <p>Five offline tracks that follow the Focus timer or play continuously. Saved Spotify and YouTube links open in their own apps.</p>
+          </div>
+          <div class="feature-point">
+            <h3>Streaks you can see</h3>
+            <p>A monthly calendar of partial and complete days, plus an Android home-screen widget with your week and current streak.</p>
+          </div>
+          <div class="feature-point">
+            <h3>Friendly reminders</h3>
+            <p>Gentle nudges about open tasks and your streak, plus a notice when a Focus or break phase ends. Reminder text follows your phone's language: English, Portuguese or Spanish.</p>
+          </div>
+          <div class="feature-point">
+            <h3>Private by default</h3>
+            <p>Choose &ldquo;Continue without an account&rdquo; and your tasks stay on your phone.</p>
+          </div>
+        </div>
+
+        <aside class="mobile-status reveal" aria-labelledby="mobile-status-title">
+          <h3 id="mobile-status-title">Where Sylviae Mobile stands today</h3>
+          <ul>
+            <li><strong>Android preview build.</strong> It is not on Google Play or the App Store, and there is no public mobile download yet.</li>
+            <li><strong>No blocking on the phone.</strong> You can save sites and apps to a blocklist, but this build does not block anything. Blocking is a Windows desktop feature.</li>
+            <li><strong>Integrations depend on the connection service.</strong> Notion, Todoist and Google Calendar import are on the Windows beta; on mobile they need the integration service to be reachable.</li>
+          </ul>
+        </aside>
+      </section>
+
+      <!-- ─── 8.5 DESKTOP VS MOBILE ────────────────────────────────────────── -->
       <section class="shell" id="compare" aria-labelledby="compare-title">
         <div class="section-head reveal">
-          <span class="kicker">One room vs many windows</span>
-          <h2 id="compare-title">One quiet room instead of five open apps.</h2>
-          <p>Most desktop focus setups stitch a timer, a blocker, a music app, and a task list together. Sylviae does the whole loop in one calm Windows workspace.</p>
+          <span class="kicker">Desktop and mobile</span>
+          <h2 id="compare-title">Same loop, honest differences.</h2>
+          <p>Sylviae Mobile is a companion, not a copy. Some desktop abilities, like system-level blocking, do not exist on the phone yet.</p>
         </div>
 
         <div class="compare-wrap reveal">
@@ -2179,257 +1981,60 @@
             <thead>
               <tr>
                 <th scope="col">Capability</th>
-                <th scope="col" class="is-sylviae">Sylviae</th>
-                <th scope="col">Forest / Pomofocus</th>
-                <th scope="col">Cold Turkey / Freedom</th>
-                <th scope="col">Endel / Brain.fm</th>
-                <th scope="col">Todoist / Notion</th>
+                <th scope="col" class="is-sylviae">Windows desktop (beta)</th>
+                <th scope="col">Android mobile (preview)</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope="row">Focus timer accurate through PC sleep</th>
-                <td class="is-sylviae" data-label="Sylviae"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
-                <td data-label="Forest / Pomofocus"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
-                <td data-label="Cold Turkey / Freedom"><span class="compare-mark no" aria-label="No">—</span></td>
-                <td data-label="Endel / Brain.fm"><span class="compare-mark no" aria-label="No">—</span></td>
-                <td data-label="Todoist / Notion"><span class="compare-mark no" aria-label="No">—</span></td>
+                <th scope="row">Focus, short break and long break</th>
+                <td class="is-sylviae" data-label="Windows desktop (beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
+                <td data-label="Android mobile (preview)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
               </tr>
               <tr>
-                <th scope="row">Blocks websites <em>and</em> desktop apps</th>
-                <td class="is-sylviae" data-label="Sylviae"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
-                <td data-label="Forest / Pomofocus"><span class="compare-mark no" aria-label="No">—</span></td>
-                <td data-label="Cold Turkey / Freedom"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
-                <td data-label="Endel / Brain.fm"><span class="compare-mark no" aria-label="No">—</span></td>
-                <td data-label="Todoist / Notion"><span class="compare-mark no" aria-label="No">—</span></td>
+                <th scope="row">Local tasks, core tools work offline</th>
+                <td class="is-sylviae" data-label="Windows desktop (beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
+                <td data-label="Android mobile (preview)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
               </tr>
               <tr>
-                <th scope="row">Offline focus audio built in</th>
-                <td class="is-sylviae" data-label="Sylviae"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
-                <td data-label="Forest / Pomofocus"><span class="compare-mark partial" aria-label="Partial">~</span></td>
-                <td data-label="Cold Turkey / Freedom"><span class="compare-mark no" aria-label="No">—</span></td>
-                <td data-label="Endel / Brain.fm"><span class="compare-mark partial" aria-label="Partial">~</span></td>
-                <td data-label="Todoist / Notion"><span class="compare-mark no" aria-label="No">—</span></td>
+                <th scope="row">Five offline focus tracks</th>
+                <td class="is-sylviae" data-label="Windows desktop (beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
+                <td data-label="Android mobile (preview)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
               </tr>
               <tr>
-                <th scope="row">Spotify &amp; YouTube inside the session</th>
-                <td class="is-sylviae" data-label="Sylviae"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
-                <td data-label="Forest / Pomofocus"><span class="compare-mark no" aria-label="No">—</span></td>
-                <td data-label="Cold Turkey / Freedom"><span class="compare-mark no" aria-label="No">—</span></td>
-                <td data-label="Endel / Brain.fm"><span class="compare-mark no" aria-label="No">—</span></td>
-                <td data-label="Todoist / Notion"><span class="compare-mark no" aria-label="No">—</span></td>
+                <th scope="row">Spotify &amp; YouTube sources</th>
+                <td class="is-sylviae" data-label="Windows desktop (beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
+                <td data-label="Android mobile (preview)"><span class="compare-mark partial" aria-label="Partial">~</span><span class="compare-cell-note">Opens in the provider's app</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Blocks websites <em>and</em> apps</th>
+                <td class="is-sylviae" data-label="Windows desktop (beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
+                <td data-label="Android mobile (preview)"><span class="compare-mark no" aria-label="No">—</span><span class="compare-cell-note">Saves the list only</span></td>
               </tr>
               <tr>
                 <th scope="row">Import Google Calendar, Notion &amp; Todoist</th>
-                <td class="is-sylviae" data-label="Sylviae"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
-                <td data-label="Forest / Pomofocus"><span class="compare-mark no" aria-label="No">—</span></td>
-                <td data-label="Cold Turkey / Freedom"><span class="compare-mark no" aria-label="No">—</span></td>
-                <td data-label="Endel / Brain.fm"><span class="compare-mark no" aria-label="No">—</span></td>
-                <td data-label="Todoist / Notion"><span class="compare-mark partial" aria-label="Native only">~</span></td>
+                <td class="is-sylviae" data-label="Windows desktop (beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
+                <td data-label="Android mobile (preview)"><span class="compare-mark partial" aria-label="Partial">~</span><span class="compare-cell-note">Needs the integration service</span></td>
               </tr>
               <tr>
-                <th scope="row">Runs locally, no account required</th>
-                <td class="is-sylviae" data-label="Sylviae"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
-                <td data-label="Forest / Pomofocus"><span class="compare-mark no" aria-label="No">—</span></td>
-                <td data-label="Cold Turkey / Freedom"><span class="compare-mark partial" aria-label="Partial">~</span></td>
-                <td data-label="Endel / Brain.fm"><span class="compare-mark no" aria-label="No">—</span></td>
-                <td data-label="Todoist / Notion"><span class="compare-mark no" aria-label="No">—</span></td>
+                <th scope="row">Streak and history calendar</th>
+                <td class="is-sylviae" data-label="Windows desktop (beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
+                <td data-label="Android mobile (preview)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
               </tr>
               <tr>
-                <th scope="row">Free during beta</th>
-                <td class="is-sylviae" data-label="Sylviae"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
-                <td data-label="Forest / Pomofocus"><span class="compare-mark partial" aria-label="Limited">~</span></td>
-                <td data-label="Cold Turkey / Freedom"><span class="compare-mark partial" aria-label="Limited">~</span></td>
-                <td data-label="Endel / Brain.fm"><span class="compare-mark no" aria-label="Subscription">$</span></td>
-                <td data-label="Todoist / Notion"><span class="compare-mark partial" aria-label="Limited">~</span></td>
+                <th scope="row">Home-screen streak widget</th>
+                <td class="is-sylviae" data-label="Windows desktop (beta)"><span class="compare-mark no" aria-label="No">—</span></td>
+                <td data-label="Android mobile (preview)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Public download</th>
+                <td class="is-sylviae" data-label="Windows desktop (beta)"><span class="compare-mark yes" aria-label="Yes">✓</span><span class="compare-cell-note">Free beta installer</span></td>
+                <td data-label="Android mobile (preview)"><span class="compare-mark no" aria-label="No">—</span><span class="compare-cell-note">Preview build, no store listing</span></td>
               </tr>
             </tbody>
           </table>
         </div>
-        <p class="compare-note">✓ full · ~ partial or requires add-on · — not supported · Comparison reflects each app's default desktop client at the time of writing.</p>
-      </section>
-
-      <!-- ─── 9. EARLY TESTER FEEDBACK ─────────────────────────────────────── -->
-      <section class="shell" id="stories" aria-labelledby="stories-title">
-        <div class="section-head reveal">
-          <span class="kicker">Early feedback</span>
-          <h2 id="stories-title">What early testers noticed.</h2>
-          <p>Feedback from people using early versions of Sylviae. Two stories in full below, plus the shorter reactions from the wider beta group.</p>
-        </div>
-
-        <!-- Two featured stories, given room to breathe -->
-        <div class="featured-stories reveal-stagger">
-          <article class="featured-story">
-            <p class="featured-quote">"Before Sylviae I had five apps open just to start working. A timer here, music there, blocker in the browser, tasks in Notion. Now I open one window and the room is already ready for me."</p>
-            <div class="featured-foot">
-              <div class="featured-avatar" aria-hidden="true">LS</div>
-              <div class="featured-who">
-                <span class="featured-name">Lucas S.</span>
-                <span class="featured-role">Software Developer · Beta since v0.6</span>
-              </div>
-              <div class="featured-stars" aria-label="5 out of 5 stars">★★★★★</div>
-            </div>
-          </article>
-
-          <article class="featured-story">
-            <p class="featured-quote">"The zero-drift timer is the thing that made me stop trusting the browser tab version. My laptop sleeps, I come back, and Sylviae still knows exactly where the session is. Small detail, huge trust."</p>
-            <div class="featured-foot">
-              <div class="featured-avatar" aria-hidden="true">FA</div>
-              <div class="featured-who">
-                <span class="featured-name">Felipe A.</span>
-                <span class="featured-role">Academic Researcher · Beta tester</span>
-              </div>
-              <div class="featured-stars" aria-label="5 out of 5 stars">★★★★★</div>
-            </div>
-          </article>
-        </div>
-
-        <!-- Testimonial rail: slow horizontal auto-scroll on desktop,
-             pauses on hover/keyboard-focus, respects prefers-reduced-motion.
-             Mobile falls back to scroll-snap (see .marquee-container media rules). -->
-        <section class="marquee-container" aria-label="Feedback from early Sylviae testers" tabindex="0">
-          <div class="marquee-track" data-marquee>
-            <article class="marquee-card">
-              <div class="review-head">
-                <div class="review-avatar" aria-hidden="true">LS</div>
-                <div class="review-who">
-                  <span class="review-name">Lucas S.</span>
-                  <span class="review-role">Software Developer</span>
-                </div>
-              </div>
-              <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
-              <p class="story-quote">"Before Sylviae, I kept switching between my timer, music, and task list. Now I open one place and begin."</p>
-            </article>
-
-            <article class="marquee-card">
-              <div class="review-head">
-                <div class="review-avatar" aria-hidden="true">MM</div>
-                <div class="review-who">
-                  <span class="review-name">Matheus M.</span>
-                  <span class="review-role">Frontend Engineer</span>
-                </div>
-              </div>
-              <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
-              <p class="story-quote">"Offline soundscapes and a timer that stays accurate when my PC sleeps make focus sessions feel seamless."</p>
-            </article>
-
-            <article class="marquee-card">
-              <div class="review-head">
-                <div class="review-avatar" aria-hidden="true">GK</div>
-                <div class="review-who">
-                  <span class="review-name">Gabriel K.</span>
-                  <span class="review-role">Technical Writer</span>
-                </div>
-              </div>
-              <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
-              <p class="story-quote">"I pull my daily calendar events straight into my focus list without juggling multiple task apps."</p>
-            </article>
-
-            <article class="marquee-card">
-              <div class="review-head">
-                <div class="review-avatar" aria-hidden="true">TR</div>
-                <div class="review-who">
-                  <span class="review-name">Thiago R.</span>
-                  <span class="review-role">Product Manager</span>
-                </div>
-              </div>
-              <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
-              <p class="story-quote">"Google Calendar imports and Notion sync save me 30 minutes every morning."</p>
-            </article>
-
-            <article class="marquee-card">
-              <div class="review-head">
-                <div class="review-avatar" aria-hidden="true">MP</div>
-                <div class="review-who">
-                  <span class="review-name">Mariana P.</span>
-                  <span class="review-role">UI/UX Designer</span>
-                </div>
-              </div>
-              <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
-              <p class="story-quote">"Spotify focus tracks synced with my Pomodoro timers make long design sprints effortless."</p>
-            </article>
-
-            <article class="marquee-card">
-              <div class="review-head">
-                <div class="review-avatar" aria-hidden="true">BL</div>
-                <div class="review-who">
-                  <span class="review-name">Beatriz L.</span>
-                  <span class="review-role">Data Scientist</span>
-                </div>
-              </div>
-              <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
-              <p class="story-quote">"Jupyter notebook sessions stay uninterrupted with local app process blocking. The tray widget is calm."</p>
-            </article>
-
-            <article class="marquee-card">
-              <div class="review-head">
-                <div class="review-avatar" aria-hidden="true">FA</div>
-                <div class="review-who">
-                  <span class="review-name">Felipe A.</span>
-                  <span class="review-role">Academic Researcher</span>
-                </div>
-              </div>
-              <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
-              <p class="story-quote">"The zero-drift timer stays accurate across laptop sleep during long reading blocks. Small detail, huge trust."</p>
-            </article>
-
-            <article class="marquee-card">
-              <div class="review-head">
-                <div class="review-avatar" aria-hidden="true">RC</div>
-                <div class="review-who">
-                  <span class="review-name">Rodrigo C.</span>
-                  <span class="review-role">Content Creator</span>
-                </div>
-              </div>
-              <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
-              <p class="story-quote">"Hosts-file DNS blocker stops impulsive YouTube feed checks while video exports render in the background."</p>
-            </article>
-
-            <!-- Duplicated set for seamless loop — hidden from assistive tech -->
-            <article class="marquee-card" aria-hidden="true">
-              <div class="review-head">
-                <div class="review-avatar">LS</div>
-                <div class="review-who"><span class="review-name">Lucas S.</span><span class="review-role">Software Developer</span></div>
-              </div>
-              <div class="review-stars">★★★★★</div>
-              <p class="story-quote">"Before Sylviae, I kept switching between my timer, music, and task list. Now I open one place and begin."</p>
-            </article>
-            <article class="marquee-card" aria-hidden="true">
-              <div class="review-head">
-                <div class="review-avatar">MM</div>
-                <div class="review-who"><span class="review-name">Matheus M.</span><span class="review-role">Frontend Engineer</span></div>
-              </div>
-              <div class="review-stars">★★★★★</div>
-              <p class="story-quote">"Offline soundscapes and a timer that stays accurate when my PC sleeps make focus sessions feel seamless."</p>
-            </article>
-            <article class="marquee-card" aria-hidden="true">
-              <div class="review-head">
-                <div class="review-avatar">GK</div>
-                <div class="review-who"><span class="review-name">Gabriel K.</span><span class="review-role">Technical Writer</span></div>
-              </div>
-              <div class="review-stars">★★★★★</div>
-              <p class="story-quote">"I pull my daily calendar events straight into my focus list without juggling multiple task apps."</p>
-            </article>
-            <article class="marquee-card" aria-hidden="true">
-              <div class="review-head">
-                <div class="review-avatar">TR</div>
-                <div class="review-who"><span class="review-name">Thiago R.</span><span class="review-role">Product Manager</span></div>
-              </div>
-              <div class="review-stars">★★★★★</div>
-              <p class="story-quote">"Google Calendar imports and Notion sync save me 30 minutes every morning."</p>
-            </article>
-            <article class="marquee-card" aria-hidden="true">
-              <div class="review-head">
-                <div class="review-avatar">MP</div>
-                <div class="review-who"><span class="review-name">Mariana P.</span><span class="review-role">UI/UX Designer</span></div>
-              </div>
-              <div class="review-stars">★★★★★</div>
-              <p class="story-quote">"Spotify focus tracks synced with my Pomodoro timers make long design sprints effortless."</p>
-            </article>
-          </div>
-        </section>
-
-        <p class="story-note">Names lightly changed at testers' request. Feedback comes from early Sylviae beta users, edited only for grammar.</p>
+        <p class="compare-note">✓ available · ~ partial · — not available. The desktop column describes the Windows beta; the mobile column describes the current Android preview build.</p>
       </section>
 
       <!-- ─── 9. LOCAL-FIRST & PRIVACY SECTION ──────────────────────────────── -->
@@ -2466,41 +2071,33 @@
         </details>
       </section>
 
-      <!-- ─── 10. FOCUS MODE PORTAL SECTION ─────────────────────────────────── -->
+      <!-- ─── 10. DEEP FOCUS (MOBILE) ──────────────────────────────────────── -->
       <section class="shell" id="focusmode" aria-labelledby="focusmode-title">
-        <div class="portal-section reveal">
-          <div>
-            <span class="kicker">Focus Mode</span>
-            <h2 id="focusmode-title">Cross into Focus Mode.</h2>
+        <div class="feature-deep-grid">
+          <div class="reveal">
+            <span class="kicker">Deep Focus · Sylviae Mobile</span>
+            <h2 id="focusmode-title">Step into the pond.</h2>
             <p style="color:var(--ink-dim); margin-top:16px; font-size:17px; line-height:1.6;">
-              Your normal workspace stays clean, functional, and yours. Step into Focus Mode and a short yellow portal carries you into one calm illustrated space — Sylviae is already there, working quietly alongside you while the timer stays in charge.
+              When a Focus session is running on Sylviae Mobile, the screen becomes one quiet scene: a frog reading on a lily pad under a night sky, your task, and the countdown. Nothing else asks for attention.
             </p>
 
-            <div class="feature-list reveal-stagger" style="margin-top:8px;">
+            <div class="feature-list reveal-stagger">
               <div class="feature-point">
-                <h4>One fixed space</h4>
-                <p>The same calm illustrated room every session — nothing new to load, nothing to pull focus from the timer.</p>
+                <h3>One fixed scene</h3>
+                <p>The same pond every session, a looping muted video that mixes with your focus audio.</p>
               </div>
               <div class="feature-point">
-                <h4>Sylviae keeps you company</h4>
-                <p>Resting, reading, or just quietly nearby — soft, loop-based motion that never asks for attention.</p>
+                <h3>Controls stay in reach</h3>
+                <p>Pause, skip or end the session, and see which track is playing, without leaving the scene.</p>
               </div>
             </div>
           </div>
 
-          <div class="portal-demo product-frame reveal-media">
-            <div class="portal-stage">
-              <img class="portal-bg" src="assets/sylviae/deep-focus-bg.jpg" alt="Sylviae's fixed Focus Mode space — a calm, softly lit illustrated room" loading="lazy" decoding="async">
-              <div class="portal-glow" aria-hidden="true"></div>
-              <div class="portal-timer">
-                <span class="portal-timer-digits">25:00</span>
-                <span class="portal-timer-label">Focus</span>
-              </div>
-              <img class="portal-companion is-a" src="assets/sylviae/companion-calm.png" alt="Sylviae, a green fox-dragon companion, resting quietly in Focus Mode" loading="lazy" decoding="async">
-              <img class="portal-companion is-b" src="assets/sylviae/companion-sleepy.png" alt="" loading="lazy" decoding="async">
-              <img class="portal-companion is-c" src="assets/sylviae/companion-happy.png" alt="" loading="lazy" decoding="async">
-            </div>
-          </div>
+          <figure class="phone-shot deep-phone reveal-media">
+            <img src="assets/mobile/deep-focus.webp" width="540" height="1200" loading="lazy" decoding="async"
+                 alt="Sylviae Mobile Deep Focus: a frog reading a book on a lily pad at night, with the task name, a 24:53 countdown, the track Peace of Mind and Pause, Skip and End session buttons">
+            <figcaption>Deep Focus on Android</figcaption>
+          </figure>
         </div>
       </section>
 
@@ -2538,7 +2135,7 @@
           <div class="faq" id="faq" aria-label="Frequently Asked Questions">
             <details open>
               <summary>What is Sylviae?</summary>
-              <p>Sylviae is a calm Windows desktop focus workspace that combines your timer, tasks, distraction blocking, focus audio, and calendar integrations into one quiet application.</p>
+              <p>Sylviae is a calm focus workspace. The Windows desktop beta combines your timer, tasks, distraction blocking, focus audio, and task imports in one quiet application, and an Android preview companion brings the timer, tasks, focus audio and streaks to your phone.</p>
             </details>
 
             <details>
@@ -2553,13 +2150,24 @@
 
             <details>
               <summary>Do I need an account?</summary>
-              <p>No account is required to download Sylviae or use its core features. Integration credentials for Google Calendar, Notion, and Todoist are stored locally using Windows secure storage.</p>
+              <p>No account is required to download Sylviae or use its core features. Integration credentials for Google Calendar, Notion, and Todoist are stored locally using Windows secure storage. On mobile you can choose &ldquo;Continue without an account&rdquo; and keep your tasks on your phone.</p>
             </details>
 
             <details>
               <summary>Which operating systems are supported?</summary>
-              <p>Sylviae is currently built for Windows 64-bit desktop systems.</p>
+              <p>Sylviae Desktop is built for Windows 64-bit. Sylviae Mobile is an Android preview build. There is no macOS, Linux or iOS version.</p>
             </details>
+
+            <details>
+              <summary>Is there a mobile app?</summary>
+              <p>Yes, as an Android preview build. It has the focus timer, tasks, Deep Focus, focus audio, history and streaks. It is not on Google Play or the App Store yet, so there is no public mobile download on this page.</p>
+            </details>
+
+            <details>
+              <summary>Does the mobile app block distracting apps or sites?</summary>
+              <p>Not yet. The mobile Blocklist only saves your list of sites and apps, and the screen says so. Blocking is a Windows desktop feature.</p>
+            </details>
+
 
             <details>
               <summary>Why does Windows ask for permission on launch?</summary>
@@ -2576,9 +2184,9 @@
 
       <!-- ─── 12. FINAL CTA ───────────────────────────────────────────────── -->
       <section class="shell" id="final">
-        <div class="reveal" style="padding: clamp(40px, 5vw, 64px); border:1px solid var(--border-quiet); border-radius:16px; background:linear-gradient(180deg, var(--surface), var(--surface-2)); box-shadow: 0 24px 48px rgba(24, 48, 32, 0.35); display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
+        <div class="reveal" style="padding: clamp(40px, 5vw, 64px); border:1px solid var(--border-quiet); border-radius:16px; background:linear-gradient(180deg, var(--surface), var(--surface-2)); box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35); display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
           <div>
-            <span class="kicker">Sylviae desktop</span>
+            <span class="kicker">Sylviae for Windows</span>
             <h2>Stop preparing to focus. Just enter it.</h2>
             <p style="color:var(--muted); margin-top:8px;">Download the free beta for Windows and start your next protected focus session.</p>
           </div>
@@ -2595,23 +2203,23 @@
     <footer class="shell">
       <div class="footer-inner">
         <a class="brand" href="#top" aria-label="Sylviae home">
-          <img src="assets/icon.png" alt="Sylviae icon" width="24" height="24">
+          <img src="assets/icon.png" alt="" width="24" height="24">
           <span>SYLVIAE</span>
         </a>
 
         <nav class="footer-links" aria-label="Footer links">
           <a href="#workflow">Product</a>
           <a href="#audio">Features</a>
+          <a href="#mobile">Mobile</a>
           <a href="#compare">Compare</a>
           <a href="#privacy">Privacy</a>
-          <a href="#focusmode">Focus Mode</a>
           <a href="#offer">Pricing</a>
           <a href="#faq">FAQ</a>
           <a href="https://github.com/JGuilherme2005/Toki-Landing/releases/download/v1.0.0/toki-setup-1.0.0.exe">Download</a>
         </nav>
 
         <p style="font-family:var(--font-mono); font-size:12px; color:var(--muted);">
-          &copy; 2026 Sylviae &middot; Windows desktop focus workspace
+          &copy; 2026 Sylviae &middot; Windows desktop beta and Android preview
         </p>
       </div>
     </footer>

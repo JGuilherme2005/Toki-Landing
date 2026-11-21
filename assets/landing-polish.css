@@ -1,0 +1,132 @@
+/* Sylviae landing polish. Existing app colors and type variables remain the source of truth. */
+:root { --polish-line: rgba(239, 233, 220, .10); }
+
+body { background: #111513; }
+body::after { opacity: .45; }
+.shell { width: min(1240px, calc(100% - 64px)); }
+.nav { top: 0; padding-top: 0; width: 100%; background: rgba(17, 21, 19, .88); border-bottom: 1px solid var(--polish-line); }
+.nav-inner { width: min(1240px, calc(100% - 64px)); margin: auto; border: 0; border-radius: 0; background: none; box-shadow: none; padding: 12px 0; }
+.nav-links a { padding-inline: 10px; }
+.nav-links a.active, .nav-links a[aria-current="true"] { background: none; color: var(--ink); }
+
+.hero { padding-top: clamp(64px, 8vw, 116px); padding-bottom: clamp(70px, 8vw, 112px); }
+.hero-layout { grid-template-columns: minmax(0, 1.1fr) minmax(340px, .9fr); column-gap: clamp(60px, 7vw, 120px); row-gap: 88px; align-items: center; }
+.hero-layout > .reveal:first-child { max-width: 650px; }
+.hero-eyebrow { border: 0; background: none; padding: 0; margin-bottom: 28px; }
+.hero-eyebrow .kicker { color: var(--accent); font-size: 12px; }
+.hero h1 { max-width: 690px; font-size: clamp(54px, 5.5vw, 82px); font-weight: 700; line-height: 1.04; letter-spacing: -.048em; }
+.hero-copy { max-width: 520px; margin-top: 24px; font-size: clamp(17px, 1.5vw, 20px); line-height: 1.55; }
+.hero-actions { margin-top: 34px; }
+.hero .cta-primary { min-height: 54px; padding-inline: 28px; font-size: 15px; }
+.hero-platform { max-width: 540px; margin-top: 18px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+.hero-platform span { padding-inline: 7px; color: var(--accent); }
+.hero-platform a { color: var(--ink-dim); text-decoration: underline; text-decoration-color: rgba(239,233,220,.38); text-underline-offset: 3px; }
+.hero-platform a:hover { color: var(--ink); }
+.pond-stage { position: relative; isolation: isolate; width: min(100%, 420px); aspect-ratio: 540 / 680; justify-self: center; border-radius: 210px 210px 28px 28px; overflow: hidden; background: #11231b url('hero/frog-reading-poster.webp') center 52% / cover no-repeat; box-shadow: 0 0 0 1px rgba(240,199,94,.22), 0 38px 100px rgba(0,0,0,.34); }
+.pond-stage::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(0deg, rgba(8,18,14,.66), transparent 23%, transparent 83%, rgba(8,18,14,.18)); }
+.pond-video { width: 100%; height: 100%; object-fit: cover; object-position: center 51%; }
+.pond-caption { position: absolute; z-index: 2; bottom: 24px; left: 0; width: 100%; display: flex; justify-content: center; align-items: center; gap: 9px; color: var(--ink); font-size: 13px; letter-spacing: .01em; }
+.pond-caption-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 10px var(--gold); }
+.hero #proof { grid-column: 1 / -1; margin-top: 0; }
+.hero #proof::after { content: "A real focus session in Sylviae for Windows"; display: block; text-align: center; margin-top: 15px; font-size: 13px; color: var(--muted); }
+
+.product-frame { border-color: var(--polish-line); border-radius: 18px; padding: 7px; background: #171c19; box-shadow: 0 30px 70px rgba(0,0,0,.28); }
+.product-frame::before { opacity: .36; }
+.product-frame:hover { transform: none; border-color: rgba(239,233,220,.20); box-shadow: 0 32px 72px rgba(0,0,0,.34); }
+.app-window-header { border-color: var(--polish-line); }
+
+main > section { padding-block: clamp(80px, 9vw, 136px); }
+main > section + section { border-top: 1px solid rgba(239,233,220,.055); }
+.section-head { margin-bottom: 44px; }
+.section-head h2, .feature-deep-grid h2 { max-width: 680px; font-weight: 700; }
+.section-head p, .feature-deep-grid > div > p { max-width: 520px; }
+.kicker { font-size: 12px; color: var(--accent); }
+
+/* Steps read as a light sequence instead of four competing cards. */
+#workflow { padding-top: 92px; }
+.workflow-grid { gap: 0; margin-bottom: 0; border-top: 1px solid var(--polish-line); }
+.step-card { min-height: 160px; border: 0; border-right: 1px solid var(--polish-line); border-radius: 0; padding: 25px 24px 12px 0; background: none; box-shadow: none; }
+.step-card + .step-card { padding-left: 24px; }
+.step-card:last-child { border-right: 0; }
+.step-card::after { display: none; }
+.step-card:hover { transform: none; box-shadow: none; border-color: var(--polish-line); }
+.step-num { font-size: 12px; }
+.step-card h3 { font-size: 21px; }
+.step-card p { color: var(--ink-dim); }
+.pomo-pills { margin-top: 12px; }
+
+.feature-deep-grid { grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); gap: clamp(48px, 7vw, 108px); }
+#blocker .feature-deep-grid, #continuity .feature-deep-grid, #streaks .feature-deep-grid { grid-template-columns: minmax(0, 1.18fr) minmax(0, .82fr); }
+.feature-list { margin-top: 30px; gap: 0; }
+.feature-point { border: 0; border-top: 1px solid var(--polish-line); border-radius: 0; padding: 17px 0; background: none; }
+.feature-point:last-child { border-bottom: 1px solid var(--polish-line); }
+.feature-point:hover { transform: none; background: none; border-color: var(--polish-line); }
+.feature-point h3 { font-size: 16px; font-weight: 600; }
+.feature-point p { color: var(--ink-dim); font-size: 14px; }
+.feature-deep-grid .product-frame { margin-top: 0; }
+.tab-buttons { margin-bottom: 12px; }
+.tab-btn { background: none; border-color: transparent; border-radius: 6px; }
+.tab-btn.active { border-color: var(--polish-line); }
+.integration-notes { grid-template-columns: repeat(4, 1fr); gap: 30px; margin-top: 34px; }
+.integration-notes .feature-point { padding-top: 14px; }
+.privacy-card { border: 0; border-top: 1px solid var(--polish-line); border-radius: 0; padding: 22px 14px 20px 0; background: none; box-shadow: none; }
+.privacy-card::before { display: none; }
+.privacy-card:hover { transform: none; border-color: var(--polish-line); }
+.mobile-status { background: var(--surface); border-color: var(--polish-line); }
+.mobile-features { margin-top: 36px; border: 1px solid var(--polish-line); border-radius: 12px; }
+.mobile-features > summary { cursor: pointer; padding: 17px 20px; color: var(--ink); font-weight: 600; }
+.mobile-features .feature-list { padding: 0 20px 12px; margin-top: 0; }
+.mobile-status { margin-top: 18px; }
+.phone-row { margin-top: 46px; }
+.phone-shot img { border-color: var(--polish-line); box-shadow: 0 20px 45px rgba(0,0,0,.24); }
+.compare-disclosure { border: 1px solid var(--polish-line); border-radius: 14px; background: var(--surface); }
+.compare-disclosure { margin-top: 18px; }
+.compare-disclosure > summary { cursor: pointer; padding: 18px 22px; color: var(--ink); font-weight: 600; }
+.compare-disclosure[open] > summary { border-bottom: 1px solid var(--polish-line); }
+.compare-disclosure .compare-wrap { margin: 12px; }
+.compare-disclosure .compare-note { padding: 0 22px 18px; }
+.offer-layout { gap: 42px; }
+.price-card, .faq details { border-color: var(--polish-line); box-shadow: none; }
+footer { border-top: 1px solid var(--polish-line); }
+
+:where(a, button, summary, .phone-row):focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+
+@media (max-width: 1024px) {
+  .hero-layout { grid-template-columns: minmax(0, 1fr) minmax(280px, .75fr); gap: 48px; }
+  .hero #proof { grid-column: 1 / -1; }
+  .feature-deep-grid, #blocker .feature-deep-grid, #continuity .feature-deep-grid, #streaks .feature-deep-grid { grid-template-columns: 1fr; }
+  .feature-deep-grid > .product-frame { max-width: 880px; width: 100%; }
+  .integration-notes { grid-template-columns: repeat(2, 1fr); }
+  .privacy-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 700px) {
+  .shell, .nav-inner { width: calc(100% - 36px); }
+  .hero { padding-top: 64px; padding-bottom: 80px; }
+  .hero-layout { grid-template-columns: 1fr; gap: 42px; }
+  .hero h1 { font-size: clamp(47px, 11vw, 66px); }
+  .hero-copy { margin-top: 18px; font-size: 17px; }
+  .hero-actions { margin-top: 25px; }
+  .hero-platform { font-size: 13px; }
+  .pond-stage { width: min(100%, 350px); aspect-ratio: 540 / 650; }
+  .hero #proof { grid-column: 1; margin-top: 12px; }
+  .hero #proof { overflow: hidden; }
+  .hero #proof .app-screenshot { max-width: none; width: 134%; margin-left: -17%; }
+  #blocker .app-screenshot { max-width: none; width: 130%; margin-left: -15%; }
+  #blocker .product-frame { overflow: hidden; }
+  main > section { padding-block: 80px; }
+  .section-head { margin-bottom: 32px; }
+  .workflow-grid { grid-template-columns: 1fr 1fr; }
+  .step-card, .step-card + .step-card { min-height: 0; padding: 20px 12px 20px 0; border-right: 0; border-bottom: 1px solid var(--polish-line); }
+  .step-card:nth-child(odd) { border-right: 1px solid var(--polish-line); }
+  .step-card:nth-child(even) { padding-left: 14px; }
+  .integration-notes, .privacy-grid { grid-template-columns: 1fr; gap: 0; }
+  .feature-deep-grid { gap: 38px; }
+  #blocker .feature-deep-grid > .product-frame { order: 2; }
+  #blocker .feature-deep-grid > .reveal { order: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pond-video { display: none; }
+  .product-frame, .nav-cta { transition: none; }
+}

@@ -3,25 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Sylviae is a calm, local-first focus workspace: a free Windows desktop beta with timers, tasks, distraction blocking, focus audio and task imports, plus an Android preview companion.">
+  <meta name="description" content="Sylviae is a calm, local-first focus workspace: a free Windows desktop beta with timers, tasks, distraction blocking, focus audio and task imports, plus an Android companion in private beta.">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#111513">
-  <meta property="og:title" content="Sylviae | Calm Focus Workspace for Windows and Android">
-  <meta property="og:description" content="A calm focus timer, tasks, focus audio and distraction controls. Free Windows beta, plus an Android preview.">
+  <meta property="og:title" content="Sylviae | Calm Focus Workspace for Windows">
+  <meta property="og:description" content="A calm focus timer, tasks, focus audio and distraction controls. Free Windows beta, plus an Android private beta by request.">
   <meta property="og:site_name" content="Sylviae">
   <meta property="og:url" content="https://www.sylviae.space/">
   <meta property="og:image" content="https://www.sylviae.space/assets/og-sylviae.jpg">
   <meta property="og:image:alt" content="Sylviae Mobile Deep Focus: a frog reading on a lily pad beside the focus timer">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Sylviae | Calm Focus Workspace for Windows and Android">
-  <meta name="twitter:description" content="Local-first focus timer, tasks and focus audio. Windows desktop beta and Android preview.">
+  <meta name="twitter:title" content="Sylviae | Calm Focus Workspace for Windows">
+  <meta name="twitter:description" content="Local-first focus timer, tasks and focus audio. Windows desktop beta and Android private beta.">
   <meta name="twitter:image" content="https://www.sylviae.space/assets/og-sylviae.jpg">
   <link rel="canonical" href="https://www.sylviae.space/">
   <link rel="icon" href="assets/icon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="256x256" href="assets/icon.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <title>Sylviae | Calm Focus Workspace for Windows and Android</title>
+  <title>Sylviae | Calm Focus Workspace for Windows</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1510,6 +1510,8 @@
     .mobile-status h3 { font-family: var(--font-display); font-size: 20px; margin-bottom: 12px; }
     .mobile-status ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; color: var(--ink-dim); }
     .mobile-status strong { color: var(--ink); }
+    .mobile-cta { margin-top: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
+    .mobile-cta-note { font-size: 13px; color: var(--muted); }
     .compare-cell-note { display: block; margin-top: 4px; font-size: 12px; color: var(--muted); }
     .phone-row:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
     @media (max-width: 640px) {
@@ -1562,7 +1564,7 @@
 
           <h1 id="hero-title">Everything you need to enter focus.<br>One calm desktop space.</h1>
 
-          <p class="hero-copy">Sylviae brings your focus timer, tasks, distraction blocking, music, and calendar tools into one quiet Windows app, with an Android preview companion for your phone.</p>
+          <p class="hero-copy">Sylviae brings your focus timer, tasks, distraction blocking, music, and calendar tools into one quiet Windows app, with an Android companion in private beta.</p>
 
           <div class="hero-actions">
             <a class="cta-primary" href="https://github.com/JGuilherme2005/Toki-Landing/releases/download/v1.0.0/toki-setup-1.0.0.exe" aria-label="Download for Windows, Sylviae free beta">
@@ -1570,7 +1572,7 @@
               <span class="arrow" aria-hidden="true">↓</span>
             </a>
             <a class="ghost-link" href="#proof">See how it works <span aria-hidden="true">↓</span></a>
-            <a class="ghost-link" href="#mobile">Sylviae Mobile (Android preview) <span aria-hidden="true">↓</span></a>
+            <a class="ghost-link" href="#mobile">Sylviae Mobile (Android private beta) <span aria-hidden="true">↓</span></a>
           </div>
 
           <div class="hero-trust-line" aria-label="Trust indicators">
@@ -1947,7 +1949,7 @@
       <!-- ─── 8.4b SYLVIAE MOBILE ──────────────────────────────────────────── -->
       <section class="shell" id="mobile" aria-labelledby="mobile-title">
         <div class="section-head reveal">
-          <span class="kicker">Sylviae Mobile · Android preview</span>
+          <span class="kicker">Sylviae Mobile · Android private beta</span>
           <h2 id="mobile-title">The same calm loop, on your phone.</h2>
           <p>Pick a task, start a focus session, and let a frog reading by a moonlit pond keep you company. Everything below runs on the device, and you can use it without an account.</p>
         </div>
@@ -2000,11 +2002,13 @@
         <aside class="mobile-status reveal" aria-labelledby="mobile-status-title">
           <h3 id="mobile-status-title">Where Sylviae Mobile stands today</h3>
           <ul>
-            <li><strong>Android preview build.</strong> It is not on Google Play or the App Store, and there is no public mobile download yet.</li>
+            <li><strong>Android private beta.</strong> It is not on Google Play or the App Store, and there is no public mobile download. Access is by request.</li>
             <li><strong>No blocking on the phone.</strong> You can save sites and apps to a blocklist, but this build does not block anything. Blocking is a Windows desktop feature.</li>
             <li><strong>Integrations depend on the connection service.</strong> Notion, Todoist and Google Calendar import are on the Windows beta; on mobile they need the integration service to be reachable.</li>
           </ul>
         </aside>
+
+        <p class="mobile-cta reveal"><a class="ghost-link" href="https://github.com/JGuilherme2005/Toki-Landing/issues/new?title=Android%20private%20beta%20access%20request&amp;body=I%27d%20like%20to%20request%20access%20to%20the%20Sylviae%20Android%20private%20beta." target="_blank" rel="noopener noreferrer">Request Android beta access <span aria-hidden="true">→</span></a><span class="mobile-cta-note">Opens a GitHub issue on this project (free GitHub account required). Windows download above stays the main way to try Sylviae.</span></p>
       </section>
 
       <!-- ─── 8.5 DESKTOP VS MOBILE ────────────────────────────────────────── -->
@@ -2021,59 +2025,59 @@
               <tr>
                 <th scope="col">Capability</th>
                 <th scope="col" class="is-sylviae">Windows desktop (beta)</th>
-                <th scope="col">Android mobile (preview)</th>
+                <th scope="col">Android mobile (private beta)</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th scope="row">Focus, short break and long break</th>
                 <td class="is-sylviae" data-label="Windows desktop (beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
-                <td data-label="Android mobile (preview)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
+                <td data-label="Android mobile (private beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
               </tr>
               <tr>
                 <th scope="row">Local tasks, core tools work offline</th>
                 <td class="is-sylviae" data-label="Windows desktop (beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
-                <td data-label="Android mobile (preview)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
+                <td data-label="Android mobile (private beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
               </tr>
               <tr>
                 <th scope="row">Five offline focus tracks</th>
                 <td class="is-sylviae" data-label="Windows desktop (beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
-                <td data-label="Android mobile (preview)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
+                <td data-label="Android mobile (private beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
               </tr>
               <tr>
                 <th scope="row">Spotify &amp; YouTube sources</th>
                 <td class="is-sylviae" data-label="Windows desktop (beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
-                <td data-label="Android mobile (preview)"><span class="compare-mark partial" aria-label="Partial">~</span><span class="compare-cell-note">Opens in the provider's app</span></td>
+                <td data-label="Android mobile (private beta)"><span class="compare-mark partial" aria-label="Partial">~</span><span class="compare-cell-note">Opens in the provider's app</span></td>
               </tr>
               <tr>
                 <th scope="row">Blocks websites <em>and</em> apps</th>
                 <td class="is-sylviae" data-label="Windows desktop (beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
-                <td data-label="Android mobile (preview)"><span class="compare-mark no" aria-label="No">—</span><span class="compare-cell-note">Saves the list only</span></td>
+                <td data-label="Android mobile (private beta)"><span class="compare-mark no" aria-label="No">—</span><span class="compare-cell-note">Saves the list only</span></td>
               </tr>
               <tr>
                 <th scope="row">Import Google Calendar, Notion &amp; Todoist</th>
                 <td class="is-sylviae" data-label="Windows desktop (beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
-                <td data-label="Android mobile (preview)"><span class="compare-mark partial" aria-label="Partial">~</span><span class="compare-cell-note">Needs the integration service</span></td>
+                <td data-label="Android mobile (private beta)"><span class="compare-mark partial" aria-label="Partial">~</span><span class="compare-cell-note">Needs the integration service</span></td>
               </tr>
               <tr>
                 <th scope="row">Streak and history calendar</th>
                 <td class="is-sylviae" data-label="Windows desktop (beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
-                <td data-label="Android mobile (preview)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
+                <td data-label="Android mobile (private beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
               </tr>
               <tr>
                 <th scope="row">Home-screen streak widget</th>
                 <td class="is-sylviae" data-label="Windows desktop (beta)"><span class="compare-mark no" aria-label="No">—</span></td>
-                <td data-label="Android mobile (preview)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
+                <td data-label="Android mobile (private beta)"><span class="compare-mark yes" aria-label="Yes">✓</span></td>
               </tr>
               <tr>
                 <th scope="row">Public download</th>
                 <td class="is-sylviae" data-label="Windows desktop (beta)"><span class="compare-mark yes" aria-label="Yes">✓</span><span class="compare-cell-note">Free beta installer</span></td>
-                <td data-label="Android mobile (preview)"><span class="compare-mark no" aria-label="No">—</span><span class="compare-cell-note">Preview build, no store listing</span></td>
+                <td data-label="Android mobile (private beta)"><span class="compare-mark no" aria-label="No">—</span><span class="compare-cell-note">Private beta build, no store listing</span></td>
               </tr>
             </tbody>
           </table>
         </div>
-        <p class="compare-note">✓ available · ~ partial · — not available. The desktop column describes the Windows beta; the mobile column describes the current Android preview build.</p>
+        <p class="compare-note">✓ available · ~ partial · — not available. The desktop column describes the Windows beta; the mobile column describes the current Android private beta build.</p>
       </section>
 
       <!-- ─── 9. LOCAL-FIRST & PRIVACY SECTION ──────────────────────────────── -->
@@ -2174,7 +2178,7 @@
           <div class="faq" id="faq" aria-label="Frequently Asked Questions">
             <details open>
               <summary>What is Sylviae?</summary>
-              <p>Sylviae is a calm focus workspace. The Windows desktop beta combines your timer, tasks, distraction blocking, focus audio, and task imports in one quiet application, and an Android preview companion brings the timer, tasks, focus audio and streaks to your phone.</p>
+              <p>Sylviae is a calm focus workspace. The Windows desktop beta combines your timer, tasks, distraction blocking, focus audio, and task imports in one quiet application, and an Android companion (private beta, by request) brings the timer, tasks, focus audio and streaks to your phone.</p>
             </details>
 
             <details>
@@ -2194,12 +2198,12 @@
 
             <details>
               <summary>Which operating systems are supported?</summary>
-              <p>Sylviae Desktop is built for Windows 64-bit. Sylviae Mobile is an Android preview build. There is no macOS, Linux or iOS version.</p>
+              <p>Sylviae Desktop is built for Windows 64-bit. Sylviae Mobile is an Android private beta build, available by request. There is no macOS, Linux or iOS version.</p>
             </details>
 
             <details>
               <summary>Is there a mobile app?</summary>
-              <p>Yes, as an Android preview build. It has the focus timer, tasks, Deep Focus, focus audio, history and streaks. It is not on Google Play or the App Store yet, so there is no public mobile download on this page.</p>
+              <p>Yes, as an Android private beta. It has the focus timer, tasks, Deep Focus, focus audio, history and streaks. It is not on Google Play or the App Store yet, and there is no public mobile download. You can request beta access with a GitHub issue (a free GitHub account is needed).</p>
             </details>
 
             <details>
@@ -2258,7 +2262,7 @@
         </nav>
 
         <p style="font-family:var(--font-mono); font-size:12px; color:var(--muted);">
-          &copy; 2026 Sylviae &middot; Windows desktop beta and Android preview
+          &copy; 2026 Sylviae &middot; Windows desktop beta and Android private beta
         </p>
       </div>
     </footer>

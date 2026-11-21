@@ -4,7 +4,7 @@
 - **Official product name**: Sylviae
 - **Official domain**: https://www.sylviae.space/
 - **Stable technical identifiers retained**: GitHub repo slug `Toki-Landing`, GitHub Pages base path `/Toki-Landing/`, release asset filename `toki-setup-1.0.0.exe`, app repo URL `github.com/JGuilherme2005/Toki`. These are infrastructure/URLs, not user-facing branding, and changing them would break existing links or the download button.
-- **Known gap**: `assets/toki-poster.png` (the OG/Twitter social-share image) still shows the old "toki" wordmark — no approved Sylviae replacement exists yet. See project follow-ups.
+- **Resolved**: the OG/Twitter social-share image is now `public/assets/og-sylviae.jpg`; the old "toki" wordmark poster (`toki-poster.png`) and the unused `toki-shot-*.png` captures were removed as unreferenced (recoverable from git history).
 - The entries below predate the rebrand and describe the redesign process while the product was still named Toki. They are left as written for historical accuracy.
 
 ---

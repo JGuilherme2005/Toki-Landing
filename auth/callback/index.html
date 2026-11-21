@@ -6,7 +6,13 @@
   <meta name="theme-color" content="#111513">
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Sylviae sign-in link handoff. This page is not indexed.">
   <title>Sylviae sign-in link</title>
+  <link rel="icon" href="../../assets/icon.ico" sizes="any">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700&display=swap"></noscript>
   <style>
     :root {
       color-scheme: dark;
@@ -62,15 +68,29 @@
       letter-spacing: .2em;
     }
 
+    /* Metric-matched fallback so the late Syne swap does not shift the heading. */
+    @font-face {
+      font-family: 'Syne Fallback';
+      src: local('Arial Bold'), local('Arial-BoldMT'), local('Helvetica Bold'), local('Arimo Bold'), local('Liberation Sans Bold');
+      font-weight: 700;
+      size-adjust: 115%;
+      ascent-override: 80%;
+      descent-override: 24%;
+      line-gap-override: 0%;
+    }
+
     h1 {
       margin: 0;
-      font-family: 'Syne', system-ui, sans-serif;
+      font-family: 'Syne', 'Syne Fallback', system-ui, sans-serif;
       font-size: clamp(30px, 8vw, 38px);
       font-weight: 700;
       letter-spacing: -.035em;
       line-height: 1.12;
+      /* Reserve two lines: the JS-set result copy must not shift the card. */
+      min-height: 2.24em;
     }
 
+    .message { min-height: 6.4em; }
     .message, .hint {
       color: var(--muted);
       font-size: 16px;
@@ -100,7 +120,7 @@
     .open-app:focus-visible { outline: 3px solid #efe9dc; outline-offset: 4px; }
     .open-app[hidden] { display: none; }
 
-    .hint { margin: 18px 0 0; font-size: 14px; }
+    .hint { margin: 18px 0 0; font-size: 14px; min-height: 4.8em; }
     .home { display: inline-block; margin-top: 22px; color: var(--accent); font-size: 14px; }
 
     @media (prefers-reduced-motion: reduce) {
@@ -110,7 +130,7 @@
 </head>
 <body>
   <main aria-labelledby="title">
-    <div class="mark" aria-hidden="true"><img src="../../assets/icon.png" alt="" width="52" height="52"></div>
+    <div class="mark" aria-hidden="true"><img src="../../assets/icon-128.png" alt="" width="52" height="52"></div>
     <p class="brand">SYLVIAE</p>
     <h1 id="title">Checking your link…</h1>
     <p class="message" id="message">We’re checking your Sylviae link.</p>

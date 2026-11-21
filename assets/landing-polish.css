@@ -64,12 +64,10 @@ footer > p { max-width: 600px; color: var(--ink-dim); font-size: 15px; }
   .story h2 { font-size: 36px; }
   .story-copy > p { font-size: 16px; margin-top: 11px; }
   .visual-crop { border-radius: 13px; }
-  .focus-visual .visual-crop { height: 500px; }
-  .focus-visual .visual-crop img { position: absolute; max-width: none; width: 350%; left: -22%; top: -70px; }
-  .blocker-visual .visual-crop { height: 345px; }
-  .blocker-visual .visual-crop img { position: absolute; max-width: none; width: 240%; left: -45%; top: -45px; }
-  .sounds-visual .visual-crop { height: 290px; }
-  .sounds-visual .visual-crop img { position: absolute; max-width: none; width: 220%; left: -50%; top: 0; }
+  .visual-crop picture, .visual-crop img { display: block; width: 100%; height: auto; }
+  .focus-visual .visual-crop { aspect-ratio: 410 / 560; }
+  .blocker-visual .visual-crop { aspect-ratio: 660 / 510; }
+  .sounds-visual .visual-crop { aspect-ratio: 660 / 382; }
   .story-visual figcaption { font-size: 12px; }
   .mobile-visual { width: min(100%, 260px); }
   .faq-section { padding-block: 68px; }

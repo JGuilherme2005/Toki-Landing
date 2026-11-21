@@ -1,6 +1,6 @@
 # Sylviae Landing
 
-Public marketing website for [Sylviae](https://github.com/JGuilherme2005/Toki): the Windows desktop focus application (free beta) and the Android preview companion, Sylviae Mobile. Product claims are mapped to verified features in `docs/landing-vs-mobile-2026-11-21.md`.
+Public marketing website for [Sylviae](https://github.com/JGuilherme2005/Toki): the Windows desktop focus application (free beta) and the Android companion, Sylviae Mobile (private beta, access by request). Product claims are mapped to verified features in `docs/landing-vs-mobile-2026-11-21.md`.
 
 This repository is operationally independent from the Electron application. It contains the landing source, website media, SEO metadata, optional analytics configuration, and GitHub Pages deployment workflow.
 

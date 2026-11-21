@@ -37,10 +37,31 @@
          ACCENT #8fc27a (the one action colour) · GOLD #f0c75e
        Fonts: Syne for titles, system face for body, JetBrains Mono for numbers.
     */
+    /* Metric-matched fallbacks for Syne (Arial scaled to Syne's average advance
+       width, ascent and descent) so the late font swap does not reflow the H1. */
+    @font-face {
+      font-family: 'Syne Fallback';
+      src: local('Arial'), local('ArialMT'), local('Helvetica'), local('Arimo'), local('Liberation Sans');
+      font-weight: 400;
+      size-adjust: 114%;
+      ascent-override: 81%;
+      descent-override: 24%;
+      line-gap-override: 0%;
+    }
+    @font-face {
+      font-family: 'Syne Fallback';
+      src: local('Arial Bold'), local('Arial-BoldMT'), local('Helvetica Bold'), local('Arimo Bold'), local('Liberation Sans Bold');
+      font-weight: 600 700;
+      size-adjust: 106%;
+      ascent-override: 87%;
+      descent-override: 26%;
+      line-gap-override: 0%;
+    }
+
     :root {
       color-scheme: dark;
 
-      --font-display: 'Syne', 'Segoe UI', system-ui, sans-serif;
+      --font-display: 'Syne', 'Syne Fallback', 'Segoe UI', system-ui, sans-serif;
       --font-body:    system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
       --font-mono:    'JetBrains Mono', 'Cascadia Mono', 'Consolas', ui-monospace, monospace;
 
@@ -1569,7 +1590,7 @@
           <img class="app-screenshot"
                src="assets/app/workspace-1280.webp"
                srcset="assets/app/workspace-640.webp 640w, assets/app/workspace-1280.webp 1280w"
-               sizes="(max-width: 700px) 92vw, 640px"
+               sizes="(max-width: 1250px) 92vw, 1178px"
                alt="Sylviae workspace showing the focus timer and today's tasks"
                width="1913" height="1072"
                style="aspect-ratio: 1913 / 1072;"
@@ -1693,7 +1714,7 @@
               <img class="app-screenshot"
                    src="assets/app/deepfocus-1280.webp"
                    srcset="assets/app/deepfocus-640.webp 640w, assets/app/deepfocus-1280.webp 1280w"
-                   sizes="(max-width: 700px) 92vw, 640px"
+                   sizes="(max-width: 1024px) 92vw, (max-width: 1250px) 46vw, 570px"
                    alt="Sylviae Deep Focus tab showing the offline focus library with tracks from Kevin MacLeod and Scott Buckley"
                    width="1918" height="1077"
                    style="aspect-ratio: 1918 / 1077;"
@@ -1707,7 +1728,7 @@
               <img class="app-screenshot"
                    src="assets/app/deepfocus-youtube-1280.webp"
                    srcset="assets/app/deepfocus-youtube-640.webp 640w, assets/app/deepfocus-youtube-1280.webp 1280w"
-                   sizes="(max-width: 700px) 92vw, 640px"
+                   sizes="(max-width: 1024px) 92vw, (max-width: 1250px) 46vw, 570px"
                    alt="Sylviae Deep Focus tab playing a YouTube focus track, synced to pause and resume with the timer"
                    width="1915" height="1078"
                    style="aspect-ratio: 1915 / 1078;"
@@ -1728,7 +1749,7 @@
             <img class="app-screenshot"
                  src="assets/app/appblock-1280.webp"
                  srcset="assets/app/appblock-640.webp 640w, assets/app/appblock-1280.webp 1280w"
-                 sizes="(max-width: 700px) 92vw, 640px"
+                 sizes="(max-width: 1024px) 92vw, (max-width: 1250px) 41vw, 515px"
                  alt="Sylviae Distraction Blocker showing site rules, app blocking lists, and enforcement controls"
                  width="1913" height="1076"
                  style="aspect-ratio: 1913 / 1076;"
@@ -1791,7 +1812,7 @@
           <img class="app-screenshot"
                src="assets/app/integrations-1280.webp"
                srcset="assets/app/integrations-640.webp 640w, assets/app/integrations-1280.webp 1280w"
-               sizes="(max-width: 700px) 92vw, 640px"
+               sizes="(max-width: 1250px) 92vw, 1178px"
                alt="Sylviae Bring into Sylviae modal showing Notion, Todoist, and Google Calendar connected and ready to import"
                width="1915" height="1077"
                style="aspect-ratio: 1915 / 1077;"
@@ -1805,7 +1826,7 @@
           <img class="app-screenshot"
                src="assets/app/workspace-1280.webp"
                srcset="assets/app/workspace-640.webp 640w, assets/app/workspace-1280.webp 1280w"
-               sizes="(max-width: 700px) 92vw, 640px"
+               sizes="(max-width: 1250px) 92vw, 1178px"
                alt="Sylviae Workspace showing local focus tasks"
                width="1913" height="1072"
                style="aspect-ratio: 1913 / 1072;"
@@ -1868,7 +1889,7 @@
             <img class="app-screenshot"
                  src="assets/app/settings-1280.webp"
                  srcset="assets/app/settings-640.webp 640w, assets/app/settings-1280.webp 1280w"
-                 sizes="(max-width: 700px) 92vw, 640px"
+                 sizes="(max-width: 1024px) 92vw, (max-width: 1250px) 46vw, 570px"
                  alt="Sylviae settings screen showing preferences that persist across sessions"
                  width="1912" height="1077"
                  style="aspect-ratio: 1912 / 1077;"
@@ -1888,7 +1909,7 @@
             <img class="app-screenshot"
                  src="assets/app/streak-1280.webp"
                  srcset="assets/app/streak-640.webp 640w, assets/app/streak-1280.webp 1280w"
-                 sizes="(max-width: 700px) 92vw, 640px"
+                 sizes="(max-width: 1024px) 92vw, (max-width: 1250px) 41vw, 515px"
                  alt="Sylviae Streak & Consistency screen showing current streak, best streak, monthly focus calendar, and today's focus time"
                  width="1915" height="1076"
                  style="aspect-ratio: 1915 / 1076;"

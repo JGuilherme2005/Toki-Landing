@@ -3,32 +3,115 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Sylviae is a calm, local-first focus workspace: a free Windows desktop beta with timers, tasks, distraction blocking, focus audio and task imports, plus an Android companion in private beta.">
+  <meta name="description" content="Sylviae is a calm Windows focus workspace with a Pomodoro timer, tasks, site and app blocker, and focus audio, plus an Android companion in private beta.">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#111513">
-  <meta property="og:title" content="Sylviae | Calm Focus Workspace for Windows">
-  <meta property="og:description" content="A calm focus timer, tasks, focus audio and distraction controls. Free Windows beta, plus an Android private beta by request.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Sylviae — Calm Focus Timer, Tasks &amp; Distraction Blocker for Windows">
+  <meta property="og:description" content="Sylviae is a calm Windows focus workspace with a Pomodoro timer, tasks, site and app blocker, and focus audio, plus an Android companion in private beta.">
   <meta property="og:site_name" content="Sylviae">
   <meta property="og:url" content="https://www.sylviae.space/">
   <meta property="og:image" content="https://www.sylviae.space/assets/og-sylviae.jpg">
-  <meta property="og:image:alt" content="Sylviae Mobile Deep Focus: a frog reading on a lily pad beside the focus timer">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="3D Moonlit Pond diorama of the Sylviae frog wearing a green sweater and reading a glowing book on a floating lily pad surrounded by fireflies">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Sylviae | Calm Focus Workspace for Windows">
-  <meta name="twitter:description" content="Local-first focus timer, tasks and focus audio. Windows desktop beta and Android private beta.">
+  <meta name="twitter:title" content="Sylviae — Calm Focus Timer, Tasks &amp; Distraction Blocker for Windows">
+  <meta name="twitter:description" content="Sylviae is a calm Windows focus workspace with a Pomodoro timer, tasks, site and app blocker, and focus audio, plus an Android companion in private beta.">
   <meta name="twitter:image" content="https://www.sylviae.space/assets/og-sylviae.jpg">
+  <meta name="twitter:image:alt" content="3D Moonlit Pond diorama of the Sylviae frog wearing a green sweater and reading a glowing book on a floating lily pad surrounded by fireflies">
   <link rel="canonical" href="https://www.sylviae.space/">
   <link rel="icon" href="assets/icon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="256x256" href="assets/icon.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <title>Sylviae | Calm Focus Workspace for Windows</title>
+  <title>Sylviae — Calm Focus Timer, Tasks &amp; Distraction Blocker for Windows</title>
 
-  <!-- Self-hosted, same files the native desktop app bundles (Syne Bold; JetBrains Mono Light/Medium; both OFL, see assets/fonts). Only the Syne face that paints the H1 is preloaded. -->
+  <!-- Self-hosted, same files the native desktop app bundles (Syne Bold; JetBrains Mono Light/Medium; both OFL, see assets/fonts). -->
   <link rel="preload" href="assets/fonts/Syne-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/hero/frog-reading-poster.webp" as="image" type="image/webp" fetchpriority="high">
 
   <link rel="stylesheet" href="assets/site-core.css">
   <link rel="stylesheet" href="assets/landing-polish.css">
   <link rel="stylesheet" href="assets/multipage.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://www.sylviae.space/#website",
+        "name": "Sylviae",
+        "alternateName": ["Sylviae App", "Sylviae Focus"],
+        "url": "https://www.sylviae.space/"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://www.sylviae.space/#organization",
+        "name": "Sylviae",
+        "url": "https://www.sylviae.space/",
+        "logo": "https://www.sylviae.space/assets/icon.png"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://www.sylviae.space/#software",
+        "name": "Sylviae",
+        "applicationCategory": "ProductivityApplication",
+        "operatingSystem": "Windows 10, Windows 11",
+        "softwareVersion": "1.0.0-beta",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "downloadUrl": "https://github.com/JGuilherme2005/Toki-Landing/releases/download/v1.0.0/toki-setup-1.0.0.exe",
+        "url": "https://www.sylviae.space/",
+        "image": "https://www.sylviae.space/assets/og-sylviae.jpg",
+        "description": "Sylviae is a calm Windows focus workspace with a Pomodoro timer, tasks, site and app blocker, and focus audio, plus an Android companion in private beta.",
+        "publisher": {
+          "@id": "https://www.sylviae.space/#organization"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is Sylviae free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The current Windows beta is free to download and use. No account is required for the core tools."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it work offline?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The core timer, local tasks, history, blocker preferences, and offline tracks stay on your device. Cloud imports and streaming audio need internet."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which devices are supported?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The public installer supports Windows 64-bit. The Android companion is a private beta by request; there is no public mobile download or store listing."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Android block sites and apps?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Not yet. The Android beta saves your blocklist only. Site and app blocking is a Windows desktop feature."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <!-- site-header -->
@@ -70,6 +153,32 @@
         <figure class="story-visual mobile-visual animated-phone" data-animated-phone><div class="phone-frame"><img src="assets/mobile/deep-focus.webp" alt="Sylviae Android Deep Focus private beta with the frog reading on a lily pad" width="540" height="1200" loading="lazy" decoding="async"><video muted loop playsinline preload="none" poster="assets/mobile/deep-focus.webp" aria-hidden="true" width="540" height="1200"></video><span class="phone-timer" aria-hidden="true">24:53</span></div></figure>
       </section>
 
+      <section class="feedback-section shell" id="feedback" aria-labelledby="feedback-title">
+        <div class="feedback-head">
+          <span class="story-num">05 / EARLY READERS</span>
+          <h2 id="feedback-title">Quietly earning a place in the day.</h2>
+          <p class="feedback-lead">Notes from people studying, shipping code, and building projects with Sylviae.</p>
+        </div>
+        <div class="feedback-grid">
+          <figure class="feedback-card">
+            <blockquote><p>&ldquo;I&rsquo;ve been using another focus timer for over two years, but after trying Sylviae for a week, I don&rsquo;t think I&rsquo;m going back.&rdquo;</p></blockquote>
+            <figcaption><strong>Samuel</strong><span>Software engineer &amp; programmer</span></figcaption>
+          </figure>
+          <figure class="feedback-card">
+            <blockquote><p>&ldquo;I didn&rsquo;t realize how much I needed Sylviae until I tried going a few days without it.&rdquo;</p></blockquote>
+            <figcaption><strong>João Daniel</strong><span>Competitive exam student</span></figcaption>
+          </figure>
+          <figure class="feedback-card">
+            <blockquote><p>&ldquo;I downloaded Sylviae just to try it, but somehow it&rsquo;s become one of the apps I open every morning.&rdquo;</p></blockquote>
+            <figcaption><strong>Fernando</strong><span>Robotics student</span></figcaption>
+          </figure>
+          <figure class="feedback-card">
+            <blockquote><p>&ldquo;It&rsquo;s one of those rare apps that actually feels like someone thought about the person using it. I&rsquo;ve already recommended Sylviae to three friends.&rdquo;</p></blockquote>
+            <figcaption><strong>Alice</strong><span>High school student</span></figcaption>
+          </figure>
+        </div>
+      </section>
+
       <section class="faq-section shell" id="faq" aria-labelledby="faq-title">
         <h2 id="faq-title">A few good things to know.</h2>
         <div class="faq-list">
@@ -86,60 +195,6 @@
 
   </div><!-- /.page -->
 
-  <script>
-    // Tab switching for Integrations
-    function switchTab(triggerBtn, tabName) {
-      // Scoped to the enclosing section so independent tab groups (Deep
-      // Focus, Tasks & integrations) don't hide each other's panels.
-      var scope = triggerBtn.closest('section') || document;
-
-      scope.querySelectorAll('.tab-btn').forEach(function (btn) {
-        btn.classList.remove('active');
-        btn.setAttribute('aria-selected', 'false');
-      });
-      scope.querySelectorAll('.tab-content').forEach(function (content) {
-        content.classList.remove('active');
-        content.setAttribute('hidden', '');
-      });
-
-      var targetContent = scope.querySelector('#tab-' + tabName);
-      if (targetContent) {
-        targetContent.removeAttribute('hidden');
-        // Next tick so the transition applies from the reset state
-        requestAnimationFrame(function () { targetContent.classList.add('active'); });
-      }
-
-      var activeBtn = Array.from(scope.querySelectorAll('.tab-btn')).find(function (btn) {
-        return btn.getAttribute('onclick').includes("'" + tabName + "'");
-      });
-      if (activeBtn) {
-        activeBtn.classList.add('active');
-        activeBtn.setAttribute('aria-selected', 'true');
-      }
-    }
-
-    // Section reveal on scroll — respects prefers-reduced-motion via CSS.
-    (function () {
-      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var targets = document.querySelectorAll('.reveal, .reveal-media, .reveal-stagger');
-      if (reduced || !('IntersectionObserver' in window)) {
-        targets.forEach(function (el) { el.classList.add('is-visible'); });
-        return;
-      }
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            io.unobserve(entry.target);
-          }
-        });
-      }, { rootMargin: '0px 0px -8% 0px', threshold: 0 });
-      targets.forEach(function (el) { io.observe(el); });
-      document.documentElement.classList.add('reveal-ready');
-    })();
-
-
-  </script>
   <script type="module" src="./src/analytics.js"></script>
   <script type="module" src="./src/site-motion.js"></script>
 </body>

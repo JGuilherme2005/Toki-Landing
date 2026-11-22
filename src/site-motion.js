@@ -3,6 +3,66 @@ import mp4Url from '../assets/mobile/deep-focus-loop.mp4?url';
 import heroUrl from '../assets/hero/frog-reading.mp4?url';
 
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+const finePointer = window.matchMedia('(pointer: fine)');
+
+function attachTiltController(el) {
+  let rafId = 0;
+  let lastX = 0;
+  let lastY = 0;
+
+  const update = () => {
+    rafId = 0;
+    if (reduced.matches) return;
+    const rect = el.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
+    const px = Math.max(-0.5, Math.min(0.5, (lastX - rect.left) / rect.width - 0.5));
+    const py = Math.max(-0.5, Math.min(0.5, (lastY - rect.top) / rect.height - 0.5));
+    el.style.setProperty('--tilt-x', `${(-py * 10).toFixed(2)}deg`);
+    el.style.setProperty('--tilt-y', `${(px * 12).toFixed(2)}deg`);
+    el.style.setProperty('--glare-x', `${((px + 0.5) * 100).toFixed(1)}%`);
+    el.style.setProperty('--glare-y', `${((py + 0.5) * 100).toFixed(1)}%`);
+  };
+
+  const reset = () => {
+    if (rafId) {
+      cancelAnimationFrame(rafId);
+      rafId = 0;
+    }
+    el.style.removeProperty('--tilt-x');
+    el.style.removeProperty('--tilt-y');
+    el.style.removeProperty('--glare-x');
+    el.style.removeProperty('--glare-y');
+  };
+
+  el.addEventListener('pointermove', (event) => {
+    if (reduced.matches) return;
+    if (event.pointerType && event.pointerType !== 'mouse' && event.pointerType !== 'pen') return;
+    lastX = event.clientX;
+    lastY = event.clientY;
+    if (!rafId) rafId = requestAnimationFrame(update);
+  });
+
+  el.addEventListener('pointerleave', reset);
+  el.addEventListener('pointercancel', reset);
+}
+
+if (!reduced.matches && finePointer.matches) {
+  document
+    .querySelectorAll('.pond-stage, .visual-crop, .phone-frame, .phone-gallery figure')
+    .forEach(attachTiltController);
+}
+
+reduced.addEventListener?.('change', () => {
+  if (!reduced.matches) return;
+  document
+    .querySelectorAll('.pond-stage, .visual-crop, .phone-frame, .phone-gallery figure')
+    .forEach((el) => {
+      el.style.removeProperty('--tilt-x');
+      el.style.removeProperty('--tilt-y');
+      el.style.removeProperty('--glare-x');
+      el.style.removeProperty('--glare-y');
+    });
+});
 
 if (!reduced.matches && 'IntersectionObserver' in window) {
   const pond = document.querySelector('.pond-video');

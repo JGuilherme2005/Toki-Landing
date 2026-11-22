@@ -29,7 +29,7 @@ if (!reduced.matches && 'IntersectionObserver' in window) {
       target.classList.add('is-visible');
       reveal.unobserve(target);
     });
-  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0 });
   sections.forEach((section) => {
     section.classList.add('motion-ready');
     reveal.observe(section);

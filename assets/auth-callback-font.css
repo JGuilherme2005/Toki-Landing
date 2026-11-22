@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'Syne';
+  src: url('./fonts/Syne-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Metric-matched fallback so the late Syne swap does not shift the heading. */
+@font-face {
+  font-family: 'Syne Fallback';
+  src: local('Arial Bold'), local('Arial-BoldMT'), local('Helvetica Bold'), local('Arimo Bold'), local('Liberation Sans Bold');
+  font-weight: 700;
+  size-adjust: 115%;
+  ascent-override: 80%;
+  descent-override: 24%;
+  line-gap-override: 0%;
+}

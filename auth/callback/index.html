@@ -10,6 +10,7 @@
   <title>Sylviae sign-in link</title>
   <link rel="icon" href="../../assets/icon.ico" sizes="any">
   <link rel="preload" href="../../assets/fonts/Syne-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../assets/auth-callback-font.css">
   <style>
     :root {
       color-scheme: dark;
@@ -63,25 +64,6 @@
       font-size: 11px;
       font-weight: 600;
       letter-spacing: .2em;
-    }
-
-    @font-face {
-      font-family: 'Syne';
-      src: url('../../assets/fonts/Syne-Bold.woff2') format('woff2');
-      font-weight: 700;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    /* Metric-matched fallback so the late Syne swap does not shift the heading. */
-    @font-face {
-      font-family: 'Syne Fallback';
-      src: local('Arial Bold'), local('Arial-BoldMT'), local('Helvetica Bold'), local('Arimo Bold'), local('Liberation Sans Bold');
-      font-weight: 700;
-      size-adjust: 115%;
-      ascent-override: 80%;
-      descent-override: 24%;
-      line-gap-override: 0%;
     }
 
     h1 {

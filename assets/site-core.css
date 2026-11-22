@@ -1349,34 +1349,43 @@
     }
 
     /* ─── SECTION REVEAL MOTION SYSTEM ──────────────────────────────────── */
+    /* Hidden starting states only apply once the script has armed the observer
+       (html.reveal-ready). If JS is off, fails, or lacks IntersectionObserver,
+       content stays fully visible. */
     .reveal {
-      opacity: 0;
-      transform: translateY(20px);
       transition:
         opacity 650ms var(--ease-out),
         transform 650ms var(--ease-out);
+    }
+    .reveal-ready .reveal:not(.is-visible) {
+      opacity: 0;
+      transform: translateY(20px);
     }
     .reveal.is-visible {
       opacity: 1;
       transform: none;
     }
     .reveal-media {
-      opacity: 0;
-      transform: translateY(14px) scale(.988);
       transition:
         opacity 720ms var(--ease-out),
         transform 720ms var(--ease-out);
+    }
+    .reveal-ready .reveal-media:not(.is-visible) {
+      opacity: 0;
+      transform: translateY(14px) scale(.988);
     }
     .reveal-media.is-visible {
       opacity: 1;
       transform: none;
     }
     .reveal-stagger > * {
-      opacity: 0;
-      transform: translateY(14px);
       transition:
         opacity 500ms var(--ease-out),
         transform 500ms var(--ease-out);
+    }
+    .reveal-ready .reveal-stagger:not(.is-visible) > * {
+      opacity: 0;
+      transform: translateY(14px);
     }
     .reveal-stagger.is-visible > * {
       opacity: 1;

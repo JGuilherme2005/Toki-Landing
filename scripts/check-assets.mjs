@@ -2,7 +2,7 @@ import { readFile, access } from 'node:fs/promises';
 import path from 'node:path';
 
 const root = path.resolve('dist');
-const pages = ['', 'features/', 'android/', 'faq/', 'privacy/'];
+const pages = ['', 'features/', 'android/', 'faq/', 'privacy/', 'auth/callback/'];
 const base = process.env.VERCEL ? '/' : '/Toki-Landing/';
 const failures = [];
 let checked = 0;

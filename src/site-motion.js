@@ -46,16 +46,22 @@ if (!reduced.matches && 'IntersectionObserver' in window) {
       frame.classList.remove('is-playing');
       return;
     }
-    video.play().then(() => frame.classList.add('is-playing')).catch(() => {});
-    if (!target.remaining) target.remaining = 24 * 60 + 53;
-    clearInterval(target.tick);
-    target.tick = setInterval(() => {
-      target.remaining = Math.max(0, target.remaining - 1);
-      const minutes = String(Math.floor(target.remaining / 60)).padStart(2, '0');
-      const seconds = String(target.remaining % 60).padStart(2, '0');
-      timer.textContent = `${minutes}:${seconds}`;
-      if (!target.remaining) clearInterval(target.tick);
-    }, 1000);
+    video.play().then(() => {
+      if (!target.isVisible) {
+        video.pause();
+        return;
+      }
+      frame.classList.add('is-playing');
+      if (!target.remaining) target.remaining = 24 * 60 + 53;
+      clearInterval(target.tick);
+      target.tick = setInterval(() => {
+        target.remaining = Math.max(0, target.remaining - 1);
+        const minutes = String(Math.floor(target.remaining / 60)).padStart(2, '0');
+        const seconds = String(target.remaining % 60).padStart(2, '0');
+        timer.textContent = `${minutes}:${seconds}`;
+        if (!target.remaining) clearInterval(target.tick);
+      }, 1000);
+    }).catch(() => {});
   }
   const near = new IntersectionObserver((entries) => {
     entries.forEach(({ target, isIntersecting }) => {

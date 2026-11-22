@@ -1,4 +1,3 @@
-import webmUrl from '../assets/mobile/deep-focus-loop.webm?url';
 import mp4Url from '../assets/mobile/deep-focus-loop.mp4?url';
 import heroUrl from '../assets/hero/frog-reading.mp4?url';
 
@@ -66,8 +65,10 @@ reduced.addEventListener?.('change', () => {
 
 if (!reduced.matches && 'IntersectionObserver' in window) {
   const pond = document.querySelector('.pond-video');
+  let pondVisible = false;
   if (pond) {
     const pondObserver = new IntersectionObserver(([entry]) => {
+      pondVisible = entry.isIntersecting;
       if (entry.isIntersecting) {
         if (!pond.querySelector('source')) {
           const source = document.createElement('source');
@@ -76,8 +77,10 @@ if (!reduced.matches && 'IntersectionObserver' in window) {
           pond.append(source);
           pond.load();
         }
-        pond.play().catch(() => {});
-      } else pond.pause();
+        if (!document.hidden) pond.play().catch(() => {});
+      } else {
+        pond.pause();
+      }
     }, { rootMargin: '200px' });
     pondObserver.observe(pond);
   }
@@ -100,14 +103,14 @@ if (!reduced.matches && 'IntersectionObserver' in window) {
     const video = target.querySelector('video');
     const frame = target.querySelector('.phone-frame');
     const timer = target.querySelector('.phone-timer');
-    if (!shouldPlay || !video.querySelector('source')) {
+    if (!shouldPlay || document.hidden || !video.querySelector('source')) {
       video.pause();
       clearInterval(target.tick);
       frame.classList.remove('is-playing');
       return;
     }
     video.play().then(() => {
-      if (!target.isVisible) {
+      if (!target.isVisible || document.hidden) {
         video.pause();
         return;
       }
@@ -128,12 +131,9 @@ if (!reduced.matches && 'IntersectionObserver' in window) {
       if (!isIntersecting) return;
       const video = target.querySelector('video');
       const source = document.createElement('source');
-      source.src = webmUrl;
-      source.type = 'video/webm';
-      const fallback = document.createElement('source');
-      fallback.src = mp4Url;
-      fallback.type = 'video/mp4';
-      video.append(source, fallback);
+      source.src = mp4Url;
+      source.type = 'video/mp4';
+      video.append(source);
       video.load();
       if (target.isVisible) setPlaying(target, true);
       near.unobserve(target);
@@ -147,4 +147,18 @@ if (!reduced.matches && 'IntersectionObserver' in window) {
     });
   }, { threshold: 0.2 });
   phones.forEach((phone) => { near.observe(phone); visible.observe(phone); });
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      pond?.pause();
+      phones.forEach((phone) => setPlaying(phone, false));
+      return;
+    }
+    if (pond && pondVisible && !reduced.matches) {
+      pond.play().catch(() => {});
+    }
+    phones.forEach((phone) => {
+      if (phone.isVisible && !reduced.matches) setPlaying(phone, true);
+    });
+  });
 }

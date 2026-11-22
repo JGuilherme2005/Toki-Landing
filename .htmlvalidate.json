@@ -4,6 +4,7 @@
   ],
   "rules": {
     "aria-label-misuse": "off",
+    "long-title": ["error", { "maxlength": 75 }],
     "no-autoplay": "off",
     "no-inline-style": "off"
   }

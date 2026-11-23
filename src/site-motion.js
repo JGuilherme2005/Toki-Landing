@@ -45,22 +45,23 @@ function attachTiltController(el) {
   el.addEventListener('pointercancel', reset);
 }
 
+const TILT_SELECTOR = '.pond-stage, .visual-crop, .phone-frame, .phone-gallery figure, .feedback-card';
+
 if (!reduced.matches && finePointer.matches) {
-  document
-    .querySelectorAll('.pond-stage, .visual-crop, .phone-frame, .phone-gallery figure')
-    .forEach(attachTiltController);
+  document.querySelectorAll(TILT_SELECTOR).forEach(attachTiltController);
 }
+
+let stopSpotlightForReducedMotion = () => {};
 
 reduced.addEventListener?.('change', () => {
   if (!reduced.matches) return;
-  document
-    .querySelectorAll('.pond-stage, .visual-crop, .phone-frame, .phone-gallery figure')
-    .forEach((el) => {
-      el.style.removeProperty('--tilt-x');
-      el.style.removeProperty('--tilt-y');
-      el.style.removeProperty('--glare-x');
-      el.style.removeProperty('--glare-y');
-    });
+  document.querySelectorAll(TILT_SELECTOR).forEach((el) => {
+    el.style.removeProperty('--tilt-x');
+    el.style.removeProperty('--tilt-y');
+    el.style.removeProperty('--glare-x');
+    el.style.removeProperty('--glare-y');
+  });
+  stopSpotlightForReducedMotion();
 });
 
 if (!reduced.matches && 'IntersectionObserver' in window) {
@@ -85,11 +86,14 @@ if (!reduced.matches && 'IntersectionObserver' in window) {
     pondObserver.observe(pond);
   }
   document.documentElement.classList.add('js-motion');
-  const sections = document.querySelectorAll('.story, .inner-section, .inner-hero');
+  const sections = document.querySelectorAll('.story, .feedback-section, .inner-section, .inner-hero');
   const reveal = new IntersectionObserver((entries) => {
     entries.forEach(({ target, isIntersecting }) => {
       if (!isIntersecting) return;
       target.classList.add('is-visible');
+      if (target.classList.contains('feedback-section')) {
+        window.setTimeout(() => target.classList.add('is-settled'), 900);
+      }
       reveal.unobserve(target);
     });
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0 });
@@ -97,6 +101,103 @@ if (!reduced.matches && 'IntersectionObserver' in window) {
     section.classList.add('motion-ready');
     reveal.observe(section);
   });
+
+  const feedbackSection = document.querySelector('#feedback');
+  const feedbackCards = feedbackSection ? [...feedbackSection.querySelectorAll('.feedback-card')] : [];
+  let feedbackVisible = false;
+  let spotlightIndex = 0;
+  let spotlightTimer = 0;
+  let hoveredCard = null;
+  let focusedCard = null;
+  let clickedPaused = false;
+
+  const applySpotlight = (index) => {
+    if (!feedbackCards.length) return;
+    spotlightIndex = ((index % feedbackCards.length) + feedbackCards.length) % feedbackCards.length;
+    feedbackCards.forEach((card, i) => {
+      card.classList.toggle('is-spotlight', i === spotlightIndex);
+    });
+  };
+
+  const stopSpotlight = () => {
+    if (!spotlightTimer) return;
+    clearInterval(spotlightTimer);
+    spotlightTimer = 0;
+  };
+
+  const syncSpotlight = () => {
+    if (!feedbackCards.length) return;
+    const shouldCycle = feedbackVisible && !reduced.matches && !document.hidden && !hoveredCard && !focusedCard && !clickedPaused;
+    if (!shouldCycle) {
+      stopSpotlight();
+      return;
+    }
+    applySpotlight(spotlightIndex);
+    if (!spotlightTimer) {
+      spotlightTimer = window.setInterval(() => applySpotlight(spotlightIndex + 1), 3800);
+    }
+  };
+
+  stopSpotlightForReducedMotion = () => {
+    stopSpotlight();
+    feedbackCards.forEach((card) => card.classList.remove('is-spotlight'));
+    feedbackSection?.classList.add('is-visible', 'is-settled');
+  };
+
+  if (feedbackSection && feedbackCards.length) {
+    const spotlightObserver = new IntersectionObserver(([entry]) => {
+      feedbackVisible = entry.isIntersecting;
+      if (feedbackVisible && !reduced.matches) {
+        applySpotlight(spotlightIndex);
+      }
+      syncSpotlight();
+    }, { threshold: 0.08 });
+    spotlightObserver.observe(feedbackSection);
+
+    feedbackCards.forEach((card, index) => {
+      card.addEventListener('pointerenter', (event) => {
+        if (reduced.matches || event.pointerType === 'touch') return;
+        hoveredCard = card;
+        clickedPaused = false;
+        applySpotlight(index);
+        syncSpotlight();
+      });
+
+      card.addEventListener('pointerleave', () => {
+        if (hoveredCard === card) hoveredCard = null;
+        clickedPaused = false;
+        syncSpotlight();
+      });
+
+      card.addEventListener('focusin', () => {
+        if (reduced.matches) return;
+        focusedCard = card;
+        applySpotlight(index);
+        syncSpotlight();
+      });
+
+      card.addEventListener('focusout', (event) => {
+        if (focusedCard === card && !card.contains(event.relatedTarget)) {
+          focusedCard = null;
+        }
+        syncSpotlight();
+      });
+
+      card.addEventListener('click', () => {
+        if (reduced.matches) return;
+        clickedPaused = true;
+        applySpotlight(index);
+        syncSpotlight();
+      });
+    });
+
+    document.addEventListener('pointerdown', (event) => {
+      if (clickedPaused && !feedbackSection.contains(event.target)) {
+        clickedPaused = false;
+        syncSpotlight();
+      }
+    });
+  }
 
   const phones = document.querySelectorAll('[data-animated-phone]');
   function setPlaying(target, shouldPlay) {
@@ -151,12 +252,14 @@ if (!reduced.matches && 'IntersectionObserver' in window) {
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
       pond?.pause();
+      stopSpotlight();
       phones.forEach((phone) => setPlaying(phone, false));
       return;
     }
     if (pond && pondVisible && !reduced.matches) {
       pond.play().catch(() => {});
     }
+    syncSpotlight();
     phones.forEach((phone) => {
       if (phone.isVisible && !reduced.matches) setPlaying(phone, true);
     });

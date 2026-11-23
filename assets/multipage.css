@@ -95,7 +95,7 @@
 .feedback-section.motion-ready:not(.is-settled) .feedback-card:nth-child(2) { transition-delay: 90ms; }
 .feedback-section.motion-ready:not(.is-settled) .feedback-card:nth-child(3) { transition-delay: 180ms; }
 .feedback-section.motion-ready:not(.is-settled) .feedback-card:nth-child(4) { transition-delay: 270ms; }
-.feedback-section.motion-ready .feedback-card:hover { transition-delay: 0ms; }
+.feedback-section.motion-ready:not(.is-settled) .feedback-card:hover { transition-delay: 0ms; }
 @media (max-width: 700px) {
   .nav-inner { min-height: 92px; display: flex; flex-wrap: wrap; align-content: center; gap: 0; }
   .nav .brand { margin-right: auto; }

@@ -65,7 +65,17 @@
 .inner-section > p { max-width: 700px; margin-top: 24px; color: var(--ink-dim); font-size: 18px; line-height: 1.6; }
 .android-hero { min-height: 750px; display: grid; grid-template-columns: 1fr 330px; gap: clamp(40px, 8vw, 150px); align-items: center; }
 .android-hero-phone { width: 100%; margin: 0; }
-.phone-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 250px)); gap: clamp(18px, 4vw, 50px); margin-top: 55px; perspective: 1200px; }
+.phone-gallery { margin-top: 55px; perspective: 1200px; }
+.phone-marquee { position: relative; margin-top: 39px; padding-block: 16px 28px; overflow: hidden; -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent); }
+.phone-gallery-track { --gallery-gap: clamp(52px, 10.5vw, 126px); display: flex; width: max-content; animation: phone-stream 28s linear infinite; will-change: transform; }
+.phone-marquee:hover .phone-gallery-track,
+.phone-marquee:focus-within .phone-gallery-track { animation-play-state: paused; }
+.phone-gallery-group { display: flex; flex: none; gap: var(--gallery-gap); padding-right: var(--gallery-gap); perspective: 1200px; }
+.phone-gallery-group figure { flex: 0 0 auto; width: clamp(230px, 24vw, 270px); }
+@keyframes phone-stream {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
 .phone-gallery figure { position: relative; margin: 0; transform-style: preserve-3d; transform: perspective(1000px) rotateX(var(--tilt-x, 2deg)) rotateY(var(--tilt-y, 0deg)) translateY(var(--lift-y, 0px)); transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1); }
 .phone-gallery figure::after { content: ""; position: absolute; top: 0; left: 0; right: 0; aspect-ratio: 540 / 1200; border-radius: 26px; pointer-events: none; background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 20%), rgba(240,199,94,0.16), rgba(143,194,122,0.05) 38%, transparent 70%); opacity: 0; transition: opacity 280ms cubic-bezier(0.16, 1, 0.3, 1); }
 .phone-gallery figure:hover { --lift-y: -8px; will-change: transform; }
@@ -108,8 +118,9 @@
   .inner-section { padding-block: 75px; }
   .android-hero { display: flex; flex-direction: column; align-items: flex-start; gap: 48px; }
   .android-hero-phone { width: min(75%, 270px); align-self: center; }
-  .phone-gallery { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; margin-inline: -16px; padding: 8px 16px 18px; margin-top: 30px; scroll-padding-inline: 16px; -webkit-overflow-scrolling: touch; }
-  .phone-gallery figure { flex: 0 0 70%; scroll-snap-align: start; transform: none; will-change: auto; }
+  .phone-marquee { margin-top: 14px; padding-block: 16px 28px; }
+  .phone-gallery-track { --gallery-gap: 20px; }
+  .phone-gallery-group figure { width: clamp(190px, 56vw, 240px); transform: none; will-change: auto; }
   .phone-gallery figure::after { border-radius: 16px; }
   .phone-gallery img { border-radius: 16px; }
   .phone-gallery figcaption { font-size: 13px; transform: none; }
@@ -121,6 +132,11 @@
   ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
   .phone-frame > video, .phone-timer { display: none; }
   .animated-phone.is-visible .phone-frame { animation: none; }
+  .phone-marquee { margin-top: 55px; padding-block: 0; overflow: visible; -webkit-mask-image: none; mask-image: none; }
+  .phone-gallery-track { display: block; width: auto; animation: none; transform: none; will-change: auto; }
+  .phone-gallery-group[aria-hidden="true"] { display: none; }
+  .phone-gallery-group { display: grid; grid-template-columns: repeat(3, minmax(0, 250px)); gap: clamp(18px, 4vw, 50px); padding-right: 0; }
+  .phone-gallery-group figure { width: auto; }
   .phone-frame,
   .phone-frame:hover,
   .phone-gallery figure,
@@ -139,4 +155,8 @@
   .feedback-dot::after { animation: none; transition: none; }
   .js-motion .story.motion-ready .story-copy, .js-motion .story.motion-ready .story-visual, .js-motion .feedback-section.motion-ready .feedback-head-copy, .js-motion .feedback-section.motion-ready .feedback-vignette, .js-motion .feedback-section.motion-ready .feedback-card, .js-motion .feedback-section.motion-ready.is-visible .feedback-head-copy, .js-motion .feedback-section.motion-ready.is-visible .feedback-vignette, .js-motion .feedback-section.motion-ready.is-visible .feedback-card, .js-motion .inner-section.motion-ready, .js-motion .inner-hero.motion-ready { opacity: 1; transform: none; translate: none; transition-delay: 0ms; }
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+@media (prefers-reduced-motion: reduce) and (max-width: 700px) {
+  .phone-marquee { margin-top: 30px; }
+  .phone-gallery-group { grid-template-columns: minmax(0, 270px); justify-content: center; gap: 32px; }
 }

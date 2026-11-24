@@ -125,12 +125,15 @@ if (typeof window !== 'undefined') {
     document.getElementById('hint').textContent = 'If Sylviae is unavailable or the link doesn’t open it, return to the app and request a fresh link.';
   }
 
-  // Subtle cursor-tracking eyes for the canonical Sylviae frog mark.
+  // Subtle cursor-tracking eyes & irregular organic blinking for the canonical frog mark.
   const reducedMotion = typeof window.matchMedia === 'function'
     && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const mark = document.getElementById('frog-mark');
   const pupilL = document.getElementById('frog-pupil-l');
   const pupilR = document.getElementById('frog-pupil-r');
+  if (mark && state.canOpenApp && typeof mark.setAttribute === 'function') {
+    mark.setAttribute('data-celebrate', 'true');
+  }
   if (!reducedMotion && mark && pupilL && pupilR && typeof window.addEventListener === 'function') {
     let raf = 0;
     let pointerX = 0;
@@ -157,5 +160,27 @@ if (typeof window !== 'undefined') {
         raf = window.requestAnimationFrame(updateEyes);
       }
     }, { passive: true });
+
+    // Irregular organic blink scheduler (2.4s-6.6s jitter + occasional double-blink).
+    const blinkGroup = typeof mark.querySelector === 'function' ? mark.querySelector('.frog-blink') : null;
+    if (blinkGroup && typeof window.setTimeout === 'function') {
+      const doBlink = (thenDouble) => {
+        blinkGroup.classList.add('is-blinking');
+        window.setTimeout(() => {
+          blinkGroup.classList.remove('is-blinking');
+          if (thenDouble) {
+            window.setTimeout(() => doBlink(false), 140);
+          } else {
+            scheduleNextBlink();
+          }
+        }, 125);
+      };
+      const scheduleNextBlink = () => {
+        const delay = 2400 + Math.random() * 4200;
+        const doubleBlink = Math.random() < 0.22;
+        window.setTimeout(() => doBlink(doubleBlink), delay);
+      };
+      window.setTimeout(() => doBlink(false), 1800 + Math.random() * 1400);
+    }
   }
 }

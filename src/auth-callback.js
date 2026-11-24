@@ -83,11 +83,28 @@ const copy = {
   error: ['We couldn’t complete this link.', 'Return to Sylviae and request a fresh link. If the problem continues, try opening the newest email.']
 };
 
+const statusBadge = {
+  confirmed: ['Email verified', 'ok'],
+  recovery: ['Reset link verified', 'ok'],
+  ready: ['Ready for Sylviae', 'ok'],
+  expired: ['Link expired', 'warn'],
+  error: ['Fresh link needed', 'warn']
+};
+
 if (typeof window !== 'undefined') {
   const state = getCallbackState(window.location.search, window.location.hash);
   const [title, message] = copy[state.kind];
   document.getElementById('title').textContent = title;
   document.getElementById('message').textContent = message;
+
+  const pill = document.getElementById('status-pill');
+  if (pill) {
+    const [label, tone] = statusBadge[state.kind];
+    pill.textContent = label;
+    if (typeof pill.setAttribute === 'function') {
+      pill.setAttribute('data-tone', tone);
+    }
+  }
 
   const openApp = document.getElementById('open-app');
   if (state.canOpenApp) {
@@ -106,5 +123,39 @@ if (typeof window !== 'undefined') {
 
   if (state.kind === 'expired' || state.kind === 'error') {
     document.getElementById('hint').textContent = 'If Sylviae is unavailable or the link doesn’t open it, return to the app and request a fresh link.';
+  }
+
+  // Subtle cursor-tracking eyes for the canonical Sylviae frog mark.
+  const reducedMotion = typeof window.matchMedia === 'function'
+    && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const mark = document.getElementById('frog-mark');
+  const pupilL = document.getElementById('frog-pupil-l');
+  const pupilR = document.getElementById('frog-pupil-r');
+  if (!reducedMotion && mark && pupilL && pupilR && typeof window.addEventListener === 'function') {
+    let raf = 0;
+    let pointerX = 0;
+    let pointerY = 0;
+    const updateEyes = () => {
+      raf = 0;
+      const rect = mark.getBoundingClientRect();
+      const cx = rect.left + rect.width * 0.5;
+      const cy = rect.top + rect.height * 0.34;
+      const vx = pointerX - cx;
+      const vy = pointerY - cy;
+      const dist = Math.hypot(vx, vy) || 1;
+      const strength = dist / (dist + 110);
+      const dx = (vx / dist) * 52 * strength;
+      const dy = Math.max(-24, Math.min(34, (vy / dist) * 38 * strength));
+      const transform = `translate(${dx.toFixed(1)}px, ${dy.toFixed(1)}px)`;
+      pupilL.style.transform = transform;
+      pupilR.style.transform = transform;
+    };
+    window.addEventListener('pointermove', (event) => {
+      pointerX = event.clientX;
+      pointerY = event.clientY;
+      if (!raf && typeof window.requestAnimationFrame === 'function') {
+        raf = window.requestAnimationFrame(updateEyes);
+      }
+    }, { passive: true });
   }
 }

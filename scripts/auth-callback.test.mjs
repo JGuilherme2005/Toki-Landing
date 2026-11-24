@@ -10,6 +10,30 @@ test('recognizes a verified signup return and keeps its callback payload for Syl
   assert.equal(buildAppCallbackUrl(search), `toki://auth-callback${search}`);
 });
 
+test('native signup confirmation opens the native app with only the PKCE code', () => {
+  const search = '?flow=signup&code=a%2Fb%2Bc';
+  const hash = '#native';
+  assert.deepEqual(getCallbackState(search, hash), { kind: 'confirmed', canOpenApp: true });
+  assert.equal(buildAppCallbackUrl(search, hash), 'sylviae-native://auth-callback?code=a%2Fb%2Bc');
+  assert.equal(shouldAutoOpenApp(search, hash), false);
+});
+
+test('native recovery and Google returns open the native app automatically', () => {
+  assert.deepEqual(getCallbackState('?flow=recovery&code=reset', '#native'), {
+    kind: 'recovery', canOpenApp: true
+  });
+  assert.equal(shouldAutoOpenApp('?flow=recovery&code=reset', '#native'), true);
+  assert.equal(shouldAutoOpenApp('?code=google', '#native'), true);
+  assert.equal(buildAppCallbackUrl('?code=google', '#native'), 'sylviae-native://auth-callback?code=google');
+});
+
+test('native handoff never forwards access or refresh tokens', () => {
+  assert.deepEqual(getCallbackState('', '#native&access_token=secret&refresh_token=secret'), {
+    kind: 'error', canOpenApp: false
+  });
+  assert.equal(shouldAutoOpenApp('', '#native&access_token=secret&refresh_token=secret'), false);
+});
+
 test('does not say confirmed for an unverified email token', () => {
   assert.deepEqual(getCallbackState('?token_hash=opaque&type=email'), {
     kind: 'ready',
@@ -94,6 +118,30 @@ test('attempts the Google app handoff while keeping its manual button available'
     assert.deepEqual(opened, ['toki://auth-callback?code=opaque']);
     assert.equal(elements['open-app'].href, opened[0]);
     assert.equal(elements['open-app'].hidden, false);
+  } finally {
+    delete globalThis.window;
+    delete globalThis.document;
+  }
+});
+
+test('keeps the native signup confirmation page and opens Sylviae on this PC', async () => {
+  const elements = Object.fromEntries(['title', 'message', 'open-app', 'hint'].map((id) => [id, {}]));
+  const opened = [];
+  globalThis.window = {
+    location: {
+      search: '?flow=signup&code=one-time-code',
+      hash: '#native',
+      assign(url) { opened.push(url); }
+    }
+  };
+  globalThis.document = { getElementById(id) { return elements[id]; } };
+
+  try {
+    await import('../src/auth-callback.js?native-confirmation');
+    assert.equal(elements.title.textContent, 'Your email is confirmed.');
+    assert.equal(elements['open-app'].textContent, 'Open Sylviae on this PC');
+    assert.deepEqual(opened, []);
+    assert.equal(elements['open-app'].href, 'sylviae-native://auth-callback?code=one-time-code');
   } finally {
     delete globalThis.window;
     delete globalThis.document;

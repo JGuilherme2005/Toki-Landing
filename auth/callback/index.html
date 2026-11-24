@@ -20,8 +20,13 @@
       font-synthesis: none;
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
+      --bg: #111513;
+      --surface: #171c19;
       --accent: #8fc27a;
+      --gold: #f0c75e;
       --muted: #a3a79b;
+      --muted2: #6d7269;
+      --border: rgba(239, 233, 220, .11);
     }
 
     * { box-sizing: border-box; }
@@ -29,47 +34,200 @@
     body {
       min-height: 100svh;
       margin: 0;
-      display: grid;
-      place-items: center;
-      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(20px, 4vw, 40px);
       background:
-        radial-gradient(ellipse at 50% 0%, rgba(143, 194, 122, .14), transparent 58%),
-        #111513;
+        radial-gradient(ellipse at 32% 18%, rgba(143, 194, 122, .11), transparent 52%),
+        radial-gradient(ellipse at 72% 82%, rgba(240, 199, 94, .05), transparent 48%),
+        var(--bg);
+    }
+
+    .handoff-shell {
+      width: min(100%, 980px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 440px);
+      align-items: center;
+      gap: clamp(32px, 5vw, 68px);
+    }
+
+    /* Left column: arched Moonlit Pond portal matching the native desktop app */
+    .pond-stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .pond-arch {
+      position: relative;
+      width: min(100%, 384px);
+      aspect-ratio: 392 / 512;
+      border-radius: 200px 200px 22px 22px;
+      overflow: hidden;
+      background: #0c0f0d;
+      border: 1px solid rgba(240, 199, 94, .24);
+      box-shadow:
+        0 28px 80px rgba(0, 0, 0, .48),
+        0 0 0 1px rgba(143, 194, 122, .08) inset;
+    }
+
+    .pond-arch img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .pond-fireflies {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .pond-firefly {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(240, 199, 94, .95) 0%, rgba(240, 199, 94, .35) 45%, transparent 72%);
+      box-shadow: 0 0 14px 4px rgba(240, 199, 94, .22);
+      will-change: transform, opacity;
+      animation: firefly-drift 9s ease-in-out infinite;
+    }
+
+    .pond-firefly:nth-child(1) { top: 22%; left: 20%; animation-duration: 8.6s; animation-delay: -.8s; }
+    .pond-firefly:nth-child(2) { top: 18%; left: 74%; animation-duration: 10.2s; animation-delay: -3.2s; width: 5px; height: 5px; }
+    .pond-firefly:nth-child(3) { top: 44%; left: 15%; animation-duration: 9.4s; animation-delay: -5.1s; }
+    .pond-firefly:nth-child(4) { top: 38%; left: 82%; animation-duration: 11s; animation-delay: -2.0s; width: 5px; height: 5px; }
+    .pond-firefly:nth-child(5) { top: 14%; left: 48%; animation-duration: 7.8s; animation-delay: -4.4s; width: 4px; height: 4px; }
+    .pond-firefly:nth-child(6) { top: 61%; left: 75%; animation-duration: 9.8s; animation-delay: -6.3s; }
+
+    @keyframes firefly-drift {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(.85); opacity: .35; }
+      35%      { transform: translate3d(9px, -11px, 0) scale(1.15); opacity: .95; }
+      70%      { transform: translate3d(-7px, -4px, 0) scale(.95); opacity: .55; }
+    }
+
+    .pond-caption {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      text-align: center;
+    }
+
+    .pond-caption-line {
+      margin: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #efe9dc;
+    }
+
+    .pond-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 8px rgba(240, 199, 94, .65);
+    }
+
+    .pond-caption-meta {
+      margin: 0;
+      font-size: 12px;
+      color: var(--muted2);
+      letter-spacing: .01em;
+    }
+
+    /* Right column: confirmation card with interactive eye-tracking frog */
+    .card-col {
+      width: 100%;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
     }
 
     main {
-      width: min(100%, 440px);
-      padding: clamp(28px, 8vw, 48px);
-      border: 1px solid rgba(239, 233, 220, .12);
-      border-radius: 24px;
-      background: #171c19;
+      width: 100%;
+      max-width: 440px;
+      padding: clamp(24px, 6vw, 42px);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: var(--surface);
       box-shadow: 0 24px 72px rgba(0, 0, 0, .45);
       text-align: center;
     }
 
     .mark {
       display: grid;
-      width: 52px;
-      height: 52px;
+      width: 74px;
+      height: 74px;
       place-items: center;
-      margin: 0 auto 22px;
-      overflow: hidden;
+      margin: 0 auto 14px;
     }
 
-    .mark img { width: 100%; height: 100%; object-fit: contain; }
+    .mark svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
 
-    .brand {
-      margin: 0 0 22px;
-      color: var(--muted);
+    .frog-pupil {
+      transition: transform 75ms ease-out;
+      will-change: transform;
+    }
+
+    .frog-blink {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: frog-blink 5.4s ease-in-out infinite;
+    }
+
+    @keyframes frog-blink {
+      0%, 94%, 100% { opacity: 0; }
+      96%, 98%      { opacity: 1; }
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin: 0 0 14px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(143, 194, 122, .28);
+      background: rgba(143, 194, 122, .08);
+      color: var(--accent);
       font-size: 11px;
       font-weight: 600;
-      letter-spacing: .2em;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .status-pill::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .status-pill[data-tone="warn"] {
+      border-color: rgba(240, 199, 94, .32);
+      background: rgba(240, 199, 94, .09);
+      color: var(--gold);
     }
 
     h1 {
       margin: 0;
       font-family: 'Syne', 'Syne Fallback', system-ui, sans-serif;
-      font-size: clamp(30px, 8vw, 38px);
+      font-size: clamp(28px, 6vw, 35px);
       font-weight: 700;
       letter-spacing: -.035em;
       line-height: 1.12;
@@ -77,27 +235,27 @@
       min-height: 2.24em;
     }
 
-    .message { min-height: 6.4em; }
+    .message { min-height: 4.8em; }
     .message, .hint {
       color: var(--muted);
-      font-size: 16px;
+      font-size: 15px;
       line-height: 1.6;
     }
 
-    .message { margin: 16px 0 0; }
+    .message { margin: 14px 0 0; }
 
     .open-app {
       display: inline-flex;
-      min-height: 52px;
+      min-height: 50px;
       width: 100%;
       align-items: center;
       justify-content: center;
-      margin-top: 28px;
+      margin-top: 24px;
       padding: 13px 20px;
-      border-radius: 14px;
+      border-radius: 12px;
       background: var(--accent);
       color: #0c0f0d;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       text-decoration: none;
       transition: background-color 160ms ease, transform 160ms ease;
@@ -107,24 +265,139 @@
     .open-app:focus-visible { outline: 3px solid #efe9dc; outline-offset: 4px; }
     .open-app[hidden] { display: none; }
 
-    .hint { margin: 18px 0 0; font-size: 14px; min-height: 4.8em; }
-    .home { display: inline-block; margin-top: 22px; color: var(--accent); font-size: 14px; }
+    .hint { margin: 16px 0 0; font-size: 13.5px; min-height: 4.4em; }
+    .home {
+      display: inline-block;
+      margin-top: 18px;
+      color: var(--accent);
+      font-size: 13.5px;
+      text-underline-offset: 4px;
+    }
+
+    .card-footnote {
+      margin: 0;
+      font-size: 12px;
+      color: var(--muted2);
+      text-align: center;
+    }
+
+    @media (max-width: 860px) {
+      .handoff-shell {
+        grid-template-columns: minmax(0, 1fr);
+        max-width: 440px;
+        gap: 24px;
+      }
+
+      .pond-stage { display: none; }
+    }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+
+      .pond-fireflies,
+      .frog-blink {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
-  <main aria-labelledby="title">
-    <div class="mark" aria-hidden="true"><img src="../../assets/icon-128.png" alt="" width="52" height="52"></div>
-    <p class="brand">SYLVIAE</p>
-    <h1 id="title">Checking your link…</h1>
-    <p class="message" id="message">We’re checking your Sylviae link.</p>
-    <a class="open-app" id="open-app" href="toki://auth-callback" hidden>Open Sylviae</a>
-    <p class="hint" id="hint">If Sylviae isn’t available or the link doesn’t open it, return to the app and request a fresh link if needed.</p>
-    <a class="home" href="../../">Back to Sylviae</a>
-  </main>
+  <div class="handoff-shell">
+    <aside class="pond-stage" aria-label="Sylviae Moonlit Pond illustration">
+      <div class="pond-arch">
+        <img src="../../assets/hero/welcome-pond.jpg" alt="Illustrated Sylviae frog sitting on a lily pad in a moonlit pond beside a book and warm lantern" width="768" height="1029">
+        <div class="pond-fireflies" aria-hidden="true">
+          <span class="pond-firefly" aria-hidden="true"></span>
+          <span class="pond-firefly" aria-hidden="true"></span>
+          <span class="pond-firefly" aria-hidden="true"></span>
+          <span class="pond-firefly" aria-hidden="true"></span>
+          <span class="pond-firefly" aria-hidden="true"></span>
+          <span class="pond-firefly" aria-hidden="true"></span>
+        </div>
+      </div>
+      <div class="pond-caption">
+        <p class="pond-caption-line"><span class="pond-dot" aria-hidden="true"></span>A quiet pond for deep work.</p>
+        <p class="pond-caption-meta">Zero-drift timer &middot; Tasks &middot; Local-first</p>
+      </div>
+    </aside>
+
+    <div class="card-col">
+      <main aria-labelledby="title">
+        <div class="mark" id="frog-mark" aria-hidden="true">
+          <svg viewBox="0 0 1024 1024" width="74" height="74" aria-hidden="true">
+            <defs>
+              <clipPath id="frog-eye-l"><circle cx="384" cy="424" r="118"/></clipPath>
+              <clipPath id="frog-eye-r"><circle cx="640" cy="424" r="118"/></clipPath>
+            </defs>
+            <g transform="translate(512 516) scale(1.3) translate(-512 -562)">
+              <g fill="#111513" stroke="#111513" stroke-width="28" stroke-linejoin="round" opacity=".6">
+                <ellipse cx="512" cy="632" rx="344" ry="214"/>
+                <circle cx="384" cy="424" r="146"/>
+                <circle cx="640" cy="424" r="146"/>
+              </g>
+              <g fill="#929b46">
+                <ellipse cx="512" cy="632" rx="344" ry="214"/>
+                <circle cx="384" cy="424" r="146"/>
+                <circle cx="640" cy="424" r="146"/>
+              </g>
+              <path d="M262,650 Q512,820 762,650 Q730,812 512,836 Q294,812 262,650 Z" fill="#f5d193"/>
+              <path d="M246,632 Q512,826 778,632" fill="none" stroke="#21291d" stroke-width="22" stroke-linecap="round"/>
+              <g fill="#556c3e">
+                <circle cx="752" cy="540" r="32"/>
+                <circle cx="806" cy="586" r="20"/>
+                <circle cx="752" cy="604" r="16"/>
+                <circle cx="276" cy="560" r="20"/>
+              </g>
+              <g fill="#21291d">
+                <circle cx="478" cy="596" r="10"/>
+                <circle cx="546" cy="596" r="10"/>
+              </g>
+              <g fill="#f7ce78">
+                <circle cx="384" cy="424" r="118"/>
+                <circle cx="640" cy="424" r="118"/>
+              </g>
+              <g clip-path="url(#frog-eye-l)">
+                <g class="frog-pupil" id="frog-pupil-l">
+                  <ellipse cx="384" cy="462" rx="40" ry="44" fill="#21291d"/>
+                  <circle cx="371" cy="448" r="11" fill="#fef7e4" opacity=".82"/>
+                </g>
+              </g>
+              <g clip-path="url(#frog-eye-r)">
+                <g class="frog-pupil" id="frog-pupil-r">
+                  <ellipse cx="640" cy="462" rx="40" ry="44" fill="#21291d"/>
+                  <circle cx="627" cy="448" r="11" fill="#fef7e4" opacity=".82"/>
+                </g>
+              </g>
+              <rect x="250" y="290" width="270" height="86" fill="#8f994d" clip-path="url(#frog-eye-l)"/>
+              <rect x="504" y="290" width="270" height="86" fill="#8f994d" clip-path="url(#frog-eye-r)"/>
+              <g stroke="#21291d" stroke-width="16" stroke-linecap="round">
+                <line x1="290" y1="376" x2="478" y2="376"/>
+                <line x1="546" y1="376" x2="734" y2="376"/>
+              </g>
+              <g class="frog-blink">
+                <circle cx="384" cy="424" r="118" fill="#8f994d"/>
+                <circle cx="640" cy="424" r="118" fill="#8f994d"/>
+                <path d="M300,438 Q384,468 468,438" fill="none" stroke="#21291d" stroke-width="18" stroke-linecap="round"/>
+                <path d="M556,438 Q640,468 724,438" fill="none" stroke="#21291d" stroke-width="18" stroke-linecap="round"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <p class="status-pill" id="status-pill">Sylviae handoff</p>
+        <h1 id="title">Checking your link…</h1>
+        <p class="message" id="message">We’re checking your Sylviae link.</p>
+        <a class="open-app" id="open-app" href="toki://auth-callback" hidden>Open Sylviae</a>
+        <p class="hint" id="hint">If Sylviae isn’t available or the link doesn’t open it, return to the app and request a fresh link if needed.</p>
+        <a class="home" href="../../">Back to Sylviae</a>
+      </main>
+      <p class="card-footnote">Your native workspace stays on this computer.</p>
+    </div>
+  </div>
   <script type="module" src="../../src/auth-callback.js"></script>
 </body>
 </html>

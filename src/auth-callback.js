@@ -14,6 +14,10 @@ function hasParam(params, key) {
   return params.has(key) && Boolean(params.get(key));
 }
 
+function isNativeCallback(hash = '') {
+  return readCallbackParams('', hash).fragment.has('native');
+}
+
 export function getCallbackState(search = '', hash = '') {
   const { query, fragment } = readCallbackParams(search, hash);
   const params = [query, fragment];
@@ -35,6 +39,9 @@ export function getCallbackState(search = '', hash = '') {
   const validTokenPair = has('access_token') && has('refresh_token');
   const canOpenApp = validCode || validTokenHash || validTokenPair;
 
+  // Native exchanges only a one-time PKCE code. Never hand tokens to a
+  // Windows protocol URL, where they would be visible in a process command.
+  if (isNativeCallback(hash) && !query.get('code')) return { kind: 'error', canOpenApp: false };
   if (!canOpenApp) return { kind: 'error', canOpenApp: false };
   if ((type === 'recovery' || flow === 'recovery') && (validCode || validTokenPair)) {
     return { kind: 'recovery', canOpenApp: true };
@@ -48,11 +55,19 @@ export function getCallbackState(search = '', hash = '') {
 }
 
 export function buildAppCallbackUrl(search = '', hash = '') {
+  if (isNativeCallback(hash)) {
+    const code = new URLSearchParams(search).get('code');
+    return `sylviae-native://auth-callback?code=${encodeURIComponent(code || '')}`;
+  }
   return `toki://auth-callback${search}${hash}`;
 }
 
 export function shouldAutoOpenApp(search = '', hash = '') {
   const { query, fragment } = readCallbackParams(search, hash);
+  if (isNativeCallback(hash)) {
+    return getCallbackState(search, hash).canOpenApp && Boolean(query.get('code'))
+      && query.get('flow') !== 'signup';
+  }
   const type = query.get('type') || fragment.get('type');
   // kiss: Google is the only current hosted callback with an untyped PKCE code.
   return getCallbackState(search, hash).kind === 'ready'
@@ -77,6 +92,7 @@ if (typeof window !== 'undefined') {
   const openApp = document.getElementById('open-app');
   if (state.canOpenApp) {
     openApp.href = buildAppCallbackUrl(window.location.search, window.location.hash);
+    if (isNativeCallback(window.location.hash)) openApp.textContent = 'Open Sylviae on this PC';
     openApp.hidden = false;
     if (shouldAutoOpenApp(window.location.search, window.location.hash)) {
       document.getElementById('hint').textContent = 'If your browser asks, allow Sylviae to open. If nothing happens, use the Open Sylviae button.';

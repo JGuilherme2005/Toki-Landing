@@ -78,6 +78,65 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transform-origin: 50% 62%;
+      will-change: transform;
+      animation: pond-bob 5.8s ease-in-out infinite;
+    }
+
+    @keyframes pond-bob {
+      0%, 100% { transform: scale(1.036) translate3d(0, -1.6px, 0) rotate(-.28deg); }
+      50%      { transform: scale(1.042) translate3d(0, 2.2px, 0) rotate(.32deg); }
+    }
+
+    /* Animated pond water ripples synced to the frog's gentle lily-pad bob */
+    .pond-water {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .pond-ripple {
+      position: absolute;
+      left: 50%;
+      top: 61.8%;
+      width: 66%;
+      height: 11%;
+      border-radius: 50%;
+      border: 1.25px solid rgba(159, 201, 155, .28);
+      transform: translate(-50%, -50%) scale3d(.72, .68, 1);
+      opacity: 0;
+      will-change: transform, opacity;
+      animation: water-ripple 5.8s cubic-bezier(.22, .61, .36, 1) infinite;
+    }
+
+    .pond-ripple:nth-child(2) { animation-delay: -1.93s; }
+    .pond-ripple:nth-child(3) { animation-delay: -3.86s; }
+
+    @keyframes water-ripple {
+      0%   { transform: translate(-50%, -50%) scale3d(.70, .64, 1); opacity: 0; }
+      18%  { opacity: .42; }
+      75%  { opacity: .14; }
+      100% { transform: translate(-50%, -42%) scale3d(1.34, 1.46, 1); opacity: 0; }
+    }
+
+    .pond-wave {
+      position: absolute;
+      left: 50%;
+      height: 1.5px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, rgba(159, 201, 155, .22) 35%, rgba(240, 199, 94, .16) 55%, transparent);
+      will-change: transform, opacity;
+      animation: water-wave 7.2s ease-in-out infinite;
+    }
+
+    .pond-wave:nth-child(4) { top: 73%; width: 42%; animation-duration: 6.8s; animation-delay: -.6s; }
+    .pond-wave:nth-child(5) { top: 81%; width: 32%; animation-duration: 8.1s; animation-delay: -2.9s; }
+    .pond-wave:nth-child(6) { top: 88%; width: 24%; animation-duration: 7.4s; animation-delay: -5.2s; }
+
+    @keyframes water-wave {
+      0%, 100% { transform: translate3d(calc(-50% - 9px), 0, 0) scaleX(.92); opacity: .28; }
+      50%      { transform: translate3d(calc(-50% + 9px), 1.5px, 0) scaleX(1.06); opacity: .68; }
     }
 
     .pond-fireflies {
@@ -176,6 +235,26 @@
       width: 100%;
       height: 100%;
       overflow: visible;
+      transform-origin: 50% 78%;
+      will-change: transform;
+      animation: frog-idle-sway 6.4s ease-in-out infinite;
+    }
+
+    .mark[data-celebrate="true"] {
+      animation: frog-celebrate 680ms cubic-bezier(.22, 1.35, .36, 1) both;
+    }
+
+    @keyframes frog-celebrate {
+      0%   { transform: translate3d(0, 6px, 0) scale(.92); }
+      55%  { transform: translate3d(0, -4px, 0) scale(1.05); }
+      100% { transform: translate3d(0, 0, 0) scale(1); }
+    }
+
+    @keyframes frog-idle-sway {
+      0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg) scaleY(1); }
+      28%      { transform: translate3d(0, -1.6px, 0) rotate(1.7deg) scaleY(1.016); }
+      56%      { transform: translate3d(0, .6px, 0) rotate(-.5deg) scaleY(.992); }
+      82%      { transform: translate3d(0, -1.2px, 0) rotate(-1.6deg) scaleY(1.012); }
     }
 
     .frog-pupil {
@@ -184,14 +263,12 @@
     }
 
     .frog-blink {
-      transform-box: fill-box;
-      transform-origin: center;
-      animation: frog-blink 5.4s ease-in-out infinite;
+      opacity: 0;
+      transition: opacity 55ms ease-out;
     }
 
-    @keyframes frog-blink {
-      0%, 94%, 100% { opacity: 0; }
-      96%, 98%      { opacity: 1; }
+    .frog-blink.is-blinking {
+      opacity: 1;
     }
 
     .status-pill {
@@ -300,8 +377,16 @@
       }
 
       .pond-fireflies,
+      .pond-water,
       .frog-blink {
         display: none;
+      }
+
+      .pond-arch img,
+      .mark,
+      .mark svg {
+        animation: none !important;
+        transform: none !important;
       }
     }
   </style>
@@ -310,7 +395,15 @@
   <div class="handoff-shell">
     <aside class="pond-stage" aria-label="Sylviae Moonlit Pond illustration">
       <div class="pond-arch">
-        <img src="../../assets/hero/welcome-pond.jpg" alt="Illustrated Sylviae frog sitting on a lily pad in a moonlit pond beside a book and warm lantern" width="768" height="1029">
+        <img src="../../assets/hero/confirm-pond.jpg" alt="Happy illustrated Sylviae frog on a moonlit lily pad cheering with one arm raised and swirling golden fireflies" width="768" height="1029">
+        <div class="pond-water" aria-hidden="true">
+          <span class="pond-ripple" aria-hidden="true"></span>
+          <span class="pond-ripple" aria-hidden="true"></span>
+          <span class="pond-ripple" aria-hidden="true"></span>
+          <span class="pond-wave" aria-hidden="true"></span>
+          <span class="pond-wave" aria-hidden="true"></span>
+          <span class="pond-wave" aria-hidden="true"></span>
+        </div>
         <div class="pond-fireflies" aria-hidden="true">
           <span class="pond-firefly" aria-hidden="true"></span>
           <span class="pond-firefly" aria-hidden="true"></span>

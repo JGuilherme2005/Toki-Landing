@@ -75,7 +75,11 @@ body { background: var(--bg-deep); }
   50% { transform: translate3d(-18px, -28px, 0) scale(1.12); opacity: 0.85; }
 }
 .feedback-head,
-.feedback-grid { position: relative; z-index: 1; }
+.feedback-marquee { position: relative; z-index: 1; }
+.store-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 16px; }
+.store-pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(239, 233, 220, 0.14); background: rgba(23, 28, 25, 0.9); color: var(--ink-dim); font-size: 13px; font-weight: 500; letter-spacing: 0.01em; text-decoration: none; transition: border-color 220ms var(--ease-out), color 220ms var(--ease-out), transform 220ms var(--ease-out); }
+.store-pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex: none; }
+a.store-pill:hover { border-color: rgba(143, 194, 122, 0.45); color: var(--ink); transform: translateY(-1px); }
 .feedback-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(24px, 4.5vw, 64px); align-items: end; }
 .feedback-head-copy { max-width: 600px; }
 .feedback-section h2 { font-size: clamp(34px,3.2vw,48px); line-height: 1.08; font-weight: 700; }
@@ -87,8 +91,16 @@ body { background: var(--bg-deep); }
   0%, 100% { transform: translate3d(0, 0, 0); }
   50% { transform: translate3d(0, -6px, 0); }
 }
-.feedback-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin-top: 40px; perspective: 1400px; }
-.feedback-card { position: relative; overflow: hidden; margin: 0; padding: 26px 28px; display: flex; flex-direction: column; justify-content: space-between; gap: 20px; border: 1px solid rgba(240,199,94,0.14); border-radius: 18px; background: var(--surface); background-image: radial-gradient(280px 140px at 15% 0%, rgba(240,199,94,0.05), transparent 70%); transform-style: preserve-3d; transform: perspective(1000px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateY(var(--lift-y, 0px)) scale(var(--card-scale, 1)); box-shadow: 0 1px 0 rgba(240,199,94,0.22) inset, 0 5px 0 #0a0e0c, 0 22px 44px -14px rgba(0,0,0,0.62); }
+.feedback-marquee { margin-top: 40px; overflow: hidden; padding-block: 10px 22px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
+.feedback-track { --feedback-gap: 22px; display: flex; width: max-content; will-change: transform; animation: feedback-stream 34s linear infinite; }
+.feedback-marquee:hover .feedback-track,
+.feedback-marquee:focus-within .feedback-track { animation-play-state: paused; }
+.feedback-group { display: flex; flex: none; gap: var(--feedback-gap); padding-right: var(--feedback-gap); }
+.feedback-card { position: relative; overflow: hidden; width: clamp(310px, 34vw, 410px); flex: none; margin: 0; padding: 26px 28px; display: flex; flex-direction: column; justify-content: space-between; gap: 20px; border: 1px solid rgba(240,199,94,0.14); border-radius: 18px; background: var(--surface); background-image: radial-gradient(280px 140px at 15% 0%, rgba(240,199,94,0.05), transparent 70%); transform-style: preserve-3d; transform: perspective(1000px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateY(var(--lift-y, 0px)) scale(var(--card-scale, 1)); box-shadow: 0 1px 0 rgba(240,199,94,0.22) inset, 0 5px 0 #0a0e0c, 0 22px 44px -14px rgba(0,0,0,0.62); }
+@keyframes feedback-stream {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
 .feedback-card::after { content: ""; position: absolute; inset: 0; z-index: 2; border-radius: inherit; pointer-events: none; background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 20%), rgba(240,199,94,0.16), rgba(143,194,122,0.05) 36%, transparent 68%); box-shadow: 0 1px 0 rgba(240,199,94,0.22) inset, 0 -2px 0 rgba(0,0,0,0.75) inset; opacity: 0.25; transition: opacity 280ms cubic-bezier(0.16, 1, 0.3, 1); }
 .feedback-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .feedback-tag { display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 999px; border: 1px solid rgba(143,194,122,0.24); background: rgba(143,194,122,0.08); font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: .08em; color: var(--accent); transition: color 240ms var(--ease-out), border-color 240ms var(--ease-out), background-color 240ms var(--ease-out); }
@@ -145,8 +157,10 @@ footer > p { max-width: 600px; color: var(--ink-dim); font-size: 15px; }
   .feedback-vignette figcaption { text-align: left; }
   .feedback-section h2 { font-size: 32px; }
   .feedback-lead { font-size: 16px; }
-  .feedback-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 28px; }
-  .feedback-card { padding: 22px; gap: 18px; }
+  .store-row { justify-content: center; }
+  .feedback-marquee { margin-top: 28px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent); mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent); }
+  .feedback-track { --feedback-gap: 16px; animation-duration: 28s; }
+  .feedback-card { width: min(82vw, 320px); padding: 22px; gap: 18px; }
   .faq-section { padding-block: 68px; }
   .faq-section h2 { font-size: 32px; }
   .faq-list { margin-top: 23px; }
@@ -159,6 +173,11 @@ footer > p { max-width: 600px; color: var(--ink-dim); font-size: 15px; }
   .pond-fireflies { display: none; }
   .pond-firefly,
   .feedback-vignette { animation: none; transform: none; translate: none; will-change: auto; }
+  .feedback-marquee { overflow: visible; -webkit-mask-image: none; mask-image: none; }
+  .feedback-track { display: block; width: auto; animation: none; transform: none; will-change: auto; }
+  .feedback-group { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; padding-right: 0; }
+  .feedback-group[aria-hidden="true"] { display: none; }
+  .feedback-card { width: auto; }
   .pond-stage,
   .pond-stage:hover,
   .visual-crop,

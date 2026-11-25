@@ -323,6 +323,8 @@ if (focusTry) {
 
   const renderTimer = (state) => {
     focusTry.dataset.state = state;
+    const progress = state === 'idle' ? 0 : state === 'done' ? 1 : Math.min(1, Math.max(0, 1 - remainingMs / TOTAL_MS));
+    focusTry.style.setProperty('--focus-progress', progress.toFixed(4));
     if (clockEl) clockEl.textContent = state === 'done' ? 'Done' : formatMs(remainingMs);
     if (toggleBtn) {
       toggleBtn.textContent = state === 'running'

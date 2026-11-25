@@ -34,21 +34,23 @@ async def main():
                             if 'error' in response: raise RuntimeError(response['error'])
                             return response.get('result', {})
                 await cmd('Page.enable')
-                for page in ('', 'features/', 'android/', 'faq/', 'privacy/'):
+                for page in ('', 'features/', 'android/', 'faq/', 'privacy/', 'auth/callback/'):
                     for width in (375, 1440):
                         await cmd('Emulation.setDeviceMetricsOverride', {'width': width, 'height': 812, 'deviceScaleFactor': 1, 'mobile': width == 375})
                         await cmd('Page.navigate', {'url': f'http://127.0.0.1:4174/Toki-Landing/{page}'})
                         await asyncio.sleep(.7)
-                        result = await cmd('Runtime.evaluate', {'expression': 'document.documentElement.scrollWidth - innerWidth', 'returnByValue': True})
-                        overflow = result['result']['value']
-                        print(f'{page or "home"} {width}: horizontal overflow {overflow}px')
-                        if overflow > 0: raise AssertionError('Horizontal overflow')
+                        result = await cmd('Runtime.evaluate', {'expression': '({title: document.title, overflow: document.documentElement.scrollWidth - innerWidth})', 'returnByValue': True})
+                        info = result['result']['value']
+                        print(f'{page or "home"} {width}: title={info["title"]!r} horizontal overflow {info["overflow"]}px')
+                        if 'Sylviae' not in info['title']: raise AssertionError(f'Page failed to load: {info}')
+                        if info['overflow'] > 0: raise AssertionError('Horizontal overflow')
                 await cmd('Emulation.setEmulatedMedia', {'features': [{'name': 'prefers-reduced-motion', 'value': 'reduce'}]})
                 await cmd('Page.navigate', {'url': 'http://127.0.0.1:4174/Toki-Landing/android/'})
                 await asyncio.sleep(.7)
-                result = await cmd('Runtime.evaluate', {'expression': "({sources:document.querySelector('[data-animated-phone] video').querySelectorAll('source').length,timer:getComputedStyle(document.querySelector('.phone-timer')).display})", 'returnByValue': True})
-                print('Reduced motion:', result['result']['value'])
-                assert result['result']['value'] == {'sources': 0, 'timer': 'none'}
+                result = await cmd('Runtime.evaluate', {'expression': "(() => { const v = document.querySelector('[data-animated-phone] video'); const t = document.querySelector('.phone-timer'); return { sources: v ? v.querySelectorAll('source').length : -1, timer: t ? getComputedStyle(t).display : 'missing' }; })()", 'returnByValue': True})
+                val = result.get('result', {}).get('value')
+                print('Reduced motion:', val)
+                assert val == {'sources': 0, 'timer': 'none'}, f'Unexpected reduced-motion state: {result}'
         finally:
             process.terminate()
             process.wait(timeout=5)

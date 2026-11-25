@@ -100,21 +100,6 @@ a.store-pill::after, .cta-primary::after { content: ""; position: absolute; inse
 .cta-primary { position: relative; overflow: hidden; }
 a.store-pill:hover::after, .cta-primary:hover::after { opacity: 1; }
 a.store-pill:hover { border-color: rgba(143, 194, 122, 0.45); color: var(--ink); transform: translateY(-1px); }
-.focus-try { position: relative; overflow: hidden; display: inline-flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 20px; padding: 8px 10px 10px 14px; border-radius: 14px; border: 1px solid rgba(239, 233, 220, 0.14); background: rgba(23, 28, 25, 0.92); box-shadow: 0 1px 0 rgba(239, 233, 220, 0.08) inset, 0 10px 24px -16px rgba(0, 0, 0, 0.72); transition: border-color 220ms var(--ease-out), box-shadow 220ms var(--ease-out); }
-.focus-try::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--gold)); transform-origin: left center; transform: scaleX(var(--focus-progress, 0)); opacity: 0.85; transition: transform 240ms linear, opacity 240ms var(--ease-out); pointer-events: none; }
-.focus-try[data-state="idle"]::after { opacity: 0; }
-.focus-try[data-state="running"] { border-color: rgba(143, 194, 122, 0.48); box-shadow: 0 1px 0 rgba(143, 194, 122, 0.16) inset, 0 12px 28px -14px rgba(143, 194, 122, 0.24); }
-.focus-try[data-state="done"] { border-color: rgba(240, 199, 94, 0.55); box-shadow: 0 1px 0 rgba(240, 199, 94, 0.22) inset, 0 12px 28px -14px rgba(240, 199, 94, 0.28); }
-.focus-try-clock { font-family: var(--font-mono); font-size: 16px; font-weight: 500; font-variant-numeric: tabular-nums; letter-spacing: 0.04em; color: var(--ink); min-width: 52px; }
-.focus-try[data-state="done"] .focus-try-clock { color: var(--gold); }
-.focus-try-btn, .focus-try-chime, .focus-try-reset { font: inherit; font-size: 13px; font-weight: 600; border-radius: 9px; padding: 7px 13px; cursor: pointer; border: 1px solid transparent; transition: background-color 180ms var(--ease-out), border-color 180ms var(--ease-out), color 180ms var(--ease-out), transform 120ms var(--ease-out); }
-.focus-try-btn:active, .focus-try-chime:active, .focus-try-reset:active { transform: translateY(1px); }
-.focus-try-btn { background: rgba(143, 194, 122, 0.16); border-color: rgba(143, 194, 122, 0.36); color: var(--accent); }
-.focus-try-btn:hover { background: rgba(143, 194, 122, 0.25); color: var(--ink); }
-.focus-try-chime, .focus-try-reset { background: transparent; border-color: rgba(239, 233, 220, 0.14); color: var(--muted); }
-.focus-try-chime[aria-pressed="true"] { border-color: rgba(240, 199, 94, 0.42); color: var(--gold); background: rgba(240, 199, 94, 0.08); }
-.focus-try-chime:hover, .focus-try-reset:hover { border-color: rgba(239, 233, 220, 0.3); color: var(--ink); }
-.focus-try-reset[hidden] { display: none; }
 .feedback-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(24px, 4.5vw, 64px); align-items: end; }
 .feedback-head-copy { max-width: 600px; }
 .feedback-section h2 { font-size: clamp(34px,3.2vw,48px); line-height: 1.08; font-weight: 700; }

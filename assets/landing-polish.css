@@ -34,8 +34,8 @@ body { background: var(--bg-deep); }
 .hero h1 { font-size: clamp(52px, 5.5vw, 78px); line-height: 1.03; letter-spacing: -.045em; font-weight: 700; }
 .hero-copy { margin: 22px 0 30px; max-width: 440px; font-size: clamp(17px,1.6vw,20px); color: var(--ink-dim); line-height: 1.45; }
 .hero .cta-primary { min-height: 54px; padding: 0 24px; font-size: 15px; }
-.hero-mobile-link { display: flex; align-items: center; width: fit-content; min-height: 44px; margin-top: 9px; font-size: 13px; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
-.hero-mobile-link:hover { color: var(--ink); }
+.hero-mobile-link { display: flex; align-items: center; width: fit-content; min-height: 44px; margin-top: 9px; font-size: 13px; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(239,233,220,0.28); transition: color 200ms var(--ease-out), text-decoration-color 200ms var(--ease-out); }
+.hero-mobile-link:hover { color: var(--gold); text-decoration-color: rgba(240,199,94,0.65); }
 .story { position: relative; min-height: 690px; display: grid; grid-template-columns: minmax(280px, .72fr) minmax(0, 1.28fr); gap: clamp(40px,6vw,96px); align-items: center; padding-block: 95px; border-top: 1px solid var(--quiet-line); content-visibility: auto; contain-intrinsic-size: auto 640px; }
 .story-reverse { grid-template-columns: minmax(0,1.28fr) minmax(280px,.72fr); }
 .story-reverse .story-copy { grid-column: 2; grid-row: 1; }

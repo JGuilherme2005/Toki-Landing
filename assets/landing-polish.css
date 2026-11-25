@@ -167,4 +167,3 @@ footer > p { max-width: 600px; color: var(--ink-dim); font-size: 15px; }
   .faq-list summary::after,
   .faq-list details[open] summary::after { transition: none; transform: none; }
 }
-.preview-caption { margin-top: 10px; text-align: center; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }

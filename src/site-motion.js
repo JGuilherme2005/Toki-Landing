@@ -378,6 +378,13 @@ if (focusTry) {
     renderTimer('idle');
   });
 
+  focusTry.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape' || focusTry.dataset.state === 'idle') return;
+    stopTick();
+    remainingMs = TOTAL_MS;
+    renderTimer('idle');
+  });
+
   renderTimer('idle');
 }
 

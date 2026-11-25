@@ -103,7 +103,9 @@ if (!reduced.matches && 'IntersectionObserver' in window) {
   });
 
   const feedbackSection = document.querySelector('#feedback');
-  const feedbackCards = feedbackSection ? [...feedbackSection.querySelectorAll('.feedback-card')] : [];
+  const feedbackCards = feedbackSection
+    ? [...feedbackSection.querySelectorAll('.feedback-group:not([aria-hidden="true"]) .feedback-card')]
+    : [];
   let feedbackVisible = false;
   let spotlightIndex = 0;
   let spotlightTimer = 0;
@@ -264,4 +266,79 @@ if (!reduced.matches && 'IntersectionObserver' in window) {
       if (phone.isVisible && !reduced.matches) setPlaying(phone, true);
     });
   });
+}
+
+// Lightweight zero-drift 60s Calm Focus preview (works with or without motion).
+const focusTry = document.querySelector('[data-focus-try]');
+if (focusTry) {
+  const clockEl = focusTry.querySelector('[data-focus-clock]');
+  const toggleBtn = focusTry.querySelector('[data-focus-toggle]');
+  const resetBtn = focusTry.querySelector('[data-focus-reset]');
+  const TOTAL_MS = 60_000;
+  let remainingMs = TOTAL_MS;
+  let deadline = 0;
+  let timerId = 0;
+
+  const formatMs = (ms) => {
+    const secs = Math.max(0, Math.ceil(ms / 1000));
+    const m = Math.floor(secs / 60);
+    const s = secs % 60;
+    return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  };
+
+  const renderTimer = (state) => {
+    focusTry.dataset.state = state;
+    if (clockEl) clockEl.textContent = state === 'done' ? 'Done' : formatMs(remainingMs);
+    if (toggleBtn) {
+      toggleBtn.textContent = state === 'running'
+        ? 'Pause'
+        : state === 'paused'
+          ? 'Resume'
+          : state === 'done'
+            ? 'Run again'
+            : 'Try 60s focus';
+    }
+    if (resetBtn) resetBtn.hidden = state === 'idle';
+  };
+
+  const stopTick = () => {
+    if (timerId) {
+      window.clearInterval(timerId);
+      timerId = 0;
+    }
+  };
+
+  const tick = () => {
+    remainingMs = Math.max(0, deadline - Date.now());
+    if (remainingMs <= 0) {
+      stopTick();
+      renderTimer('done');
+      return;
+    }
+    renderTimer('running');
+  };
+
+  toggleBtn?.addEventListener('click', () => {
+    if (focusTry.dataset.state === 'running') {
+      remainingMs = Math.max(0, deadline - Date.now());
+      stopTick();
+      renderTimer('paused');
+      return;
+    }
+    if (remainingMs <= 0 || focusTry.dataset.state === 'done') {
+      remainingMs = TOTAL_MS;
+    }
+    deadline = Date.now() + remainingMs;
+    renderTimer('running');
+    stopTick();
+    timerId = window.setInterval(tick, 250);
+  });
+
+  resetBtn?.addEventListener('click', () => {
+    stopTick();
+    remainingMs = TOTAL_MS;
+    renderTimer('idle');
+  });
+
+  renderTimer('idle');
 }

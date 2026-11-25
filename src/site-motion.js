@@ -380,3 +380,17 @@ if (focusTry) {
 
   renderTimer('idle');
 }
+
+// Tactile pointer-tracked lantern sheen on primary CTA and interactive store pills.
+if (!reduced.matches) {
+  document.querySelectorAll('.cta-primary, a.store-pill').forEach((el) => {
+    el.addEventListener('pointermove', (event) => {
+      if (event.pointerType === 'touch') return;
+      const rect = el.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / Math.max(rect.width, 1)) * 100;
+      const y = ((event.clientY - rect.top) / Math.max(rect.height, 1)) * 100;
+      el.style.setProperty('--mx', `${x.toFixed(1)}%`);
+      el.style.setProperty('--my', `${y.toFixed(1)}%`);
+    }, { passive: true });
+  });
+}

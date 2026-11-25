@@ -94,8 +94,11 @@ body { background: var(--bg-deep); }
 .feedback-head,
 .feedback-marquee { position: relative; z-index: 1; }
 .store-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 16px; }
-.store-pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(239, 233, 220, 0.14); background: rgba(23, 28, 25, 0.9); color: var(--ink-dim); font-size: 13px; font-weight: 500; letter-spacing: 0.01em; text-decoration: none; transition: border-color 220ms var(--ease-out), color 220ms var(--ease-out), transform 220ms var(--ease-out); }
+.store-pill { position: relative; overflow: hidden; display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(239, 233, 220, 0.14); background: rgba(23, 28, 25, 0.9); color: var(--ink-dim); font-size: 13px; font-weight: 500; letter-spacing: 0.01em; text-decoration: none; transition: border-color 220ms var(--ease-out), color 220ms var(--ease-out), transform 220ms var(--ease-out); }
 .store-pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex: none; }
+a.store-pill::after, .cta-primary::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; background: radial-gradient(120px circle at var(--mx, 50%) var(--my, 50%), rgba(240, 199, 94, 0.22), transparent 65%); opacity: 0; transition: opacity 220ms var(--ease-out); }
+.cta-primary { position: relative; overflow: hidden; }
+a.store-pill:hover::after, .cta-primary:hover::after { opacity: 1; }
 a.store-pill:hover { border-color: rgba(143, 194, 122, 0.45); color: var(--ink); transform: translateY(-1px); }
 .focus-try { position: relative; overflow: hidden; display: inline-flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 20px; padding: 8px 10px 10px 14px; border-radius: 14px; border: 1px solid rgba(239, 233, 220, 0.14); background: rgba(23, 28, 25, 0.92); box-shadow: 0 1px 0 rgba(239, 233, 220, 0.08) inset, 0 10px 24px -16px rgba(0, 0, 0, 0.72); transition: border-color 220ms var(--ease-out), box-shadow 220ms var(--ease-out); }
 .focus-try::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--gold)); transform-origin: left center; transform: scaleX(var(--focus-progress, 0)); opacity: 0.85; transition: transform 240ms linear, opacity 240ms var(--ease-out); pointer-events: none; }
@@ -225,5 +228,7 @@ footer > p { max-width: 600px; color: var(--ink-dim); font-size: 15px; }
   .pond-stage::after,
   .visual-crop::after,
   .feedback-card::after,
-  .feedback-dot::after { animation: none; transition: none; }
+  .feedback-dot::after,
+  a.store-pill::after,
+  .cta-primary::after { animation: none; transition: none; opacity: 0; }
 }

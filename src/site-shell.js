@@ -2,7 +2,7 @@ const download = 'https://github.com/JGuilherme2005/Toki-Landing/releases/downlo
 
 export function siteShell(base, page) {
   const items = [
-    ['features', 'Features'], ['android', 'Mobile'], ['faq', 'FAQ'], ['privacy', 'Privacy']
+    ['features', 'Features'], ['android', 'Android preview'], ['faq', 'FAQ'], ['privacy', 'Privacy']
   ];
   const links = items.map(([slug, label]) => `<a href="${base}${slug}/"${page === slug ? ' aria-current="page"' : ''}>${label}</a>`).join('');
   return {

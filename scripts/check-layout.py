@@ -53,7 +53,11 @@ async def main():
                 assert val == {'sources': 0, 'timer': 'none'}, f'Unexpected reduced-motion state: {result}'
         finally:
             process.terminate()
-            process.wait(timeout=5)
+            try:
+                process.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                process.kill()
+                process.wait(timeout=5)
 
 
 asyncio.run(main())

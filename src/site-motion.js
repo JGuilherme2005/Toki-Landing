@@ -273,11 +273,46 @@ const focusTry = document.querySelector('[data-focus-try]');
 if (focusTry) {
   const clockEl = focusTry.querySelector('[data-focus-clock]');
   const toggleBtn = focusTry.querySelector('[data-focus-toggle]');
+  const chimeBtn = focusTry.querySelector('[data-focus-chime]');
   const resetBtn = focusTry.querySelector('[data-focus-reset]');
   const TOTAL_MS = 60_000;
   let remainingMs = TOTAL_MS;
   let deadline = 0;
   let timerId = 0;
+  let chimeOn = false;
+
+  const playPondChime = () => {
+    if (!chimeOn) return;
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    if (!AudioCtx) return;
+    try {
+      const ctx = new AudioCtx();
+      const now = ctx.currentTime;
+      for (const [freq, gainPeak, dur] of [[528, 0.08, 1.4], [792, 0.04, 1.1]]) {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, now);
+        gain.gain.setValueAtTime(0.0001, now);
+        gain.gain.exponentialRampToValueAtTime(gainPeak, now + 0.03);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + dur + 0.05);
+      }
+      window.setTimeout(() => ctx.close().catch(() => {}), 1600);
+    } catch {
+      // Ignore blocked Web Audio contexts silently.
+    }
+  };
+
+  chimeBtn?.addEventListener('click', () => {
+    chimeOn = !chimeOn;
+    chimeBtn.setAttribute('aria-pressed', String(chimeOn));
+    chimeBtn.textContent = chimeOn ? 'Chime: on' : 'Chime: off';
+    if (chimeOn) playPondChime();
+  });
 
   const formatMs = (ms) => {
     const secs = Math.max(0, Math.ceil(ms / 1000));
@@ -313,6 +348,7 @@ if (focusTry) {
     if (remainingMs <= 0) {
       stopTick();
       renderTimer('done');
+      playPondChime();
       return;
     }
     renderTimer('running');
